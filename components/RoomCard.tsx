@@ -7,6 +7,8 @@ export default function RoomCard({ room }: { room: Room }) {
     <div className="flex flex-col overflow-hidden rounded-[10px] bg-card shadow-[0_1px_3px_rgba(40,44,38,0.06)]">
       <Link href={`/camere/${room.slug}`} className="block">
         <PlaceholderImage
+          src={room.photo}
+          alt={room.name}
           label={room.photoLabel}
           className="aspect-[4/3]"
           sizes="(max-width: 768px) 100vw, 33vw"

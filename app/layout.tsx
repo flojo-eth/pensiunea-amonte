@@ -59,9 +59,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
+        url: "/exterior-pensiune.jpeg",
         alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
       },
     ],
@@ -70,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} — ${SITE_TAGLINE} în Valea Avrigului`,
     description: SITE_DESCRIPTION,
-    images: ["/og.png"],
+    images: ["/exterior-pensiune.jpeg"],
   },
 };
 

@@ -34,7 +34,8 @@ export type Room = {
   longDesc: string;
   price: string; // "de la 500"
   features: string[];
-  photoLabel: string;
+  photo: string; // file in /public
+  photoLabel: string; // fallback label if photo is missing
 };
 
 export const ROOMS: Room[] = [
@@ -52,6 +53,7 @@ export const ROOMS: Room[] = [
       "Vedere la munte",
       "Mic dejun inclus",
     ],
+    photo: "/camera-dubla.jpg",
     photoLabel: "[ cameră dublă ]",
   },
   {
@@ -68,6 +70,7 @@ export const ROOMS: Room[] = [
       "Potrivit pentru familii",
       "Mic dejun inclus",
     ],
+    photo: "/studio-familie.jpg",
     photoLabel: "[ studio familie ]",
   },
 ];
@@ -135,15 +138,15 @@ export const ACTIVITIES: Activity[] = [
   },
 ];
 
-export type GalleryItem = { label: string; span: 1 | 2 };
+export type GalleryItem = { photo: string; label: string; span: 1 | 2 };
 
 export const GALLERY: GalleryItem[] = [
-  { label: "[ exterior pensiune ]", span: 2 },
-  { label: "[ jacuzzi & saună ]", span: 1 },
-  { label: "[ mic dejun ]", span: 1 },
-  { label: "[ cameră / balcon ]", span: 1 },
-  { label: "[ priveliște Făgăraș ]", span: 2 },
-  { label: "[ firepit / terasă seara ]", span: 1 },
+  { photo: "/exterior-pensiune.jpeg", label: "Exterior pensiune", span: 2 },
+  { photo: "/jacuzzi-sauna.jpeg", label: "Jacuzzi & saună", span: 1 },
+  { photo: "/camera-balcon.jpg", label: "Cameră cu balcon", span: 1 },
+  { photo: "/priveliste-fagaras.jpg", label: "Priveliște spre Făgăraș", span: 2 },
+  { photo: "/firepit.jpg", label: "Firepit pe terasă, seara", span: 1 },
+  { photo: "/bruno.jpg", label: "Bruno", span: 1 },
 ];
 
 // Reviews are intentionally left as marked placeholders — the owner fills these

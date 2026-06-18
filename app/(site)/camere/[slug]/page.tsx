@@ -49,6 +49,8 @@ export default async function RoomPage({
       </Link>
 
       <PlaceholderImage
+        src={room.photo}
+        alt={room.name}
         label={room.photoLabel}
         className="mt-6 aspect-[16/9] rounded-xl"
         priority

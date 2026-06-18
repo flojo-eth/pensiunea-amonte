@@ -49,13 +49,15 @@ export default function DesprePage() {
       </div>
       <div className="flex flex-1 basis-[360px] gap-4">
         <PlaceholderImage
+          src="/interior-living.jpg"
+          alt="Living cu șemineu"
           label="[ interior / living ]"
           className="aspect-[3/4] flex-[1.3] rounded-md"
           sizes="(max-width: 768px) 60vw, 30vw"
         />
         <div className="flex flex-1 flex-col gap-4">
-          <PlaceholderImage label="[ șemineu ]" className="flex-1 rounded-md" sizes="30vw" />
-          <PlaceholderImage label="[ terasă ]" className="flex-1 rounded-md" sizes="30vw" />
+          <PlaceholderImage src="/semineu.jpg" alt="Șemineu" label="[ șemineu ]" className="flex-1 rounded-md" sizes="30vw" />
+          <PlaceholderImage src="/detaliu-lemn.jpg" alt="Detaliu lemn" label="[ detaliu lemn ]" className="flex-1 rounded-md" sizes="30vw" />
         </div>
       </div>
     </section>

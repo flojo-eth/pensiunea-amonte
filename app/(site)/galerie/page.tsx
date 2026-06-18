@@ -28,6 +28,8 @@ export default function GaleriePage() {
           {GALLERY.map((g) => (
             <PlaceholderImage
               key={g.label}
+              src={g.photo}
+              alt={g.label}
               label={g.label}
               tone="dark"
               className={`rounded-lg ${g.span === 2 ? "row-span-2" : ""}`}

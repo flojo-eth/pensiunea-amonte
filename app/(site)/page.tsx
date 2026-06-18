@@ -43,13 +43,17 @@ export default function Home() {
     <>
       {/* HERO — immersive */}
       <section className="relative flex min-h-[calc(100vh-140px)] items-end px-[clamp(20px,5vw,64px)] pb-[clamp(48px,6vw,80px)] pt-[clamp(40px,6vw,90px)]">
-        <PlaceholderImage
-          label="[ FOTO — vedere exterioară pensiune ]"
-          tone="dark"
-          className="absolute inset-0"
-          priority
-          sizes="100vw"
-        />
+        <div className="absolute inset-0">
+          <PlaceholderImage
+            src="/poza_hero.jpg"
+            alt="Pensiunea Amonte — vedere exterioară"
+            label="[ FOTO — vedere exterioară pensiune ]"
+            tone="dark"
+            className="h-full w-full"
+            priority
+            sizes="100vw"
+          />
+        </div>
         <div
           className="absolute inset-0"
           style={{
@@ -111,13 +115,15 @@ export default function Home() {
         </div>
         <div className="flex flex-1 basis-[360px] gap-4">
           <PlaceholderImage
+            src="/interior-living.jpg"
+            alt="Living cu șemineu"
             label="[ interior / living ]"
             className="aspect-[3/4] flex-[1.3] rounded-md"
             sizes="(max-width: 768px) 60vw, 30vw"
           />
           <div className="flex flex-1 flex-col gap-4">
-            <PlaceholderImage label="[ șemineu ]" className="flex-1 rounded-md" sizes="30vw" />
-            <PlaceholderImage label="[ detaliu lemn ]" className="flex-1 rounded-md" sizes="30vw" />
+            <PlaceholderImage src="/semineu.jpg" alt="Șemineu" label="[ șemineu ]" className="flex-1 rounded-md" sizes="30vw" />
+            <PlaceholderImage src="/detaliu-lemn.jpg" alt="Detaliu lemn" label="[ detaliu lemn ]" className="flex-1 rounded-md" sizes="30vw" />
           </div>
         </div>
       </section>
@@ -182,6 +188,8 @@ export default function Home() {
             {GALLERY.map((g) => (
               <PlaceholderImage
                 key={g.label}
+                src={g.photo}
+                alt={g.label}
                 label={g.label}
                 tone="dark"
                 className={`rounded-lg ${g.span === 2 ? "row-span-2" : ""}`}

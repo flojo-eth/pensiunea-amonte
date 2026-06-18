@@ -20,10 +20,10 @@ const BADGES = [
 ];
 
 const PHOTOS = [
-  "[ exterior pensiune ]",
-  "[ cameră / balcon ]",
-  "[ jacuzzi & saună ]",
-  "[ priveliște Făgăraș ]",
+  { src: "/exterior-pensiune.jpeg", alt: "Exterior pensiune" },
+  { src: "/camera-balcon.jpg", alt: "Cameră cu balcon" },
+  { src: "/jacuzzi-sauna.jpeg", alt: "Jacuzzi & saună" },
+  { src: "/priveliste-fagaras.jpg", alt: "Priveliște spre Făgăraș" },
 ];
 
 export default function RezervaAcumPage() {
@@ -67,10 +67,12 @@ export default function RezervaAcumPage() {
 
         {/* 4-photo grid */}
         <div className="mt-9 grid grid-cols-2 gap-3.5 sm:grid-cols-4">
-          {PHOTOS.map((label, i) => (
+          {PHOTOS.map((p, i) => (
             <PlaceholderImage
-              key={label}
-              label={label}
+              key={p.src}
+              src={p.src}
+              alt={p.alt}
+              label={p.alt}
               className="aspect-square rounded-lg"
               priority={i < 2}
               sizes="(max-width: 640px) 50vw, 25vw"
