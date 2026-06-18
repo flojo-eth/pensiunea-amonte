@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/content";
 
 /** Solid pine top bar, shared across all (site) pages. */
@@ -8,13 +9,24 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-[clamp(20px,5vw,64px)] py-4">
         <Link
           href="/"
-          className="flex flex-col leading-none text-card-2 no-underline"
+          className="flex items-center gap-3 text-card-2 no-underline"
+          aria-label="Pensiunea Amonte — acasă"
         >
-          <span className="font-serif text-[28px] font-bold tracking-[0.5px]">
-            Amonte
-          </span>
-          <span className="mt-[3px] text-[9.5px] uppercase tracking-[3.5px] opacity-75">
-            Pensiune montană
+          <Image
+            src="/logo_amonte.png"
+            alt="Pensiunea Amonte"
+            width={44}
+            height={44}
+            priority
+            className="h-11 w-11 rounded-lg object-cover"
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-[28px] font-bold tracking-[0.5px]">
+              Amonte
+            </span>
+            <span className="mt-[3px] text-[9.5px] uppercase tracking-[3.5px] opacity-75">
+              Pensiune montană
+            </span>
           </span>
         </Link>
 

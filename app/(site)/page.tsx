@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Eyebrow from "@/components/Eyebrow";
 import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import RoomCard from "@/components/RoomCard";
@@ -58,19 +57,19 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg,rgba(20,30,22,0.55) 0%,rgba(20,30,22,0.15) 38%,rgba(18,26,20,0.82) 100%)",
+              "linear-gradient(180deg,rgba(18,26,20,0.5) 0%,rgba(18,26,20,0.28) 42%,rgba(15,22,17,0.94) 100%)",
           }}
         />
         <div className="relative mx-auto w-full max-w-[1280px]">
-          <Eyebrow tone="dark" className="mb-5">
+          <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
             {LOCATION}
-          </Eyebrow>
-          <h1 className="m-0 max-w-[14ch] font-serif text-[clamp(46px,8vw,100px)] font-semibold leading-[0.98] text-card-2">
-            Liniștea muntelui, la tine acasă.
+          </span>
+          <h1 className="m-0 max-w-[16ch] font-serif text-[clamp(44px,7.5vw,96px)] font-semibold leading-[1.0] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+            Locul unde liniștea îți încarcă sufletul
           </h1>
-          <p className="mb-9 mt-[22px] max-w-[54ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-paper/90">
-            Pensiunea Amonte te primește cu lemn cald, șemineu și aer de brad —
-            un refugiu între păduri, departe de zgomot, aproape de tot ce
+          <p className="mb-9 mt-[22px] max-w-[54ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
+            Pensiunea Amonte te primește cu căldură și aer curat — un refugiu la
+            poalele Munților Făgăraș, departe de zgomot, aproape de tot ce
             contează.
           </p>
           <div className="flex flex-wrap gap-3.5">

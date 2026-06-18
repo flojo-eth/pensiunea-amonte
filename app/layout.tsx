@@ -70,6 +70,10 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: ["/exterior-pensiune.jpeg"],
   },
+  icons: {
+    icon: "/logo_amonte.png",
+    apple: "/logo_amonte.png",
+  },
 };
 
 export default function RootLayout({
