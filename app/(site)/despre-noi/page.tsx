@@ -16,7 +16,7 @@ const SHOW_FB_AND_EVENTS = false;
 export const metadata: Metadata = {
   title: "Despre noi — Pensiunea Amonte, cazare boutique în Valea Avrigului",
   description:
-    "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, bar, pet friendly. La 30 min de Sibiu.",
+    "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, terasă, sală pentru grupuri. La 30 min de Sibiu.",
   alternates: { canonical: "/despre-noi" },
 };
 
@@ -32,7 +32,7 @@ const FAQ = [
   },
   {
     q: "Pensiunea Amonte acceptă animale de companie?",
-    a: "Da, Amonte este pet friendly. Mascota casei este Bruno, un Bernese Mountain Dog.",
+    a: "Nu, nu primim animale de companie din exterior. Singurul rezident pe patru labe este Bruno, mascota casei, un Bernese Mountain Dog.",
   },
   {
     q: "Ce facilități de relaxare are pensiunea?",
@@ -77,15 +77,15 @@ const jsonLd = {
         streetAddress: "Valea Avrigului nr. 642",
         addressLocality: "Avrig",
         addressRegion: "Sibiu",
-        postalCode: "CONFIRMA_CODUL_POSTAL", // TODO: confirmă codul poștal exact
+        postalCode: "555200",
         addressCountry: "RO",
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: "CONFIRMA_LATITUDINE",   // TODO: confirmă din Google Maps (pin pe clădire)
-        longitude: "CONFIRMA_LONGITUDINE", // TODO: confirmă din Google Maps (pin pe clădire)
+        latitude: "45.66351517785169",
+        longitude: "24.45150864765203",
       },
-      petsAllowed: true,
+      petsAllowed: false,
       maximumAttendeeCapacity: 24,
       amenityFeature: [
         { "@type": "LocationFeatureSpecification", name: "Jacuzzi", value: true },
@@ -94,9 +94,12 @@ const jsonLd = {
         { "@type": "LocationFeatureSpecification", name: "Terasă panoramică", value: true },
         { "@type": "LocationFeatureSpecification", name: "Firepit exterior", value: true },
         { "@type": "LocationFeatureSpecification", name: "Bar / lounge", value: true },
-        // TODO: confirmă WiFi și parcare, apoi adaugă:
-        // { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
-        // { "@type": "LocationFeatureSpecification", name: "Parcare", value: true },
+        { "@type": "LocationFeatureSpecification", name: "WiFi gratuit", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Parcare gratuită", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Sală pentru grupuri", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Mini teren de fotbal", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Masă de ping-pong", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Încălzire în pardoseală", value: true },
       ],
     },
     {
@@ -136,9 +139,9 @@ const FEATURES = [
     body: "Fiindcă putem fi rezervați integral, Amonte devine un spațiu privat pentru retreaturi corporate, team building, sesiuni de lucru sau evenimente de familie.",
   },
   {
-    icon: "🐾",
-    title: "Pet friendly",
-    body: "Suntem primititori cu animalele de companie, iar mascota casei este Bruno, un Bernese Mountain Dog care întâmpină oaspeții.",
+    icon: "🎯",
+    title: "Sală & spații pentru grupuri",
+    body: "Sală dedicată, spații comune generoase și posibilitatea de rezervare integrală fac din Amonte locul potrivit pentru retreaturi, team building și sejururi de familie.",
   },
   {
     icon: "🌄",
@@ -150,15 +153,19 @@ const FEATURES = [
 const FACILITIES = [
   "10 spații: 8 camere duble + 2 studiouri de familie",
   "Capacitate 24 persoane",
+  "Încălzire în pardoseală",
   "Jacuzzi",
   "Saună",
   "Living cu șemineu",
   "Terasă panoramică",
   "Firepit exterior",
-  "Bar / lounge",
-  "Politică pet friendly",
-  "WiFi", // TODO: confirmă
-  "Parcare", // TODO: confirmă
+  "Bar / lounge (ambianță)",
+  "Sală pentru grupuri / corporate",
+  "Mini teren de fotbal",
+  "Masă de ping-pong",
+  "WiFi gratuit",
+  "Parcare gratuită",
+  "Rezervare integrală disponibilă",
 ];
 
 // ── component ────────────────────────────────────────────────────────────────
@@ -185,8 +192,8 @@ export default function DesprePage() {
           Avrigului, județul Sibiu, la poalele Munților Făgăraș și la circa 30
           de minute de Sibiu. Oferim 10 spații de cazare pentru maximum 24 de
           oaspeți, într-un cadru intim, cu jacuzzi, saună, șemineu, terasă
-          panoramică, bar și acces direct la natură. Suntem o pensiune pet
-          friendly.
+          panoramică, bar și acces direct la natură. Putem fi rezervați integral
+          pentru grupuri, retreaturi și events private.
         </p>
       </section>
 
@@ -328,7 +335,7 @@ export default function DesprePage() {
                   <br />
                   Valea Avrigului nr. 642
                   <br />
-                  Avrig, județul Sibiu, România
+                  jud. Sibiu, 555200, România
                 </p>
               </address>
               <ul className="mt-7 space-y-3 text-[15px] leading-snug text-paper/70">

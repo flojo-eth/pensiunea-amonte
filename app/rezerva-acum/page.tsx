@@ -8,7 +8,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Rezervă acum",
   description:
-    "Rezervă-ți evadarea la munte la Pensiunea Amonte, în Valea Avrigului — la 30 de minute de Sibiu. Cazare de la 225 lei/persoană, mic dejun inclus. Scrie pe WhatsApp.",
+    "Rezervă-ți evadarea la munte la Pensiunea Amonte, în Valea Avrigului — la 30 de minute de Sibiu. Cazare de la 225 lei/persoană, jacuzzi & saună. Scrie pe WhatsApp.",
   alternates: { canonical: "/rezerva-acum" },
 };
 
@@ -85,7 +85,7 @@ export default function RezervaAcumPage() {
           Cazare de la{" "}
           <span className="text-terracotta">225 lei / persoană</span> pe noapte
           <span className="block text-[16px] font-normal text-muted">
-            Mic dejun inclus
+            Jacuzzi & saună inclus
           </span>
         </p>
 

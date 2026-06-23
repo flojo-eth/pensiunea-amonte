@@ -9,7 +9,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Camere",
   description:
-    "Camerele Pensiunii Amonte: cameră dublă cu vedere la munte și studio de familie. Balcon privat, mic dejun inclus, acces la jacuzzi & saună.",
+    "Camerele Pensiunii Amonte: cameră dublă cu vedere la munte și studio de familie. Balcon privat, acces la jacuzzi & saună, terasă panoramică.",
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
@@ -22,8 +22,8 @@ export default function CamerePage() {
         title="Camerele noastre"
         className="mb-[clamp(36px,5vw,56px)]"
       >
-        Spații generoase, lemn cald și vedere spre Munții Făgăraș. Mic dejun
-        inclus la fiecare unitate.
+        Spații generoase, lemn cald și vedere spre Munții Făgăraș. Acces la
+        jacuzzi & saună și terasă panoramică.
       </SectionHeading>
 
       <div className="grid gap-6 sm:grid-cols-2">

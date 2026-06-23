@@ -12,7 +12,8 @@ export const CONTACT = {
   phoneMobile: "0747 342 280", // mobil / WhatsApp
   phoneLandline: "0369 420 619", // fix
   email: "contact@pensiunea-amonte.ro",
-  address: "Valea Avrigului 642, jud. Sibiu, România",
+  // NAP canonic — format identic pe toate directoarele (fără „Avrig" ca localitate separată)
+  address: "Valea Avrigului nr. 642, jud. Sibiu, 555200, România",
   social: "@pensiunea.amonte", // Instagram · Facebook · TikTok
 } as const;
 
@@ -43,15 +44,15 @@ export const ROOMS: Room[] = [
     slug: "camera-dubla-vedere-munte",
     name: "Cameră dublă cu vedere la munte",
     spec: "2 persoane · balcon privat · vedere munte",
-    desc: "Cameră modernă cu balcon privat și priveliște spre munte. Ideală pentru relaxare în cuplu. Mic dejun inclus.",
+    desc: "Cameră modernă cu balcon privat și priveliște spre munte. Ideală pentru relaxare în cuplu.",
     longDesc:
-      "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu acces la zona de wellness (jacuzzi & saună) și living-ul cu șemineu. Mic dejun inclus.",
+      "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu acces la zona de wellness (jacuzzi & saună) și living-ul cu șemineu.",
     price: "de la 500",
     features: [
       "2 persoane",
       "Balcon privat",
       "Vedere la munte",
-      "Mic dejun inclus",
+      "Încălzire în pardoseală",
     ],
     photo: "/camera-dubla.jpg",
     photoLabel: "[ cameră dublă ]",
@@ -60,15 +61,15 @@ export const ROOMS: Room[] = [
     slug: "studio-de-familie",
     name: "Studio de familie",
     spec: "4 persoane · pat matrimonial + canapea extensibilă",
-    desc: "Spațios și confortabil, potrivit pentru familii și grupuri mici. Mic dejun inclus.",
+    desc: "Spațios și confortabil, potrivit pentru familii și grupuri mici.",
     longDesc:
-      "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă — potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la zona de wellness și la living-ul cu șemineu. Mic dejun inclus.",
+      "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă — potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la zona de wellness și la living-ul cu șemineu.",
     price: "de la 800",
     features: [
       "4 persoane",
       "Pat matrimonial + canapea extensibilă",
       "Potrivit pentru familii",
-      "Mic dejun inclus",
+      "Încălzire în pardoseală",
     ],
     photo: "/studio-familie.jpg",
     photoLabel: "[ studio familie ]",
@@ -81,15 +82,21 @@ export function getRoom(slug: string): Room | undefined {
 
 export type Amenity = { icon: string; label: string };
 
+// Facilități confirmate — afișate pe home și pe pagina de servicii.
+// NU adaugă: mic dejun, bar (serviciu), catering/evenimente — cer CAEN + DSP/ANSVSA.
 export const AMENITIES: Amenity[] = [
-  { icon: "🍳", label: "Mic dejun inclus" },
   { icon: "🧖", label: "Jacuzzi & saună" },
   { icon: "🔥", label: "Living cu șemineu" },
-  { icon: "🍸", label: "Bar pentru oaspeți" },
   { icon: "🏔️", label: "Terasă panoramică" },
   { icon: "🪵", label: "Firepit exterior" },
+  { icon: "🍸", label: "Bar / lounge" },
+  { icon: "🎯", label: "Sală pentru grupuri" },
+  { icon: "⚽", label: "Mini teren de fotbal" },
+  { icon: "🏓", label: "Masă de ping-pong" },
+  { icon: "🌡️", label: "Încălzire în pardoseală" },
   { icon: "🅿️", label: "Parcare gratuită" },
-  { icon: "🐕", label: "Dog-friendly (Bruno)" },
+  { icon: "📶", label: "WiFi gratuit" },
+  { icon: "🏔️", label: "Rezervare integrală disponibilă" },
 ];
 
 export type Activity = {

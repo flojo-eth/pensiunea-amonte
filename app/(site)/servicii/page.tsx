@@ -7,7 +7,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Servicii & facilități",
   description:
-    "Servicii la Pensiunea Amonte: mic dejun inclus, jacuzzi & saună, living cu șemineu, bar, terasă panoramică, firepit exterior, parcare gratuită, dog-friendly.",
+    "Servicii la Pensiunea Amonte: jacuzzi & saună, living cu șemineu, bar / lounge, terasă panoramică, firepit, sală pentru grupuri, mini teren de fotbal, ping-pong, parcare și WiFi gratuite.",
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";

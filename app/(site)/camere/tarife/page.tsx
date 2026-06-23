@@ -8,7 +8,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Tarife cazare",
   description:
-    "Tarifele Pensiunii Amonte: cameră dublă cu vedere la munte de la 500 lei/noapte, studio de familie de la 800 lei/noapte. Mic dejun inclus.",
+    "Tarifele Pensiunii Amonte: cameră dublă cu vedere la munte de la 500 lei/noapte, studio de familie de la 800 lei/noapte. Cere disponibilitate pe WhatsApp.",
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
@@ -21,8 +21,8 @@ export default function TarifePage() {
         title="Tarife"
         className="mb-[clamp(36px,5vw,56px)]"
       >
-        Tarifele includ micul dejun și accesul la zona de relaxare (jacuzzi &
-        saună). Cere disponibilitatea pentru datele tale pe WhatsApp.
+        Tarifele includ accesul la zona de relaxare (jacuzzi & saună). Cere
+        disponibilitatea pentru datele tale pe WhatsApp.
       </SectionHeading>
 
       <div className="overflow-hidden rounded-[12px] border border-line bg-card">
@@ -55,9 +55,8 @@ export default function TarifePage() {
       </div>
 
       <p className="mt-6 text-[14.5px] leading-relaxed text-muted">
-        Cazare de la 225 lei / persoană pe noapte · mic dejun inclus. Pentru
-        grupuri, sejururi mai lungi sau perioade speciale, scrie-ne și îți facem
-        o ofertă.
+        Cazare de la 225 lei / persoană pe noapte. Pentru grupuri, sejururi mai
+        lungi sau perioade speciale, scrie-ne și îți facem o ofertă.
       </p>
 
       <div className="mt-8">
