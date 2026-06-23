@@ -43,13 +43,12 @@ const FAQ = [
     a: "Da. Pensiunea poate fi rezervată integral pentru retreaturi corporate, team building, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
   },
   {
-    q: "Cât de departe este de Sibiu și de Transfăgărășan?",
-    // TODO: confirmă cifrele exacte (km / minute)
-    a: "Sibiul este la aproximativ 30–40 de minute cu mașina, iar Transfăgărășanul și zona Bâlea sunt accesibile direct din zonă, în sezon.",
+    q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",
+    a: "Sibiul este la aproximativ 30–40 de minute cu mașina. Transfăgărășanul și cascada Bâlea sunt la circa o oră, accesibile sezonier.",
   },
   {
     q: "Cum rezerv?",
-    a: "Direct, prin site la pensiunea-amonte.ro sau pe WhatsApp la +40 747 342 280.",
+    a: "Direct, pe WhatsApp la +40 747 342 280.",
   },
 ];
 
@@ -131,7 +130,7 @@ const FEATURES = [
   {
     icon: "🏔️",
     title: "Natura la ușă",
-    body: "Suntem la poalele celui mai înalt masiv din Carpații românești. De aici pleci spre Transfăgărășan, lacul și cascada Bâlea, traseele Negoiu și Suru.",
+    body: "Suntem la poalele celui mai înalt masiv din Carpații românești. De aici poți pleca spre Cabana Bârcaciu, Negoiu și Suru, pe trasee pentru toate nivelurile.",
   },
   {
     icon: "🤝",
@@ -139,14 +138,14 @@ const FEATURES = [
     body: "Fiindcă putem fi rezervați integral, Amonte devine un spațiu privat pentru retreaturi corporate, team building, sesiuni de lucru sau evenimente de familie.",
   },
   {
-    icon: "🎯",
-    title: "Sală & spații pentru grupuri",
-    body: "Sală dedicată, spații comune generoase și posibilitatea de rezervare integrală fac din Amonte locul potrivit pentru retreaturi, team building și sejururi de familie.",
+    icon: "🐾",
+    title: "Bruno, gazda pe patru labe",
+    body: "Mascota casei este Bruno, un Bernese Mountain Dog care întâmpină oaspeții. Nu primim însă alte animale de companie, pentru liniștea tuturor.",
   },
   {
     icon: "🌄",
     title: "30 minute de Sibiu",
-    body: "Liniște de munte fără distanțe lungi. Centrul medieval al Sibiului și aeroportul sunt la 30–40 de minute cu mașina.",
+    body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 30–40 de minute cu mașina.",
   },
 ];
 
@@ -203,7 +202,7 @@ export default function DesprePage() {
           <div className="flex-1 basis-[360px]">
             <SectionHeading
               eyebrow="Cine suntem"
-              title="O casă de munte construită pentru tihnă."
+              title="Un refugiu la munte, construit pentru liniște."
             />
             <p className="mt-5 text-[17px] leading-relaxed text-muted">
               Amonte este operată de{" "}
@@ -268,13 +267,14 @@ export default function DesprePage() {
           <p className="mt-6 text-[17px] leading-relaxed text-muted">
             Sosirea e fără grabă. Cele 8 camere duble și 2 studiouri de familie
             sunt gândite pentru cupluri și familii care vor confort real. Serile
-            se petrec în livingul cu șemineu sau afară, la firepit, sub cerul de
-            munte.
+            se petrec în livingul cu șemineu sau afară, la firepit, sub cerul
+            înstelat.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
-            Pentru cei care vin să se miște, Valea Avrigului este punct de
-            plecare pentru drumeții spre Negoiu, Suru și Transfăgărășan. Pentru
-            cei care vin să stea, terasa, sauna și jacuzziul sunt suficiente.
+            Pentru cei care vin să se miște, Valea Avrigului e punct de plecare
+            pentru drumeții spre Cabana Bârcaciu, Negoiu și Suru. Pentru cei
+            care vin să se relaxeze, terasa, sauna și jacuzziul sunt suficiente
+            cât să nu mai vrei să pleci.
           </p>
         </div>
       </section>
@@ -340,30 +340,50 @@ export default function DesprePage() {
               </address>
               <ul className="mt-7 space-y-3 text-[15px] leading-snug text-paper/70">
                 <li>
-                  <strong className="font-medium text-paper/90">Sibiu</strong>{" "}
-                  (centru istoric, aeroport): ~30–40 min cu mașina
+                  <strong className="font-medium text-paper/90">
+                    Brambura Park
+                  </strong>{" "}
+                  și ferma de cerbi (Poiana Neamțului): la circa 10 minute
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">
-                    Transfăgărășan (DN7C)
+                    Palatul Brukenthal
                   </strong>
-                  , lacul și cascada Bâlea: acces direct din zonă, sezonier
-                </li>
-                <li>
-                  <strong className="font-medium text-paper/90">Avrig</strong>{" "}
-                  — Palatul de vară Brukenthal și Brambura Park: în apropiere
+                  , Avrig: în apropiere
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">
                     Castelul de Lut „Valea Zânelor"
                   </strong>
-                  , Porumbacu de Sus: câteva minute de Avrig
+                  , Porumbacu de Sus: la câteva minute de Avrig
+                </li>
+                <li>
+                  <strong className="font-medium text-paper/90">
+                    Casa Vikingilor
+                  </strong>{" "}
+                  și Povestea Calendarului: în zonă
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">
                     Trasee montane Făgăraș
                   </strong>{" "}
-                  (Negoiu, Suru): plecare din Valea Avrigului
+                  — Cabana Bârcaciu, Negoiu, Suru: plecare din Valea Avrigului
+                </li>
+                <li>
+                  <strong className="font-medium text-paper/90">
+                    Activități în aer liber
+                  </strong>
+                  : călărie, plimbări cu ATV-ul, plimbări prin pădure
+                </li>
+                <li>
+                  <strong className="font-medium text-paper/90">Sibiu</strong>{" "}
+                  (centru istoric și aeroport): la 30–40 de minute cu mașina
+                </li>
+                <li>
+                  <strong className="font-medium text-paper/90">
+                    Transfăgărășan
+                  </strong>{" "}
+                  și cascada Bâlea: la circa o oră, sezonier
                 </li>
               </ul>
             </div>
@@ -375,16 +395,16 @@ export default function DesprePage() {
         </div>
       </section>
 
-      {/* ── GAZDA ── */}
+      {/* ── GAZDELE ── */}
       <section className={`${container} ${pad}`}>
-        <SectionHeading eyebrow="Gazda ta" title="Florin Luca & Bruno" />
+        <SectionHeading eyebrow="Gazdele voastre" title="Bruno, Florin & Adi" />
         <div className="mt-6 max-w-[680px]">
           <p className="text-[17px] leading-relaxed text-muted">
-            În spatele Pensiunii Amonte este{" "}
-            <strong className="font-semibold text-forest">Florin Luca</strong>,
-            administratorul Hostillo SRL și omul care răspunde pentru fiecare
-            sejur.{" "}
-            {/* TODO: 2–3 fraze reale despre Florin — de ce ospitalitatea de munte, experiența adusă */}
+            După o perioadă petrecută în Germania, ne-am întors acasă cu o
+            dorință simplă: să creăm un loc cu ospitalitate adevărată,
+            omenească. Cu peste 10 ani de experiență în domeniu, Amonte a venit
+            firesc — felul nostru de a primi oaspeții așa cum ne-ar plăcea și
+            nouă să fim primiți.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
             Și mai e{" "}

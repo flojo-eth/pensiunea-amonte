@@ -86,7 +86,7 @@ export default function Home() {
       {/* DESPRE */}
       <section className={`${container} ${sectionPad} flex flex-wrap items-center gap-[clamp(36px,5vw,72px)]`}>
         <div className="flex-1 basis-[380px]">
-          <SectionHeading eyebrow="Despre noi" title="O casă de munte construită pentru tihnă." />
+          <SectionHeading eyebrow="Despre noi" title="Un refugiu la munte, construit pentru liniște." />
           <p className="mt-6 text-[17px] leading-relaxed text-muted">
             Situată la poalele Munților Făgăraș, în Valea Avrigului, Pensiunea
             Amonte îmbină rafinamentul cu ospitalitatea autentică. Camere
