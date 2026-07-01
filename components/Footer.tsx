@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT, NAV_LINKS } from "@/lib/content";
+import { CONTACT, NAV_LINKS, WEBSITE } from "@/lib/content";
 
 export default function Footer() {
   return (
@@ -36,6 +36,14 @@ export default function Footer() {
             <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/45">
               Contact
             </div>
+            <a
+              href={WEBSITE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-paper/80 no-underline hover:text-paper"
+            >
+              {WEBSITE.replace("https://", "")}
+            </a>
             <a
               href={`tel:${CONTACT.phoneMobile.replace(/\s/g, "")}`}
               className="text-sm text-paper/80 no-underline hover:text-paper"

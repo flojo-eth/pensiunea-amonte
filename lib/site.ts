@@ -4,7 +4,15 @@
 // pensiunea-amonte.ro, so the prototype must NOT be indexed. At migration time
 // flip the two constants below (SITE_URL + INDEXABLE) and nothing else changes.
 export const SITE_URL = "https://florinluca.ro";
+
+// BLOCARE PRODUCȚIE: INDEXABLE rămâne false și site-ul rămâne pe florinluca.ro
+// (staging) până când sunt obținute autorizațiile DSP/ANSVSA + CAEN 5611/5621/5630/8230
+// (F&B + events). NU muta pe pensiunea-amonte.ro / NU pune INDEXABLE=true înainte.
 export const INDEXABLE = false;
+
+// F&B și events vizibile pe staging; producția (pensiunea-amonte.ro) necesită
+// CAEN 5611/5621/5630/8230 + DSP/ANSVSA înainte de flip INDEXABLE=true.
+export const SHOW_FB_AND_EVENTS = true;
 
 export const SITE_NAME = "Pensiunea Amonte";
 export const SITE_TAGLINE = "Pensiune montană";

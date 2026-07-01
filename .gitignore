@@ -43,3 +43,6 @@ next-env.d.ts
 # Design prototype (kept locally, not deployed)
 files 2/
 .DS_Store
+
+# Claude Code session data (local only)
+.claude/

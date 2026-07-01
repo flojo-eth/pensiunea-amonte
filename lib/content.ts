@@ -8,8 +8,23 @@ export const WHATSAPP_URL =
 // Fallback when WhatsApp is unavailable.
 export const GOOGLE_FORM_URL = "https://forms.gle/Ft4iFEuRJUfbyAPV6";
 
+// Canonical visitor-facing domain (production). SITE_URL in site.ts is the
+// staging deployment; this is used in footer, JSON-LD, and all public links.
+export const WEBSITE = "https://pensiunea-amonte.ro";
+
+// GPS coordinates — single source for JSON-LD geo across all pages.
+export const GPS_LAT = "45.66351517785169";
+export const GPS_LNG = "24.45150864765203";
+
+// Used in structured data PostalAddress.
+export const POSTAL_CODE = "555200";
+
+// Check-in / check-out times (24 h format, kit-confirmed).
+export const CHECK_IN = "15:00";
+export const CHECK_OUT = "12:00";
+
 export const CONTACT = {
-  phoneMobile: "0747 342 280", // mobil / WhatsApp
+  phoneMobile: "+40 747 342 280", // mobil / WhatsApp — format internațional (kit NAP)
   phoneLandline: "0369 420 619", // fix
   email: "contact@pensiunea-amonte.ro",
   // NAP canonic — format identic pe toate directoarele (fără „Avrig" ca localitate separată)
@@ -83,12 +98,14 @@ export function getRoom(slug: string): Room | undefined {
 export type Amenity = { icon: string; label: string };
 
 // Facilități confirmate — afișate pe home și pe pagina de servicii.
-// NU adaugă: mic dejun, bar (serviciu), catering/evenimente — cer CAEN + DSP/ANSVSA.
+// Mic dejun și bar active pe staging (SHOW_FB_AND_EVENTS = true în site.ts).
+// Migrarea la producție (pensiunea-amonte.ro) necesită CAEN 5611/5621/5630 + DSP/ANSVSA.
 export const AMENITIES: Amenity[] = [
   { icon: "🧖", label: "Jacuzzi & saună" },
   { icon: "🔥", label: "Living cu șemineu" },
   { icon: "🏔️", label: "Terasă panoramică" },
   { icon: "🪵", label: "Firepit exterior" },
+  { icon: "🍳", label: "Mic dejun inclus" },
   { icon: "🍸", label: "Bar / lounge" },
   { icon: "🎯", label: "Sală pentru grupuri" },
   { icon: "⚽", label: "Mini teren de fotbal" },
@@ -109,14 +126,14 @@ export type Activity = {
 export const ACTIVITIES: Activity[] = [
   {
     name: "Drumeții în Făgăraș",
-    desc: "Trasee montane și plimbări în natură, în Munții Făgăraș.",
+    desc: "Trasee montane spre Cabana Bârcaciu, Negoiu și Suru — plecare direct din Valea Avrigului.",
     dist: "în zonă",
     photoLabel: "[ trasee Făgăraș ]",
   },
   {
     name: "Brambura Park",
     desc: "Parc de aventură și activități pentru toată familia.",
-    dist: "în apropiere",
+    dist: "~10 min",
     photoLabel: "[ Brambura Park ]",
   },
   {
@@ -127,7 +144,7 @@ export const ACTIVITIES: Activity[] = [
   },
   {
     name: "Castelul de Lut",
-    desc: "Atracție unică din Valea Zânelor.",
+    desc: "Atracție unică în Valea Zânelor, Porumbacu de Sus.",
     dist: "în apropiere",
     photoLabel: "[ Castelul de Lut ]",
   },
@@ -139,9 +156,21 @@ export const ACTIVITIES: Activity[] = [
   },
   {
     name: "Fermă de cerbi",
-    desc: "Vizită la ferma de cerbi din zonă.",
-    dist: "sezonier",
+    desc: "Fermă de cerbi la Poiana Neamțului — vizită pentru toată familia.",
+    dist: "~10 min",
     photoLabel: "[ fermă de cerbi ]",
+  },
+  {
+    name: "Casa Vikingilor",
+    desc: "Atracție locală unică, inspirată din cultura nordică.",
+    dist: "în apropiere",
+    photoLabel: "[ Casa Vikingilor ]",
+  },
+  {
+    name: "Povestea Calendarului",
+    desc: "Spațiu cultural și artistic dedicat calendarului tradițional.",
+    dist: "în apropiere",
+    photoLabel: "[ Povestea Calendarului ]",
   },
 ];
 

@@ -2,16 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { STATS, CONTACT } from "@/lib/content";
+import { STATS, CONTACT, WEBSITE, CHECK_IN, CHECK_OUT } from "@/lib/content";
+import { SHOW_FB_AND_EVENTS } from "@/lib/site";
 import { btnTerracotta, btnOutlineLight } from "@/lib/ui";
-
-// COMPLIANCE GATE ─────────────────────────────────────────────────────────────
-// Secțiunile „Gastronomie & bar" și „Evenimente corporate" devin publice NUMAI
-// după obținerea autorizațiilor CAEN aferente (5621 catering, 8230 evenimente;
-// 5630/5611 dacă se servește la bar/restaurant) și a avizelor DSP/ANSVSA.
-// Până atunci, lasă acest flag pe `false`.
-const SHOW_FB_AND_EVENTS = false;
-// ─────────────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
   title: "Despre noi — Pensiunea Amonte, cazare boutique în Valea Avrigului",
@@ -20,31 +13,39 @@ export const metadata: Metadata = {
   alternates: { canonical: "/despre-noi" },
 };
 
-// ── FAQ data ─── rămasă în sync 1:1 cu FAQPage JSON-LD de mai jos ──────────
-const FAQ = [
+// ── FAQ data ─── sync 1:1 cu FAQPage JSON-LD de mai jos ──────────────────────
+const FAQ_BASE = [
   {
     q: "Unde este Pensiunea Amonte?",
-    a: "Pensiunea Amonte se află în Valea Avrigului nr. 642, județul Sibiu, la poalele Munților Făgăraș, la aproximativ 30 de minute de Sibiu.",
+    a: "În Valea Avrigului nr. 642, județul Sibiu, la poalele Munților Făgăraș, la aproximativ 30 de minute de Sibiu.",
   },
   {
-    q: "Câți oaspeți poate găzdui Amonte?",
-    a: "Amonte are 10 spații de cazare — 8 camere duble și 2 studiouri de familie — și o capacitate totală de 24 de persoane.",
+    q: "Câți oaspeți poate găzdui?",
+    a: "10 spații de cazare — 8 camere duble și 2 studiouri de familie — cu o capacitate totală de 24 de persoane.",
   },
   {
-    q: "Pensiunea Amonte acceptă animale de companie?",
+    q: "Acceptați animale de companie?",
     a: "Nu, nu primim animale de companie din exterior. Singurul rezident pe patru labe este Bruno, mascota casei, un Bernese Mountain Dog.",
   },
   {
-    q: "Ce facilități de relaxare are pensiunea?",
-    a: "Amonte oferă jacuzzi, saună, living cu șemineu, terasă panoramică, firepit și bar, într-un cadru montan liniștit.",
+    q: "Ce facilități de relaxare aveți?",
+    a: "Amonte dispune de jacuzzi, saună, living cu șemineu, terasă panoramică, firepit exterior și bar. Peste drum, pe malul râului, există și o zonă unde oaspeții se pot relaxa în aer liber.",
   },
   {
-    q: "Pot organiza un eveniment privat sau corporate la Amonte?",
-    a: "Da. Pensiunea poate fi rezervată integral pentru retreaturi corporate, team building, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
+    q: "Se poate rezerva întreaga pensiune pentru un grup?",
+    a: "Da. Amonte se poate rezerva integral, pentru maximum 24 de persoane — potrivit pentru sejururi de familie, retreaturi sau ieșiri corporate, cu sală dedicată pentru grupuri.",
+  },
+  {
+    q: "Ce obiective turistice și activități sunt în apropiere?",
+    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute. Palatul Brukenthal (Avrig), Castelul de Lut (Porumbacu de Sus), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
   },
   {
     q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",
     a: "Sibiul este la aproximativ 30–40 de minute cu mașina. Transfăgărășanul și cascada Bâlea sunt la circa o oră, accesibile sezonier.",
+  },
+  {
+    q: "La ce oră este check-in / check-out?",
+    a: `Check-in: de la ${CHECK_IN}. Check-out: până la ${CHECK_OUT}.`,
   },
   {
     q: "Cum rezerv?",
@@ -52,54 +53,35 @@ const FAQ = [
   },
 ];
 
-// ── JSON-LD ── folosește URL-ul canonic de producție, nu staging-ul ─────────
+// F&B questions — visible when SHOW_FB_AND_EVENTS = true (see lib/site.ts).
+const FAQ_FB = [
+  {
+    q: "Se servește mic dejun?",
+    a: "Da, micul dejun este inclus în tarif.",
+  },
+  {
+    q: "Aveți bar?",
+    a: "Da. Barul Amonte oferă băuturi și cocktail-uri artizanale, printre care Amonte Spirit — un cocktail semnătură cu sirop de brad.",
+  },
+  {
+    q: "Pot organiza un eveniment privat sau corporate la Amonte?",
+    a: "Da. Amonte se poate rezerva integral și oferă un cadru privat pentru retreaturi corporate, team building, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
+  },
+];
+
+const FAQ = SHOW_FB_AND_EVENTS ? [...FAQ_BASE, ...FAQ_FB] : FAQ_BASE;
+
+// ── JSON-LD ── LodgingBusiness e în (site)/layout.tsx; aici: AboutPage + FAQPage ─
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "AboutPage",
-      "@id": "https://pensiunea-amonte.ro/despre-noi#webpage",
-      url: "https://pensiunea-amonte.ro/despre-noi",
+      "@id": `${WEBSITE}/despre-noi#webpage`,
+      url: `${WEBSITE}/despre-noi`,
       name: "Despre Pensiunea Amonte — cazare boutique în Valea Avrigului",
-      isPartOf: { "@id": "https://pensiunea-amonte.ro/#website" },
-      about: { "@id": "https://pensiunea-amonte.ro/#lodging" },
-    },
-    {
-      "@type": "LodgingBusiness",
-      "@id": "https://pensiunea-amonte.ro/#lodging",
-      name: "Pensiunea Amonte",
-      url: "https://pensiunea-amonte.ro",
-      telephone: "+40747342280",
-      email: "contact@pensiunea-amonte.ro",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Valea Avrigului nr. 642",
-        addressLocality: "Avrig",
-        addressRegion: "Sibiu",
-        postalCode: "555200",
-        addressCountry: "RO",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: "45.66351517785169",
-        longitude: "24.45150864765203",
-      },
-      petsAllowed: false,
-      maximumAttendeeCapacity: 24,
-      amenityFeature: [
-        { "@type": "LocationFeatureSpecification", name: "Jacuzzi", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Saună", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Living cu șemineu", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Terasă panoramică", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Firepit exterior", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Bar / lounge", value: true },
-        { "@type": "LocationFeatureSpecification", name: "WiFi gratuit", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Parcare gratuită", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Sală pentru grupuri", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Mini teren de fotbal", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Masă de ping-pong", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Încălzire în pardoseală", value: true },
-      ],
+      isPartOf: { "@id": `${WEBSITE}/#website` },
+      about: { "@id": `${WEBSITE}/#lodging` },
     },
     {
       "@type": "FAQPage",
@@ -165,6 +147,7 @@ const FACILITIES = [
   "WiFi gratuit",
   "Parcare gratuită",
   "Rezervare integrală disponibilă",
+  ...(SHOW_FB_AND_EVENTS ? ["Mic dejun inclus"] : []),
 ];
 
 // ── component ────────────────────────────────────────────────────────────────
@@ -286,11 +269,13 @@ export default function DesprePage() {
             <SectionHeading eyebrow="Gastronomie" title="Mâncare și bar" />
             <div className="mt-6 max-w-[720px]">
               <p className="text-[17px] leading-relaxed text-muted">
-                {/* TODO: completează după confirmare concept F&B — mic dejun inclus / à la carte,
-                    oferta bară, preparate locale. Publică NUMAI ce e acoperit de autorizații. */}
                 La Amonte, masa și o băutură bună fac parte din experiență.
-                Barul și spațiul de lounge sunt locul în care ziua se încheie
-                relaxat, lângă șemineu sau pe terasă.
+                Micul dejun este inclus în tarif. Barul oferă băuturi și
+                cocktail-uri artizanale — printre care{" "}
+                <strong className="font-semibold text-forest">
+                  Amonte Spirit
+                </strong>
+                , cocktail-ul semnătură al casei, cu sirop de brad.
               </p>
             </div>
           </div>

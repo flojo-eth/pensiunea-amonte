@@ -16,7 +16,7 @@ const BADGES = [
   "30 min de Sibiu",
   "Jacuzzi & Saună",
   "Natură & liniște",
-  "Bruno te așteaptă",
+  "Bruno, mascota casei",
 ];
 
 const PHOTOS = [
