@@ -185,19 +185,19 @@ export default function DesprePage() {
           <div className="flex-1 basis-[360px]">
             <SectionHeading
               eyebrow="Cine suntem"
-              title="Un refugiu la munte, construit pentru liniște."
+              title="Un refugiu la munte, construit pentru relaxare."
             />
             <p className="mt-5 text-[17px] leading-relaxed text-muted">
               Amonte este operată de{" "}
               <strong className="font-semibold text-forest">Hostillo SRL</strong>
               , o companie românească de management hotelier care preia și
               administrează integral pensiuni boutique, cu accent pe ospitalitate
-              atentă și pe experiențe de calitate.{/* TODO: din ce an operează Hostillo Pensiunea Amonte / de când e deschisă */}
+              autentică și pe experiențe de calitate.{/* TODO: din ce an operează Hostillo Pensiunea Amonte / de când e deschisă */}
             </p>
             <p className="mt-4 text-[17px] leading-relaxed text-muted">
-              Ne-am construit în jurul unei idei simple: un loc mic, îngrijit
-              până la detaliu, în care fiecare oaspete e tratat ca un invitat,
-              nu ca un număr de cameră.
+              Ne-am construit în jurul unei idei simple: un loc mic și îngrijit,
+              în care fiecare oaspete e tratat ca un invitat, nu ca un număr de
+              cameră.
             </p>
           </div>
           <div className="flex flex-1 basis-[260px] flex-wrap items-center gap-8">
@@ -269,7 +269,7 @@ export default function DesprePage() {
             <SectionHeading eyebrow="Gastronomie" title="Mâncare și bar" />
             <div className="mt-6 max-w-[720px]">
               <p className="text-[17px] leading-relaxed text-muted">
-                La Amonte, masa și o băutură bună fac parte din experiență.
+                La Amonte, masa și băutura bună fac parte din experiență.
                 Micul dejun este inclus în tarif. Barul oferă băuturi și
                 cocktail-uri artizanale — printre care{" "}
                 <strong className="font-semibold text-forest">
