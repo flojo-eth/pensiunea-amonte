@@ -189,6 +189,7 @@ export const ACTIVITIES: Activity[] = [
     desc: "Piscină tematică pentru copii și familii, în Avrig.",
     dist: "în apropiere",
     photoLabel: "[ Corabia Piraților ]",
+    photo: "/Corabia-piratilor.jpg",
   },
 ];
 
