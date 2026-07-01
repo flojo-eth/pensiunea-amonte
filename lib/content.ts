@@ -69,7 +69,7 @@ export const ROOMS: Room[] = [
       "Vedere la munte",
       "Încălzire în pardoseală",
     ],
-    photo: "/camera-dubla.jpg",
+    photo: "/camera-dubla.jpeg",
     photoLabel: "[ cameră dublă ]",
   },
   {
@@ -86,7 +86,7 @@ export const ROOMS: Room[] = [
       "Potrivit pentru familii",
       "Încălzire în pardoseală",
     ],
-    photo: "/studio-familie.jpg",
+    photo: "/studio-familie.jpeg",
     photoLabel: "[ studio familie ]",
   },
 ];
@@ -133,7 +133,7 @@ export const ACTIVITIES: Activity[] = [
     desc: "Trasee montane spre Cabana Bârcaciu, Negoiu și Suru - plecare direct din Valea Avrigului.",
     dist: "în zonă",
     photoLabel: "[ trasee Făgăraș ]",
-    photo: "/trasee-fagaras.jpg",
+    photo: "/trasee-fagaras.jp2",
   },
   {
     name: "Brambura Park",
@@ -154,21 +154,21 @@ export const ACTIVITIES: Activity[] = [
     desc: "Închiriere e-bike pentru trasee montane și plimbări prin zonă.",
     dist: "în apropiere",
     photoLabel: "[ închirieri e-bike ]",
-    photo: "/ebike.jpg",
+    photo: "/ebike.jpeg",
   },
   {
     name: "Călărie & ATV",
     desc: "Experiențe în aer liber, în funcție de sezon.",
     dist: "sezonier",
     photoLabel: "[ ATV / călărie ]",
-    photos: ["/calarie.jpeg", "/atv.jpg"],
+    photos: ["/calarie.jpeg", "/atv.jpeg"],
   },
   {
     name: "Fermă de cerbi",
     desc: "Fermă de cerbi la Poiana Neamțului - vizită pentru toată familia.",
     dist: "~10 min",
     photoLabel: "[ fermă de cerbi ]",
-    photo: "/ferma-de-cerbi.jpg",
+    photo: "/ferma-de-cerbi.jpeg",
   },
   {
     name: "Casa Vikingilor",
@@ -182,14 +182,14 @@ export const ACTIVITIES: Activity[] = [
     desc: "Spațiu cultural și artistic dedicat calendarului tradițional.",
     dist: "în apropiere",
     photoLabel: "[ Povestea Calendarului ]",
-    photo: "/povestea-calendarului.jpg",
+    photo: "/povestea-calendarului.jpeg",
   },
   {
     name: "Corabia Piraților",
     desc: "Piscină tematică pentru copii și familii, în Avrig.",
     dist: "în apropiere",
     photoLabel: "[ Corabia Piraților ]",
-    photo: "/Corabia-piratilor.jpg",
+    photo: "/Corabia-piratilor.jpeg",
   },
 ];
 
@@ -198,10 +198,10 @@ export type GalleryItem = { photo: string; label: string; span: 1 | 2 };
 export const GALLERY: GalleryItem[] = [
   { photo: "/exterior-pensiune.jpeg", label: "Exterior pensiune", span: 2 },
   { photo: "/jacuzzi-sauna.jpeg", label: "Jacuzzi & saună", span: 1 },
-  { photo: "/camera-balcon.jpg", label: "Cameră cu balcon", span: 1 },
+  { photo: "/camera-balcon.jpeg", label: "Cameră cu balcon", span: 1 },
   { photo: "/priveliste-fagaras.jpg", label: "Priveliște spre Făgăraș", span: 2 },
-  { photo: "/firepit.jpg", label: "Firepit pe terasă, seara", span: 1 },
-  { photo: "/bruno.jpg", label: "Bruno", span: 1 },
+  { photo: "/firepit.jpeg", label: "Firepit pe terasă, seara", span: 1 },
+  { photo: "/bruno.jpeg", label: "Bruno", span: 1 },
 ];
 
 // Recenzii reale, selectate din Google Business Profile și Tripadvisor

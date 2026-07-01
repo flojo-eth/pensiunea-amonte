@@ -71,7 +71,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
         onPointerDown={resumeSoon}
         onWheel={resumeSoon}
         onTouchStart={resumeSoon}
-        className="flex gap-6 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-6 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {loop.map((r, i) => (
           <div

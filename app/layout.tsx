@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     images: ["/exterior-pensiune.jpeg"],
   },
   icons: {
-    icon: "/logo_amonte.png",
-    apple: "/logo_amonte.png",
+    icon: "/logo_amonte.jpg",
+    apple: "/logo_amonte.jpg",
   },
 };
 

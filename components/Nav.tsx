@@ -28,7 +28,7 @@ export default function Nav() {
           }}
         >
           <Image
-            src="/logo_amonte.png"
+            src="/logo_amonte.jpg"
             alt="Pensiunea Amonte"
             width={44}
             height={44}
@@ -65,11 +65,12 @@ export default function Nav() {
             Rezervă
           </Link>
 
-          {/* Hamburger - mobile only */}
+          {/* Hamburger — mobile only */}
           <button
             className="flex h-10 w-10 flex-col items-center justify-center gap-[6px] rounded-lg sm:hidden"
             aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
             <span
@@ -87,9 +88,11 @@ export default function Nav() {
 
       {/* Mobile menu dropdown */}
       <div
-        className={`overflow-hidden transition-all duration-300 sm:hidden ${open ? "max-h-[500px] border-t border-paper/10" : "max-h-0"}`}
+        id="mobile-menu"
+        className={`grid transition-[grid-template-rows,border-color] duration-300 sm:hidden ${open ? "grid-rows-[1fr] border-t border-paper/10" : "grid-rows-[0fr] border-transparent"}`}
       >
-        <div className="flex flex-col px-[clamp(20px,5vw,64px)] pb-5 pt-3">
+        <div className="overflow-hidden">
+          <div className="flex flex-col px-[clamp(20px,5vw,64px)] pb-5 pt-3">
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
@@ -113,6 +116,7 @@ export default function Nav() {
           >
             Rezervă acum
           </Link>
+        </div>
         </div>
       </div>
     </header>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -154,8 +155,9 @@ const FACILITIES = [
 export default function DesprePage() {
   return (
     <>
-      {/* Structured data - JSON-LD uses production URL regardless of staging */}
-      <script
+      {/* Structured data — JSON-LD uses production URL regardless of staging */}
+      <Script
+        id="schema-despre"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

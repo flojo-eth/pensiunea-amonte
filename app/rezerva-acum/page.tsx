@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const PHOTOS = [
   { src: "/exterior-pensiune.jpeg", alt: "Exterior pensiune" },
-  { src: "/camera-balcon.jpg", alt: "Cameră cu balcon" },
+  { src: "/camera-balcon.jpeg", alt: "Cameră cu balcon" },
   { src: "/jacuzzi-sauna.jpeg", alt: "Jacuzzi & saună" },
   { src: "/priveliste-fagaras.jpg", alt: "Priveliște spre Făgăraș" },
 ];

@@ -1,3 +1,4 @@
+import Script from "next/script";
 import AvailabilityBanner from "@/components/AvailabilityBanner";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -56,7 +57,8 @@ export default function SiteLayout({
 }) {
   return (
     <>
-      <script
+      <Script
+        id="schema-lodging"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(lodgingJsonLd) }}
       />
