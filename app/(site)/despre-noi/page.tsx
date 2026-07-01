@@ -7,7 +7,7 @@ import { SHOW_FB_AND_EVENTS } from "@/lib/site";
 import { btnTerracotta, btnOutlineLight } from "@/lib/ui";
 
 export const metadata: Metadata = {
-  title: "Despre noi — Pensiunea Amonte, cazare boutique în Valea Avrigului",
+  title: "Despre noi - Pensiunea Amonte, cazare boutique în Valea Avrigului",
   description:
     "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, terasă, sală pentru grupuri. La 30 min de Sibiu.",
   alternates: { canonical: "/despre-noi" },
@@ -21,7 +21,7 @@ const FAQ_BASE = [
   },
   {
     q: "Câți oaspeți poate găzdui?",
-    a: "10 spații de cazare — 8 camere duble și 2 studiouri de familie — cu o capacitate totală de 24 de persoane.",
+    a: "10 spații de cazare - 8 camere duble și 2 studiouri de familie - cu o capacitate totală de 24 de persoane.",
   },
   {
     q: "Acceptați animale de companie?",
@@ -33,7 +33,7 @@ const FAQ_BASE = [
   },
   {
     q: "Se poate rezerva întreaga pensiune pentru un grup?",
-    a: "Da. Amonte se poate rezerva integral, pentru maximum 24 de persoane — potrivit pentru sejururi de familie, retreaturi sau ieșiri corporate, cu sală dedicată pentru grupuri.",
+    a: "Da. Amonte se poate rezerva integral, pentru maximum 24 de persoane - potrivit pentru sejururi de familie, retreaturi sau ieșiri corporate, cu sală dedicată pentru grupuri.",
   },
   {
     q: "Ce obiective turistice și activități sunt în apropiere?",
@@ -53,7 +53,7 @@ const FAQ_BASE = [
   },
 ];
 
-// F&B questions — visible when SHOW_FB_AND_EVENTS = true (see lib/site.ts).
+// F&B questions - visible when SHOW_FB_AND_EVENTS = true (see lib/site.ts).
 const FAQ_FB = [
   {
     q: "Se servește mic dejun?",
@@ -61,7 +61,7 @@ const FAQ_FB = [
   },
   {
     q: "Aveți bar?",
-    a: "Da. Barul Amonte oferă băuturi și cocktail-uri artizanale, printre care Amonte Spirit — un cocktail semnătură cu sirop de brad.",
+    a: "Da. Barul Amonte oferă băuturi și cocktail-uri artizanale, printre care Amonte Spirit - un cocktail semnătură cu sirop de brad.",
   },
   {
     q: "Pot organiza un eveniment privat sau corporate la Amonte?",
@@ -79,7 +79,7 @@ const jsonLd = {
       "@type": "AboutPage",
       "@id": `${WEBSITE}/despre-noi#webpage`,
       url: `${WEBSITE}/despre-noi`,
-      name: "Despre Pensiunea Amonte — cazare boutique în Valea Avrigului",
+      name: "Despre Pensiunea Amonte - cazare boutique în Valea Avrigului",
       isPartOf: { "@id": `${WEBSITE}/#website` },
       about: { "@id": `${WEBSITE}/#lodging` },
     },
@@ -154,7 +154,7 @@ const FACILITIES = [
 export default function DesprePage() {
   return (
     <>
-      {/* Structured data — JSON-LD uses production URL regardless of staging */}
+      {/* Structured data - JSON-LD uses production URL regardless of staging */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -168,7 +168,7 @@ export default function DesprePage() {
         <h1 className="m-0 font-serif text-[clamp(40px,6vw,72px)] font-semibold leading-[1.05] text-pine">
           Despre Pensiunea Amonte
         </h1>
-        {/* Bloc de răspuns direct — autonom, 40–60 cuvinte */}
+        {/* Bloc de răspuns direct - autonom, 40–60 cuvinte */}
         <p className="mt-6 max-w-[65ch] text-[clamp(17px,2vw,20px)] leading-relaxed text-muted">
           Pensiunea Amonte este o pensiune boutique de munte situată în Valea
           Avrigului, județul Sibiu, la poalele Munților Făgăraș și la circa 30
@@ -262,7 +262,7 @@ export default function DesprePage() {
         </div>
       </section>
 
-      {/* ── GASTRONOMIE — PUBLIC NUMAI DUPĂ AUTORIZAȚII CAEN 5621/5630/5611 ── */}
+      {/* ── GASTRONOMIE - PUBLIC NUMAI DUPĂ AUTORIZAȚII CAEN 5621/5630/5611 ── */}
       {SHOW_FB_AND_EVENTS && (
         <section className={`${pad} bg-sand`}>
           <div className={container}>
@@ -271,7 +271,7 @@ export default function DesprePage() {
               <p className="text-[17px] leading-relaxed text-muted">
                 La Amonte, masa și băutura bună fac parte din experiență.
                 Micul dejun este inclus în tarif. Barul oferă băuturi și
-                cocktail-uri artizanale — printre care{" "}
+                cocktail-uri artizanale - printre care{" "}
                 <strong className="font-semibold text-forest">
                   Amonte Spirit
                 </strong>
@@ -282,7 +282,7 @@ export default function DesprePage() {
         </section>
       )}
 
-      {/* ── EVENIMENTE — PUBLIC NUMAI DUPĂ AUTORIZAȚII CAEN 8230 ── */}
+      {/* ── EVENIMENTE - PUBLIC NUMAI DUPĂ AUTORIZAȚII CAEN 8230 ── */}
       {SHOW_FB_AND_EVENTS && (
         <section className={`${container} ${pad}`}>
           <SectionHeading
@@ -297,7 +297,7 @@ export default function DesprePage() {
               spațiile comune și ambianța de munte fac din pensiune o gazdă
               potrivită pentru grupuri care vor intimitate și un loc doar al lor.
             </p>
-            {/* TODO: adaugă detalii pachet — durată, ce include, capacitate spațiu comun */}
+            {/* TODO: adaugă detalii pachet - durată, ce include, capacitate spațiu comun */}
           </div>
         </section>
       )}
@@ -352,7 +352,7 @@ export default function DesprePage() {
                   <strong className="font-medium text-paper/90">
                     Trasee montane Făgăraș
                   </strong>{" "}
-                  — Cabana Bârcaciu, Negoiu, Suru: plecare din Valea Avrigului
+                  - Cabana Bârcaciu, Negoiu, Suru: plecare din Valea Avrigului
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">
@@ -374,7 +374,7 @@ export default function DesprePage() {
             </div>
             {/* TODO: înlocuiește div-ul de mai jos cu un <iframe> Google Maps real */}
             <div className="flex min-h-[340px] flex-[1.4] basis-[380px] items-center justify-center rounded-xl bg-pine-dark/50 text-[13px] text-paper/35">
-              [ HARTĂ — embed Google Maps ]
+              [ HARTĂ - embed Google Maps ]
             </div>
           </div>
         </div>
@@ -388,7 +388,7 @@ export default function DesprePage() {
             După o perioadă petrecută în Germania, ne-am întors acasă cu o
             dorință simplă: să creăm un loc cu ospitalitate adevărată,
             omenească. Cu peste 10 ani de experiență în domeniu, Amonte a venit
-            firesc — felul nostru de a primi oaspeții așa cum ne-ar plăcea și
+            firesc - felul nostru de a primi oaspeții așa cum ne-ar plăcea și
             nouă să fim primiți.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
@@ -423,7 +423,7 @@ export default function DesprePage() {
         </div>
       </section>
 
-      {/* ── FAQ — vizibil + 1:1 cu FAQPage JSON-LD de mai sus ── */}
+      {/* ── FAQ - vizibil + 1:1 cu FAQPage JSON-LD de mai sus ── */}
       <section className={`${container} ${pad}`}>
         <SectionHeading
           eyebrow="Întrebări frecvente"

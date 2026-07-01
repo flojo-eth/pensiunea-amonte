@@ -6,6 +6,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/content";
 
+function scrollTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -17,8 +21,11 @@ export default function Nav() {
         <Link
           href="/"
           className="flex items-center gap-3 text-card-2 no-underline"
-          aria-label="Pensiunea Amonte — acasă"
-          onClick={() => setOpen(false)}
+          aria-label="Pensiunea Amonte - acasă"
+          onClick={() => {
+            setOpen(false);
+            scrollTop();
+          }}
         >
           <Image
             src="/logo_amonte.png"
@@ -44,6 +51,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
+              onClick={scrollTop}
               className="hidden text-sm font-medium text-paper/90 no-underline hover:text-paper sm:inline"
             >
               {l.label}
@@ -51,12 +59,13 @@ export default function Nav() {
           ))}
           <Link
             href="/rezerva-acum"
+            onClick={scrollTop}
             className="hidden rounded-full bg-paper px-5 py-2.5 text-[13.5px] font-semibold text-pine no-underline hover:bg-card-2 sm:inline-block"
           >
             Rezervă
           </Link>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger - mobile only */}
           <button
             className="flex h-10 w-10 flex-col items-center justify-center gap-[6px] rounded-lg sm:hidden"
             aria-label={open ? "Închide meniul" : "Deschide meniul"}
@@ -85,7 +94,10 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                scrollTop();
+              }}
               className={`border-b border-paper/10 py-4 text-[17px] font-medium no-underline ${pathname === l.href ? "text-paper" : "text-paper/75 hover:text-paper"}`}
             >
               {l.label}
@@ -93,7 +105,10 @@ export default function Nav() {
           ))}
           <Link
             href="/rezerva-acum"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              scrollTop();
+            }}
             className="mt-4 rounded-full bg-paper py-3.5 text-center text-[15px] font-semibold text-pine no-underline hover:bg-card-2"
           >
             Rezervă acum

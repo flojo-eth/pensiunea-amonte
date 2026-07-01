@@ -10,12 +10,12 @@ Keep responses concise and actionable. This is a small Next.js app using the App
 - Big picture:
   - Framework: Next.js App Router (pages live under [app/](app/)). The site is TypeScript-first (`tsconfig.json`) and uses React 19 + Next 16.
   - Styling: Tailwind CSS via PostCSS plugin ([postcss.config.mjs](postcss.config.mjs)) and global styles in [app/globals.css](app/globals.css).
-  - Fonts: `next/font` (see [app/layout.tsx](app/layout.tsx)) — prefer using the existing font variables when updating styles.
+  - Fonts: `next/font` (see [app/layout.tsx](app/layout.tsx)) - prefer using the existing font variables when updating styles.
 
 - Project-specific conventions to follow:
   - Use the App Router structure: root layout at [app/layout.tsx](app/layout.tsx) and page components in [app/page.tsx](app/page.tsx).
   - Keep JSX/TSX markup and Tailwind utility classes tidy; prefer small, composable components if a UI block is reused.
-  - Typescript settings: strict mode is enabled and `noEmit` is used — keep type-safety and avoid emitting JS changes manually ([tsconfig.json](tsconfig.json)).
+  - Typescript settings: strict mode is enabled and `noEmit` is used - keep type-safety and avoid emitting JS changes manually ([tsconfig.json](tsconfig.json)).
   - Import paths can use `@/*` alias per `tsconfig.json` when adding shared utilities.
 
 - Files to inspect for context before editing:
@@ -25,7 +25,7 @@ Keep responses concise and actionable. This is a small Next.js app using the App
 
 - Patterns and examples (copyable):
   - Tailwind utility usage in components: see hero and cards in [app/page.tsx](app/page.tsx).
-  - Global font variables are exported from `next/font` calls in [app/layout.tsx](app/layout.tsx) as `--font-geist-sans` and `--font-geist-mono` — reuse these CSS variables in components.
+  - Global font variables are exported from `next/font` calls in [app/layout.tsx](app/layout.tsx) as `--font-geist-sans` and `--font-geist-mono` - reuse these CSS variables in components.
 
 - Build/test/debug notes:
   - Use `npm run dev` to run locally on port 3000. Hot reload is active for edits inside `app/`.

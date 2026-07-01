@@ -8,16 +8,9 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Rezervă acum",
   description:
-    "Rezervă-ți evadarea la munte la Pensiunea Amonte, în Valea Avrigului — la 30 de minute de Sibiu. Cazare de la 225 lei/persoană, jacuzzi & saună. Scrie pe WhatsApp.",
+    "Rezervă-ți evadarea la munte la Pensiunea Amonte, în Valea Avrigului - la 30 de minute de Sibiu. Cazare de la 225 lei/persoană, jacuzzi & saună. Scrie pe WhatsApp.",
   alternates: { canonical: "/rezerva-acum" },
 };
-
-const BADGES = [
-  "30 min de Sibiu",
-  "Jacuzzi & Saună",
-  "Natură & liniște",
-  "Bruno, mascota casei",
-];
 
 const PHOTOS = [
   { src: "/exterior-pensiune.jpeg", alt: "Exterior pensiune" },
@@ -29,7 +22,7 @@ const PHOTOS = [
 export default function RezervaAcumPage() {
   return (
     <main className="min-h-screen bg-cream">
-      {/* Logo only — no full nav, single goal: WhatsApp click. */}
+      {/* Logo only - no full nav, single goal: WhatsApp click. */}
       <header className="border-b border-sand px-[clamp(20px,5vw,64px)] py-5">
         <Link
           href="/"
@@ -52,18 +45,6 @@ export default function RezervaAcumPage() {
           Pensiune premium, la doar 30 de minute de Sibiu. Liniște, natură și
           confort în inima Munților Făgăraș.
         </p>
-
-        {/* Trust badges */}
-        <div className="mt-7 flex flex-wrap gap-2.5">
-          {BADGES.map((b) => (
-            <span
-              key={b}
-              className="rounded-full border border-line-2 bg-card-2 px-4 py-2 text-[13.5px] font-medium text-forest"
-            >
-              {b}
-            </span>
-          ))}
-        </div>
 
         {/* 4-photo grid */}
         <div className="mt-9 grid grid-cols-2 gap-3.5 sm:grid-cols-4">

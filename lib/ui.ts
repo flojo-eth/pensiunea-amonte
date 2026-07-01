@@ -3,10 +3,10 @@
 const base =
   "inline-flex items-center justify-center rounded-full font-semibold transition-colors";
 
-/** Terracotta — the primary conversion CTA. */
+/** Terracotta - the primary conversion CTA. */
 export const btnTerracotta = `${base} bg-terracotta text-paper px-7 py-4 text-[15px] hover:bg-[#96652f]`;
 
-/** Paper fill — primary action on dark (green) backgrounds. */
+/** Paper fill - primary action on dark (green) backgrounds. */
 export const btnPaper = `${base} bg-paper text-pine px-7 py-4 text-[15px] hover:bg-card-2`;
 
 /** Outline on dark backgrounds. */

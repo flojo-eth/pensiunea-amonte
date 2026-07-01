@@ -29,7 +29,7 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — ${SITE_TAGLINE} în Valea Avrigului`,
+    default: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -55,18 +55,18 @@ export const metadata: Metadata = {
     locale: "ro_RO",
     url: "/",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — ${SITE_TAGLINE} în Valea Avrigului`,
+    title: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
     description: SITE_DESCRIPTION,
     images: [
       {
         url: "/exterior-pensiune.jpeg",
-        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+        alt: `${SITE_NAME} - ${SITE_TAGLINE}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — ${SITE_TAGLINE} în Valea Avrigului`,
+    title: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
     description: SITE_DESCRIPTION,
     images: ["/exterior-pensiune.jpeg"],
   },
@@ -84,7 +84,7 @@ export default function RootLayout({
   return (
     <html lang="ro">
       <head>
-        {/* Google Tag Manager — GA4 (G-KX3GQHYHF6) is delivered through GTM.
+        {/* Google Tag Manager - GA4 (G-KX3GQHYHF6) is delivered through GTM.
             Active on staging so whatsapp_click can be verified in GTM Preview. */}
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

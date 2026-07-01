@@ -5,12 +5,14 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import RoomCard from "@/components/RoomCard";
 import ActivityCard from "@/components/ActivityCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 import {
   ROOMS,
   ACTIVITIES,
   AMENITIES,
   GALLERY,
   REVIEWS,
+  RATING_SUMMARY,
   STATS,
   CONTACT,
   LOCATION,
@@ -20,7 +22,7 @@ import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
 
 export const metadata: Metadata = {
   description:
-    "Pensiunea Amonte — refugiu de munte în Valea Avrigului, la 30 de minute de Sibiu. 10 spații de cazare, jacuzzi & saună, terasă panoramică. Cere disponibilitate pe WhatsApp.",
+    "Pensiunea Amonte - refugiu de munte în Valea Avrigului, la 30 de minute de Sibiu. 10 spații de cazare, jacuzzi & saună, terasă panoramică. Cere disponibilitate pe WhatsApp.",
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
@@ -40,13 +42,13 @@ function SeeAll({ href, children }: { href: string; children: React.ReactNode })
 export default function Home() {
   return (
     <>
-      {/* HERO — immersive */}
+      {/* HERO - immersive */}
       <section className="relative flex min-h-[calc(100vh-140px)] items-end px-[clamp(20px,5vw,64px)] pb-[clamp(48px,6vw,80px)] pt-[clamp(40px,6vw,90px)]">
         <div className="absolute inset-0">
           <PlaceholderImage
             src="/poza_hero.jpg"
-            alt="Pensiunea Amonte — vedere exterioară"
-            label="[ FOTO — vedere exterioară pensiune ]"
+            alt="Pensiunea Amonte - vedere exterioară"
+            label="[ FOTO - vedere exterioară pensiune ]"
             tone="dark"
             className="h-full w-full"
             priority
@@ -68,7 +70,7 @@ export default function Home() {
             Locul unde liniștea îți încarcă sufletul
           </h1>
           <p className="mb-9 mt-[22px] max-w-[54ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
-            Pensiunea Amonte te primește cu căldură și aer curat — un refugiu la
+            Pensiunea Amonte te primește cu căldură și aer curat - un refugiu la
             poalele Munților Făgăraș, departe de zgomot, aproape de tot ce
             contează.
           </p>
@@ -95,7 +97,7 @@ export default function Home() {
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
             Te răsfățăm cu o zonă de relaxare cu jacuzzi și saună și cu liniștea
-            pe care doar muntele o știe da — la doar 30 de minute de Sibiu.
+            pe care doar muntele o știe da - la doar 30 de minute de Sibiu.
           </p>
           <div className="mt-7 flex flex-wrap gap-9">
             {STATS.slice(0, 2).map((s) => (
@@ -209,7 +211,7 @@ export default function Home() {
           center
           className="mb-[clamp(40px,5vw,64px)]"
         >
-          De la drumeții pe creste la seri lângă foc — muntele are mereu un plan
+          De la drumeții pe creste la seri lângă foc - muntele are mereu un plan
           pentru tine.
         </SectionHeading>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -222,42 +224,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RECENZII (placeholders — owner fills in) */}
+      {/* RECENZII */}
       <section className={`${sectionPad} bg-sand`}>
         <div className={container}>
           <SectionHeading
             eyebrow="Ce spun oaspeții"
             title="Recenzii"
             center
-            className="mb-[clamp(40px,5vw,64px)]"
-          />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {REVIEWS.map((r, i) => (
-              <div key={i} className="flex flex-col rounded-[10px] bg-card p-8">
-                <div className="mb-[18px] text-[16px] tracking-[2px] text-terracotta">
-                  {r.stars}
-                </div>
-                <p className="mb-6 flex-1 font-serif text-[21px] leading-[1.45] text-[#33392f]">
-                  {r.text}
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-forest text-[16px] font-semibold text-paper">
-                    {r.initial}
-                  </div>
-                  <div>
-                    <div className="text-[14.5px] font-semibold text-[#33392f]">
-                      {r.name}
-                    </div>
-                    <div className="text-[12.5px] text-muted-2">{r.meta}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            className="mb-3"
+          >
+            {RATING_SUMMARY.value} din 5, pe baza a {RATING_SUMMARY.count} de
+            recenzii Google
+          </SectionHeading>
+          <div className="mt-[clamp(28px,4vw,44px)]">
+            <ReviewsCarousel reviews={REVIEWS} />
           </div>
         </div>
       </section>
 
-      {/* REZERVARE — WhatsApp CTA */}
+      {/* REZERVARE - WhatsApp CTA */}
       <section id="rezervare" className={`${sectionPad} scroll-mt-20 bg-pine`}>
         <div className={`${container} flex flex-wrap gap-[clamp(40px,5vw,72px)]`}>
           <div className="flex-1 basis-[300px]">
@@ -286,7 +271,7 @@ export default function Home() {
           </div>
           <div className="flex flex-1 basis-[360px] flex-col justify-center gap-4 rounded-xl bg-card-2 p-[clamp(28px,4vw,40px)]">
             <p className="m-0 text-[17px] leading-relaxed text-muted">
-              Cea mai rapidă cale e un mesaj pe WhatsApp — răspundem în cel mai
+              Cea mai rapidă cale e un mesaj pe WhatsApp - răspundem în cel mai
               scurt timp.
             </p>
             <WhatsAppButton className={`${btnTerracotta} w-full`}>
@@ -337,7 +322,7 @@ export default function Home() {
           </div>
         </div>
         <PlaceholderImage
-          label="[ HARTĂ — embed Google Maps ]"
+          label="[ HARTĂ - embed Google Maps ]"
           className="min-h-[340px] flex-[1.4] basis-[380px] rounded-xl"
           sizes="(max-width: 768px) 100vw, 55vw"
         />

@@ -18,7 +18,7 @@ type Props = {
 /**
  * The one tracked conversion on the site.
  *
- * Renders a REAL anchor — no preventDefault, no window.location. onClick only
+ * Renders a REAL anchor - no preventDefault, no window.location. onClick only
  * pushes the GTM event, then default navigation proceeds. The event name must
  * stay exactly 'whatsapp_click' to match the GTM trigger / Google Ads conversion.
  */

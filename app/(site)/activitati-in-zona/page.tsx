@@ -21,7 +21,7 @@ export default function ActivitatiPage() {
         title="Activități în zonă"
         className="mb-[clamp(36px,5vw,56px)]"
       >
-        De la drumeții pe creste la seri lângă foc — muntele are mereu un plan
+        De la drumeții pe creste la seri lângă foc - muntele are mereu un plan
         pentru tine.
       </SectionHeading>
 
