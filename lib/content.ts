@@ -121,6 +121,10 @@ export type Activity = {
   desc: string;
   dist: string;
   photoLabel: string;
+  /** Single photo — file in /public. Omit to show the striped placeholder. */
+  photo?: string;
+  /** When set (exactly 2 photos), the card renders a side-by-side split image instead of one photo. */
+  photos?: [string, string];
 };
 
 export const ACTIVITIES: Activity[] = [
@@ -129,48 +133,62 @@ export const ACTIVITIES: Activity[] = [
     desc: "Trasee montane spre Cabana Bârcaciu, Negoiu și Suru — plecare direct din Valea Avrigului.",
     dist: "în zonă",
     photoLabel: "[ trasee Făgăraș ]",
+    photo: "/trasee-fagaras.jpg",
   },
   {
     name: "Brambura Park",
     desc: "Parc de aventură și activități pentru toată familia.",
     dist: "~10 min",
     photoLabel: "[ Brambura Park ]",
+    photo: "/brambura.jpeg",
   },
   {
     name: "Palatul Brukenthal",
     desc: "Reședința de vară și grădinile din Avrig.",
     dist: "în apropiere",
     photoLabel: "[ Palatul Brukenthal ]",
+    photo: "/palatul-bruk.jpg",
   },
   {
-    name: "Castelul de Lut",
-    desc: "Atracție unică în Valea Zânelor, Porumbacu de Sus.",
+    name: "Închirieri e-bike",
+    desc: "Închiriere e-bike pentru trasee montane și plimbări prin zonă.",
     dist: "în apropiere",
-    photoLabel: "[ Castelul de Lut ]",
+    photoLabel: "[ închirieri e-bike ]",
+    photo: "/ebike.jpg",
   },
   {
     name: "Călărie & ATV",
     desc: "Experiențe în aer liber, în funcție de sezon.",
     dist: "sezonier",
     photoLabel: "[ ATV / călărie ]",
+    photos: ["/calarie.jpeg", "/atv.jpg"],
   },
   {
     name: "Fermă de cerbi",
     desc: "Fermă de cerbi la Poiana Neamțului — vizită pentru toată familia.",
     dist: "~10 min",
     photoLabel: "[ fermă de cerbi ]",
+    photo: "/ferma-de-cerbi.jpg",
   },
   {
     name: "Casa Vikingilor",
     desc: "Atracție locală unică, inspirată din cultura nordică.",
     dist: "în apropiere",
     photoLabel: "[ Casa Vikingilor ]",
+    photo: "/casa-vikingilor.jpeg",
   },
   {
     name: "Povestea Calendarului",
     desc: "Spațiu cultural și artistic dedicat calendarului tradițional.",
     dist: "în apropiere",
     photoLabel: "[ Povestea Calendarului ]",
+    photo: "/povestea-calendarului.jpg",
+  },
+  {
+    name: "Corabia Piraților",
+    desc: "Piscină tematică pentru copii și familii, în Avrig.",
+    dist: "în apropiere",
+    photoLabel: "[ Corabia Piraților ]",
   },
 ];
 

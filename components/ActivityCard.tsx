@@ -5,11 +5,32 @@ export default function ActivityCard({ activity }: { activity: Activity }) {
   return (
     <div className="overflow-hidden rounded-[10px] border border-sand bg-card-2">
       <div className="relative">
-        <PlaceholderImage
-          label={activity.photoLabel}
-          className="aspect-[16/10]"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
+        {activity.photos ? (
+          <div className="grid aspect-[16/10] grid-cols-2 gap-[2px]">
+            <PlaceholderImage
+              src={activity.photos[0]}
+              alt={activity.name}
+              label={activity.photoLabel}
+              className="h-full"
+              sizes="(max-width: 768px) 50vw, 17vw"
+            />
+            <PlaceholderImage
+              src={activity.photos[1]}
+              alt={activity.name}
+              label={activity.photoLabel}
+              className="h-full"
+              sizes="(max-width: 768px) 50vw, 17vw"
+            />
+          </div>
+        ) : (
+          <PlaceholderImage
+            src={activity.photo}
+            alt={activity.name}
+            label={activity.photoLabel}
+            className="aspect-[16/10]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        )}
         <span className="absolute left-3 top-3 rounded-full bg-pine/85 px-[11px] py-[5px] text-[11px] font-semibold text-paper">
           {activity.dist}
         </span>

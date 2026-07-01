@@ -8,7 +8,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Activități în zonă",
   description:
-    "Ce poți face în jurul Pensiunii Amonte: drumeții în Munții Făgăraș, Brambura Park, Palatul Brukenthal, Castelul de Lut, călărie & ATV, ferma de cerbi.",
+    "Ce poți face în jurul Pensiunii Amonte: drumeții în Munții Făgăraș, Brambura Park, Palatul Brukenthal, închirieri e-bike, călărie & ATV, ferma de cerbi, Corabia Piraților.",
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
