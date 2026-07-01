@@ -133,7 +133,7 @@ export default function Home() {
       <section className={`${container} ${sectionPad} border-t border-line`}>
         <SectionHeading
           eyebrow="Pentru cine e Amonte"
-          title="Trei moduri de a trăi muntele"
+          title="Trei moduri de a trăi la munte"
           center
           className="mb-[clamp(40px,5vw,64px)]"
         />
