@@ -148,6 +148,78 @@ export const AMENITIES: Amenity[] = [
   { icon: "🏔️", label: "Rezervare integrală disponibilă", photoLabel: "[ rezervare integrală ]" },
 ];
 
+// Detalii structurate afișate pe /servicii — sub grid-ul de facilități.
+// Actualizează DOAR aici, pagina le preia automat.
+export const SERVICE_DETAILS = [
+  {
+    id: "inclus",
+    icon: "✓",
+    title: "Ce include o ședere la Amonte",
+    items: [
+      "Cazare în camere duble și apartamente",
+      "Mic dejun inclus, servit zilnic",
+      "Acces la toate spațiile comune",
+      "Living primitor, cu șemineu",
+      "Terasă panoramică",
+      "Wi-Fi & parcare privată",
+      "Vedere spre munte și liniște naturală",
+    ],
+    note: null as string | null,
+  },
+  {
+    id: "spa",
+    icon: "🧖",
+    title: "Zona SPA — jacuzzi & saună",
+    items: [
+      "Saună: 2–3 sesiuni pe zi, pe bază de programare",
+      "Jacuzzi: acces disponibil până la ora 22:00",
+      "Acces comun, într-un cadru relaxat și ordonat",
+    ],
+    note: "Zona SPA se accesează contra cost, în funcție de disponibilitate. Rezervarea se face la recepție." as string | null,
+  },
+  {
+    id: "masa",
+    icon: "🍳",
+    title: "Mese & mic dejun",
+    items: [
+      "Mic dejun inclus, servit zilnic",
+      "Cină la cerere — disponibilă în weekend, meniu restrâns de 2–3 preparate zilnice",
+    ],
+    note: "Cina este gândită pentru o experiență relaxată, nu ca un restaurant clasic." as string | null,
+  },
+  {
+    id: "bar",
+    icon: "🍸",
+    title: "Bar & spații comune",
+    items: [
+      "Bar funcțional zilnic, până la miezul nopții",
+      "Spații comune gândite pentru seri liniștite, conversații și relaxare",
+    ],
+    note: null as string | null,
+  },
+  {
+    id: "exterior",
+    icon: "🪵",
+    title: "Spații exterioare",
+    items: [
+      "Terasă panoramică cu vedere spre Făgăraș",
+      "Curte spațioasă",
+      "Foc de tabără — disponibil pentru grupuri, contra cost",
+    ],
+    note: null as string | null,
+  },
+  {
+    id: "ebike",
+    icon: "🚲",
+    title: "Biciclete electrice",
+    items: [
+      "5 biciclete electrice disponibile pentru închiriere",
+      "Ideale pentru plimbări în zonă și trasee ușoare",
+    ],
+    note: "Disponibilitatea și detaliile se confirmă la recepție sau la cerere." as string | null,
+  },
+];
+
 export type Activity = {
   name: string;
   desc: string;
