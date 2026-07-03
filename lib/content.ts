@@ -50,7 +50,8 @@ export type Room = {
   longDesc: string;
   price: string; // "de la 500"
   features: string[];
-  photo: string; // file in /public
+  photo: string; // main photo
+  photos: string[]; // gallery photos
   photoLabel: string; // fallback label if photo is missing
 };
 
@@ -70,6 +71,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
     ],
     photo: "/camera-dubla.jpeg",
+    photos: ["/camera-dubla.jpeg", "/camera-balcon.jpeg", "/priveliste-fagaras.jpg"],
     photoLabel: "[ cameră dublă ]",
   },
   {
@@ -87,6 +89,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
     ],
     photo: "/studio-familie.jpeg",
+    photos: ["/studio-familie.jpeg", "/interior-living.jpeg", "/detaliu-lemn.jpeg"],
     photoLabel: "[ studio familie ]",
   },
 ];

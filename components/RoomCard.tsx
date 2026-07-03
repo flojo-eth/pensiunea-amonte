@@ -6,13 +6,32 @@ export default function RoomCard({ room }: { room: Room }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-[10px] bg-card shadow-[0_1px_3px_rgba(40,44,38,0.06)]">
       <Link href={`/camere/${room.slug}`} className="block">
-        <PlaceholderImage
-          src={room.photo}
-          alt={room.name}
-          label={room.photoLabel}
-          className="aspect-[4/3]"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
+        {room.photos && room.photos.length >= 2 ? (
+          <div className="grid aspect-[4/3] grid-cols-2 gap-[2px]">
+            <PlaceholderImage
+              src={room.photos[0]}
+              alt={room.name}
+              label={room.photoLabel}
+              className="h-full w-full object-cover"
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
+            <PlaceholderImage
+              src={room.photos[1]}
+              alt={room.name}
+              label={room.photoLabel}
+              className="h-full w-full object-cover"
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
+          </div>
+        ) : (
+          <PlaceholderImage
+            src={room.photo}
+            alt={room.name}
+            label={room.photoLabel}
+            className="aspect-[4/3]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        )}
       </Link>
       <div className="flex flex-1 flex-col p-[26px]">
         <h3 className="font-serif text-[26px] font-semibold text-pine">
