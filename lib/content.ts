@@ -231,7 +231,6 @@ export const GALLERY: GalleryItem[] = [
   { photo: "/poza_hero.jpg", label: "Pensiunea Amonte", span: 2 },
   { photo: "/exterior-pensiune.jpeg", label: "Exterior pensiune", span: 2 },
   { photo: "/jacuzzi-sauna.jpeg", label: "Jacuzzi & saună", span: 1 },
-  { photo: "/camera-balcon.jpeg", label: "Cameră cu balcon", span: 1 },
   { photo: "/camera-dubla-folder/pat-tip-1.jpeg", label: "Dormitor cameră dublă", span: 1 },
   { photo: "/camera-dubla-folder/birou-cu-priveliste.jpeg", label: "Zonă de birou cu priveliște", span: 1 },
   { photo: "/camera-dubla-folder/baie.jpeg", label: "Baie cameră dublă", span: 1 },
