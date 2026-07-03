@@ -48,7 +48,7 @@ export type Room = {
   desc: string;
   /** Longer description for the detail page. */
   longDesc: string;
-  price: string; // "de la 500"
+  price: string; // "600"
   features: string[];
   photo: string; // hero photo on the detail page
   cardPhotos?: [string, string]; // optional: 2 photos shown side-by-side on the listing card
@@ -61,12 +61,13 @@ export const ROOMS: Room[] = [
     slug: "camera-dubla-vedere-munte",
     name: "Cameră dublă cu vedere la munte",
     spec: "2 persoane · balcon privat · vedere munte",
-    desc: "Cameră modernă cu balcon privat și priveliște spre munte. Ideală pentru relaxare în cuplu.",
+    desc: "Cameră modernă cu balcon privat, priveliște spre munte și mic dejun inclus. Ideală pentru relaxare în cuplu.",
     longDesc:
-      "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu acces la toate spațiile comune.",
-    price: "de la 500",
+      "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu mic dejun inclus și acces la toate spațiile comune.",
+    price: "600",
     features: [
       "2 persoane",
+      "Mic dejun inclus",
       "Balcon privat",
       "Vedere la munte",
       "Încălzire în pardoseală",
@@ -134,18 +135,16 @@ export type Amenity = {
 // Migrarea la producție (pensiunea-amonte.ro) necesită CAEN 5611/5621/5630 + DSP/ANSVSA.
 export const AMENITIES: Amenity[] = [
   { icon: "🧖", label: "Jacuzzi & saună", photo: "/jacuzzi-sauna.jpeg", photoLabel: "[ jacuzzi & saună ]" },
-  { icon: "🔥", label: "Living cu șemineu", photo: "/interior-living.jpeg", photoLabel: "[ living / șemineu ]" },
+  { icon: "🔥", label: "Living cu șemineu", photo: "/servicii-facilitati/living-semineu.jpeg", photoLabel: "[ living / șemineu ]" },
   { icon: "🏔️", label: "Terasă panoramică", photo: "/priveliste-fagaras.jpg", photoLabel: "[ terasă panoramică ]" },
   { icon: "🪵", label: "Firepit exterior", photo: "/firepit.jpeg", photoLabel: "[ firepit exterior ]" },
-  { icon: "🍳", label: "Mic dejun inclus", photoLabel: "[ mic dejun ]" },
-  { icon: "🍸", label: "Bar / lounge", photoLabel: "[ bar / lounge ]" },
-  { icon: "🎯", label: "Sală pentru grupuri", photoLabel: "[ sală grupuri ]" },
-  { icon: "⚽", label: "Mini teren de fotbal", photoLabel: "[ teren fotbal ]" },
-  { icon: "🏓", label: "Masă de ping-pong", photoLabel: "[ ping-pong ]" },
-  { icon: "🌡️", label: "Încălzire în pardoseală", photoLabel: "[ încălzire pardoseală ]" },
-  { icon: "🅿️", label: "Parcare gratuită", photoLabel: "[ parcare gratuită ]" },
-  { icon: "📶", label: "WiFi gratuit", photoLabel: "[ WiFi gratuit ]" },
-  { icon: "🏔️", label: "Rezervare integrală disponibilă", photoLabel: "[ rezervare integrală ]" },
+  { icon: "🍳", label: "Mic dejun", photo: "/servicii-facilitati/mic-dejun.jpg", photoLabel: "[ mic dejun ]" },
+  { icon: "🍽️", label: "Cină la cerere", photo: "/servicii-facilitati/mancare-coaste-porc-iberic.jpeg", photoLabel: "[ cină la cerere ]" },
+  { icon: "🍸", label: "Bar / lounge", photo: "/servicii-facilitati/bar-lounge.jpeg", photoLabel: "[ bar / lounge ]" },
+  { icon: "🎯", label: "Sală pentru grupuri", photo: "/servicii-facilitati/sala-pentru-grupuri.jpg", photoLabel: "[ sală grupuri ]" },
+  { icon: "⚽", label: "Mini teren de fotbal", photo: "/servicii-facilitati/teren-fotbal.jpeg", photoLabel: "[ teren fotbal ]" },
+  { icon: "🏓", label: "Masă de ping-pong", photo: "/servicii-facilitati/ping-pong.jpeg", photoLabel: "[ ping-pong ]" },
+  { icon: "🏔️", label: "Rezervare integrală disponibilă", photo: "/servicii-facilitati/rezervare-integrala.jpeg", photoLabel: "[ rezervare integrală ]" },
 ];
 
 // Detalii structurate afișate pe /servicii — sub grid-ul de facilități.

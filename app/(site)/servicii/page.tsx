@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import ServicesGridClient from "@/components/ServicesGridClient";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { AMENITIES, SERVICE_DETAILS } from "@/lib/content";
+import { SERVICE_DETAILS } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
 export const metadata: Metadata = {
@@ -28,34 +28,8 @@ export default function ServiciiPage() {
           Totul gândit ca să te simți ca acasă, doar cu priveliște mai bună.
         </SectionHeading>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {AMENITIES.map((a) => (
-            <div
-              key={a.label}
-              className="flex flex-col overflow-hidden rounded-[10px] border border-sand bg-card-2"
-            >
-              <PlaceholderImage
-                src={a.photo}
-                alt={a.label}
-                label={a.photoLabel}
-                className="aspect-[4/3] w-full"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-              <div className="flex items-center gap-3 p-[22px] border-t border-sand bg-card">
-                <span className="text-[22px] leading-none">{a.icon}</span>
-                <span className="text-[16px] font-semibold text-pine">
-                  {a.label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ServicesGridClient />
 
-        <div className="mt-10">
-          <WhatsAppButton className={btnTerracotta}>
-            Cere disponibilitate pe WhatsApp
-          </WhatsAppButton>
-        </div>
       </section>
 
       {/* ── SERVICE DETAIL SECTIONS ── */}

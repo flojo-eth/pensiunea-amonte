@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 const PHOTOS = [
   { src: "/exterior-pensiune.jpeg", alt: "Exterior pensiune" },
   { src: "/camera-balcon.jpeg", alt: "Cameră cu balcon" },
+  { src: "/poza_hero.jpg", alt: "Pensiunea Amonte" },
+  { src: "/camera-dubla-folder/1-din-2.jpg", alt: "Cameră dublă" },
   { src: "/jacuzzi-sauna.jpeg", alt: "Jacuzzi & saună" },
-  { src: "/priveliste-fagaras.jpg", alt: "Priveliște spre Făgăraș" },
 ];
 
 export default function RezervaAcumPage() {
@@ -46,15 +47,15 @@ export default function RezervaAcumPage() {
           confort în inima Munților Făgăraș.
         </p>
 
-        {/* 4-photo grid */}
-        <div className="mt-9 grid grid-cols-2 gap-3.5 sm:grid-cols-4">
+        {/* 5-photo grid */}
+        <div className="mt-9 grid grid-cols-2 gap-3.5 sm:grid-cols-5">
           {PHOTOS.map((p, i) => (
             <PlaceholderImage
               key={p.src}
               src={p.src}
               alt={p.alt}
               label={p.alt}
-              className="aspect-square rounded-lg"
+              className={`aspect-square rounded-lg ${i === 4 ? "col-span-2 sm:col-span-1" : ""}`}
               priority={i < 2}
               sizes="(max-width: 640px) 50vw, 25vw"
             />

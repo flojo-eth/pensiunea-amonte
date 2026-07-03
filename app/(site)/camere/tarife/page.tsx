@@ -8,7 +8,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Tarife cazare",
   description:
-    "Tarifele Pensiunii Amonte: cameră dublă cu vedere la munte de la 500 lei/noapte, studio de familie de la 800 lei/noapte. Cere disponibilitate pe WhatsApp.",
+    "Tarifele Pensiunii Amonte: cameră dublă cu vedere la munte - 600 lei/noapte (mic dejun inclus), studio de familie de la 800 lei/noapte. Cere disponibilitate pe WhatsApp.",
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
