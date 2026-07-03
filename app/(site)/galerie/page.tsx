@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import GalleryGrid from "@/components/GalleryGrid";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { GALLERY } from "@/lib/content";
 import { btnPaper } from "@/lib/ui";
 
 export const metadata: Metadata = {
@@ -24,19 +23,7 @@ export default function GaleriePage() {
           center
           className="mb-[clamp(36px,5vw,56px)]"
         />
-        <div className="grid auto-rows-[220px] grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5">
-          {GALLERY.map((g) => (
-            <PlaceholderImage
-              key={g.label}
-              src={g.photo}
-              alt={g.label}
-              label={g.label}
-              tone="dark"
-              className={`rounded-lg ${g.span === 2 ? "row-span-2" : ""}`}
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-          ))}
-        </div>
+        <GalleryGrid />
         <div className="mt-10 text-center">
           <WhatsAppButton className={btnPaper}>
             Cere disponibilitate pe WhatsApp
