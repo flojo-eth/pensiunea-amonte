@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { AUDIENCES } from "@/lib/content";
@@ -8,6 +8,21 @@ import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
 export default function AudiencesGridClient() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (expandedIndex !== null && cardRefs.current[expandedIndex]) {
+      // Întârziere scurtă pentru ca animația de expandare a cardului să ruleze parțial,
+      // astfel încât poziția finală de scroll să fie calculată corect.
+      const timer = setTimeout(() => {
+        cardRefs.current[expandedIndex]?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [expandedIndex]);
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -17,6 +32,7 @@ export default function AudiencesGridClient() {
         return (
           <div
             key={audience.title}
+            ref={(el) => { cardRefs.current[idx] = el; }}
             onClick={() => setExpandedIndex(isExpanded ? null : idx)}
             className={`group relative flex flex-col rounded-[10px] border cursor-pointer overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
               isExpanded 
