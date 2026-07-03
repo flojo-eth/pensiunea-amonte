@@ -71,7 +71,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
     ],
     photo: "/camera-dubla.jpeg",
-    photos: ["/camera-dubla.jpeg", "/camera-balcon.jpeg", "/priveliste-fagaras.jpg"],
+    photos: ["/camera-dubla.jpeg", "/camera-balcon.jpeg", "/priveliste-fagaras.jpg", "/jacuzzi-sauna.jpeg", "/semineu.jpeg"],
     photoLabel: "[ cameră dublă ]",
   },
   {
@@ -89,7 +89,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
     ],
     photo: "/studio-familie.jpeg",
-    photos: ["/studio-familie.jpeg", "/interior-living.jpeg", "/detaliu-lemn.jpeg"],
+    photos: ["/studio-familie.jpeg", "/interior-living.jpeg", "/detaliu-lemn.jpeg", "/jacuzzi-sauna.jpeg", "/semineu.jpeg"],
     photoLabel: "[ studio familie ]",
   },
 ];

@@ -6,20 +6,18 @@ import { GALLERY } from "@/lib/content";
 import Image from "next/image";
 
 export default function GalleryGrid() {
-  const [selectedPhoto, setSelectedPhoto] = useState<{
-    photo: string;
-    label: string;
-  } | null>(null);
+  const [selected, setSelected] = useState<number | null>(null);
+  const selectedPhoto = selected !== null ? GALLERY[selected] : null;
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        setSelectedPhoto(null);
-      }
+      if (e.key === "Escape") setSelected(null);
+      if (e.key === "ArrowRight") setSelected((i) => i !== null ? (i + 1) % GALLERY.length : null);
+      if (e.key === "ArrowLeft") setSelected((i) => i !== null ? (i - 1 + GALLERY.length) % GALLERY.length : null);
     }
-    if (selectedPhoto) {
+    if (selected !== null) {
       window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden"; // Prevent background scrolling when open
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
@@ -27,15 +25,15 @@ export default function GalleryGrid() {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [selectedPhoto]);
+  }, [selected]);
 
   return (
     <>
       <div className="grid auto-rows-[220px] grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5">
-        {GALLERY.map((g) => (
+        {GALLERY.map((g, idx) => (
           <button
             key={g.label}
-            onClick={() => setSelectedPhoto({ photo: g.photo, label: g.label })}
+            onClick={() => setSelected(idx)}
             className={`group relative text-left outline-none overflow-hidden rounded-lg ${
               g.span === 2 ? "row-span-2" : ""
             }`}
@@ -45,13 +43,13 @@ export default function GalleryGrid() {
               alt={g.label}
               label={g.label}
               tone="dark"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            {/* Hover overlay indicator */}
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="rounded-full bg-paper/95 px-4 py-2 text-xs font-semibold text-pine shadow-md">
-                Vezi complet
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+              <span className="text-[12px] font-semibold text-paper/90 tracking-wide">
+                {g.label}
               </span>
             </div>
           </button>
@@ -59,24 +57,36 @@ export default function GalleryGrid() {
       </div>
 
       {/* Lightbox Modal */}
-      {selectedPhoto && (
+      {selectedPhoto && selected !== null && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4 transition-opacity duration-300"
-          onClick={() => setSelectedPhoto(null)}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4"
+          onClick={() => setSelected(null)}
         >
           {/* Close button */}
           <button
-            onClick={() => setSelectedPhoto(null)}
+            onClick={() => setSelected(null)}
             className="absolute right-6 top-6 z-50 text-[36px] text-paper/80 hover:text-paper leading-none transition-colors"
             aria-label="Închide"
           >
             &times;
           </button>
 
+          {/* Left / Right arrows */}
+          <button
+            onClick={(e) => { e.stopPropagation(); setSelected((i) => i !== null ? (i - 1 + GALLERY.length) % GALLERY.length : null); }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-[36px] text-paper/70 hover:text-paper p-3 leading-none transition-colors"
+            aria-label="Precedenta"
+          >&#10094;</button>
+          <button
+            onClick={(e) => { e.stopPropagation(); setSelected((i) => i !== null ? (i + 1) % GALLERY.length : null); }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-[36px] text-paper/70 hover:text-paper p-3 leading-none transition-colors"
+            aria-label="Următoarea"
+          >&#10095;</button>
+
           {/* Image container */}
           <div
-            className="relative flex max-h-[85vh] max-w-[95vw] flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+            className="relative flex max-h-[85vh] max-w-[85vw] flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
           >
             <Image
               src={selectedPhoto.photo}
@@ -86,10 +96,13 @@ export default function GalleryGrid() {
               className="max-h-[80vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
               priority
             />
-            {/* Title / Description */}
-            <div className="absolute bottom-[-40px] left-0 right-0 text-center text-sm font-medium tracking-[0.5px] text-paper/90">
-              {selectedPhoto.label}
-            </div>
+          </div>
+
+          {/* Label + counter */}
+          <div className="absolute bottom-6 left-0 right-0 text-center">
+            <span className="text-[13px] font-medium text-paper/80 tracking-wide">
+              {selectedPhoto.label} &nbsp;·&nbsp; {selected + 1} / {GALLERY.length}
+            </span>
           </div>
         </div>
       )}

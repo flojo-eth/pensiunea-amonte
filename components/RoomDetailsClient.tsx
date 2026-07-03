@@ -17,15 +17,22 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
     index: number;
   } | null>(null);
 
+  // Must be declared before useEffect so arrow key handler can close over it
+  const allPhotos = room.photos && room.photos.length > 0 ? room.photos : [room.photo];
+
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        setSelectedPhoto(null);
-      }
+      if (e.key === "Escape") setSelectedPhoto(null);
+      if (e.key === "ArrowRight") setSelectedPhoto((s) =>
+        s ? { photo: allPhotos[(s.index + 1) % allPhotos.length], index: (s.index + 1) % allPhotos.length } : null
+      );
+      if (e.key === "ArrowLeft") setSelectedPhoto((s) =>
+        s ? { photo: allPhotos[(s.index - 1 + allPhotos.length) % allPhotos.length], index: (s.index - 1 + allPhotos.length) % allPhotos.length } : null
+      );
     }
     if (selectedPhoto) {
       window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden"; // Prevent page scrolling
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
@@ -33,10 +40,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [selectedPhoto]);
-
-  // Fallback to main photo if room.photos is not present
-  const allPhotos = room.photos && room.photos.length > 0 ? room.photos : [room.photo];
+  }, [selectedPhoto, allPhotos]);
 
   return (
     <section className={`${container} py-[clamp(48px,6vw,88px)]`}>
@@ -56,14 +60,14 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
           src={room.photo}
           alt={room.name}
           label={room.photoLabel}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-102"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           priority
           sizes="(max-width: 1080px) 100vw, 1080px"
         />
         {/* Hover overlay indicator */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="rounded-full bg-paper/95 px-5 py-2.5 text-sm font-semibold text-pine shadow-md">
-            Vezi complet
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+          <span className="text-[12px] font-semibold text-paper/90 tracking-wide">
+            {room.name}
           </span>
         </div>
       </button>
