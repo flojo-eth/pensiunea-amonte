@@ -201,12 +201,28 @@ export const ACTIVITIES: Activity[] = [
 export type GalleryItem = { photo: string; label: string; span: 1 | 2 };
 
 export const GALLERY: GalleryItem[] = [
+  { photo: "/poza_hero.jpg", label: "Pensiunea Amonte", span: 2 },
   { photo: "/exterior-pensiune.jpeg", label: "Exterior pensiune", span: 2 },
   { photo: "/jacuzzi-sauna.jpeg", label: "Jacuzzi & saună", span: 1 },
   { photo: "/camera-balcon.jpeg", label: "Cameră cu balcon", span: 1 },
+  { photo: "/camera-dubla.jpeg", label: "Cameră dublă", span: 1 },
+  { photo: "/studio-familie.jpeg", label: "Studio de familie", span: 1 },
+  { photo: "/interior-living.jpeg", label: "Interior living", span: 2 },
+  { photo: "/semineu.jpeg", label: "Șemineu călduros", span: 1 },
+  { photo: "/detaliu-lemn.jpeg", label: "Detaliu lemn rustic", span: 1 },
   { photo: "/priveliste-fagaras.jpg", label: "Priveliște spre Făgăraș", span: 2 },
   { photo: "/firepit.jpeg", label: "Firepit pe terasă, seara", span: 1 },
   { photo: "/bruno.jpeg", label: "Bruno", span: 1 },
+  { photo: "/ferma-de-cerbi.jpeg", label: "Fermă de cerbi", span: 1 },
+  { photo: "/brambura.jpeg", label: "Brambura Park", span: 1 },
+  { photo: "/calarie.jpeg", label: "Călărie în natură", span: 1 },
+  { photo: "/atv.jpeg", label: "Aventură cu ATV-ul", span: 1 },
+  { photo: "/ebike.jpeg", label: "Trasee cu e-bike", span: 1 },
+  { photo: "/trasee-fagaras.jpg", label: "Trasee în Făgăraș", span: 1 },
+  { photo: "/casa-vikingilor.jpeg", label: "Casa Vikingilor", span: 1 },
+  { photo: "/povestea-calendarului.jpeg", label: "Povestea Calendarului", span: 1 },
+  { photo: "/Corabia-piratilor.jpeg", label: "Corabia Piraților", span: 1 },
+  { photo: "/palatul-bruk.jpg", label: "Palatul Brukenthal", span: 1 },
 ];
 
 // Recenzii reale, selectate din Google Business Profile și Tripadvisor
