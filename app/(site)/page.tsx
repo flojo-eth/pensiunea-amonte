@@ -198,7 +198,7 @@ export default function Home() {
             className="mb-[clamp(40px,5vw,64px)]"
           />
           <div className="grid auto-rows-[200px] grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5">
-            {GALLERY.map((g) => (
+            {GALLERY.slice(0, 6).map((g) => (
               <PlaceholderImage
                 key={g.label}
                 src={g.photo}
