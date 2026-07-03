@@ -63,7 +63,7 @@ export const ROOMS: Room[] = [
     spec: "2 persoane · balcon privat · vedere munte",
     desc: "Cameră modernă cu balcon privat și priveliște spre munte. Ideală pentru relaxare în cuplu.",
     longDesc:
-      "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu acces la zona de wellness (jacuzzi & saună) și living-ul cu șemineu.",
+      "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu acces la living-ul cu șemineu.",
     price: "de la 500",
     features: [
       "2 persoane",
@@ -91,7 +91,7 @@ export const ROOMS: Room[] = [
     spec: "4 persoane · pat matrimonial + canapea extensibilă",
     desc: "Spațios și confortabil, potrivit pentru familii și grupuri mici.",
     longDesc:
-      "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă - potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la zona de wellness și la living-ul cu șemineu.",
+      "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă - potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la living-ul cu șemineu.",
     price: "de la 800",
     features: [
       "4 persoane",

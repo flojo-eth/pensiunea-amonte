@@ -21,8 +21,8 @@ export default function TarifePage() {
         title="Tarife"
         className="mb-[clamp(36px,5vw,56px)]"
       >
-        Tarifele includ accesul la zona de relaxare (jacuzzi & saună). Cere
-        disponibilitatea pentru datele tale pe WhatsApp.
+        Cere disponibilitatea pentru datele tale pe WhatsApp și îți trimitem o
+        ofertă personalizată.
       </SectionHeading>
 
       <div className="overflow-hidden rounded-[12px] border border-line bg-card">

@@ -99,7 +99,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
             </span>
             <span className="text-[13px] text-muted-2"> lei / noapte</span>
           </div>
-          <p className="mt-2 text-[14px] text-muted">Acces jacuzzi & saună inclus.</p>
+          <p className="mt-2 text-[14px] text-muted">Zonă de relaxare (jacuzzi & saună) la cerere.</p>
           <div className="mt-5 flex flex-col gap-3">
             <WhatsAppButton className={`${btnTerracotta} w-full`}>
               Cere disponibilitate

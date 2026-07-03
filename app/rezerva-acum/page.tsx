@@ -65,9 +65,6 @@ export default function RezervaAcumPage() {
         <p className="mt-9 font-serif text-[clamp(22px,3vw,30px)] font-semibold text-pine">
           Cazare de la{" "}
           <span className="text-terracotta">225 lei / persoană</span> pe noapte
-          <span className="block text-[16px] font-normal text-muted">
-            Jacuzzi & saună inclus
-          </span>
         </p>
 
         {/* Politica de anulare */}
