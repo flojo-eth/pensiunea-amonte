@@ -6,6 +6,7 @@ import RoomCard from "@/components/RoomCard";
 import ActivityCard from "@/components/ActivityCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
+import AudiencesGridClient from "@/components/AudiencesGridClient";
 import {
   ROOMS,
   ACTIVITIES,
@@ -137,45 +138,7 @@ export default function Home() {
           center
           className="mb-[clamp(40px,5vw,64px)]"
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {AUDIENCES.map((audience) => (
-            <div
-              key={audience.title}
-              className="flex flex-col rounded-[10px] border border-sand bg-card-2 p-[30px]"
-            >
-              <span className="text-[12.5px] font-semibold uppercase tracking-[1.5px] text-terracotta">
-                {audience.tagline}
-              </span>
-              <h3 className="mt-2.5 font-serif text-[28px] font-semibold text-pine">
-                {audience.title}
-              </h3>
-              <p className="mt-4 flex-1 text-[15px] leading-relaxed text-muted">
-                {audience.body}
-              </p>
-              <ul className="mt-6 border-t border-line pt-5 space-y-3">
-                {audience.highlights.map((h) => (
-                  <li key={h} className="flex items-center gap-2.5 text-[14px] font-medium text-[#33392f]">
-                    <span className="text-forest text-[11px]" aria-hidden="true">✓</span> {h}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                {audience.ctaHref === "whatsapp" ? (
-                  <WhatsAppButton className={`${btnTerracotta} w-full text-center`}>
-                    {audience.ctaLabel}
-                  </WhatsAppButton>
-                ) : (
-                  <Link
-                    href={audience.ctaHref}
-                    className={`${btnOutlineDark} block w-full text-center`}
-                  >
-                    {audience.ctaLabel}
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <AudiencesGridClient />
       </section>
 
       {/* CAMERE */}

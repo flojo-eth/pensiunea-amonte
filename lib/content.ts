@@ -451,8 +451,8 @@ export const AUDIENCES: Audience[] = [
   {
     title: "Escapadă în doi",
     tagline: "Liniște, priveliște și timp doar pentru voi",
-    body: "Camere cu balcon privat și vedere la munte, jacuzzi și saună, seri lângă șemineu. Locul unde încetiniți amândoi, departe de zgomot.",
-    highlights: ["Cameră cu vedere la munte", "Jacuzzi & saună", "Living cu șemineu"],
+    body: "Camere cu balcon privat și vedere la munte, jacuzzi și saună (contra cost), seri lângă șemineu. Locul unde încetiniți amândoi, departe de zgomot.",
+    highlights: ["Cameră cu vedere la munte", "Jacuzzi & saună (contra cost)", "Living cu șemineu"],
     ctaLabel: "Vezi camerele",
     ctaHref: "/camere/camera-dubla-vedere-munte",
   },
