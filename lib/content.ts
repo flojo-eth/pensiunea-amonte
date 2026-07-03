@@ -50,8 +50,9 @@ export type Room = {
   longDesc: string;
   price: string; // "de la 500"
   features: string[];
-  photo: string; // main photo
-  photos: string[]; // gallery photos
+  photo: string; // hero photo on the detail page
+  cardPhotos?: [string, string]; // optional: 2 photos shown side-by-side on the listing card
+  photos: string[]; // full gallery on the detail page
   photoLabel: string; // fallback label if photo is missing
 };
 
@@ -70,7 +71,10 @@ export const ROOMS: Room[] = [
       "Vedere la munte",
       "Încălzire în pardoseală",
     ],
-    photo: "/camera-dubla-folder/1-din-2.jpg",
+    // hero on the detail page: photo 3/6 (pat-tip-1)
+    photo: "/camera-dubla-folder/pat-tip-1.jpeg",
+    // card split: 3/6 left | 4/6 right
+    cardPhotos: ["/camera-dubla-folder/pat-tip-1.jpeg", "/camera-dubla-folder/pat-tip-2.jpeg"],
     photos: [
       "/camera-dubla-folder/1-din-2.jpg",
       "/camera-dubla-folder/2-din-2.jpeg",
@@ -95,7 +99,10 @@ export const ROOMS: Room[] = [
       "Potrivit pentru familii",
       "Încălzire în pardoseală",
     ],
-    photo: "/apartament/1-din-2.jpg",
+    // hero on the detail page: photo 3/9 (pat_dormitor)
+    photo: "/apartament/pat_dormitor.JPG",
+    // card split: 4/9 left | 5/9 right
+    cardPhotos: ["/apartament/canapea_extensibila_living.jpg", "/apartament/chicineta_living.jpg"],
     photos: [
       "/apartament/1-din-2.jpg",
       "/apartament/2-din-2.jpg",
