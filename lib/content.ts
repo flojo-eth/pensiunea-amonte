@@ -73,8 +73,8 @@ export const ROOMS: Room[] = [
     ],
     // hero on the detail page: photo 3/6 (pat-tip-1)
     photo: "/camera-dubla-folder/pat-tip-1.jpeg",
-    // card split: 3/6 left | 4/6 right
-    cardPhotos: ["/camera-dubla-folder/pat-tip-1.jpeg", "/camera-dubla-folder/pat-tip-2.jpeg"],
+    // card split: 1/6 left | 2/6 right
+    cardPhotos: ["/camera-dubla-folder/1-din-2.jpg", "/camera-dubla-folder/2-din-2.jpeg"],
     photos: [
       "/camera-dubla-folder/1-din-2.jpg",
       "/camera-dubla-folder/2-din-2.jpeg",
