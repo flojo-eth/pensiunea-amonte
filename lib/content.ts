@@ -95,25 +95,30 @@ export function getRoom(slug: string): Room | undefined {
   return ROOMS.find((r) => r.slug === slug);
 }
 
-export type Amenity = { icon: string; label: string };
+export type Amenity = {
+  icon: string;
+  label: string;
+  photo?: string;
+  photoLabel: string;
+};
 
 // Facilități confirmate - afișate pe home și pe pagina de servicii.
 // Mic dejun și bar active pe staging (SHOW_FB_AND_EVENTS = true în site.ts).
 // Migrarea la producție (pensiunea-amonte.ro) necesită CAEN 5611/5621/5630 + DSP/ANSVSA.
 export const AMENITIES: Amenity[] = [
-  { icon: "🧖", label: "Jacuzzi & saună" },
-  { icon: "🔥", label: "Living cu șemineu" },
-  { icon: "🏔️", label: "Terasă panoramică" },
-  { icon: "🪵", label: "Firepit exterior" },
-  { icon: "🍳", label: "Mic dejun inclus" },
-  { icon: "🍸", label: "Bar / lounge" },
-  { icon: "🎯", label: "Sală pentru grupuri" },
-  { icon: "⚽", label: "Mini teren de fotbal" },
-  { icon: "🏓", label: "Masă de ping-pong" },
-  { icon: "🌡️", label: "Încălzire în pardoseală" },
-  { icon: "🅿️", label: "Parcare gratuită" },
-  { icon: "📶", label: "WiFi gratuit" },
-  { icon: "🏔️", label: "Rezervare integrală disponibilă" },
+  { icon: "🧖", label: "Jacuzzi & saună", photo: "/jacuzzi-sauna.jpeg", photoLabel: "[ jacuzzi & saună ]" },
+  { icon: "🔥", label: "Living cu șemineu", photo: "/interior-living.jpeg", photoLabel: "[ living / șemineu ]" },
+  { icon: "🏔️", label: "Terasă panoramică", photo: "/priveliste-fagaras.jpg", photoLabel: "[ terasă panoramică ]" },
+  { icon: "🪵", label: "Firepit exterior", photo: "/firepit.jpeg", photoLabel: "[ firepit exterior ]" },
+  { icon: "🍳", label: "Mic dejun inclus", photoLabel: "[ mic dejun ]" },
+  { icon: "🍸", label: "Bar / lounge", photoLabel: "[ bar / lounge ]" },
+  { icon: "🎯", label: "Sală pentru grupuri", photoLabel: "[ sală grupuri ]" },
+  { icon: "⚽", label: "Mini teren de fotbal", photoLabel: "[ teren fotbal ]" },
+  { icon: "🏓", label: "Masă de ping-pong", photoLabel: "[ ping-pong ]" },
+  { icon: "🌡️", label: "Încălzire în pardoseală", photoLabel: "[ încălzire pardoseală ]" },
+  { icon: "🅿️", label: "Parcare gratuită", photoLabel: "[ parcare gratuită ]" },
+  { icon: "📶", label: "WiFi gratuit", photoLabel: "[ WiFi gratuit ]" },
+  { icon: "🏔️", label: "Rezervare integrală disponibilă", photoLabel: "[ rezervare integrală ]" },
 ];
 
 export type Activity = {

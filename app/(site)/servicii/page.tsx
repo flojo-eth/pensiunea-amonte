@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
+import PlaceholderImage from "@/components/PlaceholderImage";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { AMENITIES } from "@/lib/content";
 import { btnTerracotta } from "@/lib/ui";
@@ -23,16 +24,25 @@ export default function ServiciiPage() {
         Totul gândit ca să te simți ca acasă, doar cu priveliște mai bună.
       </SectionHeading>
 
-      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {AMENITIES.map((a) => (
           <div
             key={a.label}
-            className="flex items-center gap-3.5 rounded-lg border border-sand bg-card-2 p-[22px]"
+            className="flex flex-col overflow-hidden rounded-[10px] border border-sand bg-card-2"
           >
-            <span className="text-[22px] leading-none">{a.icon}</span>
-            <span className="text-[15px] font-medium text-[#33392f]">
-              {a.label}
-            </span>
+            <PlaceholderImage
+              src={a.photo}
+              alt={a.label}
+              label={a.photoLabel}
+              className="aspect-[4/3] w-full"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <div className="flex items-center gap-3 p-[22px] border-t border-sand bg-card">
+              <span className="text-[22px] leading-none">{a.icon}</span>
+              <span className="text-[16px] font-semibold text-pine">
+                {a.label}
+              </span>
+            </div>
           </div>
         ))}
       </div>

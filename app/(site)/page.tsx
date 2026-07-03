@@ -207,7 +207,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-          {AMENITIES.map((a) => (
+          {AMENITIES.slice(0, 4).map((a) => (
             <div
               key={a.label}
               className="flex items-center gap-3.5 rounded-lg border border-sand bg-card-2 p-[22px]"
