@@ -1,17 +1,10 @@
 // Single source of truth for site-wide identity, URLs and indexing.
-//
-// Staging note: florinluca.ro is staging only - the live content stays on
-// pensiunea-amonte.ro, so the prototype must NOT be indexed. At migration time
-// flip the two constants below (SITE_URL + INDEXABLE) and nothing else changes.
-export const SITE_URL = "https://florinluca.ro";
+export const SITE_URL = "https://pensiunea-amonte.ro";
 
-// BLOCARE PRODUCȚIE: INDEXABLE rămâne false și site-ul rămâne pe florinluca.ro
-// (staging) până când sunt obținute autorizațiile DSP/ANSVSA + CAEN 5611/5621/5630/8230
-// (F&B + events). NU muta pe pensiunea-amonte.ro / NU pune INDEXABLE=true înainte.
-export const INDEXABLE = false;
+// Indexarea activată pentru producție
+export const INDEXABLE = true;
 
-// F&B și events vizibile pe staging; producția (pensiunea-amonte.ro) necesită
-// CAEN 5611/5621/5630/8230 + DSP/ANSVSA înainte de flip INDEXABLE=true.
+// F&B și events active în producție conform confirmării
 export const SHOW_FB_AND_EVENTS = true;
 
 export const SITE_NAME = "Pensiunea Amonte";
