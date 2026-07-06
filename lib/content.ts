@@ -311,6 +311,7 @@ export const GALLERY: GalleryItem[] = [
   { photo: "/apartament/balcon_apartament.JPG", label: "Balcon privat apartament", span: 1 },
   { photo: "/apartament/detalii_baie_rituals.jpg", label: "Cosmetice Rituals în baie", span: 1 },
   { photo: "/interior-living.jpeg", label: "Interior living", span: 2 },
+  { photo: "/salon.jpeg", label: "Salonul pensiunii", span: 2 },
   { photo: "/semineu.jpeg", label: "Șemineu călduros", span: 1 },
   { photo: "/detaliu-lemn.jpeg", label: "Detaliu lemn rustic", span: 1 },
   { photo: "/priveliste-fagaras.jpg", label: "Priveliște spre Făgăraș", span: 2 },

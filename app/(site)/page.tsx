@@ -117,15 +117,16 @@ export default function Home() {
         </div>
         <div className="flex flex-1 basis-[360px] gap-4">
           <PlaceholderImage
-            src="/interior-living.jpeg"
-            alt="Living cu șemineu"
-            label="[ interior / living ]"
+            src="/salon.jpeg"
+            alt="Salonul pensiunii"
+            label="[ interior / salon ]"
             className="aspect-[3/4] flex-[1.3] rounded-md"
+            imgClassName="object-right"
             sizes="(max-width: 768px) 60vw, 30vw"
           />
           <div className="flex flex-1 flex-col gap-4">
             <PlaceholderImage src="/semineu.jpeg" alt="Șemineu" label="[ șemineu ]" className="flex-1 rounded-md" sizes="30vw" />
-            <PlaceholderImage src="/detaliu-lemn.jpeg" alt="Detaliu lemn" label="[ detaliu lemn ]" className="flex-1 rounded-md" sizes="30vw" />
+            <PlaceholderImage src="/servicii-facilitati/bar-lounge.jpeg" alt="Bar & Lounge" label="[ bar / lounge ]" className="flex-1 rounded-md" sizes="30vw" />
           </div>
         </div>
       </section>

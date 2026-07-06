@@ -11,6 +11,7 @@ type Props = {
   tone?: "light" | "dark";
   priority?: boolean;
   sizes?: string;
+  imgClassName?: string;
 };
 
 const STRIPES = {
@@ -32,6 +33,7 @@ export default function PlaceholderImage({
   tone = "light",
   priority,
   sizes = "100vw",
+  imgClassName = "",
 }: Props) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
@@ -42,7 +44,7 @@ export default function PlaceholderImage({
           fill
           sizes={sizes}
           priority={priority}
-          className="object-cover"
+          className={`object-cover ${imgClassName}`}
         />
       ) : (
         <div

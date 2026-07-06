@@ -68,12 +68,12 @@ export default function Footer() {
               Contact
             </div>
             <a
-              href={WEBSITE}
+              href="https://wa.me/40747342280?text=Salut!%20A%C8%99%20dori%20s%C4%83%20verific%20disponibilitatea%20pentru%20o%20rezervare%20la%20Pensiunea%20Amonte."
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-paper/80 no-underline hover:text-paper"
             >
-              {WEBSITE.replace("https://", "")}
+              WhatsApp
             </a>
             <a
               href={`tel:${CONTACT.phoneMobile.replace(/\s/g, "")}`}
@@ -82,14 +82,56 @@ export default function Footer() {
               {CONTACT.phoneMobile}
             </a>
             <a
+              href={WEBSITE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-paper/80 no-underline hover:text-paper"
+            >
+              {WEBSITE.replace("https://", "")}
+            </a>
+            <a
               href={`mailto:${CONTACT.email}`}
               className="text-sm text-paper/80 no-underline hover:text-paper"
             >
               {CONTACT.email}
             </a>
-            <span className="text-sm">
-              Instagram · Facebook · TikTok: {CONTACT.social}
-            </span>
+            <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1 text-sm text-paper/80">
+              <a
+                href="https://www.instagram.com/pensiunea.amonte?igsh=MXB3M2g4cHFuYWl6Ng=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-paper"
+              >
+                Instagram
+              </a>
+              <span className="opacity-40">·</span>
+              <a
+                href="https://www.facebook.com/pensiunea.amonte.avrig"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-paper"
+              >
+                Facebook
+              </a>
+              <span className="opacity-40">·</span>
+              <a
+                href="https://www.tiktok.com/@pensiunea.amonte?_r=1&_t=ZN-97nsYK9mblG"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-paper"
+              >
+                TikTok
+              </a>
+              <span className="opacity-40">·</span>
+              <a
+                href="https://ro.linkedin.com/showcase/pensiunea-amonte-avrig/?trk=affiliated-pages"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-paper"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
       </div>
