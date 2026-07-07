@@ -400,8 +400,17 @@ export default function DesprePage() {
               </ul>
             </div>
             {/* TODO: înlocuiește div-ul de mai jos cu un <iframe> Google Maps real */}
-            <div className="flex min-h-[340px] flex-[1.4] basis-[380px] items-center justify-center rounded-xl bg-pine-dark/50 text-[13px] text-paper/35">
-              [ HARTĂ - embed Google Maps ]
+            <div className="relative min-h-[340px] flex-[1.4] basis-[380px] rounded-xl overflow-hidden bg-[#e9e8e2]">
+              <iframe
+                src="https://maps.google.com/maps?q=Pensiunea%20Amonte,%20Avrig,%20Romania&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 h-full w-full"
+              ></iframe>
             </div>
           </div>
         </div>

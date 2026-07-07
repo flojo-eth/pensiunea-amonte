@@ -335,11 +335,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <PlaceholderImage
-          label="[ HARTĂ - embed Google Maps ]"
-          className="min-h-[340px] flex-[1.4] basis-[380px] rounded-xl"
-          sizes="(max-width: 768px) 100vw, 55vw"
-        />
+        <div className="relative min-h-[340px] flex-[1.4] basis-[380px] rounded-xl overflow-hidden bg-[#e9e8e2]">
+          <iframe
+            src="https://maps.google.com/maps?q=Pensiunea%20Amonte,%20Avrig,%20Romania&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0 h-full w-full"
+          ></iframe>
+        </div>
       </section>
     </>
   );
