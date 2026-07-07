@@ -477,11 +477,8 @@ export default function DesprePage() {
             detaliile pentru datele tale.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <WhatsAppButton className={btnTerracotta}>
-              Verifică disponibilitatea pe WhatsApp
-            </WhatsAppButton>
-            <Link href="/rezerva-acum" className={btnOutlineLight}>
-              Pagina de rezervare →
+            <Link href="/rezerva-acum" className={btnTerracotta}>
+              Verifică disponibilitatea
             </Link>
           </div>
           <p className="mt-6 text-[14px] text-paper/50">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import ActivityCard from "@/components/ActivityCard";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Link from "next/link";
 import { ACTIVITIES } from "@/lib/content";
 import { btnTerracotta } from "@/lib/ui";
 
@@ -32,9 +32,9 @@ export default function ActivitatiPage() {
       </div>
 
       <div className="mt-10">
-        <WhatsAppButton className={btnTerracotta}>
-          Rezervă-ți sejurul pe WhatsApp
-        </WhatsAppButton>
+        <Link href="/rezerva-acum" className={btnTerracotta}>
+          Rezervă-ți sejurul la munte
+        </Link>
       </div>
     </section>
   );

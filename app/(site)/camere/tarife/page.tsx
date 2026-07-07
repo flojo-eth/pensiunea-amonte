@@ -60,9 +60,9 @@ export default function TarifePage() {
       </p>
 
       <div className="mt-8">
-        <WhatsAppButton className={btnTerracotta}>
-          Cere disponibilitate pe WhatsApp
-        </WhatsAppButton>
+        <Link href="/rezerva-acum" className={btnTerracotta}>
+          Verifică disponibilitatea
+        </Link>
       </div>
     </section>
   );

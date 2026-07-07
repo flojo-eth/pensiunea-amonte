@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import GalleryGrid from "@/components/GalleryGrid";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Link from "next/link";
 import { btnPaper } from "@/lib/ui";
 
 export const metadata: Metadata = {
@@ -25,9 +25,9 @@ export default function GaleriePage() {
         />
         <GalleryGrid />
         <div className="mt-10 text-center">
-          <WhatsAppButton className={btnPaper}>
-            Cere disponibilitate pe WhatsApp
-          </WhatsAppButton>
+          <Link href="/rezerva-acum" className={btnPaper}>
+            Verifică disponibilitatea
+          </Link>
         </div>
       </div>
     </section>

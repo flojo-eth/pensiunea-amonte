@@ -33,9 +33,9 @@ export default function CamerePage() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-5">
-        <WhatsAppButton className={btnTerracotta}>
-          Cere disponibilitate pe WhatsApp
-        </WhatsAppButton>
+        <Link href="/rezerva-acum" className={btnTerracotta}>
+          Verifică disponibilitatea
+        </Link>
         <Link
           href="/camere/tarife"
           className="text-sm font-semibold text-terracotta no-underline hover:underline"

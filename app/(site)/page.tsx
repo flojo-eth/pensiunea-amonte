@@ -77,9 +77,9 @@ export default function Home() {
             contează.
           </p>
           <div className="flex flex-wrap gap-3.5">
-            <WhatsAppButton className={btnPaper}>
+            <Link href="/rezerva-acum" className={btnPaper}>
               Verifică disponibilitatea
-            </WhatsAppButton>
+            </Link>
             <Link href="/camere" className={btnOutlineLight}>
               Vezi camerele
             </Link>
@@ -288,9 +288,9 @@ export default function Home() {
               Cea mai rapidă cale e un mesaj pe WhatsApp - răspundem în cel mai
               scurt timp.
             </p>
-            <WhatsAppButton className={`${btnTerracotta} w-full`}>
-              Scrie-ne pe WhatsApp
-            </WhatsAppButton>
+            <Link href="/rezerva-acum" className={`${btnTerracotta} w-full flex items-center justify-center`}>
+              Verifică disponibilitatea
+            </Link>
             <a
               href={GOOGLE_FORM_URL}
               target="_blank"
