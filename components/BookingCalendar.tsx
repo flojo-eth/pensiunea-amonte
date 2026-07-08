@@ -221,7 +221,20 @@ export default function BookingCalendar() {
           href={whatsappHref ?? "#"}
           target={whatsappHref ? "_blank" : undefined}
           rel={whatsappHref ? "noopener noreferrer" : undefined}
-          onClick={(e) => { if (!whatsappHref) e.preventDefault(); }}
+          onClick={(e) => { 
+            if (!whatsappHref) {
+              e.preventDefault(); 
+            } else {
+              // GTM Tracking
+              const win = window as any;
+              win.dataLayer = win.dataLayer || [];
+              win.dataLayer.push({
+                event: 'whatsapp_click',
+                event_category: 'conversion',
+                event_label: 'Rezervare WhatsApp'
+              });
+            }
+          }}
           className={`flex w-full items-center justify-center gap-2 rounded-full py-4 text-[16px] font-semibold transition-colors ${
             whatsappHref
               ? "bg-terracotta text-paper hover:bg-[#96652f] cursor-pointer"
