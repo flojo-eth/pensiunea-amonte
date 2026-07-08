@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Eyebrow from "./Eyebrow";
 import PlaceholderImage from "./PlaceholderImage";
-import WhatsAppButton from "./WhatsAppButton";
 import type { Room } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
@@ -101,9 +100,9 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
           </div>
           <p className="mt-2 text-[14px] text-muted">Zonă de relaxare (jacuzzi & saună) la cerere.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <WhatsAppButton className={`${btnTerracotta} w-full`}>
-              Cere disponibilitate
-            </WhatsAppButton>
+            <Link href="/rezerva-acum" className={`${btnTerracotta} w-full text-center`}>
+              Verifică disponibilitatea
+            </Link>
             <Link href="/camere/tarife" className={`${btnOutlineDark} w-full`}>
               Vezi toate tarifele
             </Link>
