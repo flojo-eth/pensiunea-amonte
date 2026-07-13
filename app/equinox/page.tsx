@@ -47,7 +47,7 @@ export default function EquinoxPage() {
   useEffect(() => {
     // Parallax
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const mountains = document.querySelector('.hero-mountains');
+    const mountains = document.querySelector('.hero-mountains') as HTMLElement | null;
     const onScroll = () => {
       if (reduced || !mountains) return;
       const y = window.scrollY;
