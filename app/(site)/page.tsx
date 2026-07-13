@@ -247,7 +247,7 @@ export default function Home() {
             center
             className="mb-3"
           >
-            {RATING_SUMMARY.value} din 5, pe baza a {RATING_SUMMARY.count} de
+            {RATING_SUMMARY.value} din 5 ⭐, pe baza a {RATING_SUMMARY.count} de
             recenzii Google
           </SectionHeading>
           <div className="mt-[clamp(28px,4vw,44px)]">

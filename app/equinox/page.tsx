@@ -1,14 +1,158 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMONTE EQUINOX · 19 septembrie 2026 · DJ Dark la Pensiunea Amonte</title>
-<meta name="description" content="O seară de la apus până după miezul nopții, în inima pădurii, la Pensiunea Amonte. Welcome & wine, live cooking by Jarr, artificii și DJ Dark.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
+"use client";
+import React, { useState, useEffect } from 'react';
+import styles from './page.module.css';
+
+export default function EquinoxPage() {
+  const [timeLeft, setTimeLeft] = useState({ days: '--', hours: '--', mins: '--', secs: '--' });
+  const [openFaq, setOpenFaq] = useState(null);
+  const [formState, setFormState] = useState({ name: '', phone: '', email: '', pack: '', count: '1' });
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const target = new Date("2026-09-19T15:00:00").getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = target - now;
+      if (diff <= 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: '00', hours: '00', mins: '00', secs: '00' });
+      } else {
+        setTimeLeft({
+          days: String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0'),
+          hours: String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0'),
+          mins: String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0'),
+          secs: String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0')
+        });
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Parallax
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mountains = document.querySelector('.hero-mountains');
+    const onScroll = () => {
+      if (reduced || !mountains) return;
+      const y = window.scrollY;
+      if (y < window.innerHeight){
+        mountains.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Fireflies
+    const canvas = document.getElementById('fireflies');
+    let animationId;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let W, H, particles = [];
+
+      const resize = () => {
+        const hero = canvas.parentElement;
+        if (hero) {
+          W = canvas.width = hero.offsetWidth;
+          H = canvas.height = hero.offsetHeight;
+        }
+      };
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      const COUNT = Math.min(70, Math.floor(window.innerWidth / 16));
+      for (let i = 0; i < COUNT; i++) {
+        const isFirefly = Math.random() < 0.35;
+        particles.push({
+          x: Math.random() * (W || window.innerWidth),
+          y: Math.random() * (H || window.innerHeight),
+          r: isFirefly ? 1.2 + Math.random() * 1.8 : 0.5 + Math.random() * 1.1,
+          firefly: isFirefly,
+          vx: isFirefly ? (Math.random() - .5) * .28 : 0,
+          vy: isFirefly ? (Math.random() - .5) * .22 : 0,
+          phase: Math.random() * Math.PI * 2,
+          speed: .008 + Math.random() * .02
+        });
+      }
+
+      const frame = () => {
+        ctx.clearRect(0, 0, W, H);
+        for (const p of particles) {
+          p.phase += p.speed;
+          const glow = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(p.phase));
+          if (p.firefly && !reduced) {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
+            if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          if (p.firefly) {
+            ctx.fillStyle = 'rgba(232,180,90,' + (glow * .85).toFixed(3) + ')';
+            ctx.shadowColor = 'rgba(232,180,90,.9)';
+            ctx.shadowBlur = 12 * glow;
+          } else {
+            ctx.fillStyle = 'rgba(220,228,255,' + (glow * .6).toFixed(3) + ')';
+            ctx.shadowColor = 'rgba(143,107,255,.6)';
+            ctx.shadowBlur = 5 * glow;
+          }
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+        if (!reduced) animationId = requestAnimationFrame(frame);
+      };
+      frame();
+    }
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      // window.removeEventListener('resize', resize);
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+
+
+  const toggleFaq = (idx) => {
+    setOpenFaq(openFaq === idx ? null : idx);
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    let errs = {};
+    if (formState.name.length < 3) errs.name = true;
+    if (!/^[+()0-9\s.-]{9,}$/.test(formState.phone)) errs.phone = true;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(formState.email)) errs.email = true;
+    if (!formState.pack) errs.pack = true;
+    
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setSubmitted(true);
+  };
+
+  return (
+    <div className={styles.equinoxTheme}>
+      <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+      
+      {/* We extracted the CSS variables into page.module.css */}
+      {/* To preserve the layout exactly as it was, we will inject the rest of the original CSS globally just for this page */}
+      <style dangerouslySetInnerHTML={{ __html: `
 /* ============================================================
    AMONTE EQUINOX — design tokens
 ============================================================ */
@@ -623,331 +767,331 @@ footer{
 .footer-bottom .brandline b{ color:var(--gold-soft); font-weight:600; }
 
 :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
-</style>
-</head>
-<body>
+`}} />
+      
+      
 
-<!-- ================= NAV ================= -->
-<nav class="nav" id="nav">
-  <div class="wrap nav-inner">
-    <a class="nav-logo" href="#top">Amonte <span>Equinox</span></a>
-    <div class="nav-links">
+
+<nav className="nav" id="nav">
+  <div className="wrap nav-inner">
+    <a className="nav-logo" href="#top">Amonte <span>Equinox</span></a>
+    <div className="nav-links">
       <a href="#experienta">Experiența</a>
       <a href="#lineup">Line-up</a>
       <a href="#pachete">Pachete</a>
       <a href="#locatia">Locația</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a class="nav-cta" href="#rezervare">Rezervă acum</a>
+    <a className="nav-cta" href="#rezervare">Rezervă acum</a>
   </div>
 </nav>
 
-<!-- ================= 1 · HERO ================= -->
-<header class="hero" id="top">
-  <div class="hero-photo" role="img" aria-label="Pensiunea Amonte, Valea Avrigului"></div>
-  <div class="hero-veil"></div>
+
+<header className="hero" id="top">
+  <div className="hero-photo" role="img" aria-label="Pensiunea Amonte, Valea Avrigului"></div>
+  <div className="hero-veil"></div>
   <canvas id="fireflies" aria-hidden="true"></canvas>
 
-  <div class="hero-mountains" aria-hidden="true">
+  <div className="hero-mountains" aria-hidden="true">
     <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path class="m-far" d="M0 210 L140 120 L260 190 L420 80 L560 180 L720 60 L880 170 L1040 100 L1200 190 L1330 130 L1440 200 L1440 320 L0 320 Z"/>
-      <path class="m-mid" d="M0 260 L120 190 L300 250 L480 150 L640 240 L820 140 L1000 240 L1180 170 L1320 250 L1440 210 L1440 320 L0 320 Z"/>
-      <path class="m-near" d="M0 320 L0 290 L200 240 L400 300 L620 230 L840 300 L1060 240 L1260 300 L1440 260 L1440 320 Z"/>
+      <path className="m-far" d="M0 210 L140 120 L260 190 L420 80 L560 180 L720 60 L880 170 L1040 100 L1200 190 L1330 130 L1440 200 L1440 320 L0 320 Z"/>
+      <path className="m-mid" d="M0 260 L120 190 L300 250 L480 150 L640 240 L820 140 L1000 240 L1180 170 L1320 250 L1440 210 L1440 320 L0 320 Z"/>
+      <path className="m-near" d="M0 320 L0 290 L200 240 L400 300 L620 230 L840 300 L1060 240 L1260 300 L1440 260 L1440 320 Z"/>
     </svg>
   </div>
 
-  <div class="wrap hero-inner">
-    <p class="eyebrow hero-eyebrow reveal in">19 septembrie 2026 · Valea Avrigului</p>
+  <div className="wrap hero-inner">
+    <p className="eyebrow hero-eyebrow reveal in">19 septembrie 2026 · Valea Avrigului</p>
     <h1>Amonte Equinox</h1>
-    <p class="hero-tagline">La Amonte, liniștea se animă cu <strong>DJ Dark</strong>.</p>
+    <p className="hero-tagline">La Amonte, liniștea se animă cu <strong>DJ Dark</strong>.</p>
 
-    <div class="hero-artist reveal in">
-      <span class="ha-photo" role="img" aria-label="DJ Dark"></span>
-      <span class="ha-text">
-        <span class="ha-label">Headliner</span>
-        <span class="ha-name">DJ Dark</span>
+    <div className="hero-artist reveal in">
+      <span className="ha-photo" role="img" aria-label="DJ Dark"></span>
+      <span className="ha-text">
+        <span className="ha-label" style={{fontSize: "1.5rem"}}>Headliner</span>
+        <span className="ha-name">DJ Dark</span>
       </span>
     </div>
 
-    <div class="hero-meta">
-      <span><i class="dot"></i>De la ora 15:00</span>
-      <span><i class="dot"></i>Pensiunea Amonte, în inima pădurii</span>
-      <span><i class="dot"></i>25 min de Sibiu</span>
+    <div className="hero-meta">
+      <span><i className="dot"></i>De la ora 15:00</span>
+      <span><i className="dot"></i>Pensiunea Amonte, în inima pădurii</span>
+      <span><i className="dot"></i>25 min de Sibiu</span>
     </div>
 
-    <div class="countdown" id="countdown" aria-label="Timp rămas până la eveniment">
-      <div class="cd-cell"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Zile</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Ore</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Minute</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secunde</div></div>
+    <div className="countdown" id="countdown" aria-label="Timp rămas până la eveniment">
+      <div className="cd-cell"><div className="cd-num" id="cd-days">{timeLeft.days}</div><div className="cd-label">Zile</div></div>
+      <div className="cd-cell"><div className="cd-num" id="cd-hours">{timeLeft.hours}</div><div className="cd-label">Ore</div></div>
+      <div className="cd-cell"><div className="cd-num" id="cd-mins">{timeLeft.mins}</div><div className="cd-label">Minute</div></div>
+      <div className="cd-cell"><div className="cd-num" id="cd-secs">{timeLeft.secs}</div><div className="cd-label">Secunde</div></div>
     </div>
 
-    <div class="hero-ctas">
-      <a class="btn btn-gold" href="#rezervare">Rezervă acum</a>
-      <a class="btn btn-ghost" href="#experienta">Descoperă seara</a>
+    <div className="hero-ctas">
+      <a className="btn btn-gold" href="#rezervare">Rezervă acum</a>
+      <a className="btn btn-ghost" href="#experienta">Descoperă seara</a>
     </div>
   </div>
 </header>
 
 <main>
 
-<!-- ================= 2 · EXPERIENȚA ================= -->
-<section class="experience" id="experienta">
-  <div class="wrap">
-    <p class="eyebrow reveal">De la apus până după miezul nopții</p>
-    <h2 class="section-title reveal d1">O seară care <span class="accent-word">se aprinde!</span></h2>
-    <p class="section-lede reveal d2">Începe cu un pahar de vin în lumina după-amiezii. Se termină cu bass sub cerul înstelat.</p>
 
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🍷</span>15:00</div>
-        <h3 class="tl-title">Welcome &amp; Wine</h3>
-        <p class="tl-desc">Primele pahare se ridică în lumina caldă a după-amiezii, cu pădurea drept fundal.</p>
+<section className="experience" id="experienta">
+  <div className="wrap">
+    <p className="eyebrow reveal">De la apus până după miezul nopții</p>
+    <h2 className="section-title reveal d1">O seară care <span className="accent-word">se aprinde!</span></h2>
+    <p className="section-lede reveal d2">Începe cu un pahar de vin în lumina după-amiezii. Se termină cu bass sub cerul înstelat.</p>
+
+    <div className="timeline">
+      <div className="tl-item reveal">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🍷</span>15:00</div>
+        <h3 className="tl-title">Welcome &amp; Wine</h3>
+        <p className="tl-desc">Primele pahare se ridică în lumina caldă a după-amiezii, cu pădurea drept fundal.</p>
       </div>
-      <div class="tl-item reveal d1">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🔥</span>17:00</div>
-        <h3 class="tl-title">Live cooking by Jarr</h3>
-        <p class="tl-desc">Flăcări, arome și preparate gătite sub ochii tăi. Cina se transformă în spectacol.</p>
+      <div className="tl-item reveal d1">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🔥</span>17:00</div>
+        <h3 className="tl-title">Live cooking by Jarr</h3>
+        <p className="tl-desc">Flăcări, arome și preparate gătite sub ochii tăi. Cina se transformă în spectacol.</p>
       </div>
-      <div class="tl-item reveal d2">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🎶</span>19:30</div>
-        <h3 class="tl-title">Party start cu DJ Miki M</h3>
-        <p class="tl-desc">Primele beat-uri. Luminile de scenă preiau ștafeta de la apus, iar valea se aprinde.</p>
+      <div className="tl-item reveal d2">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🎶</span>19:30</div>
+        <h3 className="tl-title">Party start cu DJ Miki M</h3>
+        <p className="tl-desc">Primele beat-uri. Luminile de scenă preiau ștafeta de la apus, iar valea se aprinde.</p>
       </div>
-      <div class="tl-item tl-headline reveal d2">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🎧</span>23:00</div>
-        <h3 class="tl-title">DJ Dark</h3>
-        <p class="tl-desc">Momentul serii. Un show construit special pentru noaptea de echinocțiu — sub cel mai curat cer din Sibiu.</p>
+      <div className="tl-item tl-headline reveal d2">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🎧</span>23:00</div>
+        <h3 className="tl-title">DJ Dark</h3>
+        <p className="tl-desc">Momentul serii. Un show construit special pentru noaptea de echinocțiu — sub cel mai curat cer din Sibiu.</p>
       </div>
-      <div class="tl-item reveal d3">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🎆</span>00:00</div>
-        <h3 class="tl-title">Artificii</h3>
-        <p class="tl-desc">La miezul nopții, cerul de deasupra văii se aprinde și el.</p>
+      <div className="tl-item reveal d3">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🎆</span>00:00</div>
+        <h3 className="tl-title">Artificii</h3>
+        <p className="tl-desc">La miezul nopții, cerul de deasupra văii se aprinde și el.</p>
       </div>
-      <div class="tl-item reveal d3">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🎛️</span>01:00</div>
-        <h3 class="tl-title">DJ Razv</h3>
-        <p class="tl-desc">Noaptea nu se oprește. Energia continuă pentru cei care mai au de dansat.</p>
+      <div className="tl-item reveal d3">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🎛️</span>01:00</div>
+        <h3 className="tl-title">DJ Razv</h3>
+        <p className="tl-desc">Noaptea nu se oprește. Energia continuă pentru cei care mai au de dansat.</p>
       </div>
-      <div class="tl-item reveal d4">
-        <span class="tl-dot"></span>
-        <div class="tl-time"><span class="tl-icon">🌌</span>03:00</div>
-        <h3 class="tl-title">Slowing down</h3>
-        <p class="tl-desc">Ultimele acorduri se pierd în vale, sub un cer plin de stele.</p>
+      <div className="tl-item reveal d4">
+        <span className="tl-dot"></span>
+        <div className="tl-time"><span className="tl-icon">🌌</span>03:00</div>
+        <h3 className="tl-title">Slowing down</h3>
+        <p className="tl-desc">Ultimele acorduri se pierd în vale, sub un cer plin de stele.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 3 · LINE-UP ================= -->
+
 <section id="lineup">
-  <div class="wrap">
-    <p class="eyebrow reveal">Line-up</p>
-    <h2 class="section-title reveal d1">Cine <span class="accent-violet">cântă?</span></h2>
+  <div className="wrap">
+    <p className="eyebrow reveal">Line-up</p>
+    <h2 className="section-title reveal d1">Cine <span className="accent-violet">cântă?</span></h2>
 
-    <div class="lineup-grid">
-      <article class="artist-card reveal">
-        <div class="artist-photo dark-photo"></div>
-        <div class="artist-body">
-          <span class="artist-tag">Headliner</span>
-          <h3 class="artist-name">DJ Dark</h3>
-          <p class="artist-meta">Unul dintre cele mai fine nume ale scenei deep house din România. <strong>Un show exclusiv</strong>, construit special pentru noaptea de echinocțiu — de la groove cald la bass care se simte în piept.</p>
+    <div className="lineup-grid">
+      <article className="artist-card reveal">
+        <div className="artist-photo dark-photo"></div>
+        <div className="artist-body">
+          <span className="artist-tag" style={{fontSize: "1.5rem"}}>Headliner</span>
+          <h3 className="artist-name">DJ Dark</h3>
+          <p className="artist-meta">Unul dintre cele mai fine nume ale scenei deep house din România. <strong>Un show exclusiv</strong>, construit special pentru noaptea de echinocțiu — de la groove cald la bass care se simte în piept.</p>
         </div>
       </article>
 
-      <article class="artist-card support reveal d2">
-        <div class="artist-photo support-photo"><span class="ph-label">Foto DJ Miki M</span></div>
-        <div class="artist-body">
-          <span class="artist-tag">Support Act</span>
-          <h3 class="artist-name">DJ Miki M</h3>
-          <p class="artist-meta">Cel care aprinde valea. Primele beat-uri ale serii îi aparțin — de la sunset groove la energia care pregătește miezul nopții.</p>
+      <article className="artist-card support reveal d2">
+        <div className="artist-photo support-photo"><span className="ph-label">Foto DJ Miki M</span></div>
+        <div className="artist-body">
+          <span className="artist-tag" style={{fontSize: "1.5rem"}}>Support Act</span>
+          <h3 className="artist-name">DJ Miki M</h3>
+          <p className="artist-meta">Cel care aprinde valea. Primele beat-uri ale serii îi aparțin — de la sunset groove la energia care pregătește miezul nopții.</p>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= 4 · PACHETE ================= -->
-<section class="packages" id="pachete">
-  <div class="wrap">
-    <p class="eyebrow reveal">Alege-ți seara</p>
-    <h2 class="section-title reveal d1">3 moduri de a trăi <span class="accent-word">Equinox</span></h2>
 
-    <div class="pack-grid">
-      <article class="pack reveal">
-        <h3 class="pack-name">Standard</h3>
-        <div class="pack-price"><span class="amount">150</span><span class="unit">lei / pers</span></div>
+<section className="packages" id="pachete">
+  <div className="wrap">
+    <p className="eyebrow reveal">Alege-ți seara</p>
+    <h2 className="section-title reveal d1">3 moduri de a trăi <span className="accent-word">Equinox</span></h2>
+
+    <div className="pack-grid">
+      <article className="pack reveal">
+        <h3 className="pack-name">Standard</h3>
+        <div className="pack-price"><span className="amount">150</span><span className="unit">lei / pers</span></div>
         <ul>
           <li>Acces Equinox</li>
           <li>Welcome drink</li>
         </ul>
-        <button class="btn btn-ghost" onclick="pickPackage('standard')">Alege Standard</button>
+        <button className="btn btn-ghost" >Alege Standard</button>
       </article>
 
-      <article class="pack featured reveal d1">
-        <span class="pack-badge">Cel mai popular</span>
-        <h3 class="pack-name">Premium</h3>
-        <div class="pack-price"><span class="amount">300</span><span class="unit">lei / pers</span></div>
+      <article className="pack featured reveal d1">
+        <span className="pack-badge">Cel mai popular</span>
+        <h3 className="pack-name">Premium</h3>
+        <div className="pack-price"><span className="amount">300</span><span className="unit">lei / pers</span></div>
         <ul>
           <li>Acces la party</li>
           <li>Welcome drink</li>
           <li>Degustare de vinuri</li>
           <li>Un beneficiu surpriză — îl anunțăm curând</li>
         </ul>
-        <button class="btn btn-violet" onclick="pickPackage('premium')">Alege Premium</button>
+        <button className="btn btn-violet" >Alege Premium</button>
       </article>
 
-      <article class="pack luxury reveal d2">
-        <span class="pack-badge">8 disponibile</span>
-        <h3 class="pack-name">Luxury</h3>
-        <div class="pack-price"><span class="amount">1.200</span><span class="unit">lei / cameră</span></div>
+      <article className="pack luxury reveal d2">
+        <span className="pack-badge">8 disponibile</span>
+        <h3 className="pack-name">Luxury</h3>
+        <div className="pack-price"><span className="amount">1.200</span><span className="unit">lei / cameră</span></div>
         <ul>
           <li>Tot ce include Premium</li>
           <li>Cazare pentru 2 în cameră dublă cu vedere la munte</li>
           <li>Brunch a doua zi</li>
           <li>Acces SPA — jacuzzi și saună</li>
         </ul>
-        <button class="btn btn-gold" onclick="pickPackage('luxury')">Alege Luxury</button>
+        <button className="btn btn-gold" >Alege Luxury</button>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= 5 · LOCAȚIA ================= -->
-<section id="locatia">
-  <div class="wrap">
-    <p class="eyebrow reveal">Unde se întâmplă</p>
-    <h2 class="section-title reveal d1">În inima <span class="accent-word">pădurii</span></h2>
 
-    <div class="location-grid">
-      <div class="location-copy reveal">
+<section id="locatia">
+  <div className="wrap">
+    <p className="eyebrow reveal">Unde se întâmplă</p>
+    <h2 className="section-title reveal d1">În inima <span className="accent-word">pădurii</span></h2>
+
+    <div className="location-grid">
+      <div className="location-copy reveal">
         <p><strong>Pensiunea Amonte</strong> — Valea Avrigului, jud. Sibiu. Ascunsă între brazi, la poalele Munților Făgăraș, e genul de loc în care semnalul slăbește și simțurile se ascut.</p>
         <p>Pe 19 septembrie, curtea pensiunii devine scenă: lumini calde pe terase, lounge-uri sub copaci, iar când se lasă noaptea — <strong>un dancefloor sub stele</strong>, cu muntele drept perete de sunet.</p>
-        <div class="location-pills">
-          <a class="location-pill" href="https://www.google.com/maps/search/?api=1&query=Pensiunea+Amonte+Valea+Avrigului" target="_blank" rel="noopener">📍 Deschide în Google Maps</a>
-          <span class="location-pill">🚗 La 25 de minute de Sibiu</span>
+        <div className="location-pills">
+          <a className="location-pill" href="https://www.google.com/maps/search/?api=1&query=Pensiunea+Amonte+Valea+Avrigului" target="_blank" rel="noopener">📍 Deschide în Google Maps</a>
+          <span className="location-pill">🚗 La 25 de minute de Sibiu</span>
         </div>
       </div>
-      <div class="gallery reveal d2">
-        <div class="ph g-party"><span>Curtea Amonte, în plin party</span></div>
-        <div class="ph g-amonte"><span>Pensiunea Amonte</span></div>
-        <div class="ph g-valley"><span>Foto · Valea Avrigului</span></div>
+      <div className="gallery reveal d2">
+        <div className="ph g-party"><span>Curtea Amonte, în plin party</span></div>
+        <div className="ph g-amonte"><span>Pensiunea Amonte</span></div>
+        <div className="ph g-valley"><span>Foto · Valea Avrigului</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 6 · PARTENERI ================= -->
-<section class="partners">
-  <div class="wrap">
-    <p class="eyebrow reveal">Împreună cu</p>
-    <div class="partner-row reveal d1">
-      <span class="partner">Jarr Events</span>
-      <span class="partner">Jidvei</span>
-      <span class="partner">Bam Sound</span>
-      <span class="partner">Premium Events</span>
+
+<section className="partners">
+  <div className="wrap">
+    <p className="eyebrow reveal">Împreună cu</p>
+    <div className="partner-row reveal d1">
+      <span className="partner">Jarr Events</span>
+      <span className="partner">Jidvei</span>
+      <span className="partner">Bam Sound</span>
+      <span className="partner">Premium Events</span>
     </div>
   </div>
 </section>
 
-<!-- ================= 7 · FAQ ================= -->
+
 <section id="faq">
-  <div class="wrap">
-    <p class="eyebrow reveal">Înainte să urci pe vale</p>
-    <h2 class="section-title reveal d1">Întrebări <span class="accent-violet">frecvente</span></h2>
+  <div className="wrap">
+    <p className="eyebrow reveal">Înainte să urci pe vale</p>
+    <h2 className="section-title reveal d1">Întrebări <span className="accent-violet">frecvente</span></h2>
 
-    <div class="faq-list reveal d2">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Cum ajung la Pensiunea Amonte?<span class="chev">+</span></button>
-        <div class="faq-a"><p>Ești la 25 de minute de Sibiu, pe DN1 până în Avrig, apoi urci pe Valea Avrigului — drumul e asfaltat până la pensiune. Pui „Pensiunea Amonte" în Google Maps și lași muntele să te ghideze. Pentru grupuri, putem organiza transfer din Sibiu, la cerere.</p></div>
+    <div className="faq-list reveal d2">
+      <div className={`faq-item ${openFaq === 1 ? "open" : ""}`}>
+        <button className="faq-q"  aria-expanded="false">Cum ajung la Pensiunea Amonte?<span className="chev">+</span></button>
+        <div className="faq-a"><p>Ești la 25 de minute de Sibiu, pe DN1 până în Avrig, apoi urci pe Valea Avrigului — drumul e asfaltat până la pensiune. Pui „Pensiunea Amonte" în Google Maps și lași muntele să te ghideze. Pentru grupuri, putem organiza transfer din Sibiu, la cerere.</p></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Ce se întâmplă dacă plouă?<span class="chev">+</span></button>
-        <div class="faq-a"><p>Muntele are planurile lui, dar și noi pe ale noastre: zonele de degustare, live cooking-ul și o parte din lounge-uri sunt acoperite, iar scena e pregătită pentru vreme capricioasă. Evenimentul se ține indiferent de prognoza de moment — doar în caz de condiții extreme reprogramăm, iar biletele rămân valabile.</p></div>
+      <div className={`faq-item ${openFaq === 2 ? "open" : ""}`}>
+        <button className="faq-q"  aria-expanded="false">Ce se întâmplă dacă plouă?<span className="chev">+</span></button>
+        <div className="faq-a"><p>Muntele are planurile lui, dar și noi pe ale noastre: zonele de degustare, live cooking-ul și o parte din lounge-uri sunt acoperite, iar scena e pregătită pentru vreme capricioasă. Evenimentul se ține indiferent de prognoza de moment — doar în caz de condiții extreme reprogramăm, iar biletele rămân valabile.</p></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Pot veni doar la party, fără degustare?<span class="chev">+</span></button>
-        <div class="faq-a"><p>Da — exact pentru asta există pachetul Standard: acces la Equinox și welcome drink. Party-ul pornește la 19:30 cu DJ Miki M, iar la 23:00 urcă DJ Dark. Dacă vrei să prinzi și paharul de vin la apus, Premium e alegerea firească.</p></div>
+      <div className={`faq-item ${openFaq === 3 ? "open" : ""}`}>
+        <button className="faq-q"  aria-expanded="false">Pot veni doar la party, fără degustare?<span className="chev">+</span></button>
+        <div className="faq-a"><p>Da — exact pentru asta există pachetul Standard: acces la Equinox și welcome drink. Party-ul pornește la 19:30 cu DJ Miki M, iar la 23:00 urcă DJ Dark. Dacă vrei să prinzi și paharul de vin la apus, Premium e alegerea firească.</p></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Este parcare la locație?<span class="chev">+</span></button>
-        <div class="faq-a"><p>Da, avem parcare amenajată la pensiune și în imediata apropiere, cu locuri suficiente pentru toți invitații. Echipa noastră te va îndruma la sosire. Dacă vrei să te bucuri de vin fără griji, recomandăm un desemnat sau transferul organizat.</p></div>
+      <div className={`faq-item ${openFaq === 4 ? "open" : ""}`}>
+        <button className="faq-q"  aria-expanded="false">Este parcare la locație?<span className="chev">+</span></button>
+        <div className="faq-a"><p>Da, avem parcare amenajată la pensiune și în imediata apropiere, cu locuri suficiente pentru toți invitații. Echipa noastră te va îndruma la sosire. Dacă vrei să te bucuri de vin fără griji, recomandăm un desemnat sau transferul organizat.</p></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Care e dress code-ul?<span class="chev">+</span></button>
-        <div class="faq-a"><p>Smart casual cu suflet de munte: arată bine, dar încalță-te confortabil — ești pe iarbă și piatră, nu pe marmură. Serile de septembrie pe vale se răcoresc, așa că un strat în plus după miezul nopții e cea mai elegantă decizie a serii.</p></div>
+      <div className={`faq-item ${openFaq === 5 ? "open" : ""}`}>
+        <button className="faq-q"  aria-expanded="false">Care e dress code-ul?<span className="chev">+</span></button>
+        <div className="faq-a"><p>Smart casual cu suflet de munte: arată bine, dar încalță-te confortabil — ești pe iarbă și piatră, nu pe marmură. Serile de septembrie pe vale se răcoresc, așa că un strat în plus după miezul nopții e cea mai elegantă decizie a serii.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 8 · CTA FINAL / REZERVARE ================= -->
-<section class="reserve" id="rezervare">
-  <div class="wrap">
-    <div class="reserve-head">
-      <p class="eyebrow reveal">Rezervă-ți seara</p>
-      <h2 class="section-title reveal d1">Cerul e <span class="accent-word">rezervat</span>.<br>Locul tău încă nu.</h2>
-      <p class="section-lede reveal d2">Completează formularul, iar echipa Amonte te contactează în maximum 24 de ore pentru confirmare și plată.</p>
+
+<section className="reserve" id="rezervare">
+  <div className="wrap">
+    <div className="reserve-head">
+      <p className="eyebrow reveal">Rezervă-ți seara</p>
+      <h2 className="section-title reveal d1">Cerul e <span className="accent-word">rezervat</span>.<br />Locul tău încă nu.</h2>
+      <p className="section-lede reveal d2">Completează formularul, iar echipa Amonte te contactează în maximum 24 de ore pentru confirmare și plată.</p>
     </div>
 
-    <div class="form-card reveal d2" id="form-card">
+    <div className="form-card reveal d2" id="form-card">
       <div id="form-fields">
-        <div class="field-row cols-2">
-          <div class="field" id="f-name">
-            <label for="in-name">Nume complet</label>
-            <input type="text" id="in-name" placeholder="Numele tău" autocomplete="name">
-            <span class="err-msg">Spune-ne cum te cheamă.</span>
+        <div className="field-row cols-2">
+          <div className={`field ${errors.name ? "error" : ""}`} id="f-name">
+            <label htmlFor="in-name">Nume complet</label>
+            <input type="text" id="in-name" placeholder="Numele tău" autoComplete="name" />
+            <span className="err-msg">Spune-ne cum te cheamă.</span>
           </div>
-          <div class="field" id="f-phone">
-            <label for="in-phone">Telefon</label>
-            <input type="tel" id="in-phone" placeholder="07xx xxx xxx" autocomplete="tel">
-            <span class="err-msg">Avem nevoie de un număr valid ca să te confirmăm.</span>
+          <div className={`field ${errors.phone ? "error" : ""}`} id="f-phone">
+            <label htmlFor="in-phone">Telefon</label>
+            <input type="tel" id="in-phone" placeholder="07xx xxx xxx" autoComplete="tel" />
+            <span className="err-msg">Avem nevoie de un număr valid ca să te confirmăm.</span>
           </div>
         </div>
 
-        <div class="field" id="f-email">
-          <label for="in-email">Email</label>
-          <input type="email" id="in-email" placeholder="nume@email.ro" autocomplete="email">
-          <span class="err-msg">Verifică adresa de email — pare incompletă.</span>
+        <div className={`field ${errors.email ? "error" : ""}`} id="f-email">
+          <label htmlFor="in-email">Email</label>
+          <input type="email" id="in-email" placeholder="nume@email.ro" autoComplete="email" />
+          <span className="err-msg">Verifică adresa de email — pare incompletă.</span>
         </div>
 
-        <div class="field-row cols-2">
-          <div class="field" id="f-pack">
-            <label for="in-pack">Pachet</label>
-            <select id="in-pack">
+        <div className="field-row cols-2">
+          <div className={`field ${errors.pack ? "error" : ""}`} id="f-pack">
+            <label htmlFor="in-pack">Pachet</label>
+            <select id="in-pack" value={formState.pack} onChange={e => setFormState({...formState, pack: e.target.value})}>
               <option value="">Alege pachetul…</option>
               <option value="standard">Standard — 150 lei / pers</option>
               <option value="premium">Premium — 300 lei / pers</option>
               <option value="luxury">Luxury — 1.200 lei / cameră</option>
             </select>
-            <span class="err-msg">Alege felul în care vrei să trăiești seara.</span>
+            <span className="err-msg">Alege felul în care vrei să trăiești seara.</span>
           </div>
-          <div class="field" id="f-count">
-            <label for="in-count">Număr de persoane</label>
-            <select id="in-count">
+          <div className="field" id="f-count">
+            <label htmlFor="in-count">Număr de persoane</label>
+            <select id="in-count" value={formState.count} onChange={e => setFormState({...formState, count: e.target.value})}>
               <option value="">Câți veniți?</option>
               <option>1</option><option>2</option><option>3</option><option>4</option>
               <option>5</option><option>6</option><option>7</option><option>8</option>
               <option value="9+">9 sau mai mulți</option>
             </select>
-            <span class="err-msg">Spune-ne câte locuri păstrăm.</span>
+            <span className="err-msg">Spune-ne câte locuri păstrăm.</span>
           </div>
         </div>
 
-        <div class="form-actions">
-          <button class="btn btn-gold" onclick="submitReservation()">Trimite rezervarea</button>
+        <div className="form-actions">
+          <button className="btn btn-gold" >Trimite rezervarea</button>
         </div>
-        <p class="form-note">Nicio plată acum. Rezervarea devine fermă după confirmarea telefonică.</p>
+        <p className="form-note">Nicio plată acum. Rezervarea devine fermă după confirmarea telefonică.</p>
       </div>
 
-      <div class="form-success" id="form-success" role="status">
-        <div class="success-icon">✦</div>
+      <div className="form-success" id="form-success" role="status">
+        <div className="success-icon">✦</div>
         <h3>Rezervarea a pornit spre vale</h3>
         <p id="success-text">Îți mulțumim! Te contactăm în maximum <strong>24 de ore</strong> pentru confirmare. Pregătește-te de apus.</p>
       </div>
@@ -957,26 +1101,26 @@ footer{
 
 </main>
 
-<!-- ================= 9 · FOOTER ================= -->
+
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
+  <div className="wrap">
+    <div className="footer-grid">
       <div>
-        <p class="footer-logo">Amonte <span>Equinox</span></p>
-        <p style="margin-top:.8rem; max-width:36ch;">19 septembrie 2026 · Pensiunea Amonte, Valea Avrigului, jud. Sibiu. O noapte, o singură dată pe an.</p>
-        <div class="socials">
+        <p className="footer-logo">Amonte <span>Equinox</span></p>
+        <p style={{marginTop: ".8rem", maxWidth: "36ch"}}>19 septembrie 2026 · Pensiunea Amonte, Valea Avrigului, jud. Sibiu. O noapte, o singură dată pe an.</p>
+        <div className="socials">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 2c-3.1 0-3.5 0-4.7.1-1.1.1-1.5.2-1.8.3-.4.2-.7.3-1 .7-.3.3-.5.6-.7 1-.1.3-.3.7-.3 1.8-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.5.3 1.8.2.4.3.7.7 1 .3.3.6.5 1 .7.3.1.7.3 1.8.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.5-.2 1.8-.3.4-.2.7-.3 1-.7.3-.3.5-.6.7-1 .1-.3.3-.7.3-1.8.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.5-.3-1.8-.2-.4-.3-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.7-.3-1.8-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5.8-2.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg></a>
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
           <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.4 2 1.7 3.4 3.9 3.6v2.6c-1.4.1-2.7-.3-3.9-1.1v5.7c0 3.7-2.5 6.2-5.9 6.2-3 0-5.4-2.3-5.4-5.3 0-3.1 2.6-5.4 5.9-5.2v2.8c-.3 0-.6-.1-.9-.1-1.5 0-2.6 1.1-2.6 2.6s1.1 2.5 2.6 2.5c1.7 0 2.9-1.2 2.9-3.3V3h3.4z"/></svg></a>
         </div>
       </div>
-      <div class="footer-col">
+      <div className="footer-col">
         <h4>Contact</h4>
         <a href="tel:+40700000000">+40 7xx xxx xxx</a>
         <a href="mailto:evenimente@amonte.ro">evenimente@amonte.ro</a>
-        <p style="margin-top:.4rem;">Valea Avrigului, jud. Sibiu<br>la poalele Munților Făgăraș</p>
+        <p style={{marginTop: ".4rem"}}>Valea Avrigului, jud. Sibiu<br />la poalele Munților Făgăraș</p>
       </div>
-      <div class="footer-col">
+      <div className="footer-col">
         <h4>Navigare</h4>
         <a href="#experienta">Experiența</a>
         <a href="#lineup">Line-up</a>
@@ -984,208 +1128,15 @@ footer{
         <a href="#rezervare">Rezervare</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span class="brandline">Un eveniment <b>Pensiunea Amonte</b> × <b>Hostillo</b></span>
+    <div className="footer-bottom">
+      <span className="brandline">Un eveniment <b>Pensiunea Amonte</b> × <b>Hostillo</b></span>
       <span>© 2026 Amonte Equinox. Toate drepturile rezervate.</span>
     </div>
   </div>
 </footer>
 
-<script>
-/* ============================================================
-   NAV — fundal la scroll
-============================================================ */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive:true });
 
-/* ============================================================
-   COUNTDOWN — până pe 19 sept 2026, 15:00 (ora României, UTC+3)
-============================================================ */
-const target = new Date('2026-09-19T15:00:00+03:00').getTime();
-const cdEls = {
-  d: document.getElementById('cd-days'),
-  h: document.getElementById('cd-hours'),
-  m: document.getElementById('cd-mins'),
-  s: document.getElementById('cd-secs')
-};
-function pad(n){ return String(n).padStart(2,'0'); }
-function tick(){
-  const diff = target - Date.now();
-  if (diff <= 0){
-    cdEls.d.textContent = '00'; cdEls.h.textContent = '00';
-    cdEls.m.textContent = '00'; cdEls.s.textContent = '00';
-    return;
-  }
-  cdEls.d.textContent = pad(Math.floor(diff / 86400000));
-  cdEls.h.textContent = pad(Math.floor(diff / 3600000) % 24);
-  cdEls.m.textContent = pad(Math.floor(diff / 60000) % 60);
-  cdEls.s.textContent = pad(Math.floor(diff / 1000) % 60);
+
+    </div>
+  );
 }
-tick();
-setInterval(tick, 1000);
-
-/* ============================================================
-   REVEAL la scroll
-============================================================ */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ============================================================
-   LICURICI — canvas în hero (stele + licurici aurii)
-============================================================ */
-(function(){
-  const canvas = document.getElementById('fireflies');
-  const ctx = canvas.getContext('2d');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W, H, particles = [];
-
-  function resize(){
-    const hero = canvas.parentElement;
-    W = canvas.width = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize, { passive:true });
-
-  const COUNT = Math.min(70, Math.floor(window.innerWidth / 16));
-  for (let i = 0; i < COUNT; i++){
-    const isFirefly = Math.random() < 0.35;
-    particles.push({
-      x: Math.random() * (W || window.innerWidth),
-      y: Math.random() * (H || window.innerHeight),
-      r: isFirefly ? 1.2 + Math.random() * 1.8 : 0.5 + Math.random() * 1.1,
-      firefly: isFirefly,
-      vx: isFirefly ? (Math.random() - .5) * .28 : 0,
-      vy: isFirefly ? (Math.random() - .5) * .22 : 0,
-      phase: Math.random() * Math.PI * 2,
-      speed: .008 + Math.random() * .02
-    });
-  }
-
-  function frame(){
-    ctx.clearRect(0, 0, W, H);
-    for (const p of particles){
-      p.phase += p.speed;
-      const glow = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(p.phase));
-      if (p.firefly && !reduced){
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
-        if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
-      }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      if (p.firefly){
-        ctx.fillStyle = 'rgba(232,180,90,' + (glow * .85).toFixed(3) + ')';
-        ctx.shadowColor = 'rgba(232,180,90,.9)';
-        ctx.shadowBlur = 12 * glow;
-      } else {
-        ctx.fillStyle = 'rgba(220,228,255,' + (glow * .6).toFixed(3) + ')';
-        ctx.shadowColor = 'rgba(143,107,255,.6)';
-        ctx.shadowBlur = 5 * glow;
-      }
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    }
-    if (!reduced) requestAnimationFrame(frame);
-  }
-  frame();
-})();
-
-/* ============================================================
-   PARALLAX subtil pe munți
-============================================================ */
-(function(){
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
-  const mountains = document.querySelector('.hero-mountains');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y < window.innerHeight){
-      mountains.style.transform = 'translateY(' + (y * 0.12) + 'px)';
-    }
-  }, { passive:true });
-})();
-
-/* ============================================================
-   FAQ accordion
-============================================================ */
-function toggleFaq(btn){
-  const item = btn.closest('.faq-item');
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => {
-    el.classList.remove('open');
-    el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-  });
-  if (!wasOpen){
-    item.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-}
-
-/* ============================================================
-   PACHETE → preselectează în formular și derulează
-============================================================ */
-function pickPackage(value){
-  const sel = document.getElementById('in-pack');
-  sel.value = value;
-  document.getElementById('f-pack').classList.remove('error');
-  document.getElementById('rezervare').scrollIntoView({ behavior: 'smooth' });
-}
-
-/* ============================================================
-   FORMULAR — validare + confirmare (fără backend)
-============================================================ */
-const packNames = {
-  standard: 'Standard',
-  premium: 'Premium',
-  luxury: 'Luxury'
-};
-
-function setError(fieldId, hasError){
-  document.getElementById(fieldId).classList.toggle('error', hasError);
-  return hasError;
-}
-
-function submitReservation(){
-  const name  = document.getElementById('in-name').value.trim();
-  const phone = document.getElementById('in-phone').value.trim();
-  const email = document.getElementById('in-email').value.trim();
-  const pack  = document.getElementById('in-pack').value;
-  const count = document.getElementById('in-count').value;
-
-  let invalid = false;
-  invalid = setError('f-name',  name.length < 3) || invalid;
-  invalid = setError('f-phone', !/^[+()0-9\s.-]{9,}$/.test(phone)) || invalid;
-  invalid = setError('f-email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) || invalid;
-  invalid = setError('f-pack',  pack === '') || invalid;
-  invalid = setError('f-count', count === '') || invalid;
-
-  if (invalid){
-    const firstErr = document.querySelector('.field.error');
-    if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
-    return;
-  }
-
-  const firstName = name.split(' ')[0];
-  document.getElementById('success-text').innerHTML =
-    'Mulțumim, <strong>' + firstName.replace(/[<>&]/g, '') + '</strong>! Am notat pachetul <strong>' +
-    packNames[pack] + '</strong> pentru <strong>' + count + '</strong> ' +
-    (count === '1' ? 'persoană' : 'persoane') +
-    '. Te contactăm în maximum <strong>24 de ore</strong> pentru confirmare. Ne vedem la apus. ✦';
-
-  document.getElementById('form-fields').style.display = 'none';
-  document.getElementById('form-success').classList.add('show');
-}
-
-document.querySelectorAll('.field input, .field select').forEach(el => {
-  el.addEventListener('input', () => el.closest('.field').classList.remove('error'));
-});
-</script>
-</body>
-</html>

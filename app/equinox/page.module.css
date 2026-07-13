@@ -1,0 +1,269 @@
+.equinoxTheme {
+  --night:      #0a0f1e;
+  --night-deep: #070b16;
+  --dusk:       #121a31;
+  --dusk-edge:  #1e2946;
+  --gold:       #e8b45a;
+  --gold-soft:  #f3d9a4;
+  --gold-dim:   rgba(232,180,90,.14);
+  --violet:     #8f6bff;
+  --electric:   #5a8bff;
+  --ink:        #eef1f8;
+  --ink-muted:  #9aa4bd;
+  --ink-faint:  #6b7590;
+
+  --font-title:   'Cinzel', serif;
+  --font-display: 'Anton', sans-serif;
+  --font-accent:  'Cormorant Garamond', serif;
+  --font-body:    'Instrument Sans', sans-serif;
+
+  --wrap: 1120px;
+  --radius: 18px;
+  --ease: cubic-bezier(.22,.8,.28,1);
+
+  background-color: var(--night);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.equinoxTheme ::selection {
+  background: var(--gold);
+  color: var(--night);
+}
+
+.titleFont { font-family: var(--font-title); }
+.displayFont { font-family: var(--font-display); }
+.accentFont { font-family: var(--font-accent); }
+
+/* Buttons & Elements */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  height: 54px;
+  border-radius: 99px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .4s var(--ease);
+  cursor: pointer;
+  border: none;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: var(--night-deep);
+  box-shadow: 0 4px 20px var(--gold-dim);
+}
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(232,180,90,.3);
+}
+
+.btnSecondary {
+  background: rgba(255,255,255,.03);
+  color: var(--gold);
+  border: 1px solid rgba(232,180,90,.3);
+  backdrop-filter: blur(8px);
+}
+.btnSecondary:hover {
+  background: rgba(255,255,255,.08);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* Sections */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  overflow: hidden;
+  background: url('/equinox/bg-hero.jpg') center/cover no-repeat;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--night) 100%),
+              linear-gradient(to bottom, rgba(10,15,30,.4) 0%, var(--night) 100%);
+  z-index: 1;
+}
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--wrap);
+}
+
+/* Countdown */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0;
+}
+.cdBox {
+  width: 90px;
+  height: 90px;
+  background: rgba(18,26,49,.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cdVal {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+.cdLabel {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--ink-muted);
+}
+
+/* Lineup */
+.lineup {
+  padding: 6rem 2rem;
+  position: relative;
+}
+.artistCard {
+  background: var(--dusk);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,.05);
+}
+.artistPhoto {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+.artistBody {
+  padding: 1.8rem;
+}
+.artistTag {
+  display: inline-block;
+  font-size: 1.5rem; /* Increased size */
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  background: var(--violet);
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  margin-bottom: .8rem;
+}
+.support .artistTag {
+  background: var(--gold);
+  color: var(--night);
+}
+.artistName {
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: clamp(2.5rem, 5.5vw, 4rem); /* Increased size */
+  line-height: 1;
+}
+
+/* FAQ */
+.faqItem {
+  background: var(--dusk);
+  border: 1px solid rgba(255,255,255,.04);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+.faqItem.open {
+  border-color: var(--gold-dim);
+  background: var(--dusk-edge);
+}
+.faqQ {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.faqA {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--ink-muted);
+  font-size: .95rem;
+  display: none;
+}
+.faqItem.open .faqA {
+  display: block;
+}
+
+/* Form */
+.formCard {
+  background: var(--dusk);
+  border-radius: var(--radius);
+  padding: 3rem;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+}
+.field { margin-bottom: 1.5rem; }
+.label {
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink-muted);
+  margin-bottom: .5rem;
+}
+.input, .select {
+  width: 100%;
+  background: var(--night-deep);
+  border: 1px solid rgba(255,255,255,.1);
+  color: var(--ink);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color .3s ease;
+}
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.field.error .input, .field.error .select {
+  border-color: #ff5b5b;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 6rem 1.5rem 3rem; }
+  .cdBox { width: 70px; height: 70px; }
+  .cdVal { font-size: 1.6rem; }
+  .cdLabel { font-size: .55rem; }
+  .formCard { padding: 2rem 1.5rem; }
+}

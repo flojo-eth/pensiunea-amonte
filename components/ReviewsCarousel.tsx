@@ -81,7 +81,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
             <div className="mb-[18px] text-[16px] tracking-[2px] text-terracotta">
               {r.stars}
             </div>
-            <p className="mb-6 line-clamp-6 flex-1 font-serif text-[19px] leading-[1.45] text-[#33392f]">
+            <p className="mb-6 flex-1 font-serif text-[19px] leading-[1.45] text-[#33392f]">
               {r.text}
             </p>
             <div className="flex items-center gap-3">
