@@ -4,10 +4,10 @@ import styles from './page.module.css';
 
 export default function EquinoxPage() {
   const [timeLeft, setTimeLeft] = useState({ days: '--', hours: '--', mins: '--', secs: '--' });
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formState, setFormState] = useState({ name: '', phone: '', email: '', pack: '', count: '1' });
   const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<any>({});
 
   useEffect(() => {
     const target = new Date("2026-09-19T15:00:00").getTime();
@@ -58,11 +58,12 @@ export default function EquinoxPage() {
     window.addEventListener('scroll', onScroll, { passive: true });
 
     // Fireflies
-    const canvas = document.getElementById('fireflies');
-    let animationId;
+    const canvas = document.getElementById('fireflies') as HTMLCanvasElement | null;
+    let animationId: number;
     if (canvas) {
       const ctx = canvas.getContext('2d');
-      let W, H, particles = [];
+      if (!ctx) return;
+      let W: number = 0, H: number = 0, particles: any[] = [];
 
       const resize = () => {
         const hero = canvas.parentElement;
@@ -127,13 +128,13 @@ export default function EquinoxPage() {
 
 
 
-  const toggleFaq = (idx) => {
+  const toggleFaq = (idx: number) => {
     setOpenFaq(openFaq === idx ? null : idx);
   };
 
-  const handleForm = (e) => {
+  const handleForm = (e: React.FormEvent) => {
     e.preventDefault();
-    let errs = {};
+    let errs: any = {};
     if (formState.name.length < 3) errs.name = true;
     if (!/^[+()0-9\s.-]{9,}$/.test(formState.phone)) errs.phone = true;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(formState.email)) errs.email = true;
