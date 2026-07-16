@@ -104,9 +104,9 @@ export const ROOMS: Room[] = [
     cardPhotos: ["/camera-dubla-folder/poza-pat-si-camera.jpeg", "/camera-dubla-folder/birou-cu-priveliste.jpeg"],
     photos: [
       "/camera-dubla-folder/poza-pat-si-camera.jpeg",
-      "/camera-dubla-folder/raft_haine.jpg",
-      "/camera-dubla-folder/pat-tip-2.jpeg",
       "/camera-dubla-folder/birou-cu-priveliste.jpeg",
+      "/camera-dubla-folder/pat-tip-2.jpeg",
+      "/camera-dubla-folder/raft_haine.jpg",
       "/camera-dubla-folder/baie.jpeg",
     ],
     photoLabel: "[ cameră dublă ]",
