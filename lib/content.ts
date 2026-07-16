@@ -51,7 +51,10 @@ export type Room = {
   price: string; // "600"
   features: string[];
   photo: string; // hero photo on the detail page
-  cardPhotos?: [string, string]; // optional: 2 photos shown side-by-side on the listing card
+  cardPhotos?: [
+    string | { src: string; imgClassName?: string },
+    string | { src: string; imgClassName?: string }
+  ];
   photos: string[]; // full gallery on the detail page
   photoLabel: string; // fallback label if photo is missing
 };
@@ -158,7 +161,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
     ],
     photo: "/camera-balcon/poza-pat.jpeg",
-    cardPhotos: ["/camera-balcon/poza-jumate-pat-si-bec-noptiera.jpeg", "/camera-balcon/priveliste.jpeg"],
+    cardPhotos: [{ src: "/camera-balcon/poza-jumate-pat-si-bec-noptiera.jpeg", imgClassName: "object-left" }, "/camera-balcon/priveliste.jpeg"],
     photos: [
       "/camera-balcon/poza-jumate-pat-si-bec-noptiera.jpeg",
       "/camera-balcon/poza-din-pat-catre-birou.jpeg",
