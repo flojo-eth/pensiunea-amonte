@@ -152,11 +152,12 @@ export default function Home() {
             className="mb-[clamp(40px,5vw,64px)]"
           />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            {ROOMS.map((room) => (
+            {[ROOMS[1], ROOMS[2]].map((room) => (
               <RoomCard key={room.slug} room={room} />
             ))}
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-10 flex flex-wrap justify-center gap-6 text-center">
+            <SeeAll href="/camere">Vezi toate camerele</SeeAll>
             <SeeAll href="/camere/tarife">Vezi toate tarifele</SeeAll>
           </div>
         </div>

@@ -58,6 +58,32 @@ export type Room = {
 
 export const ROOMS: Room[] = [
   {
+    slug: "camera-dubla-deluxe",
+    name: "Cameră Dublă Deluxe",
+    spec: "2 persoane · spațioasă · vedere la munte",
+    desc: "Cameră spațioasă și elegantă, cu vedere la munte și facilități premium. Perfectă pentru o escapadă în doi.",
+    longDesc:
+      "Bucură-te de o cameră premium, mult mai spațioasă, dotată cu un dulap mare și mobilier elegant. Priveliștea către Munții Făgăraș completează perfect experiența unei vacanțe de vis.",
+    price: "650",
+    features: [
+      "2 persoane",
+      "Mic dejun inclus",
+      "Cameră spațioasă",
+      "Dulap mare",
+      "Vedere la munte",
+      "Încălzire în pardoseală",
+    ],
+    photo: "/camera-deluxe/placeholder.jpeg",
+    cardPhotos: ["/camera-deluxe/placeholder.jpeg", "/camera-deluxe/placeholder.jpeg"],
+    photos: [
+      "/camera-deluxe/placeholder.jpeg",
+      "/camera-deluxe/placeholder.jpeg",
+      "/camera-deluxe/placeholder.jpeg",
+      "/camera-deluxe/placeholder.jpeg",
+    ],
+    photoLabel: "[ cameră dublă deluxe ]",
+  },
+  {
     slug: "camera-dubla-vedere-munte",
     name: "Cameră dublă cu vedere la munte",
     spec: "2 persoane · balcon privat · vedere munte",
@@ -116,6 +142,31 @@ export const ROOMS: Room[] = [
       "/apartament/detalii_hol_bec.jpg",
     ],
     photoLabel: "[ studio familie ]",
+  },
+  {
+    slug: "camera-cu-balcon",
+    name: "Cameră cu Balcon",
+    spec: "2 persoane · balcon privat · vedere la pădure",
+    desc: "Cameră luminoasă cu balcon privat orientat spre pădure. Ideală pentru un sejur liniștit în mijlocul naturii.",
+    longDesc:
+      "Această cameră modernă oferă un balcon privat cu o priveliște liniștitoare spre pădure. Spațiul este gândit pentru confort absolut, incluzând micul dejun și acces la toate facilitățile pensiunii.",
+    price: "550",
+    features: [
+      "2 persoane",
+      "Mic dejun inclus",
+      "Balcon privat",
+      "Vedere la pădure",
+      "Încălzire în pardoseală",
+    ],
+    photo: "/camera-balcon/placeholder.jpeg",
+    cardPhotos: ["/camera-balcon/placeholder.jpeg", "/camera-balcon/placeholder.jpeg"],
+    photos: [
+      "/camera-balcon/placeholder.jpeg",
+      "/camera-balcon/placeholder.jpeg",
+      "/camera-balcon/placeholder.jpeg",
+      "/camera-balcon/placeholder.jpeg",
+    ],
+    photoLabel: "[ cameră cu balcon ]",
   },
 ];
 
@@ -455,7 +506,7 @@ export const AUDIENCES: Audience[] = [
     body: "Camere cu balcon privat și vedere la munte, jacuzzi și saună (contra cost), seri lângă șemineu. Locul unde încetiniți amândoi, departe de zgomot.",
     highlights: ["Cameră cu vedere la munte", "Jacuzzi & saună (contra cost)", "Living cu șemineu"],
     ctaLabel: "Vezi camerele",
-    ctaHref: "/camere/camera-dubla-vedere-munte",
+    ctaHref: "/camere/camera-dubla-deluxe",
   },
   {
     title: "Vacanță în familie",
