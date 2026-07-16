@@ -158,7 +158,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
     ],
     photo: "/camera-balcon/poza-pat.jpeg",
-    cardPhotos: ["/camera-balcon/poza-pat.jpeg", "/camera-balcon/balcon1.jpeg"],
+    cardPhotos: ["/camera-balcon/poza-jumate-pat-si-bec-noptiera.jpeg", "/camera-balcon/priveliste.jpeg"],
     photos: [
       "/camera-balcon/poza-pat.jpeg",
       "/camera-balcon/balcon1.jpeg",
