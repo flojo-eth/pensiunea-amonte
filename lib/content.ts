@@ -162,9 +162,9 @@ export const ROOMS: Room[] = [
     photos: [
       "/camera-balcon/poza-jumate-pat-si-bec-noptiera.jpeg",
       "/camera-balcon/poza-din-pat-catre-birou.jpeg",
-      "/camera-balcon/balcon2.jpeg",
-      "/camera-balcon/balcon1.jpeg",
       "/camera-balcon/poza-pat.jpeg",
+      "/camera-balcon/balcon1.jpeg",
+      "/camera-balcon/balcon2.jpeg",
       "/camera-balcon/priveliste.jpeg",
       "/camera-balcon/baie.jpeg",
       "/camera-balcon/detalii.jpeg",
