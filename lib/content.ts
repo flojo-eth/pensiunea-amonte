@@ -73,13 +73,13 @@ export const ROOMS: Room[] = [
       "Vedere la munte",
       "Încălzire în pardoseală",
     ],
-    photo: "/camera-deluxe/placeholder.jpeg",
-    cardPhotos: ["/camera-deluxe/placeholder.jpeg", "/camera-deluxe/placeholder.jpeg"],
+    photo: "/camera-deluxe/pat-tip-1.jpeg",
+    cardPhotos: ["/camera-deluxe/1-din-2.jpg", "/camera-deluxe/2-din-2.jpeg"],
     photos: [
-      "/camera-deluxe/placeholder.jpeg",
-      "/camera-deluxe/placeholder.jpeg",
-      "/camera-deluxe/placeholder.jpeg",
-      "/camera-deluxe/placeholder.jpeg",
+      "/camera-deluxe/1-din-2.jpg",
+      "/camera-deluxe/2-din-2.jpeg",
+      "/camera-deluxe/pat-tip-1.jpeg",
+      "/camera-deluxe/baie.jpeg",
     ],
     photoLabel: "[ cameră dublă deluxe ]",
   },
@@ -98,14 +98,13 @@ export const ROOMS: Room[] = [
       "Vedere la munte",
       "Încălzire în pardoseală",
     ],
-    // hero on the detail page: photo 3/6 (pat-tip-1)
-    photo: "/camera-dubla-folder/pat-tip-1.jpeg",
-    // card split: 1/6 left | 2/6 right
-    cardPhotos: ["/camera-dubla-folder/1-din-2.jpg", "/camera-dubla-folder/2-din-2.jpeg"],
+    // hero on the detail page
+    photo: "/camera-dubla-folder/poza-pat-si-camera.jpeg",
+    // card split
+    cardPhotos: ["/camera-dubla-folder/poza-pat-si-camera.jpeg", "/camera-dubla-folder/birou-cu-priveliste.jpeg"],
     photos: [
-      "/camera-dubla-folder/1-din-2.jpg",
-      "/camera-dubla-folder/2-din-2.jpeg",
-      "/camera-dubla-folder/pat-tip-1.jpeg",
+      "/camera-dubla-folder/poza-pat-si-camera.jpeg",
+      "/camera-dubla-folder/raft_haine.jpg",
       "/camera-dubla-folder/pat-tip-2.jpeg",
       "/camera-dubla-folder/birou-cu-priveliste.jpeg",
       "/camera-dubla-folder/baie.jpeg",
