@@ -44,7 +44,7 @@ export default function RezervaAcumPage() {
             { src: "/exterior-pensiune.jpeg", alt: "Exterior pensiune" },
             { src: "/camera-balcon.jpeg", alt: "Cameră cu balcon" },
             { src: "/poza_hero.jpg", alt: "Pensiunea Amonte" },
-            { src: "/camera-dubla-folder/1-din-2.jpg", alt: "Cameră dublă" },
+            { src: "/camera-dubla-folder/poza-pat-si-camera.jpeg", alt: "Cameră dublă" },
             { src: "/jacuzzi-sauna.jpeg", alt: "Jacuzzi & saună" },
           ].map((p, i) => (
             <PlaceholderImage
