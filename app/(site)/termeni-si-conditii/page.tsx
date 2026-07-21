@@ -4,6 +4,10 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Termeni și Condiții",
   description: "Termenii și condițiile de utilizare a serviciilor Pensiunii Amonte (Hostillo S.R.L.).",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const container = "mx-auto max-w-[850px] px-[clamp(20px,5vw,64px)] py-[clamp(48px,7vw,96px)]";

@@ -4,6 +4,10 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Politică de Cookie-uri",
   description: "Politica de utilizare a modulelor cookie pe site-ul Pensiunii Amonte.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const container = "mx-auto max-w-[850px] px-[clamp(20px,5vw,64px)] py-[clamp(48px,7vw,96px)]";

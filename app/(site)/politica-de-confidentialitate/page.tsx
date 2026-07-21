@@ -4,6 +4,10 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Politică de Confidențialitate (GDPR)",
   description: "Politica de confidențialitate și prelucrare a datelor cu caracter personal la Pensiunea Amonte.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const container = "mx-auto max-w-[850px] px-[clamp(20px,5vw,64px)] py-[clamp(48px,7vw,96px)]";
