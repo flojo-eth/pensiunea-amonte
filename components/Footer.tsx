@@ -136,9 +136,22 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-[1280px] border-t border-paper/10 pt-[22px] text-[13px] opacity-60">
-        © {new Date().getFullYear()} Pensiunea Amonte. Toate drepturile
-        rezervate.
+      <div className="mx-auto mt-10 max-w-[1280px] border-t border-paper/10 pt-[22px] text-[13px] opacity-60 flex flex-wrap justify-between gap-4">
+        <div>
+          © {new Date().getFullYear()} Pensiunea Amonte. Toate drepturile
+          rezervate.
+        </div>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px]">
+          <Link href="/termeni-si-conditii" className="no-underline hover:underline hover:text-paper">
+            Termeni și Condiții
+          </Link>
+          <Link href="/politica-de-confidentialitate" className="no-underline hover:underline hover:text-paper">
+            Politică de Confidențialitate
+          </Link>
+          <Link href="/politica-de-cookie-uri" className="no-underline hover:underline hover:text-paper">
+            Politică de Cookie-uri
+          </Link>
+        </div>
       </div>
     </footer>
   );
