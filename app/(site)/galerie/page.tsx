@@ -19,6 +19,7 @@ export default function GaleriePage() {
     <section className={`bg-pine py-[clamp(56px,7vw,96px)]`}>
       <div className={container}>
         <SectionHeading
+        as="h1"
           eyebrow="Galerie"
           title="Momente de la Amonte"
           tone="dark"

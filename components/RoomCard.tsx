@@ -1,6 +1,11 @@
 import Link from "next/link";
-import type { Room } from "@/lib/content";
+import type { CardPhoto, Room } from "@/lib/content";
 import PlaceholderImage from "./PlaceholderImage";
+
+const photoSrc = (p: CardPhoto | undefined) =>
+  typeof p === "string" ? p : p?.src;
+const photoClass = (p: CardPhoto | undefined) =>
+  typeof p === "string" ? "" : p?.imgClassName;
 
 export default function RoomCard({ room }: { room: Room }) {
   return (
@@ -10,11 +15,11 @@ export default function RoomCard({ room }: { room: Room }) {
           const leftVal = room.cardPhotos?.[0] ?? room.photos?.[0] ?? room.photo;
           const rightVal = room.cardPhotos?.[1] ?? room.photos?.[1];
 
-          const left = typeof leftVal === "string" ? leftVal : (leftVal as any)?.src;
-          const leftImgClass = typeof leftVal === "string" ? "" : (leftVal as any)?.imgClassName;
+          const left = photoSrc(leftVal);
+          const leftImgClass = photoClass(leftVal);
 
-          const right = typeof rightVal === "string" ? rightVal : (rightVal as any)?.src;
-          const rightImgClass = typeof rightVal === "string" ? "" : (rightVal as any)?.imgClassName;
+          const right = photoSrc(rightVal);
+          const rightImgClass = photoClass(rightVal);
 
           return right ? (
             <div className="grid aspect-[4/3] grid-cols-2 gap-[2px]">

@@ -19,6 +19,7 @@ export default function ActivitatiPage() {
   return (
     <section className={`${container} py-[clamp(56px,7vw,96px)]`}>
       <SectionHeading
+        as="h1"
         eyebrow="În jurul pensiunii"
         title="Activități în zonă"
         className="mb-[clamp(36px,5vw,56px)]"

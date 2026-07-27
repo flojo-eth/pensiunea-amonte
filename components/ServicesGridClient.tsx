@@ -34,7 +34,7 @@ export default function ServicesGridClient() {
           <button
             key={a.label}
             onClick={() => setSelected(idx)}
-            className="flex flex-col text-left outline-none overflow-hidden rounded-[10px] border border-sand bg-card-2 group relative transition-shadow duration-300 hover:shadow-[0_4px_12px_rgba(40,44,38,0.08)]"
+            className="flex flex-col text-left outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta overflow-hidden rounded-[10px] border border-sand bg-card-2 group relative transition-shadow duration-300 hover:shadow-[0_4px_12px_rgba(40,44,38,0.08)]"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden">
               <PlaceholderImage

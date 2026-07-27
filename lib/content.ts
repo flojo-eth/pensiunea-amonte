@@ -40,6 +40,9 @@ export const STATS = [
   { value: "30'", label: "De Sibiu" },
 ] as const;
 
+/** A card photo: either a plain path, or a path plus per-image classes. */
+export type CardPhoto = string | { src: string; imgClassName?: string };
+
 export type Room = {
   slug: string;
   name: string;
@@ -51,10 +54,7 @@ export type Room = {
   price: string; // "600"
   features: string[];
   photo: string; // hero photo on the detail page
-  cardPhotos?: [
-    string | { src: string; imgClassName?: string },
-    string | { src: string; imgClassName?: string }
-  ];
+  cardPhotos?: [CardPhoto, CardPhoto];
   photos: string[]; // full gallery on the detail page
   photoLabel: string; // fallback label if photo is missing
 };

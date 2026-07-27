@@ -17,6 +17,7 @@ export default function PoliticaCookieuriPage() {
   return (
     <article className={container}>
       <SectionHeading
+        as="h1"
         eyebrow="Aspecte legale"
         title="Politică de Cookie-uri"
         className="mb-12"

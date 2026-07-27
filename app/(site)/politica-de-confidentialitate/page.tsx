@@ -17,6 +17,7 @@ export default function PoliticaConfidentialitatePage() {
   return (
     <article className={container}>
       <SectionHeading
+        as="h1"
         eyebrow="Aspecte legale"
         title="Politică de Confidențialitate"
         className="mb-12"

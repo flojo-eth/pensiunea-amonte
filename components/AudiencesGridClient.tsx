@@ -33,33 +33,41 @@ export default function AudiencesGridClient() {
           <div
             key={audience.title}
             ref={(el) => { cardRefs.current[idx] = el; }}
-            onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-            className={`group relative flex flex-col rounded-[10px] border cursor-pointer overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-              isExpanded 
-                ? "border-sand bg-card-2 shadow-lg" 
+            className={`group relative flex flex-col rounded-[10px] border overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+              isExpanded
+                ? "border-sand bg-card-2 shadow-lg"
                 : "border-forest bg-pine hover:bg-pine/90 hover:shadow-md"
             }`}
           >
-            {/* Front indicator (small pulse or icon) */}
-            {!isExpanded && (
-              <div className="absolute top-4 right-4 text-paper/50 group-hover:text-paper transition-colors">
+            {/* The toggle is a real <button>, not the whole card: the expanded panel
+                contains a CTA link, and nesting a link inside a button is invalid.
+                Collapsed, this button covers the entire card, so mouse behaviour
+                is unchanged — but it is now reachable by keyboard. */}
+            <button
+              type="button"
+              onClick={() => setExpandedIndex(isExpanded ? null : idx)}
+              aria-expanded={isExpanded}
+              aria-controls={`audience-panel-${idx}`}
+              className={`w-full cursor-pointer p-[30px] flex flex-col items-center justify-center min-h-[140px] transition-all duration-500 outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-terracotta ${isExpanded ? 'pb-0 min-h-[100px]' : ''}`}
+            >
+              <span
+                aria-hidden="true"
+                className={`absolute top-4 right-4 transition-colors ${isExpanded ? "text-pine/50 z-10" : "text-paper/50 group-hover:text-paper"}`}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  {isExpanded ? (
+                    <>
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </>
+                  ) : (
+                    <>
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </>
+                  )}
                 </svg>
-              </div>
-            )}
-            {isExpanded && (
-               <div className="absolute top-4 right-4 text-pine/50 hover:text-pine transition-colors z-10">
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                   <line x1="18" y1="6" x2="6" y2="18"></line>
-                   <line x1="6" y1="6" x2="18" y2="18"></line>
-                 </svg>
-               </div>
-            )}
-
-            {/* Front of card */}
-            <div className={`p-[30px] flex flex-col items-center justify-center min-h-[140px] transition-all duration-500 ${isExpanded ? 'pb-0 min-h-[100px]' : ''}`}>
+              </span>
               <h3 className={`m-0 font-serif text-[28px] font-semibold text-center transition-colors duration-500 ${isExpanded ? "text-pine" : "text-paper"}`}>
                 {audience.title}
               </h3>
@@ -68,10 +76,15 @@ export default function AudiencesGridClient() {
                   Apasă pentru detalii
                 </span>
               )}
-            </div>
+            </button>
 
-            {/* Hidden content that expands on click */}
-            <div 
+            {/* Hidden content that expands on click.
+                `inert` while collapsed: the panel stays in the DOM for the
+                animation, so without it the hidden CTA link would still be
+                tabbable and announced by screen readers. */}
+            <div
+              id={`audience-panel-${idx}`}
+              inert={!isExpanded}
               className={`grid transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
                 isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
               }`}
@@ -91,7 +104,7 @@ export default function AudiencesGridClient() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-8" onClick={(e) => e.stopPropagation()}>
+                  <div className="mt-8">
                     {audience.ctaHref === "whatsapp" ? (
                       <WhatsAppButton className={`${btnTerracotta} w-full text-center`}>
                         {audience.ctaLabel}

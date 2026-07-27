@@ -17,6 +17,7 @@ export default function TermeniPage() {
   return (
     <article className={container}>
       <SectionHeading
+        as="h1"
         eyebrow="Aspecte legale"
         title="Termeni și Condiții"
         className="mb-12"

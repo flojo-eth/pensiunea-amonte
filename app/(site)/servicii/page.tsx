@@ -23,6 +23,7 @@ export default function ServiciiPage() {
       {/* ── FACILITĂȚI GRID ── */}
       <section className={`${container} ${pad}`}>
         <SectionHeading
+        as="h1"
           eyebrow="Ce găsești la noi"
           title="Servicii & facilități"
           className="mb-[clamp(36px,5vw,56px)]"

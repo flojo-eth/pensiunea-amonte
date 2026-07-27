@@ -4,7 +4,6 @@ import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import RoomCard from "@/components/RoomCard";
 import ActivityCard from "@/components/ActivityCard";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import AudiencesGridClient from "@/components/AudiencesGridClient";
 import ConsentMap from "@/components/ConsentMap";
@@ -19,9 +18,8 @@ import {
   CONTACT,
   LOCATION,
   GOOGLE_FORM_URL,
-  AUDIENCES,
 } from "@/lib/content";
-import { btnPaper, btnOutlineLight, btnTerracotta, btnOutlineDark } from "@/lib/ui";
+import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
 
 export const metadata: Metadata = {
   description:
