@@ -1,5 +1,11 @@
 // Single source of truth for site-wide identity, URLs and indexing.
-export const SITE_URL = "https://pensiunea-amonte.ro";
+//
+// MUST include the www: Vercel serves the site on www and 308-redirects the
+// apex to it. Declaring the apex here made every canonical, every sitemap entry
+// and the robots.txt sitemap line point at a URL that immediately redirects.
+// Keep this in step with WEBSITE in lib/content.ts and with the Vercel domain
+// configuration — if the redirect direction ever flips, both must follow.
+export const SITE_URL = "https://www.pensiunea-amonte.ro";
 
 // Indexarea activată pentru producție
 export const INDEXABLE = true;

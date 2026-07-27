@@ -8,9 +8,10 @@ export const WHATSAPP_URL =
 // Fallback when WhatsApp is unavailable.
 export const GOOGLE_FORM_URL = "https://forms.gle/Ft4iFEuRJUfbyAPV6";
 
-// Canonical visitor-facing domain (production). SITE_URL in site.ts is the
-// staging deployment; this is used in footer, JSON-LD, and all public links.
-export const WEBSITE = "https://pensiunea-amonte.ro";
+// Canonical visitor-facing domain, used in the footer link and as the JSON-LD
+// @id base. Must match SITE_URL in lib/site.ts and the host Vercel actually
+// serves (www — the apex 308-redirects to it).
+export const WEBSITE = "https://www.pensiunea-amonte.ro";
 
 // GPS coordinates - single source for JSON-LD geo across all pages.
 export const GPS_LAT = "45.66351517785169";
