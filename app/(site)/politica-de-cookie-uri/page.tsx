@@ -4,6 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Politică de Cookie-uri",
   description: "Politica de utilizare a modulelor cookie pe site-ul Pensiunii Amonte.",
+  alternates: { canonical: "/politica-de-cookie-uri" },
   robots: {
     index: false,
     follow: false,

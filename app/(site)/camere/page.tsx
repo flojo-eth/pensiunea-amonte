@@ -1,16 +1,18 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import SectionHeading from "@/components/SectionHeading";
 import RoomCard from "@/components/RoomCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { ROOMS } from "@/lib/content";
 import { btnTerracotta } from "@/lib/ui";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Camere",
   description:
     "Camerele Pensiunii Amonte: cameră dublă cu vedere la munte și studio de familie. Balcon privat, acces la jacuzzi & saună, terasă panoramică.",
-};
+  path: "/camere",
+});
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
 

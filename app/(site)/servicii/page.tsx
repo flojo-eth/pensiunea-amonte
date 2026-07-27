@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServicesGridClient from "@/components/ServicesGridClient";
@@ -6,11 +7,12 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { SERVICE_DETAILS } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Servicii & facilități",
   description:
     "Servicii la Pensiunea Amonte: mic dejun inclus, jacuzzi & saună (contra cost), living cu șemineu, bar, terasă panoramică, firepit, biciclete electrice, parcare și WiFi gratuite.",
-};
+  path: "/servicii",
+});
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
 const pad = "py-[clamp(56px,7vw,96px)]";

@@ -4,6 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Politică de Confidențialitate (GDPR)",
   description: "Politica de confidențialitate și prelucrare a datelor cu caracter personal la Pensiunea Amonte.",
+  alternates: { canonical: "/politica-de-confidentialitate" },
   robots: {
     index: false,
     follow: false,

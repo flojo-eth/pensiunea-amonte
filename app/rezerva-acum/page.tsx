@@ -1,15 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import BookingCalendar from "@/components/BookingCalendar";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { CONTACT, GOOGLE_FORM_URL, CANCELLATION } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Rezervă acum",
   description:
     "Verifică disponibilitatea și rezervă-ți sejurul la Pensiunea Amonte, în Valea Avrigului - la 30 de minute de Sibiu. Jacuzzi & saună, terasă panoramică.",
-  alternates: { canonical: "/rezerva-acum" },
-};
+  path: "/rezerva-acum",
+});
 
 export default function RezervaAcumPage() {
   return (
