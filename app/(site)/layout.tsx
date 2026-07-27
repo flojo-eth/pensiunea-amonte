@@ -82,9 +82,20 @@ export default function SiteLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(lodgingJsonLd) }}
       />
+      {/* Invisible until focused. Lets a keyboard user jump the promo banner and
+          the whole nav instead of tabbing through them on every page. */}
+      <a
+        href="#continut"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-paper focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-pine focus:shadow-lg focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-terracotta"
+      >
+        Sari la conținut
+      </a>
       <AvailabilityBanner />
       <Nav />
-      <main>{children}</main>
+      {/* tabIndex -1 so the skip link can actually move focus here, not just scroll */}
+      <main id="continut" tabIndex={-1} className="outline-none">
+        {children}
+      </main>
       <Footer />
     </>
   );

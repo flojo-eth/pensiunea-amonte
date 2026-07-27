@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import CurrentYear from "./CurrentYear";
 import { CONTACT, NAV_LINKS, WEBSITE, SOCIAL_PROFILES } from "@/lib/content";
 
 export default function Footer() {
@@ -51,7 +52,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap gap-[clamp(32px,5vw,72px)]">
           <div className="flex flex-col gap-2.5">
-            <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/45">
+            <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/60">
               Navigare
             </div>
             {NAV_LINKS.map((l) => (
@@ -65,7 +66,7 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-col gap-2.5">
-            <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/45">
+            <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/60">
               Contact
             </div>
             <a
@@ -116,10 +117,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-[1280px] border-t border-paper/10 pt-[22px] text-[13px] opacity-60 flex flex-wrap justify-between gap-4">
+      <div className="mx-auto mt-10 max-w-[1280px] border-t border-paper/10 pt-[22px] text-[13px] text-paper/60 flex flex-wrap justify-between gap-4">
         <div>
-          © {new Date().getFullYear()} Pensiunea Amonte. Toate drepturile
-          rezervate.
+          © <CurrentYear fallback={new Date().getFullYear()} /> Pensiunea
+          Amonte. Toate drepturile rezervate.
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px]">
           <Link href="/termeni-si-conditii" className="no-underline hover:underline hover:text-paper">

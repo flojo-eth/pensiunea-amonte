@@ -3,28 +3,23 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import PlaceholderImage from "./PlaceholderImage";
+import Lightbox from "./Lightbox";
 import { AMENITIES } from "@/lib/content";
 
 export default function ServicesGridClient() {
   const [selected, setSelected] = useState<number | null>(null);
   const selectedAmenity = selected !== null ? AMENITIES[selected] : null;
 
+  // Escape, the scroll lock and focus management live in <Lightbox>; only the
+  // arrow-key navigation between amenities is this component's concern.
   useEffect(() => {
+    if (selected === null) return;
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setSelected(null);
       if (e.key === "ArrowRight") setSelected((i) => i !== null ? (i + 1) % AMENITIES.length : null);
       if (e.key === "ArrowLeft") setSelected((i) => i !== null ? (i - 1 + AMENITIES.length) % AMENITIES.length : null);
     }
-    if (selected !== null) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selected]);
 
   return (
@@ -59,9 +54,9 @@ export default function ServicesGridClient() {
 
       {/* Lightbox Modal */}
       {selectedAmenity && selected !== null && (
-        <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4"
-          onClick={() => setSelected(null)}
+        <Lightbox
+          label={`${selectedAmenity.label} — ${selected + 1} din ${AMENITIES.length}`}
+          onClose={() => setSelected(null)}
         >
           {/* Close button */}
           <button
@@ -115,7 +110,7 @@ export default function ServicesGridClient() {
               {selectedAmenity.icon} {selectedAmenity.label} &nbsp;·&nbsp; {selected + 1} / {AMENITIES.length}
             </span>
           </div>
-        </div>
+        </Lightbox>
       )}
     </>
   );

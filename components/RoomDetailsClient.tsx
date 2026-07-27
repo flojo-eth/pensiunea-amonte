@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Eyebrow from "./Eyebrow";
 import PlaceholderImage from "./PlaceholderImage";
+import Lightbox from "./Lightbox";
 import type { Room } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
@@ -24,9 +25,11 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
     [room.photos, room.photo],
   );
 
+  // Escape, the scroll lock and focus management live in <Lightbox>; only the
+  // arrow-key navigation between photos is this component's concern.
   useEffect(() => {
+    if (!selectedPhoto) return;
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setSelectedPhoto(null);
       if (e.key === "ArrowRight") setSelectedPhoto((s) =>
         s ? { photo: allPhotos[(s.index + 1) % allPhotos.length], index: (s.index + 1) % allPhotos.length } : null
       );
@@ -34,16 +37,8 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
         s ? { photo: allPhotos[(s.index - 1 + allPhotos.length) % allPhotos.length], index: (s.index - 1 + allPhotos.length) % allPhotos.length } : null
       );
     }
-    if (selectedPhoto) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedPhoto, allPhotos]);
 
   return (
@@ -144,9 +139,9 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
 
       {/* Lightbox Modal */}
       {selectedPhoto && (
-        <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4 transition-opacity duration-300"
-          onClick={() => setSelectedPhoto(null)}
+        <Lightbox
+          label={`${room.name} — fotografia ${selectedPhoto.index + 1} din ${allPhotos.length}`}
+          onClose={() => setSelectedPhoto(null)}
         >
           {/* Close button */}
           <button
@@ -203,7 +198,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
               {room.name} ({selectedPhoto.index + 1} / {allPhotos.length})
             </div>
           </div>
-        </div>
+        </Lightbox>
       )}
     </section>
   );
