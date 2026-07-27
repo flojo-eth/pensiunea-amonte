@@ -20,6 +20,28 @@ export const GPS_LNG = "24.45150864765203";
 // Used in structured data PostalAddress.
 export const POSTAL_CODE = "555200";
 
+// Google Maps link. Shared by the footer, the consent-gated map placeholder and
+// the `hasMap` property of the JSON-LD, so all three stay in step.
+export const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${GPS_LAT},${GPS_LNG}`;
+
+// Official profiles. Rendered in the footer and emitted as `sameAs` in the
+// JSON-LD, which is how Google confirms these all describe the same entity.
+export const SOCIAL_PROFILES = [
+  { label: "Instagram", url: "https://www.instagram.com/pensiunea.amonte?igsh=MXB3M2g4cHFuYWl6Ng==" },
+  { label: "Facebook", url: "https://www.facebook.com/pensiunea.amonte.avrig" },
+  { label: "TikTok", url: "https://www.tiktok.com/@pensiunea.amonte?_r=1&_t=ZN-97nsYK9mblG" },
+  { label: "LinkedIn", url: "https://ro.linkedin.com/showcase/pensiunea-amonte-avrig/?trk=affiliated-pages" },
+] as const;
+
+// Photos for the JSON-LD `image` property. Google asks for several aspect
+// ratios (16:9, 4:3, 1:1) and requires absolute URLs.
+export const SCHEMA_IMAGES = [
+  "/og-amonte.jpg", // 16:9
+  "/exterior-pensiune.jpeg",
+  "/poza_hero.jpg",
+  "/salon.jpeg",
+].map((p) => `${WEBSITE}${p}`);
+
 // Check-in / check-out times (24 h format, kit-confirmed).
 export const CHECK_IN = "15:00";
 export const CHECK_OUT = "12:00";
@@ -180,6 +202,16 @@ export const ROOMS: Room[] = [
 export function getRoom(slug: string): Room | undefined {
   return ROOMS.find((r) => r.slug === slug);
 }
+
+/**
+ * Nightly price range, for the JSON-LD `priceRange`.
+ * Derived from ROOMS so it can never drift from the published rates — note that
+ * `price` is free text ("de la 800"), hence the digit extraction.
+ */
+const roomPrices = ROOMS.map((r) => Number(r.price.replace(/\D/g, ""))).filter(
+  (n) => Number.isFinite(n) && n > 0,
+);
+export const PRICE_RANGE = `${Math.min(...roomPrices)}–${Math.max(...roomPrices)} RON`;
 
 export type Amenity = {
   icon: string;

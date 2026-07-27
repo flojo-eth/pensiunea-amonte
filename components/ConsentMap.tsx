@@ -1,13 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { GPS_LAT, GPS_LNG, CONTACT } from "@/lib/content";
+import { CONTACT, GOOGLE_MAPS_URL } from "@/lib/content";
 import { useConsent } from "@/lib/useConsent";
 
 const EMBED_SRC =
   "https://maps.google.com/maps?q=Pensiunea%20Amonte,%20Avrig,%20Romania&t=&z=13&ie=UTF8&iwloc=&output=embed";
-
-const DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${GPS_LAT},${GPS_LNG}`;
 
 /**
  * Google Maps embed, gated on cookie consent.
@@ -55,7 +53,7 @@ export default function ConsentMap() {
               Afișează harta
             </button>
             <a
-              href={DIRECTIONS_URL}
+              href={GOOGLE_MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[13px] font-semibold text-forest underline-offset-2 hover:underline"

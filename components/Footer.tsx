@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { CONTACT, NAV_LINKS, WEBSITE } from "@/lib/content";
+import { CONTACT, NAV_LINKS, WEBSITE, SOCIAL_PROFILES } from "@/lib/content";
 
 export default function Footer() {
   return (
@@ -95,42 +96,21 @@ export default function Footer() {
             >
               {CONTACT.email}
             </a>
+            {/* Same list feeds `sameAs` in the JSON-LD — see lib/content.ts */}
             <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1 text-sm text-paper/80">
-              <a
-                href="https://www.instagram.com/pensiunea.amonte?igsh=MXB3M2g4cHFuYWl6Ng=="
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-paper"
-              >
-                Instagram
-              </a>
-              <span className="opacity-40">·</span>
-              <a
-                href="https://www.facebook.com/pensiunea.amonte.avrig"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-paper"
-              >
-                Facebook
-              </a>
-              <span className="opacity-40">·</span>
-              <a
-                href="https://www.tiktok.com/@pensiunea.amonte?_r=1&_t=ZN-97nsYK9mblG"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-paper"
-              >
-                TikTok
-              </a>
-              <span className="opacity-40">·</span>
-              <a
-                href="https://ro.linkedin.com/showcase/pensiunea-amonte-avrig/?trk=affiliated-pages"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-paper"
-              >
-                LinkedIn
-              </a>
+              {SOCIAL_PROFILES.map((s, i) => (
+                <Fragment key={s.url}>
+                  {i > 0 && <span className="opacity-40">·</span>}
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-paper"
+                  >
+                    {s.label}
+                  </a>
+                </Fragment>
+              ))}
             </div>
           </div>
         </div>
