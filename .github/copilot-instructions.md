@@ -33,7 +33,8 @@ Keep responses concise and actionable. This is a small Next.js app using the App
   - Linting: run `npm run lint`. ESLint config composes `eslint-config-next` with small overrides in [eslint.config.mjs](eslint.config.mjs).
 
 - Integration & deployment:
-  - The app is optimized for Vercel (standard Next.js deployment). There are no special environment variables in the repo.
+  - The app is optimized for Vercel (standard Next.js deployment).
+  - `/api/calendar` requires a Google service account: `GOOGLE_CLIENT_EMAIL`, `GOOGLE_PRIVATE_KEY`, `GOOGLE_CALENDAR_ID`. They live in `.env.local` (gitignored, never committed) and must also be set in Vercel. Never log or echo these values. See [CLAUDE.md](../CLAUDE.md) for the full architecture and the metadata/date/consent traps.
 
 - When committing changes:
   - Use small, focused commits. For UI tweaks, include before/after screenshots in the PR description if visual regression is possible.

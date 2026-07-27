@@ -2,11 +2,28 @@ import { NextResponse } from "next/server";
 import { google } from "googleapis";
 
 /**
+ * Cache the response for 5 minutes.
+ *
+ * Without this, the route is public, unauthenticated and uncached, so every
+ * anonymous page view turns into a live Google Calendar API call. That maps
+ * ordinary traffic 1:1 onto a quota-limited third-party API and lets anyone
+ * exhaust it — and because the route fails open (see the catch below), an
+ * exhausted quota would present every booked date as available.
+ *
+ * Bookings are confirmed over WhatsApp anyway, so 5 minutes of staleness costs
+ * nothing next to the protection it buys.
+ */
+export const revalidate = 300;
+
+/**
  * GET /api/calendar
  *
  * Fetches events from Google Calendar via Service Account and returns
  * only an array of blocked date strings (YYYY-MM-DD). No sensitive
  * guest data ever reaches the browser.
+ *
+ * `stale: true` means availability could not be determined. The client must
+ * surface that instead of treating the empty list as "everything is free".
  */
 export async function GET() {
   try {
@@ -15,8 +32,11 @@ export async function GET() {
     const calendarId = process.env.GOOGLE_CALENDAR_ID;
 
     if (!clientEmail || !privateKey || !calendarId) {
-      // Credentials not configured yet — return empty
-      return NextResponse.json({ blockedDates: [] });
+      // Credentials not configured — availability is unknown, not "all free".
+      console.error(
+        "Calendar API: missing GOOGLE_CLIENT_EMAIL / GOOGLE_PRIVATE_KEY / GOOGLE_CALENDAR_ID",
+      );
+      return NextResponse.json({ blockedDates: [], stale: true });
     }
 
     const auth = new google.auth.GoogleAuth({
@@ -74,9 +94,11 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json({ blockedDates: [...blocked] });
+    return NextResponse.json({ blockedDates: [...blocked], stale: false });
   } catch (error) {
     console.error("Calendar API error:", error);
-    return NextResponse.json({ blockedDates: [] });
+    // Fail open on the data, but flag it: the client shows a "confirm with us"
+    // notice rather than presenting booked dates as available.
+    return NextResponse.json({ blockedDates: [], stale: true });
   }
 }

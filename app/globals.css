@@ -24,7 +24,10 @@
   /* Text */
   --color-ink: #2a2c26;
   --color-muted: #5c5d54;
-  --color-muted-2: #8a8b80;
+  /* Darkened from #8a8b80, which scored 2.96:1 on --color-cream — below the
+     4.5:1 WCAG AA threshold for the body text it is used on (prices, specs,
+     captions). Now 4.56:1 on cream and 5.10:1 on card. */
+  --color-muted-2: #6b6c62;
 
   /* Lines / light text on dark */
   --color-line: #ece5d7;
@@ -49,6 +52,21 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Respect an OS-level request for reduced motion: smooth scrolling and the
+     banner slide-in can trigger nausea for motion-sensitive visitors. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
   body {
     background: var(--color-cream);
     color: var(--color-ink);
@@ -58,15 +76,5 @@
   ::selection {
     background: var(--color-forest);
     color: var(--color-card-2);
-  }
-}
-
-@keyframes amBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(7px);
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Eyebrow from "./Eyebrow";
@@ -16,8 +16,13 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
     index: number;
   } | null>(null);
 
-  // Must be declared before useEffect so arrow key handler can close over it
-  const allPhotos = room.photos && room.photos.length > 0 ? room.photos : [room.photo];
+  // Must be declared before useEffect so the arrow-key handler can close over it.
+  // Memoised because the fallback branch allocates a fresh array on every render,
+  // which would tear down and re-add the keydown listener each time.
+  const allPhotos = useMemo(
+    () => (room.photos && room.photos.length > 0 ? room.photos : [room.photo]),
+    [room.photos, room.photo],
+  );
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -53,7 +58,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
       {/* Main photo - clickable to open lightbox */}
       <button
         onClick={() => setSelectedPhoto({ photo: room.photo, index: allPhotos.indexOf(room.photo) !== -1 ? allPhotos.indexOf(room.photo) : 0 })}
-        className="mt-6 aspect-[16/9] w-full text-left outline-none overflow-hidden rounded-xl group relative block"
+        className="mt-6 aspect-[16/9] w-full text-left outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta overflow-hidden rounded-xl group relative block"
       >
         <PlaceholderImage
           src={room.photo}
@@ -121,7 +126,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
               <button
                 key={p}
                 onClick={() => setSelectedPhoto({ photo: p, index: idx })}
-                className="group relative aspect-[4/3] w-full text-left outline-none overflow-hidden rounded-lg block"
+                className="group relative aspect-[4/3] w-full text-left outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta overflow-hidden rounded-lg block"
               >
                 <PlaceholderImage
                   src={p}

@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Script from "next/script";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { STATS, CONTACT, WEBSITE, CHECK_IN, CHECK_OUT, HOSTS, CANCELLATION, FIRE_SAFETY_AUTH } from "@/lib/content";
 import { SHOW_FB_AND_EVENTS } from "@/lib/site";
-import { btnTerracotta, btnOutlineLight } from "@/lib/ui";
+import { btnTerracotta } from "@/lib/ui";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Despre noi - Pensiunea Amonte, cazare boutique în Valea Avrigului",
   description:
     "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, terasă, sală pentru grupuri. La 30 min de Sibiu.",
-  alternates: { canonical: "/despre-noi" },
-};
+  path: "/despre-noi",
+});
 
 // ── FAQ data ─── sync 1:1 cu FAQPage JSON-LD de mai jos ──────────────────────
 const FAQ_BASE = [
@@ -365,7 +365,7 @@ export default function DesprePage() {
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">
-                    Castelul de Lut „Valea Zânelor"
+                    Castelul de Lut „Valea Zânelor&rdquo;
                   </strong>
                   , Porumbacu de Sus: la câteva minute de Avrig
                 </li>

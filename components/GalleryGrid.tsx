@@ -34,7 +34,7 @@ export default function GalleryGrid() {
           <button
             key={g.label}
             onClick={() => setSelected(idx)}
-            className={`group relative text-left outline-none overflow-hidden rounded-lg ${
+            className={`group relative text-left outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta overflow-hidden rounded-lg ${
               g.span === 2 ? "row-span-2" : ""
             }`}
           >

@@ -4,9 +4,9 @@ import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import RoomCard from "@/components/RoomCard";
 import ActivityCard from "@/components/ActivityCard";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import AudiencesGridClient from "@/components/AudiencesGridClient";
+import ConsentMap from "@/components/ConsentMap";
 import {
   ROOMS,
   ACTIVITIES,
@@ -18,13 +18,13 @@ import {
   CONTACT,
   LOCATION,
   GOOGLE_FORM_URL,
-  AUDIENCES,
 } from "@/lib/content";
-import { btnPaper, btnOutlineLight, btnTerracotta, btnOutlineDark } from "@/lib/ui";
+import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
 
 export const metadata: Metadata = {
   description:
     "Pensiunea Amonte - refugiu de munte în Valea Avrigului, la 30 de minute de Sibiu. 10 spații de cazare, jacuzzi & saună, terasă panoramică. Cere disponibilitate pe WhatsApp.",
+  alternates: { canonical: "/" },
 };
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
@@ -336,18 +336,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="relative min-h-[340px] flex-[1.4] basis-[380px] rounded-xl overflow-hidden bg-[#e9e8e2]">
-          <iframe
-            src="https://maps.google.com/maps?q=Pensiunea%20Amonte,%20Avrig,%20Romania&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={false}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 h-full w-full"
-          ></iframe>
-        </div>
+        <ConsentMap />
       </section>
     </>
   );

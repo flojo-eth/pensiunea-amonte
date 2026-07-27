@@ -7,11 +7,12 @@ import "./globals.css";
 import {
   SITE_URL,
   SITE_NAME,
-  SITE_TAGLINE,
   SITE_DESCRIPTION,
   INDEXABLE,
   GTM_ID,
 } from "@/lib/site";
+import { siteOpenGraph, DEFAULT_TITLE, OG_IMAGE } from "@/lib/seo";
+import { consentBootstrapScript } from "@/lib/consent";
 
 // Headings (serif) + body (sans), exposed as CSS variables for the Tailwind theme.
 const cormorant = Cormorant_Garamond({
@@ -31,12 +32,15 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
+    default: DEFAULT_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  alternates: { canonical: "/" },
+  // NOTE: no `alternates` here on purpose. Next.js merges metadata shallowly, so a
+  // canonical set at the root is inherited by every page that does not override it —
+  // which made 8 pages declare themselves duplicates of the homepage. Each page now
+  // sets its own canonical via `pageMeta()` in lib/seo.ts.
   // Staging is noindex (INDEXABLE === false). Flip INDEXABLE in lib/site.ts at
   // migration to pensiunea-amonte.ro to allow indexing.
   robots: INDEXABLE
@@ -52,25 +56,12 @@ export const metadata: Metadata = {
         },
       }
     : { index: false, follow: false },
-  openGraph: {
-    type: "website",
-    locale: "ro_RO",
-    url: "/",
-    siteName: SITE_NAME,
-    title: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
-    description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: "/exterior-pensiune.jpeg",
-        alt: `${SITE_NAME} - ${SITE_TAGLINE}`,
-      },
-    ],
-  },
+  openGraph: siteOpenGraph,
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
+    title: DEFAULT_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/exterior-pensiune.jpeg"],
+    images: [OG_IMAGE],
   },
 };
 
@@ -82,6 +73,12 @@ export default function RootLayout({
   return (
     <html lang="ro">
       <head>
+        {/* Google Consent Mode v2 defaults.
+            A plain inline script, not next/script: it must run during HTML parse,
+            before the GTM loader below, so every tag starts in a denied state.
+            A returning visitor's stored choice is replayed here too — doing it
+            later (from React) would leave GTM denied for the first 500 ms. */}
+        <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript() }} />
         {/* Google Tag Manager - GA4 (G-KX3GQHYHF6) is delivered through GTM.
             Active on staging so whatsapp_click can be verified in GTM Preview. */}
         <Script id="gtm" strategy="afterInteractive">

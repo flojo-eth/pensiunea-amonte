@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { pushDataLayer } from "@/lib/gtm";
+import { useIsHydrated } from "@/lib/hooks";
 
 // ── Helpers (zero deps) ──────────────────────────────────────────────
 
@@ -37,45 +39,95 @@ function startDayOfWeek(year: number, month: number) {
   return d === 0 ? 6 : d - 1; // Monday = 0
 }
 
+function startOfToday() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+
+/** Pre-hydration placeholder. Mirrors the real calendar's box so nothing shifts. */
+function CalendarSkeleton() {
+  return (
+    <div
+      className="flex flex-col rounded-2xl border border-line bg-card p-[clamp(20px,4vw,32px)]"
+      aria-busy="true"
+    >
+      <div className="text-center mb-5">
+        <h2 className="font-serif text-[clamp(22px,3vw,28px)] font-semibold text-pine mb-1">
+          Alege perioada dorită
+        </h2>
+        <p className="text-[14px] text-muted">
+          Selectează ziua de sosire și ziua de plecare
+        </p>
+      </div>
+      <div className="grid grid-cols-7 mb-1">
+        {DAYS_RO.map((d) => (
+          <div
+            key={d}
+            className="py-2 text-center text-[12px] font-semibold uppercase tracking-wider text-muted-2"
+          >
+            {d}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7" aria-hidden="true">
+        {Array.from({ length: 42 }, (_, i) => (
+          <div key={i} className="aspect-square" />
+        ))}
+      </div>
+      <p className="mt-5 pt-5 border-t border-line text-center text-[14px] text-muted">
+        Se încarcă disponibilitatea…
+      </p>
+    </div>
+  );
+}
+
 // ── Component ────────────────────────────────────────────────────────
 
 export default function BookingCalendar() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const [month, setMonth] = useState(today.getMonth());
-  const [year, setYear] = useState(today.getFullYear());
+  // `today` must NOT be computed during render. /rezerva-acum is statically
+  // prerendered, so a render-time date gets baked into the HTML at build time and
+  // then disagrees with the browser on every subsequent day — a hydration mismatch
+  // that shows visitors the build month with the wrong days disabled. The month in
+  // view is therefore stored as an offset from "now", which is stable across
+  // server and client, and the actual date is only read once hydrated.
+  const isHydrated = useIsHydrated();
+  const [monthOffset, setMonthOffset] = useState(0);
 
   const [checkIn, setCheckIn] = useState<Date | null>(null);
   const [checkOut, setCheckOut] = useState<Date | null>(null);
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 
   const [blockedKeys, setBlockedKeys] = useState<Set<string>>(new Set());
+  // True when availability could not be read. The API fails open (empty list), so
+  // without this the calendar would silently present booked dates as free.
+  const [availabilityUnknown, setAvailabilityUnknown] = useState(false);
 
   // Fetch blocked dates from API
   useEffect(() => {
-    fetch("/api/calendar")
-      .then((r) => r.json())
+    const controller = new AbortController();
+    fetch("/api/calendar", { signal: controller.signal })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((data) => {
-        if (data.blockedDates) {
-          setBlockedKeys(new Set(data.blockedDates));
+        if (Array.isArray(data.blockedDates)) {
+          setBlockedKeys(new Set<string>(data.blockedDates));
         }
+        if (data.stale) setAvailabilityUnknown(true);
       })
-      .catch(() => {});
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.name === "AbortError") return;
+        setAvailabilityUnknown(true);
+      });
+    return () => controller.abort();
   }, []);
 
   // Navigation
-  const prevMonth = () => {
-    if (month === 0) { setMonth(11); setYear(year - 1); }
-    else setMonth(month - 1);
-  };
-  const nextMonth = () => {
-    if (month === 11) { setMonth(0); setYear(year + 1); }
-    else setMonth(month + 1);
-  };
+  const prevMonth = () => setMonthOffset((o) => Math.max(0, o - 1));
+  const nextMonth = () => setMonthOffset((o) => o + 1);
 
-  // Can't go before current month
-  const canPrev = year > today.getFullYear() || (year === today.getFullYear() && month > today.getMonth());
+  // Can't go before the current month
+  const canPrev = monthOffset > 0;
 
   // Click handler
   const handleDayClick = useCallback(
@@ -103,6 +155,15 @@ export default function BookingCalendar() {
         `Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte în perioada ${formatRo(checkIn)} - ${formatRo(checkOut)}.`,
       )}`
     : null;
+
+  // Everything below depends on the current date, so it is only rendered once
+  // hydrated. The skeleton keeps the same footprint to avoid a layout shift.
+  if (!isHydrated) return <CalendarSkeleton />;
+
+  const today = startOfToday();
+  const view = new Date(today.getFullYear(), today.getMonth() + monthOffset, 1);
+  const month = view.getMonth();
+  const year = view.getFullYear();
 
   // Build calendar grid
   const totalDays = daysInMonth(year, month);
@@ -204,6 +265,17 @@ export default function BookingCalendar() {
         })}
       </div>
 
+      {/* Availability feed unreachable — say so rather than implying everything is free */}
+      {availabilityUnknown && (
+        <p
+          role="status"
+          className="mt-4 rounded-lg bg-terracotta/10 px-4 py-3 text-center text-[13px] leading-relaxed text-[#7c531f]"
+        >
+          Nu am putut încărca disponibilitatea în acest moment. Datele afișate ca
+          libere sunt orientative — te rugăm să confirmi perioada cu noi.
+        </p>
+      )}
+
       {/* Selected range display */}
       <div className="mt-5 pt-5 border-t border-line">
         <div className="text-center text-[15px] font-medium text-pine min-h-[24px] mb-4">
@@ -226,12 +298,10 @@ export default function BookingCalendar() {
               e.preventDefault(); 
             } else {
               // GTM Tracking
-              const win = window as any;
-              win.dataLayer = win.dataLayer || [];
-              win.dataLayer.push({
-                event: 'whatsapp_click',
-                event_category: 'conversion',
-                event_label: 'Rezervare WhatsApp'
+              pushDataLayer({
+                event: "whatsapp_click",
+                event_category: "conversion",
+                event_label: "Rezervare WhatsApp",
               });
             }
           }}

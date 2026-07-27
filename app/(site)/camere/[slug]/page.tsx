@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import RoomDetailsClient from "@/components/RoomDetailsClient";
 import { ROOMS, getRoom } from "@/lib/content";
 
@@ -17,11 +18,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const room = getRoom(slug);
   if (!room) return {};
-  return {
+  // The room's own hero photo makes the WhatsApp share preview show that room
+  // rather than the generic exterior shot.
+  return pageMeta({
     title: room.name,
     description: room.desc,
-    alternates: { canonical: `/camere/${room.slug}` },
-  };
+    path: `/camere/${room.slug}`,
+    image: room.photo,
+  });
 }
 
 export default async function RoomPage({

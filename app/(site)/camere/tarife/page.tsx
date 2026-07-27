@@ -1,15 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import SectionHeading from "@/components/SectionHeading";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { ROOMS } from "@/lib/content";
 import { btnTerracotta } from "@/lib/ui";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Tarife cazare",
   description:
     "Tarifele Pensiunii Amonte: cameră dublă cu vedere la munte - 600 lei/noapte (mic dejun inclus), studio de familie de la 800 lei/noapte. Cere disponibilitate pe WhatsApp.",
-};
+  path: "/camere/tarife",
+});
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
 
@@ -17,6 +18,7 @@ export default function TarifePage() {
   return (
     <section className={`${container} py-[clamp(56px,7vw,96px)]`}>
       <SectionHeading
+        as="h1"
         eyebrow="Cazare"
         title="Tarife"
         className="mb-[clamp(36px,5vw,56px)]"
