@@ -46,3 +46,7 @@ files 2/
 
 # Claude Code session data (local only)
 .claude/
+
+# Legal PDFs: the served source of truth is app/(site)/termeni-si-conditii
+# and app/(site)/politica-de-confidentialitate. Kept locally as archives.
+*.pdf
