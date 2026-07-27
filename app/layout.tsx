@@ -12,6 +12,7 @@ import {
   GTM_ID,
 } from "@/lib/site";
 import { siteOpenGraph, DEFAULT_TITLE, OG_IMAGE } from "@/lib/seo";
+import { consentBootstrapScript } from "@/lib/consent";
 
 // Headings (serif) + body (sans), exposed as CSS variables for the Tailwind theme.
 const cormorant = Cormorant_Garamond({
@@ -72,6 +73,12 @@ export default function RootLayout({
   return (
     <html lang="ro">
       <head>
+        {/* Google Consent Mode v2 defaults.
+            A plain inline script, not next/script: it must run during HTML parse,
+            before the GTM loader below, so every tag starts in a denied state.
+            A returning visitor's stored choice is replayed here too — doing it
+            later (from React) would leave GTM denied for the first 500 ms. */}
+        <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript() }} />
         {/* Google Tag Manager - GA4 (G-KX3GQHYHF6) is delivered through GTM.
             Active on staging so whatsapp_click can be verified in GTM Preview. */}
         <Script id="gtm" strategy="afterInteractive">

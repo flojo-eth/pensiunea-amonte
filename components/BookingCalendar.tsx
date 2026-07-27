@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { pushDataLayer } from "@/lib/gtm";
+import { useIsHydrated } from "@/lib/hooks";
 
 // ── Helpers (zero deps) ──────────────────────────────────────────────
 
@@ -44,17 +45,6 @@ function startOfToday() {
   return d;
 }
 
-// Reports false on the server and during the first client render, true afterwards.
-// Lets us keep every date-dependent value out of the prerendered HTML without
-// calling setState from an effect.
-const noopSubscribe = () => () => {};
-function useIsHydrated() {
-  return useSyncExternalStore(
-    noopSubscribe,
-    () => true,
-    () => false,
-  );
-}
 
 /** Pre-hydration placeholder. Mirrors the real calendar's box so nothing shifts. */
 function CalendarSkeleton() {
