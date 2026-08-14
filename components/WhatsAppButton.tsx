@@ -1,18 +1,18 @@
 "use client";
 
 import { WHATSAPP_URL } from "@/lib/content";
-
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
+import { pushDataLayer } from "@/lib/gtm";
 
 type Props = {
   children: React.ReactNode;
   className?: string;
   /** Override the destination if ever needed; defaults to the tracked WA link. */
   href?: string;
+  /**
+   * Tags the conversion with its origin, e.g. "retreat-corporate", so B2B and
+   * leisure clicks can be told apart in GA4. Omitted for the site-wide CTAs.
+   */
+  pageSource?: string;
 };
 
 /**
@@ -26,10 +26,13 @@ export default function WhatsAppButton({
   children,
   className,
   href = WHATSAPP_URL,
+  pageSource,
 }: Props) {
   function handleClick() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: "whatsapp_click" });
+    pushDataLayer({
+      event: "whatsapp_click",
+      ...(pageSource ? { page_source: pageSource } : {}),
+    });
   }
 
   return (

@@ -1,9 +1,17 @@
 // Real, validated content for Pensiunea Amonte (extracted from the approved
 // design prototype). Conversion is WhatsApp-only - there is no custom form.
 
+export const WHATSAPP_NUMBER = "40747342280";
+
+/** Builds a wa.me link with a pre-filled message. */
+export function whatsappUrl(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 // The single tracked conversion: WhatsApp click. Used by every WhatsApp CTA.
-export const WHATSAPP_URL =
-  "https://wa.me/40747342280?text=Salut!%20A%C8%99%20dori%20s%C4%83%20verific%20disponibilitatea%20pentru%20o%20rezervare%20la%20Pensiunea%20Amonte.";
+export const WHATSAPP_URL = whatsappUrl(
+  "Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte.",
+);
 
 // Fallback when WhatsApp is unavailable.
 export const GOOGLE_FORM_URL = "https://forms.gle/Ft4iFEuRJUfbyAPV6";

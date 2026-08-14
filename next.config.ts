@@ -34,7 +34,11 @@ const csp = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'self'",
-  "upgrade-insecure-requests",
+  // NOTE: "upgrade-insecure-requests" belongs here once this policy is enforced,
+  // but it is deliberately omitted while in Report-Only: browsers ignore it in
+  // report-only mode and log an error for it on every page load. That noise
+  // would bury the actual "[Report Only] Refused to ..." messages this policy
+  // exists to surface. Add it back in the same commit that drops "-Report-Only".
 ].join("; ");
 
 /**

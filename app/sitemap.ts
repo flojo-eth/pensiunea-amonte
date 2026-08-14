@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/despre-noi",
     "/galerie",
     "/rezerva-acum",
+    "/retreat-corporate",
   ];
 
   const now = new Date();
