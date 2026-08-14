@@ -86,12 +86,13 @@ export default function RetreatCorporatePage() {
           <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
             Retreat corporate
           </span>
-          <h1 className="m-0 max-w-[18ch] font-serif text-[clamp(40px,7vw,88px)] font-semibold leading-[1.03] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
-            Retreat de leadership în inima Țării Făgărașului
+          <h1 className="m-0 max-w-[16ch] font-serif text-[clamp(40px,7vw,88px)] font-semibold leading-[1.03] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+            Toată pensiunea. Doar echipa voastră.
           </h1>
-          <p className="mb-9 mt-[22px] max-w-[56ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
-            Închiriați întreaga pensiune, în exclusivitate totală, pentru echipa
-            voastră de conducere. Zero alți oaspeți, la 40 de minute de Sibiu.
+          <p className="mb-9 mt-[22px] max-w-[58ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
+            10 camere, sală de meeting, saună și jacuzzi, la 40 de minute de
+            Sibiu. Închiriere exclusivă pentru grupuri de conducere, fără alți
+            oaspeți în curte.
           </p>
           <div className="flex flex-wrap gap-3.5">
             <WhatsAppButton
@@ -99,7 +100,7 @@ export default function RetreatCorporatePage() {
               pageSource={RETREAT_PAGE_SOURCE}
               className={btnPaper}
             >
-              Cere oferta pentru echipa ta
+              Cere oferta pe WhatsApp
             </WhatsAppButton>
             <Link href="#spatii" className={btnOutlineLight}>
               Vezi spațiile
@@ -128,12 +129,11 @@ export default function RetreatCorporatePage() {
       <section className={`${container} ${sectionPad}`}>
         <SectionHeading
           eyebrow="De ce Amonte"
-          title="Spațiu pentru deciziile care nu se iau la birou"
+          title="Un offsite bun are nevoie de trei lucruri"
           className="mb-[clamp(36px,5vw,56px)] max-w-[24ch]"
         >
-          Un offsite de management are nevoie de trei lucruri: liniște, un loc
-          serios de lucru și un motiv real de a rămâne împreună după ce se
-          închide laptopul.
+          Liniște ca să lucrați, spațiu serios de meeting și un motiv să rămâneți
+          împreună după ce se închid laptopurile.
         </SectionHeading>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -167,12 +167,12 @@ export default function RetreatCorporatePage() {
         <div className={container}>
           <SectionHeading
             eyebrow="Spațiile"
-            title="Unde se întâmplă"
+            title="Ce aveți la dispoziție"
             center
             className="mb-[clamp(36px,5vw,56px)]"
           >
-            Tot ce urmează este al vostru pe durata sejurului, fără program
-            comun cu alte grupuri.
+            Pe durata sejurului, tot ce e mai jos e al vostru. Fără rezervări
+            separate, fără orar comun cu alte grupuri.
           </SectionHeading>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -212,7 +212,7 @@ export default function RetreatCorporatePage() {
       <section className={`${container} ${sectionPad}`}>
         <SectionHeading
           eyebrow="Exemplu"
-          title="Cum arată un retreat de două zile"
+          title="Două zile la Amonte, în practică"
           className="mb-[clamp(36px,5vw,56px)]"
         />
 
@@ -249,7 +249,8 @@ export default function RetreatCorporatePage() {
         </div>
 
         <p className="mt-10 max-w-[52ch] rounded-xl border-l-4 border-forest bg-pine/5 p-[clamp(16px,3vw,22px)] text-[15px] leading-relaxed text-[#33392f]">
-          Agenda e a voastră. Noi asigurăm cadrul, ritmul îl setați voi.
+          Asta e doar o schiță. Agenda o faceți voi, noi ținem restul departe de
+          ea.
         </p>
       </section>
 
@@ -261,11 +262,12 @@ export default function RetreatCorporatePage() {
         <div className={container}>
           <SectionHeading
             eyebrow="Cazarea"
-            title="Toată lumea doarme în aceeași curte"
+            title="Toată lumea doarme la fața locului"
             className="mb-[clamp(32px,4vw,48px)]"
           >
-            8 camere duble și 2 studiouri de familie, până la 24 de persoane,
-            fiecare cameră cu baie proprie.
+            8 camere duble și 2 studiouri, până la 24 de persoane, fiecare
+            cameră cu baie proprie. Nimeni nu pleacă la alt hotel după cină, iar
+            discuția de seară nu se termină în parcare.
           </SectionHeading>
 
           <div className="grid gap-4 sm:grid-cols-3">
@@ -289,10 +291,11 @@ export default function RetreatCorporatePage() {
               className="h-20 w-20 shrink-0 rounded-full"
               sizes="80px"
             />
-            <p className="m-0 max-w-[60ch] text-[15px] leading-relaxed text-muted">
-              Gazda pe patru labe este Bruno, un Bernese Mountain Dog care apare
-              doar dacă grupul își dorește. Din respect pentru liniștea tuturor,
-              pensiunea nu primește animalele de companie ale oaspeților.
+            <p className="m-0 max-w-[62ch] text-[15px] leading-relaxed text-muted">
+              Bruno, câinele casei, un Bernese Mountain Dog, apare doar dacă
+              grupul îl vrea prin preajmă. Animalele de companie ale oaspeților
+              rămân însă acasă, e una din regulile prin care păstrăm liniștea
+              locului.
             </p>
           </div>
         </div>
@@ -304,7 +307,7 @@ export default function RetreatCorporatePage() {
           <div className="flex-1 basis-[320px]">
             <SectionHeading
               eyebrow="Locație și acces"
-              title="La 40 de minute de Sibiu"
+              title="Aproape de Sibiu, departe de tot restul"
               className="mb-7"
             />
             <address className="not-italic text-[16px] leading-relaxed text-[#33392f]">
@@ -341,7 +344,7 @@ export default function RetreatCorporatePage() {
         <div className={container}>
           <SectionHeading
             eyebrow="Proces"
-            title="Cum rezervăm"
+            title="Trei pași până la rezervare"
             tone="dark"
             center
             className="mb-[clamp(36px,5vw,56px)]"
@@ -368,12 +371,12 @@ export default function RetreatCorporatePage() {
 
           <div className="mx-auto mt-10 max-w-[54ch] rounded-xl border border-paper/15 p-[clamp(20px,3vw,26px)] text-center">
             <p className="m-0 text-[15px] leading-relaxed text-paper/90">
-              Lucrăm exclusiv în regim de închiriere integrală a pensiunii, cu un
-              singur grup odată.
+              Lucrăm cu un singur grup odată, în regim de închiriere integrală.
+              Nu există varianta cu jumătate de pensiune.
             </p>
             {!SHOW_FNB && (
               <p className="mt-3 mb-0 text-[14px] text-paper/70">
-                Opțiuni de masă disponibile la cerere.
+                Masa se discută în ofertă, în funcție de formatul grupului.
               </p>
             )}
           </div>
@@ -411,15 +414,19 @@ export default function RetreatCorporatePage() {
       </section>
 
       {/* ── 12. CTA FINAL ── */}
-      <section className={`${sectionPad} border-t border-line bg-card-2`}>
+      <section
+        id="cere-oferta"
+        className={`${sectionPad} scroll-mt-24 border-t border-line bg-card-2`}
+      >
         <div className={`${container} text-center`}>
           <Eyebrow className="mb-4">Disponibilitate</Eyebrow>
           <h2 className="mx-auto m-0 max-w-[20ch] font-serif text-[clamp(32px,4.5vw,52px)] font-semibold leading-[1.05] text-pine">
-            Blochează perioada pentru echipa ta
+            Verifică perioada înainte să dispară
           </h2>
-          <p className="mx-auto mt-5 max-w-[52ch] text-[17px] leading-relaxed text-muted">
-            Weekendurile de toamnă se rezervă de obicei cu 4 până la 6 săptămâni
-            înainte. Dacă aveți o perioadă în minte, merită verificată devreme.
+          <p className="mx-auto mt-5 max-w-[54ch] text-[17px] leading-relaxed text-muted">
+            Weekendurile de septembrie, octombrie și noiembrie se închid de
+            obicei cu 4-6 săptămâni înainte. Un mesaj pe WhatsApp durează un
+            minut și nu vă obligă la nimic.
           </p>
           <div className="mt-8 flex justify-center">
             <WhatsAppButton
@@ -427,11 +434,11 @@ export default function RetreatCorporatePage() {
               pageSource={RETREAT_PAGE_SOURCE}
               className={`${btnTerracotta} px-9 py-5 text-[16px]`}
             >
-              Cere oferta pentru echipa ta
+              Cere oferta pe WhatsApp
             </WhatsAppButton>
           </div>
           <p className="mt-4 text-[13.5px] text-muted-2">
-            Răspundem pe WhatsApp, de obicei în aceeași zi.
+            Răspundem în aceeași zi.
           </p>
         </div>
       </section>
