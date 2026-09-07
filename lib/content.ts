@@ -534,13 +534,50 @@ export const REVIEWS: Review[] = [
 ];
 
 // Primary site navigation (anchors on the home page).
-export const NAV_LINKS = [
+/** Pre-filled WhatsApp message while /evenimente-private does not exist yet. */
+export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
+  "Bună ziua, aș dori informații pentru un eveniment privat la Pensiunea Amonte",
+);
+
+export type NavChild = {
+  href: string;
+  label: string;
+  /** wa.me links open in a new tab and are tracked as conversions. */
+  whatsapp?: true;
+  /** page_source sent to GA4 for the tracked ones. */
+  pageSource?: string;
+};
+
+export type NavLink = {
+  href: string;
+  label: string;
+  /**
+   * Desktop-only submenu. Mobile deliberately ignores it and shows a single
+   * link to the hub, so the menu stays one level deep on a phone.
+   */
+  children?: readonly NavChild[];
+};
+
+export const NAV_LINKS: readonly NavLink[] = [
   { href: "/despre-noi", label: "Despre" },
   { href: "/camere", label: "Camere" },
   { href: "/galerie", label: "Galerie" },
   { href: "/activitati-in-zona", label: "Împrejurimi" },
   { href: "/servicii", label: "Servicii" },
-  { href: "/retreat-corporate", label: "Grupuri și retreat" },
+  {
+    href: "/evenimente",
+    label: "Evenimente",
+    children: [
+      { href: "/retreat-corporate", label: "Retreat și teambuilding" },
+      {
+        // TODO: swap for /evenimente-private once that page exists.
+        href: PRIVATE_EVENTS_WHATSAPP,
+        label: "Evenimente private",
+        whatsapp: true,
+        pageSource: "evenimente-private-cta",
+      },
+    ],
+  },
 ] as const;
 
 export type Audience = {

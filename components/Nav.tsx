@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/content";
+import WhatsAppButton from "./WhatsAppButton";
 
 function scrollTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -12,6 +13,7 @@ function scrollTop() {
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [submenu, setSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   return (
@@ -47,16 +49,84 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="flex flex-wrap items-center gap-[clamp(14px,2vw,28px)]">
-          {NAV_LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={scrollTop}
-              className="hidden text-sm font-medium text-paper/90 no-underline hover:text-paper sm:inline"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.children ? (
+              /* State-driven rather than CSS-only: the submenu has to open on
+                 hover AND on keyboard focus, and a purely CSS version has to
+                 stay focusable while invisible, which makes it depend on
+                 cascade order that is easy to break later. Explicit state also
+                 buys Escape-to-close for free. */
+              <div
+                key={l.href}
+                className="relative hidden sm:block"
+                onMouseEnter={() => setSubmenu(l.href)}
+                onMouseLeave={() => setSubmenu(null)}
+                onFocus={() => setSubmenu(l.href)}
+                onBlur={(e) => {
+                  // Only close when focus leaves the whole group, not when it
+                  // moves between the parent link and its children.
+                  if (!e.currentTarget.contains(e.relatedTarget as Node)) setSubmenu(null);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") setSubmenu(null);
+                }}
+              >
+                <Link
+                  href={l.href}
+                  onClick={scrollTop}
+                  aria-expanded={submenu === l.href}
+                  className="text-sm font-medium text-paper/90 no-underline hover:text-paper"
+                >
+                  {l.label}
+                  <span
+                    aria-hidden="true"
+                    className={`ml-1.5 inline-block text-[10px] transition-transform ${submenu === l.href ? "rotate-180" : ""}`}
+                  >
+                    ▾
+                  </span>
+                </Link>
+                <div
+                  hidden={submenu !== l.href}
+                  className="absolute left-0 top-full z-50 min-w-[232px] pt-3"
+                >
+                  <ul className="m-0 list-none rounded-xl border border-paper/15 bg-pine p-2 shadow-xl">
+                    {l.children.map((c) =>
+                      c.whatsapp ? (
+                        <li key={c.label}>
+                          <WhatsAppButton
+                            href={c.href}
+                            pageSource={c.pageSource}
+                            className="block rounded-lg px-3 py-2.5 text-sm text-paper/85 no-underline hover:bg-paper/10 hover:text-paper"
+                          >
+                            {c.label}
+                          </WhatsAppButton>
+                        </li>
+                      ) : (
+                        <li key={c.label}>
+                          <Link
+                            href={c.href}
+                            onClick={scrollTop}
+                            className="block rounded-lg px-3 py-2.5 text-sm text-paper/85 no-underline hover:bg-paper/10 hover:text-paper"
+                          >
+                            {c.label}
+                          </Link>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={scrollTop}
+                className="hidden text-sm font-medium text-paper/90 no-underline hover:text-paper sm:inline"
+              >
+                {l.label}
+              </Link>
+            ),
+          )}
           <Link
             href="/rezerva-acum"
             onClick={scrollTop}

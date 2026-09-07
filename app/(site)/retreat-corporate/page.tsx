@@ -6,6 +6,7 @@ import Eyebrow from "@/components/Eyebrow";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ConsentMap from "@/components/ConsentMap";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import FnbSection from "@/components/FnbSection";
 import OfferRequestForm from "@/components/OfferRequestForm";
@@ -104,6 +105,19 @@ export default function RetreatCorporatePage() {
           }}
         />
         <div className="relative mx-auto w-full max-w-[1280px]">
+          {/* Breadcrumb peste hero: URL-ul, canonicalul și sitemap-ul rămân
+              neschimbate, se adaugă doar contextul ierarhic. */}
+          <div className="mb-6 [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
+            <Breadcrumbs
+              id="schema-retreat-breadcrumb"
+              tone="dark"
+              items={[
+                { label: "Acasă", href: "/" },
+                { label: "Evenimente", href: "/evenimente" },
+                { label: "Retreat și teambuilding" },
+              ]}
+            />
+          </div>
           <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
             Valea Avrigului · {DRIVE_SIBIU} de Sibiu
           </span>
