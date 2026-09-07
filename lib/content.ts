@@ -233,7 +233,7 @@ export type Amenity = {
 // Migrarea la producție (pensiunea-amonte.ro) necesită CAEN 5611/5621/5630 + DSP/ANSVSA.
 export const AMENITIES: Amenity[] = [
   { icon: "🧖", label: "Jacuzzi & saună", photo: "/jacuzzi-sauna.jpeg", photoLabel: "[ jacuzzi & saună ]" },
-  { icon: "🔥", label: "Living cu șemineu", photo: "/servicii-facilitati/living-semineu.jpeg", photoLabel: "[ living / șemineu ]" },
+  { icon: "🔥", label: "Living cu șemineu", photo: "/semineu.jpeg", photoLabel: "[ living / șemineu ]" },
   { icon: "🏔️", label: "Terasă panoramică", photo: "/priveliste-fagaras.jpg", photoLabel: "[ terasă panoramică ]" },
   { icon: "🪵", label: "Firepit exterior", photo: "/firepit.jpeg", photoLabel: "[ firepit exterior ]" },
   { icon: "🍳", label: "Mic dejun", photo: "/servicii-facilitati/mic-dejun.jpg", photoLabel: "[ mic dejun ]" },
@@ -540,6 +540,7 @@ export const NAV_LINKS = [
   { href: "/galerie", label: "Galerie" },
   { href: "/activitati-in-zona", label: "Împrejurimi" },
   { href: "/servicii", label: "Servicii" },
+  { href: "/retreat-corporate", label: "Grupuri și retreat" },
 ] as const;
 
 export type Audience = {
@@ -549,6 +550,8 @@ export type Audience = {
   highlights: string[];
   ctaLabel: string;
   ctaHref: string;
+  /** Renders the CTA as a filled button instead of an outline one. */
+  ctaPrimary?: boolean;
 };
 
 export const AUDIENCES: Audience[] = [
@@ -574,7 +577,10 @@ export const AUDIENCES: Audience[] = [
     body: "Amonte se poate închiria integral, pentru până la 24 de persoane, cu sală dedicată pentru grupuri. Ideal pentru teambuilding, retreaturi sau ieșiri cu prietenii - natură, spa și confort, fără să împărțiți spațiul cu nimeni.",
     highlights: ["Închiriere integrală (până la 24 pers.)", "Sală pentru grupuri", "Spa & terasă"],
     ctaLabel: "Cere ofertă pentru grup",
-    ctaHref: "whatsapp",
+    ctaHref: "/retreat-corporate",
+    // The B2B funnel entrance from the homepage; keeps the filled styling it had
+    // when it pointed straight at WhatsApp.
+    ctaPrimary: true,
   },
 ];
 

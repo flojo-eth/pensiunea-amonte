@@ -33,6 +33,20 @@ export default function ServiciiPage() {
 
         <ServicesGridClient />
 
+        {/* Several amenities above (sala pentru grupuri, rezervare integrală)
+            only make sense for whole-property bookings. */}
+        <p className="mt-9 rounded-xl border border-line bg-card p-[clamp(18px,3vw,24px)] text-[15px] leading-relaxed text-muted">
+          Pentru echipe și grupuri, pensiunea se poate închiria integral, cu sală
+          de lucru și toate spațiile rezervate exclusiv vouă.{" "}
+          <Link
+            href="/retreat-corporate"
+            className="font-semibold text-terracotta underline-offset-2 hover:underline"
+          >
+            Vezi condițiile pentru grupuri
+          </Link>
+          .
+        </p>
+
       </section>
 
       {/* ── SERVICE DETAIL SECTIONS ── */}

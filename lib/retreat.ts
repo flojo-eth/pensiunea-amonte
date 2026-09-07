@@ -2,65 +2,64 @@
 // without touching layout. Photos live in /public; entries without a `photo`
 // render as clearly-marked placeholders (see the shot list at the bottom of
 // app/(site)/retreat-corporate/page.tsx).
-
-// A se activa doar după emiterea avizelor DSP/ANSVSA pentru CAEN 5611/5630.
 //
-// NOTE: this is intentionally page-scoped and independent of SHOW_FB_AND_EVENTS
-// in lib/site.ts, which is currently true and drives F&B copy on the rest of the
-// site. The two disagree on purpose; see the handover note about reconciling them.
-export const SHOW_FNB = false;
+// Markers left for Flo to close before production:
+//   [VERIFICĂ: ...]   a number I could not confirm from the codebase
+//   [COMPLETEAZĂ: ...] data that does not exist anywhere yet
 
-/** Pre-filled WhatsApp message for every CTA on this page. */
+import { SHOW_FNB } from "./flags";
+
+/** Pre-filled WhatsApp message for the plain CTAs (the form builds its own). */
 export const RETREAT_WHATSAPP_MESSAGE =
-  "Bună! Aș vrea o ofertă de retreat pentru echipa noastră.";
+  "Bună ziua! Aș dori o ofertă pentru un grup la Pensiunea Amonte.";
 
 /** Distinguishes B2B conversions from leisure ones in GA4. */
 export const RETREAT_PAGE_SOURCE = "retreat-corporate";
 
-// ── 2. Trust bar ─────────────────────────────────────────────────────────────
+/**
+ * Drive time to Sibiu. Measured on Google Maps from the property pin, but the
+ * rest of the site still claims 30 minutes, so the number is not committed
+ * until Flo picks one figure for the whole site.
+ */
+export const DRIVE_SIBIU = "[VERIFICĂ: distanță]";
 
-export const TRUST_POINTS = [
-  { icon: "🔒", label: "Exclusivitate totală" },
-  { icon: "👥", label: "Până la 24 de persoane" },
-  { icon: "📊", label: "Sală de meeting" },
-  { icon: "✈️", label: "40 min de aeroportul Sibiu" },
+// ── S2. Fact bar ─────────────────────────────────────────────────────────────
+
+export const FACTS = [
+  { value: "24", label: "persoane maximum" },
+  { value: "8 + 2", label: "camere duble și studiouri" },
+  { value: "100%", label: "exclusivitate" },
+  { value: "1", label: "sală pentru grupuri" },
+  { value: DRIVE_SIBIU, label: "de Sibiu" },
+  { value: "24 h", label: "ofertă completă, zile lucrătoare" },
 ] as const;
 
-// ── 3. Positioning ───────────────────────────────────────────────────────────
+// ── S3. Room configuration ───────────────────────────────────────────────────
 
-export type Pillar = {
-  title: string;
-  body: string;
-  photo?: string;
-  photoLabel: string;
-  alt: string;
-};
-
-export const PILLARS: Pillar[] = [
+export const ROOM_CONFIG = [
   {
-    title: "Nimeni altcineva în curte",
-    body: "Nu împărțiți pensiunea cu alți oaspeți. Nu există recepție comună, program de liniște sau alt grup la firepit. De la check-in la check-out, proprietatea funcționează doar pentru voi.",
-    photo: "/servicii-facilitati/rezervare-integrala.jpeg",
-    photoLabel: "[ FOTO: proprietatea văzută integral, fără alți oaspeți ]",
-    alt: "Pensiunea Amonte închiriată integral pentru un singur grup",
+    unit: "Cameră dublă cu balcon și vedere la munte",
+    count: "8",
+    perUnit: "2",
+    beds: "[VERIFICĂ: doar matrimonial, sau și paturi separate? dacă da, câte]",
+    total: "16",
   },
   {
-    title: "Loc de lucru, nu improvizație",
-    body: "Sala de meeting are lumină naturală, wifi stabil și loc pentru toată echipa la aceeași masă. Nu mutăm mobila din restaurant ca să încapă un proiector.",
-    photoLabel:
-      "[ FOTO: echipă în sesiune de lucru, sala aranjată boardroom, lumină naturală ]",
-    alt: "Sesiune de lucru în sala de meeting a Pensiunii Amonte",
+    unit: "Studio de familie",
+    count: "2",
+    perUnit: "4",
+    beds: "Pat matrimonial și canapea extensibilă",
+    total: "8",
   },
-  {
-    title: "Seara contează cât ziua",
-    body: "Saună, jacuzzi, șemineu și foc afară. Discuțiile care schimbă ceva rar se întâmplă în slide 40, mai des la focul de după cină.",
-    photo: "/semineu.jpeg",
-    photoLabel: "[ FOTO: living cu șemineu, seara ]",
-    alt: "Living cu șemineu la Pensiunea Amonte",
-  },
-];
+] as const;
 
-// ── 4. Spaces ────────────────────────────────────────────────────────────────
+export const ROOM_CONFIG_TOTAL = { count: "10", total: "24" } as const;
+
+export const ROOM_NOTES = [
+  "Fiecare unitate are baie proprie. [VERIFICĂ: balcon și vedere la munte se aplică și studiourilor?]",
+] as const;
+
+// ── S4. Work spaces ──────────────────────────────────────────────────────────
 
 export type Space = {
   title: string;
@@ -68,129 +67,119 @@ export type Space = {
   photo?: string;
   photoLabel: string;
   alt: string;
-  /** Renders taller in the grid. */
-  wide?: boolean;
 };
 
-export const SPACES: Space[] = [
+export const WORKSPACES: Space[] = [
   {
-    title: "Sala de meeting",
-    body: "Încape toată echipa la o masă. Lumină naturală, wifi, liniște.",
+    title: "Sala pentru grupuri",
+    body: "Încape toată echipa la o masă. [COMPLETEAZĂ: capacitate în format U și în format teatru]. Dotări: [COMPLETEAZĂ: TV sau proiector, flipchart, prize]. WiFi [COMPLETEAZĂ: viteză măsurată].",
     photo: "/servicii-facilitati/sala-pentru-grupuri.jpg",
-    photoLabel: "[ FOTO: sala aranjată în format boardroom sau U ]",
-    alt: "Sala de meeting de la Pensiunea Amonte",
-    wide: true,
+    photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",
+    alt: "Sala pentru grupuri de la Pensiunea Amonte, configurată pentru 20 de persoane",
   },
   {
-    title: "Lounge cu șemineu",
+    title: "Living cu șemineu",
     body: "Aici se mută discuția după ultima sesiune. Fotolii, foc, fără proiector.",
-    photo: "/servicii-facilitati/living-semineu.jpeg",
+    photo: "/semineu.jpeg",
     photoLabel: "[ FOTO: șemineu aprins, fotolii, seara ]",
-    alt: "Lounge cu șemineu la Pensiunea Amonte",
+    alt: "Living cu șemineu, spațiu informal pentru grupuri la Pensiunea Amonte",
   },
   {
     title: "Terasa panoramică",
-    body: "Vedere direct spre Făgăraș. Funcționează la fel de bine pentru cafeaua de dimineață și pentru o sesiune în aer liber.",
+    body: "Vedere direct spre Făgăraș. Funcționează pentru pauze și pentru sesiuni în aer liber, pe vreme bună.",
     photo: "/priveliste-fagaras.jpg",
-    photoLabel: "[ FOTO: terasa cu vedere spre munți ]",
+    photoLabel: "[ FOTO: terasa cu vedere spre munți, grup la o pauză ]",
     alt: "Terasa panoramică cu vedere spre Munții Făgăraș",
   },
+];
+
+// ── S5. Between sessions ─────────────────────────────────────────────────────
+
+export const LEISURE: Space[] = [
   {
     title: "Jacuzzi și saună",
-    body: "Zona de wellness e inclusă în închiriere, nu se plătește separat și nu se împarte cu nimeni.",
+    body: "Acces exclusiv pentru grup, contra cost.",
     photo: "/jacuzzi-sauna.jpeg",
-    photoLabel: "[ FOTO: zona de wellness ]",
-    alt: "Jacuzzi și saună la Pensiunea Amonte",
+    photoLabel: "[ FOTO: zona de wellness la apus ]",
+    alt: "Jacuzzi și saună, acces exclusiv pentru grupul cazat",
   },
   {
-    title: "Firepit",
+    title: "Firepit și foc de tabără",
     body: "Serile lungi se întâmplă aici. Singurul punct de pe agendă fără agendă.",
     photo: "/firepit.jpeg",
-    photoLabel: "[ FOTO: foc de tabără seara, grup relaxat ]",
-    alt: "Firepit exterior la Pensiunea Amonte",
+    photoLabel: "[ FOTO: foc de tabără seara, grup relaxat în jur ]",
+    alt: "Firepit exterior, seară de grup la Pensiunea Amonte",
   },
   {
     title: "Mini fotbal și ping-pong",
     body: "Pauza de 30 de minute care resetează o zi întreagă de lucru.",
     photo: "/servicii-facilitati/teren-fotbal.jpeg",
-    photoLabel: "[ FOTO: teren cu munții în spate ]",
+    photoLabel: "[ FOTO: teren de mini fotbal cu munții în spate ]",
     alt: "Teren de mini fotbal la Pensiunea Amonte",
+  },
+  {
+    title: "Drumeții din vale",
+    body: "Plecare directă spre Cabana Bârcaciu, Negoiu și Suru, pe trasee pentru toate nivelurile.",
+    photo: "/trasee-fagaras.jpg",
+    photoLabel: "[ FOTO: traseu montan din Valea Avrigului ]",
+    alt: "Trasee de drumeție în Munții Făgăraș, cu plecare din Valea Avrigului",
+  },
+  {
+    title: "Zona de pe malul râului",
+    body: "Peste drum, o zonă de relaxare pe malul râului.",
+    photoLabel: "[ FOTO: malul râului de peste drum ]",
+    alt: "Zonă de relaxare pe malul râului, peste drum de pensiune",
+  },
+  {
+    title: "Brambura Park",
+    body: "La circa 10 minute, pentru activități de grup în aer liber.",
+    photo: "/brambura.jpeg",
+    photoLabel: "[ FOTO: Brambura Park ]",
+    alt: "Brambura Park, activități de grup la 10 minute de pensiune",
   },
 ];
 
-// ── 5. Sample agenda ─────────────────────────────────────────────────────────
+// ── S7. Sample agenda ────────────────────────────────────────────────────────
 
 type AgendaItem = {
   time: string;
   title: string;
   body: string;
-  /** Meal items. Filtered out entirely while SHOW_FNB is false. */
+  /** Meal items, gated on SHOW_FNB. */
   fnb?: true;
 };
 
 const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
   {
-    day: "Ziua 1",
-    label: "Sosire și lucru",
+    day: "Vineri",
+    label: "Sosire și prima sesiune",
     items: [
-      {
-        time: "11:00",
-        title: "Sosire",
-        body: "Cafea, instalare, fără grabă.",
-      },
-      {
-        time: "12:30",
-        title: "Prima sesiune",
-        body: "În sala de meeting.",
-      },
-      {
-        time: "15:30",
-        title: "Pauză",
-        body: "Vale, mini fotbal sau pur și simplu aer.",
-      },
-      {
-        time: "16:30",
-        title: "A doua sesiune",
-        body: "Pentru discuțiile care de obicei rămân pe hol.",
-      },
-      {
-        time: "19:30",
-        title: "Cină",
-        body: "Meniu construit pentru grup, la o masă comună.",
-        fnb: true,
-      },
-      {
-        time: "21:00",
-        title: "Foc afară",
-        body: "Partea nescrisă a agendei.",
-      },
+      { time: "16:00", title: "Sosire și check-in", body: "Vă instalați fără grabă. Pensiunea e deja doar a voastră." },
+      { time: "18:00", title: "Sesiune de deschidere", body: "În sala pentru grupuri." },
+      { time: "20:00", title: "Cină", body: "Meniu pregătit pentru tot grupul, la o masă comună.", fnb: true },
+      { time: "21:30", title: "Seară la firepit", body: "Partea nescrisă a agendei." },
     ],
   },
   {
-    day: "Ziua 2",
+    day: "Sâmbătă",
+    label: "Ziua de lucru",
+    items: [
+      { time: "08:30", title: "Mic dejun", body: "Inclus, servit la pensiune.", fnb: true },
+      { time: "10:00", title: "Sesiune de dimineață", body: "Blocul lung de lucru, fără întreruperi din exterior." },
+      { time: "13:00", title: "Prânz", body: "Pregătit la pensiune pentru tot grupul.", fnb: true },
+      { time: "15:00", title: "Pauză activă", body: "Vale, mini fotbal sau ping-pong." },
+      { time: "16:30", title: "A doua sesiune", body: "Pentru discuțiile care de obicei rămân pe hol." },
+      { time: "19:00", title: "Saună și jacuzzi", body: "Zona de relaxare, rezervată grupului." },
+      { time: "20:30", title: "Cină", body: "A doua seară, alt meniu.", fnb: true },
+    ],
+  },
+  {
+    day: "Duminică",
     label: "Închidere și plecare",
     items: [
-      {
-        time: "08:30",
-        title: "Mic dejun",
-        body: "Servit la pensiune, în ritmul fiecăruia.",
-        fnb: true,
-      },
-      {
-        time: "09:00",
-        title: "Dimineață liberă",
-        body: "Saună, plimbare sau somn.",
-      },
-      {
-        time: "11:00",
-        title: "Sesiune de închidere",
-        body: "Decizii și next steps, cât sunteți toți în același loc.",
-      },
-      {
-        time: "13:00",
-        title: "Plecare",
-        body: "Sibiul e la 40 de minute.",
-      },
+      { time: "09:00", title: "Mic dejun", body: "În ritmul fiecăruia.", fnb: true },
+      { time: "10:30", title: "Sesiune de închidere", body: "Decizii și next steps, cât sunteți toți în același loc." },
+      { time: "12:00", title: "Check-out", body: "[VERIFICĂ: oră check-out pentru grupuri]" },
     ],
   },
 ];
@@ -200,110 +189,128 @@ export const AGENDA = AGENDA_SOURCE.map((day) => ({
   items: day.items.filter((item) => SHOW_FNB || !item.fnb),
 }));
 
-// ── 7. Rooms ─────────────────────────────────────────────────────────────────
+// ── S8. Indicative pricing ───────────────────────────────────────────────────
 
-export const ROOM_SHOTS = [
+export const PRICING_LINES = [
   {
-    photo: "/camera-dubla-folder/poza-pat-si-camera.jpeg",
-    photoLabel: "[ FOTO: cameră dublă luminoasă ]",
-    alt: "Cameră dublă la Pensiunea Amonte",
+    label: "Închiriere integrală",
+    value: "[VERIFICĂ: tarif] lei pe noapte plus TVA",
+    note: "Minimum 2 nopți în weekend.",
   },
   {
-    photo: "/camera-balcon/poza-pat.jpeg",
-    photoLabel: "[ FOTO: detaliu pat ]",
-    alt: "Detaliu pat, cameră cu balcon",
+    label: "Include",
+    value: "Toate cele 10 unități, sala pentru grupuri, livingul, terasa, firepit, teren și ping-pong.",
   },
   {
-    photo: "/camera-balcon/baie.jpeg",
-    photoLabel: "[ FOTO: baie proprie ]",
-    alt: "Baie proprie într-o cameră de la Pensiunea Amonte",
+    label: "Jacuzzi și saună",
+    value: "[VERIFICĂ: tarif] lei pe zi",
+    note: "Acces exclusiv pentru grup.",
   },
 ] as const;
 
-// ── 8. Location ──────────────────────────────────────────────────────────────
-
-export const ACCESS_POINTS = [
-  "40 de minute de Sibiu și de aeroportul Sibiu",
-  "Drum accesibil cu mașina pe tot parcursul anului",
-  "Parcare la proprietate, pentru întregul grup",
+/** Extra rows shown only when both pricing and F&B are on. */
+export const PRICING_FNB_LINES = [
+  {
+    label: "Mese",
+    value: "de la [VERIFICĂ: tarif] lei pe persoană pe zi",
+    note: "Prânz și cină.",
+  },
+  {
+    label: "Mic dejun",
+    value: "Inclus în închirierea integrală.",
+  },
 ] as const;
 
-// ── 9. Social proof ──────────────────────────────────────────────────────────
-
-export type Testimonial = {
-  quote: string;
-  author: string;
-  role: string;
-  /**
-   * TODO: înlocuiește cu testimoniale reale de la grupuri corporate, cu acordul
-   * scris al clientului, apoi setează isPlaceholder: false. Secțiunea se
-   * randează doar când există cel puțin un item cu isPlaceholder: false.
-   */
-  isPlaceholder: boolean;
-};
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote: "TODO: citat real, cu acordul scris al clientului.",
-    author: "TODO: prenume și inițiala numelui",
-    role: "TODO: rol, fără numele companiei dacă nu există acord",
-    isPlaceholder: true,
-  },
-  {
-    quote: "TODO: citat real, cu acordul scris al clientului.",
-    author: "TODO: prenume și inițiala numelui",
-    role: "TODO: rol, fără numele companiei dacă nu există acord",
-    isPlaceholder: true,
-  },
-];
-
-/** Only genuine, cleared testimonials reach the page. */
-export const PUBLISHABLE_TESTIMONIALS = TESTIMONIALS.filter(
-  (t) => !t.isPlaceholder,
-);
-
-// ── 10. Booking process ──────────────────────────────────────────────────────
+// ── S9. Booking process ──────────────────────────────────────────────────────
 
 export const BOOKING_STEPS = [
   {
-    title: "Ne scrieți pe WhatsApp",
-    body: "Perioada și câți sunteți.",
+    title: "Ne scrieți",
+    body: "Pe WhatsApp sau prin formularul de mai jos. Numărul de persoane și perioada sunt suficiente pentru început.",
   },
   {
-    title: "Primiți oferta în aceeași zi",
-    body: "Cu tot ce e inclus. Fără costuri care apar ulterior.",
+    title: "Primiți oferta completă în 24 de ore lucrătoare",
+    body: "Disponibilitate, configurația camerelor, total defalcat, condiții.",
   },
   {
-    title: "Semnăm contractul",
-    body: "Plătiți avansul, perioada e blocată pentru voi.",
+    title: "Confirmați cu avans și contract",
+    body: "Avans de 30%, contract pe firmă. Facturăm pe persoană juridică.",
+  },
+  {
+    title: "Perioada e blocată",
+    body: "O rezervare confirmată nu se anulează din partea noastră. Anulare gratuită cu 28 de zile înainte de sosire pentru închirierea integrală.",
   },
 ] as const;
 
-// ── 11. FAQ (also emitted as FAQPage JSON-LD) ────────────────────────────────
+// ── S11. FAQ (also emitted as FAQPage JSON-LD) ───────────────────────────────
 
-export const FAQ = [
+type FaqItem = { q: string; a: string; fnb?: true };
+
+const FAQ_SOURCE: FaqItem[] = [
   {
-    q: "Câte persoane încap?",
-    a: "24 de locuri în 10 camere. Pentru un offsite de conducere, formatul funcționează cel mai bine între 8 și 20 de participanți.",
+    q: "Câte persoane pot fi cazate?",
+    a: "Maximum 24 de persoane, în 8 camere duble și 2 studiouri de familie. Pentru un offsite de conducere, formatul funcționează cel mai bine între 8 și 20 de participanți.",
   },
   {
-    q: "Putem închiria doar o parte din pensiune?",
-    a: "Nu. Lucrăm cu un singur grup odată, în regim de închiriere integrală. Exclusivitatea e motivul principal pentru care echipele aleg locul, deci nu o împărțim.",
+    q: "Putem închiria toată pensiunea doar pentru echipa noastră?",
+    a: "Da, închirierea integrală înseamnă că nu împărțiți spațiul cu niciun alt oaspete. Lucrăm cu un singur grup odată, deci nu există varianta cu jumătate de pensiune.",
   },
   {
-    q: "Cât durează drumul de la Sibiu?",
-    a: "40 de minute cu mașina, atât din oraș, cât și de la aeroport. Drumul e practicabil tot anul.",
+    q: "Există sală de conferință?",
+    a: "Da. Sala pentru grupuri are lumină naturală, WiFi și loc pentru toată echipa la aceeași masă. [COMPLETEAZĂ: capacitate și dotări exacte]",
   },
   {
-    q: "Există spațiu de lucru pentru sesiuni de strategie?",
-    a: "Da. Sală de meeting cu lumină naturală, wifi și loc pentru toată echipa la aceeași masă. Nu e un spațiu improvizat din altceva.",
+    q: "La ce distanță e de Sibiu și de aeroport?",
+    a: "[VERIFICĂ: distanță] de centrul Sibiului și [VERIFICĂ: distanță] de Aeroportul Sibiu, cu mașina. Drumul e practicabil tot anul.",
   },
   {
-    q: "Se poate organiza un offsite și iarna?",
-    a: "Da. Șemineul, sauna și jacuzzi funcționează tot anul, iar iarna sunt mai puține grupuri, deci alegerea perioadei e mai simplă.",
+    q: "Care e programul de check-in și check-out pentru grupuri?",
+    a: "[COMPLETEAZĂ: ore de check-in și check-out pentru grupuri]",
   },
   {
-    q: "Ce poate face echipa în pauze?",
-    a: "Vale, mini fotbal, ping-pong, saună, foc afară. Peste drum, malul râului oferă un loc de relaxare.",
+    q: "Cum se face rezervarea și ce avans se plătește?",
+    a: "Ne scrieți pe WhatsApp sau prin formular, primiți oferta completă în 24 de ore lucrătoare, apoi confirmați cu un avans de 30% și contract pe firmă.",
   },
+  {
+    q: "Care e politica de anulare pentru grupuri?",
+    a: "Pentru închirierea integrală, anularea este gratuită cu cel puțin 28 de zile înainte de sosire, iar avansul se restituie integral. Sub acest termen, avansul se reține.",
+  },
+  {
+    q: "Puteți factura pe firmă?",
+    a: "Da, facturăm pe persoană juridică, cu contract. Hostillo SRL operează Pensiunea Amonte.",
+  },
+  {
+    q: "Ce activități se pot organiza la fața locului?",
+    a: "Jacuzzi și saună cu acces exclusiv pentru grup, firepit, teren de mini fotbal, masă de ping-pong și drumeții cu plecare din vale spre Bârcaciu, Negoiu și Suru. Brambura Park este la circa 10 minute.",
+  },
+  {
+    q: "Cât timp înainte trebuie să rezervăm?",
+    a: "Pentru weekendurile din mai, iunie, septembrie și octombrie recomandăm 6 până la 8 săptămâni înainte. În restul anului, 3 până la 4 săptămâni sunt de obicei suficiente.",
+  },
+  {
+    q: "Asigurați mesele pentru grup?",
+    a: "Da. Micul dejun este inclus, iar prânzul și cina se pregătesc la pensiune pentru tot grupul. Primiți două variante de meniu, una tradițională și una modernă, odată cu oferta.",
+    fnb: true,
+  },
+  {
+    q: "Acceptați animale de companie?",
+    a: "Nu. Bruno, câinele casei, e singurul care locuiește aici.",
+  },
+];
+
+export const FAQ = FAQ_SOURCE.filter((item) => SHOW_FNB || !item.fnb);
+
+// ── S12. Offer form options ──────────────────────────────────────────────────
+
+export const GROUP_SIZES = ["10-14", "15-19", "20-24", "peste 24"] as const;
+export const NIGHT_OPTIONS = ["1", "2", "3+"] as const;
+export const MEAL_OPTIONS = ["Mic dejun", "Prânz", "Cină"] as const;
+
+// ── S13. Location ────────────────────────────────────────────────────────────
+
+export const ACCESS_POINTS = [
+  `Sibiu, centru: ${DRIVE_SIBIU}`,
+  "Aeroportul Sibiu: [VERIFICĂ: distanță]",
+  "Brașov, centru: [VERIFICĂ: distanță]",
+  "Parcare privată la proprietate, [COMPLETEAZĂ: număr locuri] locuri",
 ] as const;

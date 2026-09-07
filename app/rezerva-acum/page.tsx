@@ -63,6 +63,18 @@ export default function RezervaAcumPage() {
           {/* Calendar — appears first on mobile */}
           <div className="lg:sticky lg:top-8 h-fit">
             <BookingCalendar />
+            {/* The calendar books individual rooms; whole-property bookings
+                follow a different flow, so send groups to the dedicated page. */}
+            <p className="mt-5 text-center text-[14px] leading-relaxed text-muted">
+              Rezervi pentru un grup sau o echipă?{" "}
+              <Link
+                href="/retreat-corporate"
+                className="font-semibold text-forest underline-offset-2 hover:underline"
+              >
+                Vezi pagina dedicată
+              </Link>
+              .
+            </p>
           </div>
 
           {/* Info column */}

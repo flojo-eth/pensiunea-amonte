@@ -64,10 +64,37 @@ const securityHeaders = [
   },
 ];
 
+/**
+ * Legacy WordPress URLs.
+ *
+ * These do not serve old content any more: verified on production, each one
+ * 308s to its non-trailing-slash form and then 404s. They are still indexed by
+ * Google, so anyone clicking an old result lands on a 404 and the authority
+ * those URLs accumulated is thrown away. A 301 recovers both.
+ *
+ * Next normalises the trailing slash before matching, so one entry per slug
+ * covers both `/rooms` and `/rooms/`.
+ *
+ * TODO: extend with the full 404 list from Search Console once exported.
+ */
+const legacyRedirects = [
+  { source: "/about-us", destination: "/despre-noi" },
+  { source: "/rooms", destination: "/camere" },
+  { source: "/gallery", destination: "/galerie" },
+  { source: "/services", destination: "/servicii" },
+  { source: "/contact", destination: "/rezerva-acum" },
+];
+
 const nextConfig: NextConfig = {
   images: {
     // AVIF first: ~20-30% smaller than WebP on photography, which is all this site serves.
     formats: ["image/avif", "image/webp"],
+  },
+  async redirects() {
+    // Explicit 301 rather than `permanent: true`, which emits 308. Both are
+    // permanent and Google treats them the same, but these are GET-only
+    // marketing URLs and 301 is what every SEO tool and audit expects to see.
+    return legacyRedirects.map((r) => ({ ...r, statusCode: 301 as const }));
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

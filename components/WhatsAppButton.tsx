@@ -13,6 +13,8 @@ type Props = {
    * leisure clicks can be told apart in GA4. Omitted for the site-wide CTAs.
    */
   pageSource?: string;
+  /** Which CTA on the page was clicked, so the winning placement is visible in GA4. */
+  ctaPosition?: "hero" | "sticky" | "form" | "final" | "faq";
 };
 
 /**
@@ -27,11 +29,13 @@ export default function WhatsAppButton({
   className,
   href = WHATSAPP_URL,
   pageSource,
+  ctaPosition,
 }: Props) {
   function handleClick() {
     pushDataLayer({
       event: "whatsapp_click",
       ...(pageSource ? { page_source: pageSource } : {}),
+      ...(ctaPosition ? { cta_position: ctaPosition } : {}),
     });
   }
 

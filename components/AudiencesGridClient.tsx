@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { AUDIENCES } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
@@ -105,18 +104,12 @@ export default function AudiencesGridClient() {
                     ))}
                   </ul>
                   <div className="mt-8">
-                    {audience.ctaHref === "whatsapp" ? (
-                      <WhatsAppButton className={`${btnTerracotta} w-full text-center`}>
-                        {audience.ctaLabel}
-                      </WhatsAppButton>
-                    ) : (
-                      <Link
-                        href={audience.ctaHref}
-                        className={`${btnOutlineDark} block w-full text-center`}
-                      >
-                        {audience.ctaLabel}
-                      </Link>
-                    )}
+                    <Link
+                      href={audience.ctaHref}
+                      className={`${audience.ctaPrimary ? btnTerracotta : btnOutlineDark} block w-full text-center`}
+                    >
+                      {audience.ctaLabel}
+                    </Link>
                   </div>
                 </div>
               </div>
