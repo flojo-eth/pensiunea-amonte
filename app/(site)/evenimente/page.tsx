@@ -12,6 +12,7 @@ import {
   RATING_SUMMARY,
   CONTACT,
   PRIVATE_EVENTS_WHATSAPP,
+  RETREAT_INTERIM_WHATSAPP,
   whatsappUrl,
 } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
@@ -40,9 +41,11 @@ const CARDS = [
     photo: "/servicii-facilitati/sala-pentru-grupuri.jpg",
     photoLabel: "[ FOTO: sala aranjată pentru o sesiune de lucru, cu echipa la masă ]",
     alt: "Sala pentru grupuri de la Pensiunea Amonte, pregătită pentru un retreat corporate",
-    href: "/retreat-corporate",
-    cta: "Vezi pagina pentru echipe",
-    whatsapp: false as const,
+    // TEMPORAR pe WhatsApp cat timp /retreat-corporate are marcaje de continut.
+    // De pus inapoi pe "/retreat-corporate", cu whatsapp: false.
+    href: RETREAT_INTERIM_WHATSAPP,
+    cta: "Cere ofertă pentru echipă",
+    whatsapp: true as const,
   },
   {
     eyebrow: "Privat",
@@ -125,7 +128,7 @@ export default function EvenimentePage() {
                     // merge direct pe WhatsApp, cu sursă proprie în GA4.
                     <WhatsAppButton
                       href={c.href}
-                      pageSource="evenimente-private-cta"
+                      pageSource={c.href === PRIVATE_EVENTS_WHATSAPP ? "evenimente-private-cta" : "retreat-interim-cta"}
                       className={`${btnTerracotta} block w-full text-center`}
                     >
                       {c.cta}

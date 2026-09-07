@@ -39,7 +39,7 @@ export default function ServiciiPage() {
           Pentru echipe și grupuri, pensiunea se poate închiria integral, cu sală
           de lucru și toate spațiile rezervate exclusiv vouă.{" "}
           <Link
-            href="/retreat-corporate"
+            href="/evenimente"
             className="font-semibold text-terracotta underline-offset-2 hover:underline"
           >
             Vezi condițiile pentru grupuri

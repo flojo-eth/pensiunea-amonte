@@ -68,7 +68,7 @@ export default function RezervaAcumPage() {
             <p className="mt-5 text-center text-[14px] leading-relaxed text-muted">
               Rezervi pentru un grup sau o echipă?{" "}
               <Link
-                href="/retreat-corporate"
+                href="/evenimente"
                 className="font-semibold text-forest underline-offset-2 hover:underline"
               >
                 Vezi pagina dedicată
