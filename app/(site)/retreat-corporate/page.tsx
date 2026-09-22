@@ -148,18 +148,25 @@ export default function RetreatCorporatePage() {
 
       {/* ── S2. BARA DE FAPTE ── */}
       <section className="border-b border-line bg-sand">
-        <ul className={`${container} grid list-none grid-cols-2 gap-x-6 gap-y-5 py-7 pl-0 lg:grid-cols-6`}>
-          {FACTS.map((f) => (
-            <li key={f.label}>
-              <div className="font-serif text-[26px] leading-none text-forest">
-                {f.value}
-              </div>
-              <div className="mt-1.5 text-[13px] leading-snug text-[#33392f]">
-                {f.label}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {/* `pl-0` (reset for the <ul>'s own default list padding) must live on a
+            different element than the container's `px-` padding: both set
+            padding-left, and pl-0 was winning, zeroing only the left side and
+            leaving the page looking unpadded on that edge (right side, set by
+            padding-right, was untouched). */}
+        <div className={container}>
+          <ul className="grid list-none grid-cols-2 gap-x-6 gap-y-5 py-7 pl-0 lg:grid-cols-6">
+            {FACTS.map((f) => (
+              <li key={f.label}>
+                <div className="font-serif text-[26px] leading-none text-forest">
+                  {f.value}
+                </div>
+                <div className="mt-1.5 text-[13px] leading-snug text-[#33392f]">
+                  {f.label}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* ── S3. CONFIGURAȚIA CAZĂRII ── */}
@@ -385,13 +392,12 @@ export default function RetreatCorporatePage() {
       {/* ── S9. PROCES ── */}
       <section className={`${sectionPad} bg-pine`}>
         <div className={container}>
-          <SectionHeading
-            eyebrow="Proces"
-            title="De la cerere la confirmare, în patru pași"
-            tone="dark"
-            center
-            className="mb-[clamp(32px,4vw,48px)]"
-          />
+          {/* Not SectionHeading here: its eyebrow is required, and "Proces"
+              above a title that already starts with "Proces" repeated the
+              word right above itself. Same visual classes, no eyebrow line. */}
+          <h2 className="mb-[clamp(32px,4vw,48px)] text-center font-serif text-[clamp(34px,4.5vw,56px)] font-semibold leading-[1.05] text-card-2">
+            Proces în 4 pași simpli
+          </h2>
           <ol className="m-0 grid list-none gap-5 pl-0 sm:grid-cols-2 lg:grid-cols-4">
             {BOOKING_STEPS.map((step, i) => (
               <li key={step.title} className="rounded-xl border border-paper/15 p-[clamp(18px,3vw,24px)]">
