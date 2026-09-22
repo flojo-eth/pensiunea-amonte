@@ -320,7 +320,7 @@ export default function RetreatCorporatePage() {
                 </div>
                 <ol className="m-0 list-none border-l border-line-2 pl-0">
                   {day.items.map((item) => (
-                    <li key={item.title} className="relative pb-6 pl-6 last:pb-0">
+                    <li key={`${item.time}-${item.title}`} className="relative pb-6 pl-6 last:pb-0">
                       <span
                         className="absolute left-[-4.5px] top-[7px] h-2 w-2 rounded-full bg-terracotta"
                         aria-hidden="true"
@@ -328,12 +328,19 @@ export default function RetreatCorporatePage() {
                       <span className="block text-[12px] font-semibold uppercase tracking-[1px] text-muted-2">
                         {item.time}
                       </span>
-                      <span className="mt-1 block text-[15px] font-semibold text-pine">
-                        {item.title}
-                      </span>
-                      <span className="mt-1 block text-[14px] leading-relaxed text-muted">
-                        {item.body}
-                      </span>
+                      {/* Title is optional: an item can be just a plain, non-bold
+                          note (e.g. the Sunday "Prânz (opțional)" line) rendered
+                          in the body slot below, with no bold heading above it. */}
+                      {item.title && (
+                        <span className="mt-1 block text-[15px] font-semibold text-pine">
+                          {item.title}
+                        </span>
+                      )}
+                      {item.body && (
+                        <span className="mt-1 block text-[14px] leading-relaxed text-muted">
+                          {item.body}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ol>

@@ -178,6 +178,11 @@ const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
       { time: "09:00", title: "Mic dejun", body: "În ritmul fiecăruia.", fnb: true },
       { time: "10:30", title: "Sesiune de închidere", body: "Decizii și next steps, cât sunteți toți în același loc." },
       { time: "12:00", title: "Check-out", body: "Cu posibilitate de prelungire până la 15:00." },
+      // No title, just the body line: rendered non-bold, unlike every other
+      // item. Own entry rather than folded into Check-out's body, because
+      // it's a meal mention and needs its own `fnb` gate — Check-out itself
+      // has none and must stay visible even with SHOW_FNB off.
+      { time: "13:00", title: "", body: "Prânz (opțional)", fnb: true },
     ],
   },
 ];
