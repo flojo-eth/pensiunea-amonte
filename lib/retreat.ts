@@ -310,7 +310,6 @@ export const FAQ = FAQ_SOURCE.filter((item) => SHOW_FNB || !item.fnb);
 
 // ── S12. Offer form options ──────────────────────────────────────────────────
 
-export const GROUP_SIZES = ["10-14", "15-19", "20-24", "peste 24"] as const;
 export const NIGHT_OPTIONS = ["1", "2", "3+"] as const;
 export const MEAL_OPTIONS = ["Mic dejun", "Prânz", "Cină"] as const;
 

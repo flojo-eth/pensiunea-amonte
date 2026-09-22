@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Review } from "@/lib/content";
 
 const SPEED_PX_PER_SEC = 32;
 const RESUME_DELAY_MS = 2500;
+
+// Below this, a review fits the 6-line clamp without truncating, so the
+// "citește mai mult" toggle would have nothing to expand into.
+const CLAMP_THRESHOLD_CHARS = 220;
 
 export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -12,6 +16,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined
   );
+  const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
   // Duplicate the list so scrollLeft can loop seamlessly at the halfway point.
   const loop = [...reviews, ...reviews];
@@ -60,6 +65,21 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
     trackRef.current?.scrollBy({ left: dir * 360, behavior: "smooth" });
   };
 
+  const toggleExpanded = (i: number) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      const willExpand = !next.has(i);
+      if (willExpand) {
+        next.add(i);
+        pause(); // reading takes longer than the auto-resume delay
+      } else {
+        next.delete(i);
+        resumeSoon();
+      }
+      return next;
+    });
+  };
+
   return (
     <div className="relative">
       <div
@@ -71,9 +91,12 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
         onPointerDown={resumeSoon}
         onWheel={resumeSoon}
         onTouchStart={resumeSoon}
-        className="flex gap-6 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex items-start gap-6 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {loop.map((r, i) => (
+        {loop.map((r, i) => {
+          const isLong = r.text.length > CLAMP_THRESHOLD_CHARS;
+          const isExpanded = expanded.has(i);
+          return (
           <div
             key={i}
             className="flex w-[300px] shrink-0 flex-col rounded-[10px] bg-card p-8 sm:w-[340px]"
@@ -81,9 +104,21 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
             <div className="mb-[18px] text-[16px] tracking-[2px] text-terracotta">
               {r.stars}
             </div>
-            <p className="mb-6 flex-1 font-serif text-[19px] leading-[1.45] text-[#33392f]">
+            <p
+              className={`mb-1 flex-1 font-serif text-[19px] leading-[1.45] text-[#33392f] ${isExpanded ? "" : "line-clamp-6"}`}
+            >
               {r.text}
             </p>
+            {isLong && (
+              <button
+                type="button"
+                onClick={() => toggleExpanded(i)}
+                className="mb-5 self-start text-[13px] font-semibold text-forest underline-offset-2 hover:underline"
+              >
+                {isExpanded ? "Arată mai puțin" : "Citește mai mult"}
+              </button>
+            )}
+            {!isLong && <div className="mb-5" />}
             <div className="flex items-center gap-3">
               <div className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-forest text-[16px] font-semibold text-paper">
                 {r.initial}
@@ -96,7 +131,8 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <button

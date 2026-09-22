@@ -8,7 +8,7 @@ import ReviewsCarousel from "@/components/ReviewsCarousel";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { pageMeta } from "@/lib/seo";
 import {
-  REVIEWS,
+  GROUP_REVIEWS,
   RATING_SUMMARY,
   CONTACT,
   PRIVATE_EVENTS_WHATSAPP,
@@ -25,11 +25,6 @@ export const metadata: Metadata = pageMeta({
 });
 
 const EVENTS_PAGE_SOURCE = "evenimente";
-
-// Same three group reviews used on /retreat-corporate; ReviewsCarousel takes
-// the list as a prop, so filtering happens here rather than in the component.
-const GROUP_REVIEWERS = ["Adrian Migiu", "Dan Velcu", "Filip Mihaela"];
-const GROUP_REVIEWS = REVIEWS.filter((r) => GROUP_REVIEWERS.includes(r.name));
 
 const CARDS = [
   {

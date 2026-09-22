@@ -15,9 +15,10 @@ import { pageMeta } from "@/lib/seo";
 import { SHOW_FNB, SHOW_PRICING } from "@/lib/flags";
 import {
   CONTACT,
-  REVIEWS,
+  GROUP_REVIEWS,
   RATING_SUMMARY,
   GOOGLE_MAPS_URL,
+  GOOGLE_REVIEWS_URL,
   whatsappUrl,
 } from "@/lib/content";
 import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
@@ -49,11 +50,6 @@ export const metadata: Metadata = pageMeta({
   path: "/retreat-corporate",
   image: "/exterior-pensiune.jpeg",
 });
-
-// Reviews left by groups, quoted verbatim. Filtering happens here rather than in
-// ReviewsCarousel, which already takes the list as a prop.
-const GROUP_REVIEWERS = ["Adrian Migiu", "Dan Velcu", "Filip Mihaela"];
-const GROUP_REVIEWS = REVIEWS.filter((r) => GROUP_REVIEWERS.includes(r.name));
 
 // LodgingBusiness with the canonical NAP, geo and amenities is already emitted
 // for every page in this route group by app/(site)/layout.tsx, so the entity is
@@ -428,7 +424,7 @@ export default function RetreatCorporatePage() {
           <ReviewsCarousel reviews={GROUP_REVIEWS} />
           <div className={`${container} mt-8 text-center`}>
             <a
-              href={GOOGLE_MAPS_URL}
+              href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[15px] font-semibold text-terracotta no-underline hover:underline"
@@ -448,20 +444,12 @@ export default function RetreatCorporatePage() {
         />
         <div className="mx-auto max-w-[820px]">
           {FAQ.map((item) => (
-            <details key={item.q} className="group border-b border-line py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta">
-                <h3 className="m-0 text-[17px] font-semibold text-pine">{item.q}</h3>
-                <span
-                  className="shrink-0 text-[20px] leading-none text-terracotta transition-transform group-open:rotate-45"
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-              </summary>
+            <div key={item.q} className="border-b border-line py-5">
+              <h3 className="m-0 text-[17px] font-semibold text-pine">{item.q}</h3>
               <p className="mt-3 mb-0 max-w-[68ch] text-[15px] leading-relaxed text-muted">
                 {item.a}
               </p>
-            </details>
+            </div>
           ))}
         </div>
       </section>

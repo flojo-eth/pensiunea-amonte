@@ -477,6 +477,13 @@ export const REVIEWS: Review[] = [
   },
   {
     stars: "★★★★★",
+    text: "Am petrecut un weekend minunat aici împreună cu echipa. Totul a fost impecabil, de la organizare, la atenția personalului, care a fost extrem de amabil și atent cu noi. Pensiunea în sine este superbă: totul este nou, curat, elegant, bine gândit. Ne-am simțit excelent și cu siguranță vom reveni cu drag. Recomandăm Pensiunea Amonte tuturor celor care vor să se bucure de un loc frumos, liniștit și perfect pentru relaxare sau evenimente de echipă.",
+    name: "Cristina Sosoi",
+    meta: "Google · acum 10 luni",
+    initial: "C",
+  },
+  {
+    stars: "★★★★★",
     text: "Excellent accommodation. Stayed there for 3 nights during an exhausting e-bike race and could find the best condition to properly relax and recover. If you leave your balcony door open you will hear the river gently flowing.",
     name: "Reini Stadler",
     meta: "Google · acum 8 luni",
@@ -484,7 +491,7 @@ export const REVIEWS: Review[] = [
   },
   {
     stars: "★★★★★",
-    text: "Un teambuilding de 2 zile care a semănat mai mult cu o vacanță bine organizată decât cu o „activitate de echipă”. Gazdele - rapide, implicate și cu un simț al ospitalității rar întâlnit. Mâncarea a fost foarte bună, camerele impecabile.",
+    text: "Un teambuilding de 2 zile care a arătat mai mult a vacanță bine organizată decât a „activitate de echipă”. Gazdele, rapide, implicate și cu un simț al ospitalității rar întâlnit. Mâncarea foarte bună, camerele impecabile, iar orice cerință a fost rezolvată fără stres și fără întârziere. Locația e exact ce trebuie: natură, liniște și un decor care te scoate complet din ritmul zilnic. Au și un spa mic, dar elegant, perfect pentru relaxare după „efortul” de a socializa cu colegii. Iar Bruno, Bernese Mountain Dog-ul pensiunii, e clar sufletul locului, prietenos, calm și imposibil de ignorat. Per total: locul acela unde vii cu colegii și pleci întrebându-te de ce nu ai venit mai devreme.",
     name: "Dan Velcu",
     meta: "Google · acum o lună",
     initial: "D",
@@ -512,7 +519,7 @@ export const REVIEWS: Review[] = [
   },
   {
     stars: "★★★★★",
-    text: "10/10 cu felicitări! Locația ideală pentru un teambuilding reușit - pot spune că a fost o experiență impecabilă de la început până la sfârșit!",
+    text: "Nota 10 cu felicitări! Locația ideală pentru un teambuilding reușit: pot spune că a fost o experiență impecabilă de la început până la sfârșit! Personalul: absolut extraordinar! Oameni extrem de prietenoși, receptivi și atenți la toate nevoile grupului nostru. S-au asigurat că nu ne lipsește nimic. Mâncarea: delicioasă, diversificată și proaspătă. Felicitări bucătarilor, toată echipa a fost impresionată! Atmosfera: muzica de calitate a completat perfect serile noastre de relaxare și distracție. Cazarea: camerele sunt foarte curate, îngrijite și aerisite, exact ce ai nevoie după o zi plină de activități. Punctul forte? Vederea superbă către munte, care îți taie răsuflarea și îți încarcă bateriile instantaneu. Recomand cu toată încrederea această locație pentru orice eveniment corporate sau escapadă cu echipa! Vom reveni cu siguranță.",
     name: "Filip Mihaela",
     meta: "Google · acum o lună",
     initial: "F",
@@ -533,7 +540,18 @@ export const REVIEWS: Review[] = [
   },
 ];
 
-// Primary site navigation (anchors on the home page).
+// Reviews that mention a group stay (teambuilding, corporate, closing the whole
+// property). Shared by /retreat-corporate and /evenimente so the two pages
+// can't drift apart on which quotes count as "group" social proof.
+const GROUP_REVIEWERS = ["Adrian Migiu", "Dan Velcu", "Filip Mihaela", "Cristina Sosoi"];
+export const GROUP_REVIEWS = REVIEWS.filter((r) => GROUP_REVIEWERS.includes(r.name));
+
+// Deep link to the reviews tab of the Google Business Profile (same place_id
+// verified elsewhere against the site's Maps links), used for "see all
+// reviews" rather than the generic GOOGLE_MAPS_URL used for directions.
+export const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/maps/place/Pensiunea+Amonte/@45.6635569,24.451449,143m/data=!3m1!1e3!4m11!3m10!1s0x474cf3ea27771923:0xd77f268af65251e9!5m2!4m1!1i2!8m2!3d45.6635162!4d24.4515096!9m1!1b1!16s%2Fg%2F11y3clzx0j?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D";
+
 /** Pre-filled WhatsApp message while /evenimente-private does not exist yet. */
 export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
   "Bună ziua, aș dori informații pentru un eveniment privat la Pensiunea Amonte",
@@ -558,6 +576,7 @@ export type NavLink = {
   children?: readonly NavChild[];
 };
 
+// Primary site navigation (anchors on the home page).
 export const NAV_LINKS: readonly NavLink[] = [
   { href: "/despre-noi", label: "Despre" },
   { href: "/camere", label: "Camere" },

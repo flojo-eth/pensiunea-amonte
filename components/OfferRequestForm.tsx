@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { WHATSAPP_NUMBER, CONTACT } from "@/lib/content";
-import { GROUP_SIZES, NIGHT_OPTIONS, MEAL_OPTIONS, RETREAT_PAGE_SOURCE } from "@/lib/retreat";
+import { NIGHT_OPTIONS, MEAL_OPTIONS, RETREAT_PAGE_SOURCE } from "@/lib/retreat";
 import { pushDataLayer } from "@/lib/gtm";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
@@ -39,7 +39,7 @@ const EMPTY: Fields = {
   company: "",
   email: "",
   phone: "",
-  groupSize: GROUP_SIZES[1],
+  groupSize: "",
   period: "",
   nights: NIGHT_OPTIONS[1],
   needsRoom: "da",
@@ -65,6 +65,7 @@ export default function OfferRequestForm({ showFnb }: Props) {
     if (!f.company.trim()) e.company = "Completează numele firmei.";
     if (!f.email.trim()) e.email = "Avem nevoie de un email pentru ofertă.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = "Emailul nu pare valid.";
+    if (!f.groupSize.trim()) e.groupSize = "Câți sunteți, aproximativ?";
     if (!f.period.trim()) e.period = "Spune-ne ce perioadă ai în minte.";
     if (!f.consent) e.consent = "Avem nevoie de acordul tău ca să îți răspundem.";
     setErrors(e);
@@ -165,10 +166,9 @@ export default function OfferRequestForm({ showFnb }: Props) {
         </div>
         <div>
           <label className={label} htmlFor={id("groupSize")}>Număr de persoane</label>
-          <select id={id("groupSize")} className={field} value={f.groupSize}
-            onChange={(e) => setF({ ...f, groupSize: e.target.value })}>
-            {GROUP_SIZES.map((g) => <option key={g} value={g}>{g}</option>)}
-          </select>
+          <input id={id("groupSize")} className={field} value={f.groupSize} placeholder="de exemplu 18"
+            onChange={(e) => setF({ ...f, groupSize: e.target.value })} {...aria("groupSize")} />
+          {err("groupSize")}
         </div>
         <div>
           <label className={label} htmlFor={id("nights")}>Număr de nopți</label>
