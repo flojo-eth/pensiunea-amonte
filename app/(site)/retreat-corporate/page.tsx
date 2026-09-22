@@ -153,6 +153,11 @@ export default function RetreatCorporatePage() {
           de Sibiu, și rămânem prezenți pe toată durata șederii. Comunicarea
           rămâne cu aceeași echipă, din prima zi până la plecare.
         </SectionHeading>
+        <p className="mt-6 mb-0">
+          <Link href="/despre-noi" className="text-[15px] font-semibold text-terracotta no-underline hover:underline">
+            Află mai multe despre noi →
+          </Link>
+        </p>
       </section>
 
       {/* ── S3. SPAȚIILE DE LUCRU ── */}
