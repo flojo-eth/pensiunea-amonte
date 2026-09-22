@@ -236,62 +236,39 @@ export default function RetreatCorporatePage() {
           Ca să știi din prima dacă încape toată echipa.
         </SectionHeading>
 
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[620px] border-collapse text-left text-[14.5px]">
-            <thead>
-              <tr className="border-b border-line-2 text-[12.5px] uppercase tracking-[1px] text-muted-2">
-                <th scope="col" className="py-3 pr-4 font-semibold">Unitate</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">Număr</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">Persoane</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">Paturi</th>
-                <th scope="col" className="py-3 font-semibold">Total locuri</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ROOM_CONFIG.map((r) => (
-                <tr key={r.unit} className="border-b border-line">
-                  <td className="py-4 pr-4 font-medium text-pine">{r.unit}</td>
-                  <td className="py-4 pr-4 text-muted">{r.count}</td>
-                  <td className="py-4 pr-4 text-muted">{r.perUnit}</td>
-                  <td className="py-4 pr-4 text-muted">{r.beds}</td>
-                  <td className="py-4 text-muted">{r.total}</td>
-                </tr>
-              ))}
-              <tr className="border-b-2 border-pine font-semibold text-pine">
-                <td className="py-4 pr-4">Total</td>
-                <td className="py-4 pr-4">{ROOM_CONFIG_TOTAL.count}</td>
-                <td className="py-4 pr-4" />
-                <td className="py-4 pr-4" />
-                <td className="py-4">{ROOM_CONFIG_TOTAL.total}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {ROOM_CONFIG.map((r) => (
+            <article key={r.unit} className="flex flex-col overflow-hidden rounded-xl border border-line bg-card">
+              <PlaceholderImage
+                src={r.photo}
+                alt={r.alt}
+                label={r.photoLabel}
+                className="aspect-[4/3] w-full"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="flex flex-1 flex-col p-[clamp(18px,3vw,24px)]">
+                <h3 className="m-0 font-serif text-[20px] font-semibold text-pine">
+                  {r.count} {r.unit}
+                </h3>
+                <p className="mt-2 mb-0 text-[14.5px] leading-relaxed text-muted">
+                  {r.perUnit} persoane, {r.beds}. {r.total} locuri în total.
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
 
-        <ul className="mt-6 space-y-2 pl-0 list-none">
+        <p className="mt-6 mb-0 text-[15px] font-semibold text-pine">
+          Total: {ROOM_CONFIG_TOTAL.count} unități de cazare, {ROOM_CONFIG_TOTAL.total} de locuri.
+        </p>
+
+        <ul className="mt-3 space-y-2 pl-0 list-none">
           {ROOM_NOTES.map((n) => (
             <li key={n} className="text-[14px] leading-relaxed text-muted">
               {n}
             </li>
           ))}
         </ul>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <PlaceholderImage
-            src="/camera-dubla-folder/poza-pat-si-camera.jpeg"
-            alt="Cameră dublă cu birou și vedere la munte"
-            label="[ FOTO: cameră dublă, pat și birou cu priveliște ]"
-            className="aspect-[4/3] w-full rounded-xl"
-            sizes="(max-width: 640px) 100vw, 50vw"
-          />
-          <PlaceholderImage
-            src="/apartament/canapea_extensibila_living.jpg"
-            alt="Studio de familie cu canapea extensibilă"
-            label="[ FOTO: studio de familie, configurație pentru 4 persoane ]"
-            className="aspect-[4/3] w-full rounded-xl"
-            sizes="(max-width: 640px) 100vw, 50vw"
-          />
-        </div>
 
         <p className="mt-6 mb-0">
           <Link href="/camere" className="text-[15px] font-semibold text-terracotta no-underline hover:underline">

@@ -25,18 +25,24 @@ export const DRIVE_BRASOV = "2 ore";
 
 export const ROOM_CONFIG = [
   {
-    unit: "Cameră dublă cu balcon și vedere la munte",
+    unit: "camere duble cu balcon și vedere la munte",
     count: "8",
     perUnit: "2",
-    beds: "Pat matrimonial",
+    beds: "pat matrimonial",
     total: "16",
+    photo: "/camera-dubla-folder/poza-pat-si-camera.jpeg",
+    photoLabel: "[ FOTO: cameră dublă, pat și birou cu priveliște ]",
+    alt: "Cameră dublă cu birou și vedere la munte",
   },
   {
-    unit: "Studio de familie",
+    unit: "studiouri de familie",
     count: "2",
     perUnit: "4",
-    beds: "Pat matrimonial și canapea extensibilă",
+    beds: "pat matrimonial și canapea extensibilă",
     total: "8",
+    photo: "/apartament/canapea_extensibila_living.jpg",
+    photoLabel: "[ FOTO: studio de familie, configurație pentru 4 persoane ]",
+    alt: "Studio de familie cu canapea extensibilă",
   },
 ] as const;
 
