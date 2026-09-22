@@ -8,7 +8,7 @@ import { CONTACT, GOOGLE_FORM_URL, CANCELLATION } from "@/lib/content";
 export const metadata: Metadata = pageMeta({
   title: "Rezervă acum",
   description:
-    "Verifică disponibilitatea și rezervă-ți sejurul la Pensiunea Amonte, în Valea Avrigului - la 30 de minute de Sibiu. Jacuzzi & saună, terasă panoramică.",
+    "Verifică disponibilitatea și rezervă-ți sejurul la Pensiunea Amonte, în Valea Avrigului - la 40 de minute de Sibiu. Jacuzzi & saună, terasă panoramică.",
   path: "/rezerva-acum",
 });
 
@@ -68,7 +68,7 @@ export default function RezervaAcumPage() {
             <p className="mt-5 text-center text-[14px] leading-relaxed text-muted">
               Rezervi pentru un grup sau o echipă?{" "}
               <Link
-                href="/evenimente"
+                href="/retreat-corporate"
                 className="font-semibold text-forest underline-offset-2 hover:underline"
               >
                 Vezi pagina dedicată

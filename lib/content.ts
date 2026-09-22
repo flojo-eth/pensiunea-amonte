@@ -68,7 +68,7 @@ export const LOCATION = "Valea Avrigului · Munții Făgăraș";
 export const STATS = [
   { value: "10", label: "Unități de cazare" },
   { value: "24", label: "Oaspeți" },
-  { value: "30'", label: "De Sibiu" },
+  { value: "40'", label: "De Sibiu" },
 ] as const;
 
 /** A card photo: either a plain path, or a path plus per-image classes. */
@@ -534,11 +534,6 @@ export const REVIEWS: Review[] = [
 ];
 
 // Primary site navigation (anchors on the home page).
-/** Pre-filled WhatsApp message while /retreat-corporate is still being finished. */
-export const RETREAT_INTERIM_WHATSAPP = whatsappUrl(
-  "Bună ziua! Aș dori o ofertă pentru un retreat sau teambuilding la Pensiunea Amonte.",
-);
-
 /** Pre-filled WhatsApp message while /evenimente-private does not exist yet. */
 export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
   "Bună ziua, aș dori informații pentru un eveniment privat la Pensiunea Amonte",
@@ -573,14 +568,7 @@ export const NAV_LINKS: readonly NavLink[] = [
     href: "/evenimente",
     label: "Evenimente",
     children: [
-      {
-        // TEMPORAR pe WhatsApp cat timp /retreat-corporate are marcaje de
-        // continut nerezolvate. De pus inapoi pe "/retreat-corporate".
-        href: RETREAT_INTERIM_WHATSAPP,
-        label: "Retreat și teambuilding",
-        whatsapp: true,
-        pageSource: "retreat-interim-cta",
-      },
+      { href: "/retreat-corporate", label: "Retreat și teambuilding" },
       {
         // TODO: swap for /evenimente-private once that page exists.
         href: PRIVATE_EVENTS_WHATSAPP,
@@ -626,8 +614,7 @@ export const AUDIENCES: Audience[] = [
     body: "Amonte se poate închiria integral, pentru până la 24 de persoane, cu sală dedicată pentru grupuri. Ideal pentru teambuilding, retreaturi sau ieșiri cu prietenii - natură, spa și confort, fără să împărțiți spațiul cu nimeni.",
     highlights: ["Închiriere integrală (până la 24 pers.)", "Sală pentru grupuri", "Spa & terasă"],
     ctaLabel: "Cere ofertă pentru grup",
-    // TEMPORAR pe hub cat timp /retreat-corporate are marcaje de continut.
-    ctaHref: "/evenimente",
+    ctaHref: "/retreat-corporate",
     // The B2B funnel entrance from the homepage; keeps the filled styling it had
     // when it pointed straight at WhatsApp.
     ctaPrimary: true,

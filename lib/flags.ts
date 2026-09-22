@@ -26,18 +26,25 @@ type Flags = {
    * F&B category if the offer ever changes.
    */
   SHOW_FNB: boolean;
-  /** Indicative pricing block. Off would hide prices and keep the CTA only. */
+  /**
+   * Public pricing block.
+   *
+   * Off on purpose: rates are preferential and negotiated per group, so a
+   * published figure would anchor the conversation in the wrong place. The
+   * page sells the complete offer within 24 working hours instead. Flip to
+   * true only if that commercial decision changes.
+   */
   SHOW_PRICING: boolean;
 };
 
 const PRODUCTION: Flags = {
   SHOW_FNB: true,
-  SHOW_PRICING: true,
+  SHOW_PRICING: false,
 };
 
 const STAGING: Flags = {
   SHOW_FNB: true,
-  SHOW_PRICING: true,
+  SHOW_PRICING: false,
 };
 
 const BY_ENV: Record<DeployEnv, Flags> = {

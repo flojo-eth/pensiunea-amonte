@@ -50,12 +50,6 @@ export const metadata: Metadata = pageMeta({
   image: "/exterior-pensiune.jpeg",
 });
 
-// TEMPORAR: pagina contine inca marcaje [VERIFICĂ] si [COMPLETEAZĂ] vizibile in
-// copy. Pana se inchid, nu o lasam indexata si nu o linkam din navigatie.
-// De sters odata cu ultimul marcaj, impreuna cu: intrarea din sitemap.ts,
-// intrarea din submeniul NAV_LINKS si linkul cardului din /evenimente.
-metadata.robots = { index: false, follow: false };
-
 // Reviews left by groups, quoted verbatim. Filtering happens here rather than in
 // ReviewsCarousel, which already takes the list as a prop.
 const GROUP_REVIEWERS = ["Adrian Migiu", "Dan Velcu", "Filip Mihaela"];

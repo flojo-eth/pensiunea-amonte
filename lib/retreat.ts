@@ -2,10 +2,6 @@
 // without touching layout. Photos live in /public; entries without a `photo`
 // render as clearly-marked placeholders (see the shot list at the bottom of
 // app/(site)/retreat-corporate/page.tsx).
-//
-// Markers left for Flo to close before production:
-//   [VERIFICĂ: ...]   a number I could not confirm from the codebase
-//   [COMPLETEAZĂ: ...] data that does not exist anywhere yet
 
 import { SHOW_FNB } from "./flags";
 
@@ -17,11 +13,13 @@ export const RETREAT_WHATSAPP_MESSAGE =
 export const RETREAT_PAGE_SOURCE = "retreat-corporate";
 
 /**
- * Drive time to Sibiu. Measured on Google Maps from the property pin, but the
- * rest of the site still claims 30 minutes, so the number is not committed
- * until Flo picks one figure for the whole site.
+ * Drive times, confirmed by Flo in September 2026 and used as the single figure
+ * across the whole site. Google Maps measured 44 min to Sibiu at the time; the
+ * 40 here is the owner's own number for a normal run.
  */
-export const DRIVE_SIBIU = "[VERIFICĂ: distanță]";
+export const DRIVE_SIBIU = "40 de minute";
+export const DRIVE_AIRPORT = "50 de minute";
+export const DRIVE_BRASOV = "2 ore";
 
 // ── S2. Fact bar ─────────────────────────────────────────────────────────────
 
@@ -30,7 +28,7 @@ export const FACTS = [
   { value: "8 + 2", label: "camere duble și studiouri" },
   { value: "100%", label: "exclusivitate" },
   { value: "1", label: "sală pentru grupuri" },
-  { value: DRIVE_SIBIU, label: "de Sibiu" },
+  { value: "40 min", label: "de Sibiu" },
   { value: "24 h", label: "ofertă completă, zile lucrătoare" },
 ] as const;
 
@@ -41,7 +39,7 @@ export const ROOM_CONFIG = [
     unit: "Cameră dublă cu balcon și vedere la munte",
     count: "8",
     perUnit: "2",
-    beds: "[VERIFICĂ: doar matrimonial, sau și paturi separate? dacă da, câte]",
+    beds: "Pat matrimonial",
     total: "16",
   },
   {
@@ -56,7 +54,7 @@ export const ROOM_CONFIG = [
 export const ROOM_CONFIG_TOTAL = { count: "10", total: "24" } as const;
 
 export const ROOM_NOTES = [
-  "Fiecare unitate are baie proprie. [VERIFICĂ: balcon și vedere la munte se aplică și studiourilor?]",
+  "Fiecare unitate are baie proprie.",
 ] as const;
 
 // ── S4. Work spaces ──────────────────────────────────────────────────────────
@@ -72,7 +70,7 @@ export type Space = {
 export const WORKSPACES: Space[] = [
   {
     title: "Sala pentru grupuri",
-    body: "Încape toată echipa la o masă. [COMPLETEAZĂ: capacitate în format U și în format teatru]. Dotări: [COMPLETEAZĂ: TV sau proiector, flipchart, prize]. WiFi [COMPLETEAZĂ: viteză măsurată].",
+    body: "Încape toată echipa la aceeași masă, cu lumină naturală și WiFi. Spațiu dedicat, nu o sală de mese reamenajată pentru o zi.",
     photo: "/servicii-facilitati/sala-pentru-grupuri.jpg",
     photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",
     alt: "Sala pentru grupuri de la Pensiunea Amonte, configurată pentru 20 de persoane",
@@ -179,7 +177,7 @@ const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
     items: [
       { time: "09:00", title: "Mic dejun", body: "În ritmul fiecăruia.", fnb: true },
       { time: "10:30", title: "Sesiune de închidere", body: "Decizii și next steps, cât sunteți toți în același loc." },
-      { time: "12:00", title: "Check-out", body: "[VERIFICĂ: oră check-out pentru grupuri]" },
+      { time: "12:00", title: "Check-out", body: "Cu posibilitate de prelungire până la 15:00." },
     ],
   },
 ];
@@ -189,12 +187,17 @@ export const AGENDA = AGENDA_SOURCE.map((day) => ({
   items: day.items.filter((item) => SHOW_FNB || !item.fnb),
 }));
 
-// ── S8. Indicative pricing ───────────────────────────────────────────────────
+// ── S8. Pricing ──────────────────────────────────────────────────────────────
+//
+// Tarifele NU se publica: sunt preferentiale, negociate per grup, iar o cifra
+// publica ar ancora gresit discutia. Pagina vinde in schimb promisiunea ofertei
+// complete in 24 de ore lucratoare. Datele raman aici, in spatele flag-ului
+// SHOW_PRICING (false), in caz ca decizia se schimba.
 
 export const PRICING_LINES = [
   {
     label: "Închiriere integrală",
-    value: "[VERIFICĂ: tarif] lei pe noapte plus TVA",
+    value: "la cerere, în oferta trimisă",
     note: "Minimum 2 nopți în weekend.",
   },
   {
@@ -203,7 +206,7 @@ export const PRICING_LINES = [
   },
   {
     label: "Jacuzzi și saună",
-    value: "[VERIFICĂ: tarif] lei pe zi",
+    value: "la cerere, în oferta trimisă",
     note: "Acces exclusiv pentru grup.",
   },
 ] as const;
@@ -212,7 +215,7 @@ export const PRICING_LINES = [
 export const PRICING_FNB_LINES = [
   {
     label: "Mese",
-    value: "de la [VERIFICĂ: tarif] lei pe persoană pe zi",
+    value: "la cerere, în oferta trimisă",
     note: "Prânz și cină.",
   },
   {
@@ -257,15 +260,15 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Există sală de conferință?",
-    a: "Da. Sala pentru grupuri are lumină naturală, WiFi și loc pentru toată echipa la aceeași masă. [COMPLETEAZĂ: capacitate și dotări exacte]",
+    a: "Da. Sala pentru grupuri are lumină naturală, WiFi și loc pentru toată echipa la aceeași masă. Este un spațiu dedicat, disponibil pe toată durata sejurului, fără rezervare separată.",
   },
   {
     q: "La ce distanță e de Sibiu și de aeroport?",
-    a: "[VERIFICĂ: distanță] de centrul Sibiului și [VERIFICĂ: distanță] de Aeroportul Sibiu, cu mașina. Drumul e practicabil tot anul.",
+    a: "Aproximativ 40 de minute, 35 km, de centrul Sibiului și 50 de minute, 42 km, de Aeroportul Sibiu. Brașovul este la circa 2 ore, 130 km. Drumul e practicabil tot anul.",
   },
   {
     q: "Care e programul de check-in și check-out pentru grupuri?",
-    a: "[COMPLETEAZĂ: ore de check-in și check-out pentru grupuri]",
+    a: "Check-in de la ora 15:00, check-out până la ora 12:00, cu posibilitate de prelungire până la 15:00, în funcție de disponibilitate.",
   },
   {
     q: "Cum se face rezervarea și ce avans se plătește?",
@@ -309,8 +312,9 @@ export const MEAL_OPTIONS = ["Mic dejun", "Prânz", "Cină"] as const;
 // ── S13. Location ────────────────────────────────────────────────────────────
 
 export const ACCESS_POINTS = [
-  `Sibiu, centru: ${DRIVE_SIBIU}`,
-  "Aeroportul Sibiu: [VERIFICĂ: distanță]",
-  "Brașov, centru: [VERIFICĂ: distanță]",
-  "Parcare privată la proprietate, [COMPLETEAZĂ: număr locuri] locuri",
+  `Sibiu, centru: ${DRIVE_SIBIU}, 35 km`,
+  `Aeroportul Sibiu: ${DRIVE_AIRPORT}, 42 km`,
+  `Brașov, centru: ${DRIVE_BRASOV}, 130 km`,
+  "Parcare la proprietate, interioară și exterioară",
+  "Check-in de la 15:00, check-out până la 12:00, cu prelungire până la 15:00",
 ] as const;

@@ -23,7 +23,7 @@ import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
 
 export const metadata: Metadata = {
   description:
-    "Pensiunea Amonte - refugiu de munte în Valea Avrigului, la 30 de minute de Sibiu. 10 spații de cazare, jacuzzi & saună, terasă panoramică. Cere disponibilitate pe WhatsApp.",
+    "Pensiunea Amonte - refugiu de munte în Valea Avrigului, la 40 de minute de Sibiu. 10 spații de cazare, jacuzzi & saună, terasă panoramică. Cere disponibilitate pe WhatsApp.",
   alternates: { canonical: "/" },
 };
 
@@ -99,7 +99,7 @@ export default function Home() {
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
             Te răsfățăm cu o zonă de relaxare cu jacuzzi și saună și cu liniștea
-            pe care doar muntele o știe da - la doar 30 de minute de Sibiu.
+            pe care doar muntele o știe da - la doar 40 de minute de Sibiu.
           </p>
           <div className="mt-7 flex flex-wrap gap-9">
             {STATS.slice(0, 2).map((s) => (

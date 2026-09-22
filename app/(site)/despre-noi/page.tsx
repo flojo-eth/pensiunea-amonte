@@ -11,7 +11,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Despre noi - Pensiunea Amonte, cazare boutique în Valea Avrigului",
   description:
-    "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, terasă, sală pentru grupuri. La 30 min de Sibiu.",
+    "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, terasă, sală pentru grupuri. La 40 min de Sibiu.",
   path: "/despre-noi",
 });
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = pageMeta({
 const FAQ_BASE = [
   {
     q: "Unde este Pensiunea Amonte?",
-    a: "În Valea Avrigului nr. 642, județul Sibiu, la poalele Munților Făgăraș, la aproximativ 30 de minute de Sibiu.",
+    a: "În Valea Avrigului nr. 642, județul Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
   },
   {
     q: "Câți oaspeți poate găzdui?",
@@ -43,7 +43,7 @@ const FAQ_BASE = [
   },
   {
     q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",
-    a: "Sibiul este la aproximativ 30–40 de minute cu mașina. Transfăgărășanul și cascada Bâlea sunt la circa o oră, accesibile sezonier.",
+    a: "Sibiul este la aproximativ 40 de minute cu mașina, 35 km. Transfăgărășanul și cascada Bâlea sunt la circa o oră, accesibile sezonier.",
   },
   {
     q: "La ce oră este check-in / check-out?",
@@ -129,8 +129,8 @@ const FEATURES = [
   },
   {
     icon: "🌄",
-    title: "30 minute de Sibiu",
-    body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 30–40 de minute cu mașina.",
+    title: "40 minute de Sibiu",
+    body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 40 de minute cu mașina.",
   },
 ];
 
@@ -175,7 +175,7 @@ export default function DesprePage() {
         {/* Bloc de răspuns direct - autonom, 40–60 cuvinte */}
         <p className="mt-6 max-w-[65ch] text-[clamp(17px,2vw,20px)] leading-relaxed text-muted">
           Pensiunea Amonte este o pensiune boutique de munte situată în Valea
-          Avrigului, județul Sibiu, la poalele Munților Făgăraș și la circa 30
+          Avrigului, județul Sibiu, la poalele Munților Făgăraș și la circa 40
           de minute de Sibiu. Oferim 10 spații de cazare pentru maximum 24 de
           oaspeți, într-un cadru intim, cu jacuzzi, saună, șemineu, terasă
           panoramică, bar și acces direct la natură. Putem fi rezervați integral
@@ -389,7 +389,7 @@ export default function DesprePage() {
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">Sibiu</strong>{" "}
-                  (centru istoric și aeroport): la 30–40 de minute cu mașina
+                  (centru istoric): la 40 de minute cu mașina, iar aeroportul la 50
                 </li>
                 <li>
                   <strong className="font-medium text-paper/90">

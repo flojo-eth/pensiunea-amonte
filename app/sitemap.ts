@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/galerie",
     "/rezerva-acum",
     "/evenimente",
-    // "/retreat-corporate" revine dupa inchiderea marcajelor de continut.
+    "/retreat-corporate",
   ];
 
   const now = new Date();
