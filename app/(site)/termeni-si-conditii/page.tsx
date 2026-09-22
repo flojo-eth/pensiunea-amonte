@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
+import { CONTACT } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Termeni și Condiții",
@@ -37,7 +38,8 @@ export default function TermeniPage() {
             <p>CUI: 54352472</p>
             <p>Nr. Reg. Com.: J2026019997009</p>
             <p>Sediul social: Strada Iazului nr. 23, Avrig, jud. Sibiu</p>
-            <p>Punct de lucru / locația pensiunii: Valea Avrigului nr. 642, Avrig, jud. Sibiu</p>
+            {/* Adresa vine din CONTACT ca să rămână identică cu NAP-ul canonic. */}
+            <p>Punct de lucru / locația pensiunii: {CONTACT.address}</p>
             <p>Administrator: Florin Luca</p>
             <p>E-mail: contact@pensiunea-amonte.ro</p>
             <p>Telefon / WhatsApp: 0747342280</p>

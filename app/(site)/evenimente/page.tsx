@@ -26,6 +26,12 @@ export const metadata: Metadata = pageMeta({
 
 const EVENTS_PAGE_SOURCE = "evenimente";
 
+// Secțiunea video rămâne ascunsă cât timp materialul lipsește: un placeholder
+// vizibil pe o pagină indexată arată a lucrare neterminată. Ca s-o pornești,
+// pune /public/video/evenimente.mp4 și /public/video/evenimente-poster.jpg,
+// apoi treci asta pe true.
+const SHOW_VIDEO = false;
+
 const CARDS = [
   {
     eyebrow: "Corporate",
@@ -137,43 +143,35 @@ export default function EvenimentePage() {
       </section>
 
       {/* ── VIDEO ── */}
-      <section className={`${sectionPad} bg-sand`}>
-        <div className={container}>
-          <SectionHeading
-            eyebrow="Cum arată"
-            title="Locul, pe scurt"
-            center
-            className="mb-[clamp(28px,4vw,44px)]"
-          />
-          <div className="mx-auto max-w-[900px] overflow-hidden rounded-2xl border border-line bg-card">
-            {/* VIDEO: evenimente private */}
-            {/* Player nativ, fără autoplay: sunetul pornit din senin alungă
-                vizitatorul. `poster` previne saltul de layout cât se încarcă.
-                TODO: adaugă /public/video/evenimente.mp4 și posterul, apoi
-                înlocuiește placeholderul de mai jos cu elementul <video>:
-
-                <video
-                  controls
-                  preload="metadata"
-                  playsInline
-                  poster="/video/evenimente-poster.jpg"
-                  className="aspect-video w-full bg-pine"
-                >
-                  <source src="/video/evenimente.mp4" type="video/mp4" />
-                </video>
-            */}
-            <PlaceholderImage
-              label="[ VIDEO: prezentare evenimente private, 45-60 s, cu poster ]"
-              alt="Placeholder pentru videoclipul de prezentare a evenimentelor"
-              className="aspect-video w-full"
+      {SHOW_VIDEO && (
+        <section className={`${sectionPad} bg-sand`}>
+          <div className={container}>
+            <SectionHeading
+              eyebrow="Cum arată"
+              title="Locul, pe scurt"
+              center
+              className="mb-[clamp(28px,4vw,44px)]"
             />
+            <div className="mx-auto max-w-[900px] overflow-hidden rounded-2xl border border-line bg-card">
+              {/* Player nativ, fără autoplay: sunetul pornit din senin alungă
+                  vizitatorul. `poster` previne saltul de layout cât se încarcă. */}
+              <video
+                controls
+                preload="metadata"
+                playsInline
+                poster="/video/evenimente-poster.jpg"
+                className="aspect-video w-full bg-pine"
+              >
+                <source src="/video/evenimente.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p className="mx-auto mt-4 mb-0 max-w-[900px] text-[13.5px] text-muted-2">
+              Videoclipul rulează doar la cererea vizitatorului, fără pornire
+              automată.
+            </p>
           </div>
-          <p className="mx-auto mt-4 mb-0 max-w-[900px] text-[13.5px] text-muted-2">
-            Videoclipul rulează doar la cererea vizitatorului, fără pornire
-            automată.
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── RECENZII ── */}
       {GROUP_REVIEWS.length > 0 && (

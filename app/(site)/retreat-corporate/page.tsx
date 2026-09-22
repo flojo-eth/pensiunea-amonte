@@ -196,7 +196,10 @@ export default function RetreatCorporatePage() {
           className="mb-[clamp(32px,4vw,48px)]"
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {LEISURE.map((s) => (
+          {/* Doar intrările cu poză: un placeholder cu dungi pe o pagină
+              indexată arată a secțiune neterminată. Cardul reapare singur
+              când intrarea primește un `photo` în lib/retreat.ts. */}
+          {LEISURE.filter((s) => s.photo).map((s) => (
             <article key={s.title} className="flex flex-col overflow-hidden rounded-xl border border-line bg-card">
               <PlaceholderImage
                 src={s.photo}

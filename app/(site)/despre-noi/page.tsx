@@ -19,7 +19,7 @@ export const metadata: Metadata = pageMeta({
 const FAQ_BASE = [
   {
     q: "Unde este Pensiunea Amonte?",
-    a: "În Valea Avrigului nr. 642, județul Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
+    a: "În Valea Avrigului nr. 642, jud. Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
   },
   {
     q: "Câți oaspeți poate găzdui?",
