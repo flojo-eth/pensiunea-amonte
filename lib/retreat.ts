@@ -21,18 +21,7 @@ export const DRIVE_SIBIU = "40 de minute";
 export const DRIVE_AIRPORT = "50 de minute";
 export const DRIVE_BRASOV = "2 ore";
 
-// ── S2. Fact bar ─────────────────────────────────────────────────────────────
-
-export const FACTS = [
-  { value: "24", label: "persoane maximum" },
-  { value: "8 + 2", label: "camere duble și studiouri" },
-  { value: "100%", label: "exclusivitate" },
-  { value: "1", label: "sală pentru grupuri" },
-  { value: "40 min", label: "de Sibiu" },
-  { value: "24 h", label: "ofertă completă, zile lucrătoare" },
-] as const;
-
-// ── S3. Room configuration ───────────────────────────────────────────────────
+// ── S6. Room configuration ───────────────────────────────────────────────────
 
 export const ROOM_CONFIG = [
   {
@@ -57,7 +46,7 @@ export const ROOM_NOTES = [
   "Fiecare unitate are balcon și baie proprie.",
 ] as const;
 
-// ── S4. Work spaces ──────────────────────────────────────────────────────────
+// ── S3. Work spaces ──────────────────────────────────────────────────────────
 
 export type Space = {
   title: string;
@@ -93,7 +82,7 @@ export const WORKSPACES: Space[] = [
   },
 ];
 
-// ── S5. Between sessions ─────────────────────────────────────────────────────
+// ── S4. Between sessions ─────────────────────────────────────────────────────
 
 export const LEISURE: Space[] = [
   {

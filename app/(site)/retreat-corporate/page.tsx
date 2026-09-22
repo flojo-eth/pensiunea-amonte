@@ -26,7 +26,6 @@ import {
   RETREAT_WHATSAPP_MESSAGE,
   RETREAT_PAGE_SOURCE,
   DRIVE_SIBIU,
-  FACTS,
   ROOM_CONFIG,
   ROOM_CONFIG_TOTAL,
   ROOM_NOTES,
@@ -146,30 +145,83 @@ export default function RetreatCorporatePage() {
         </div>
       </section>
 
-      {/* ── S2. BARA DE FAPTE ── */}
-      <section className="border-b border-line bg-sand">
-        {/* `pl-0` (reset for the <ul>'s own default list padding) must live on a
-            different element than the container's `px-` padding: both set
-            padding-left, and pl-0 was winning, zeroing only the left side and
-            leaving the page looking unpadded on that edge (right side, set by
-            padding-right, was untouched). */}
+      {/* ── S2. DESPRE NOI ── */}
+      <section className={`${container} ${sectionPad}`}>
+        <SectionHeading eyebrow="Despre noi" title="Oameni, nu doar o locație">
+          Amonte este o pensiune de familie în Valea Avrigului, la {DRIVE_SIBIU}{" "}
+          de Sibiu. Suntem o echipă mică și implicată, prezentă pe toată durata
+          șederii. De la prima discuție până la plecarea echipei, vorbiți cu un
+          singur om, nu cu trei departamente.
+        </SectionHeading>
+      </section>
+
+      {/* ── S3. SPAȚIILE DE LUCRU ── */}
+      <section className={`${sectionPad} bg-sand`}>
         <div className={container}>
-          <ul className="grid list-none grid-cols-2 gap-x-6 gap-y-5 py-7 pl-0 lg:grid-cols-6">
-            {FACTS.map((f) => (
-              <li key={f.label}>
-                <div className="font-serif text-[26px] leading-none text-forest">
-                  {f.value}
+          <SectionHeading
+            eyebrow="Spații de lucru"
+            title="Unde lucrați"
+            className="mb-[clamp(32px,4vw,48px)]"
+          />
+          <div className="grid gap-6 md:grid-cols-3">
+            {WORKSPACES.map((s) => (
+              <article key={s.title} className="flex flex-col overflow-hidden rounded-xl border border-line bg-card">
+                <PlaceholderImage
+                  src={s.photo}
+                  alt={s.alt}
+                  label={s.photoLabel}
+                  className="aspect-[4/3] w-full"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="flex flex-1 flex-col p-[clamp(18px,3vw,24px)]">
+                  <h3 className="m-0 font-serif text-[20px] font-semibold text-pine">{s.title}</h3>
+                  <p className="mt-2 mb-0 text-[14.5px] leading-relaxed text-muted">{s.body}</p>
                 </div>
-                <div className="mt-1.5 text-[13px] leading-snug text-[#33392f]">
-                  {f.label}
-                </div>
-              </li>
+              </article>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
-      {/* ── S3. CONFIGURAȚIA CAZĂRII ── */}
+      {/* ── S4. TIMPUL LIBER ── */}
+      <section className={`${container} ${sectionPad}`}>
+        <SectionHeading
+          eyebrow="Între sesiuni"
+          title="Ce faceți între sesiuni"
+          className="mb-[clamp(32px,4vw,48px)]"
+        />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {LEISURE.map((s) => (
+            <article key={s.title} className="flex flex-col overflow-hidden rounded-xl border border-line bg-card">
+              <PlaceholderImage
+                src={s.photo}
+                alt={s.alt}
+                label={s.photoLabel}
+                className="aspect-[4/3] w-full"
+                sizes="(max-width: 640px) 100vw, 33vw"
+              />
+              <div className="flex flex-1 flex-col p-[clamp(16px,3vw,22px)]">
+                <h3 className="m-0 font-serif text-[19px] font-semibold text-pine">{s.title}</h3>
+                <p className="mt-2 mb-0 text-[14px] leading-relaxed text-muted">{s.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="mt-7 mb-0 text-[14.5px] leading-relaxed text-muted">
+          Bruno, ciobănescul de Berna al casei, e mascota locului. Animalele de
+          companie ale oaspeților rămân acasă.
+        </p>
+        <p className="mt-4 mb-0">
+          <Link href="/activitati-in-zona" className="text-[14.5px] font-semibold text-terracotta no-underline hover:underline">
+            Vezi toate activitățile din zonă →
+          </Link>
+        </p>
+      </section>
+
+      {/* ── S5. MESE (gated pe SHOW_FNB) ── */}
+      <FnbSection />
+
+      {/* ── S6. CONFIGURAȚIA CAZĂRII ── */}
       <section className={`${container} ${sectionPad}`}>
         <SectionHeading
           eyebrow="Cazarea"
@@ -242,72 +294,6 @@ export default function RetreatCorporatePage() {
           </Link>
         </p>
       </section>
-
-      {/* ── S4. SPAȚIILE DE LUCRU ── */}
-      <section className={`${sectionPad} bg-sand`}>
-        <div className={container}>
-          <SectionHeading
-            eyebrow="Spații de lucru"
-            title="Unde lucrați"
-            className="mb-[clamp(32px,4vw,48px)]"
-          />
-          <div className="grid gap-6 md:grid-cols-3">
-            {WORKSPACES.map((s) => (
-              <article key={s.title} className="flex flex-col overflow-hidden rounded-xl border border-line bg-card">
-                <PlaceholderImage
-                  src={s.photo}
-                  alt={s.alt}
-                  label={s.photoLabel}
-                  className="aspect-[4/3] w-full"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="flex flex-1 flex-col p-[clamp(18px,3vw,24px)]">
-                  <h3 className="m-0 font-serif text-[20px] font-semibold text-pine">{s.title}</h3>
-                  <p className="mt-2 mb-0 text-[14.5px] leading-relaxed text-muted">{s.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── S5. TIMPUL LIBER ── */}
-      <section className={`${container} ${sectionPad}`}>
-        <SectionHeading
-          eyebrow="Între sesiuni"
-          title="Ce faceți între sesiuni"
-          className="mb-[clamp(32px,4vw,48px)]"
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {LEISURE.map((s) => (
-            <article key={s.title} className="flex flex-col overflow-hidden rounded-xl border border-line bg-card">
-              <PlaceholderImage
-                src={s.photo}
-                alt={s.alt}
-                label={s.photoLabel}
-                className="aspect-[4/3] w-full"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
-              <div className="flex flex-1 flex-col p-[clamp(16px,3vw,22px)]">
-                <h3 className="m-0 font-serif text-[19px] font-semibold text-pine">{s.title}</h3>
-                <p className="mt-2 mb-0 text-[14px] leading-relaxed text-muted">{s.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <p className="mt-7 mb-0 text-[14.5px] leading-relaxed text-muted">
-          Bruno, ciobănescul de Berna al casei, e mascota locului. Animalele de
-          companie ale oaspeților rămân acasă.
-        </p>
-        <p className="mt-4 mb-0">
-          <Link href="/activitati-in-zona" className="text-[14.5px] font-semibold text-terracotta no-underline hover:underline">
-            Vezi toate activitățile din zonă →
-          </Link>
-        </p>
-      </section>
-
-      {/* ── S6. MESE (gated pe SHOW_FNB) ── */}
-      <FnbSection />
 
       {/* ── S7. AGENDĂ EXEMPLU ── */}
       <section className={`${sectionPad} bg-sand`}>
