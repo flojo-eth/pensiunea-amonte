@@ -54,7 +54,7 @@ export const ROOM_CONFIG = [
 export const ROOM_CONFIG_TOTAL = { count: "10", total: "24" } as const;
 
 export const ROOM_NOTES = [
-  "Fiecare unitate are baie proprie.",
+  "Fiecare unitate are balcon și baie proprie.",
 ] as const;
 
 // ── S4. Work spaces ──────────────────────────────────────────────────────────

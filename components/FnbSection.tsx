@@ -30,6 +30,7 @@ export default function FnbSection() {
             {[
               "Mic dejun inclus în închirierea integrală",
               "Prânz și cină pregătite la pensiune pentru tot grupul",
+              "Coffee break pe toată durata șederii",
               "Două variante de meniu, una tradițională și una modernă, trimise ca PDF odată cu oferta",
               "Bar disponibil pentru grup pe durata șederii",
             ].map((item) => (
@@ -45,8 +46,8 @@ export default function FnbSection() {
             ))}
           </ul>
           <p className="mt-6 text-[14px] italic text-muted">
-            Tarifele pentru mese sunt în secțiunea de prețuri și în oferta trimisă
-            pentru perioada voastră.
+            Tarifele pentru mese se regăsesc în oferta trimisă pentru perioada
+            voastră.
           </p>
         </div>
 

@@ -296,6 +296,11 @@ export default function RetreatCorporatePage() {
           Bruno, ciobănescul de Berna al casei, e mascota locului. Animalele de
           companie ale oaspeților rămân acasă.
         </p>
+        <p className="mt-4 mb-0">
+          <Link href="/activitati-in-zona" className="text-[14.5px] font-semibold text-terracotta no-underline hover:underline">
+            Vezi toate activitățile din zonă →
+          </Link>
+        </p>
       </section>
 
       {/* ── S6. MESE (gated pe SHOW_FNB) ── */}
