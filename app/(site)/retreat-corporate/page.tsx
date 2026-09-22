@@ -21,7 +21,7 @@ import {
   GOOGLE_REVIEWS_URL,
   whatsappUrl,
 } from "@/lib/content";
-import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
+import { btnPaper, btnOutlineLight, btnOutlineDark, btnTerracotta } from "@/lib/ui";
 import {
   RETREAT_WHATSAPP_MESSAGE,
   RETREAT_PAGE_SOURCE,
@@ -506,7 +506,7 @@ export default function RetreatCorporatePage() {
         <div className={`${container} text-center`}>
           <Eyebrow className="mb-4">Disponibilitate</Eyebrow>
           <h2 className="mx-auto m-0 max-w-[24ch] font-serif text-[clamp(30px,4.2vw,48px)] font-semibold leading-[1.06] text-pine">
-            Spune-ne câți sunteți și când. Restul e la noi.
+            Spune-ne câte persoane și când. Restul e la noi.
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3.5">
             <WhatsAppButton
@@ -517,7 +517,7 @@ export default function RetreatCorporatePage() {
             >
               Cere oferta pe WhatsApp
             </WhatsAppButton>
-            <Link href="#cere-oferta" className={`${btnOutlineLight} border-forest text-forest`}>
+            <Link href="#cere-oferta" className={`${btnOutlineDark} px-8 py-4`}>
               Completează formularul
             </Link>
           </div>
