@@ -71,9 +71,11 @@ export const WORKSPACES: Space[] = [
   {
     title: "Sala pentru grupuri",
     body: "Încape toată echipa la aceeași masă, cu lumină naturală și WiFi. Spațiu dedicat, nu o sală de mese reamenajată pentru o zi.",
-    photo: "/servicii-facilitati/sala-pentru-grupuri.jpg",
+    photo: "/retreat/sala-evenimente.jpg",
     photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",
-    alt: "Sala pentru grupuri de la Pensiunea Amonte, configurată pentru 20 de persoane",
+    // Fara cifra de capacitate: nu a fost confirmata (vezi FAQ "Există sală de
+    // conferință?", raspuns fara numere din acelasi motiv).
+    alt: "Sala pentru grupuri de la Pensiunea Amonte, cu scaune aranjate pentru o prezentare",
   },
   {
     title: "Living cu șemineu",

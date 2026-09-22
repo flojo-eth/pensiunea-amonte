@@ -1,6 +1,8 @@
+import Image from "next/image";
 import SectionHeading from "./SectionHeading";
-import PlaceholderImage from "./PlaceholderImage";
 import { SHOW_FNB } from "@/lib/flags";
+
+const MEAL_PHOTO = "/retreat/masa-mare-living.jpg";
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
 
@@ -51,12 +53,27 @@ export default function FnbSection() {
           </p>
         </div>
 
-        <div className="flex-1 basis-[340px]">
-          <PlaceholderImage
-            label="[ FOTO: masă lungă aranjată pentru grup, cină la lumina caldă ]"
-            alt="Masă lungă aranjată pentru cina unui grup la Pensiunea Amonte"
-            className="aspect-[4/3] w-full rounded-xl"
+        <div className="relative aspect-[4/3] w-full flex-1 basis-[340px] overflow-hidden rounded-xl">
+          {/* The source photo is portrait (1086x1448) in a 4:3 box, so a plain
+              object-cover crops it to a tight, zoomed-in horizontal strip.
+              Backdrop: same photo, blurred and scaled past the edges (so the
+              soft blur border never peeks in) to fill the box with a
+              continuation of the scene's own colours instead of empty bars. */}
+          <Image
+            src={MEAL_PHOTO}
+            alt=""
+            fill
             sizes="(max-width: 768px) 100vw, 50vw"
+            className="scale-110 object-cover blur-2xl"
+          />
+          {/* Foreground: object-contain shows the whole frame, zoomed out
+              relative to the cover-cropped version, nothing cut off. */}
+          <Image
+            src={MEAL_PHOTO}
+            alt="Masa mare din livingul Pensiunii Amonte, unde ia loc tot grupul"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="relative object-contain"
           />
         </div>
       </div>
