@@ -148,10 +148,10 @@ export default function RetreatCorporatePage() {
       {/* ── S2. DESPRE NOI ── */}
       <section className={`${container} ${sectionPad}`}>
         <SectionHeading eyebrow="Despre noi" title="Oameni, nu doar o locație">
-          Amonte este o pensiune de familie în Valea Avrigului, la {DRIVE_SIBIU}{" "}
-          de Sibiu. Suntem o echipă mică și implicată, prezentă pe toată durata
-          șederii. De la prima discuție până la plecarea echipei, vorbiți cu un
-          singur om, nu cu trei departamente.
+          Suntem o echipă mică și implicată, care administrează direct
+          Pensiunea Amonte, în Valea Avrigului, la {DRIVE_SIBIU}{" "}
+          de Sibiu, și rămânem prezenți pe toată durata șederii. Comunicarea
+          rămâne cu aceeași echipă, din prima zi până la plecare.
         </SectionHeading>
       </section>
 
