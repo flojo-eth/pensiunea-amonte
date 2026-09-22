@@ -74,8 +74,7 @@ export default function EvenimentePage() {
           <p className="mt-6 mb-0 text-[clamp(16px,2vw,19px)] leading-relaxed text-muted">
             Pensiunea se închiriază integral, pentru un singur grup odată, fără
             alți oaspeți în curte. Sunt 24 de locuri de cazare, iar mesele se
-            pregătesc la fața locului, pentru tot grupul. De la prima întrebare
-            până la plecare vorbiți cu un singur om, nu cu trei departamente.
+            pregătesc la fața locului, pentru tot grupul.
           </p>
           <p className="mt-5 mb-0 text-[14px] text-muted-2">
             {RATING_SUMMARY.value} din 5 pe Google, din {RATING_SUMMARY.count} de recenzii
