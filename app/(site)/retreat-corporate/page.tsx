@@ -139,7 +139,7 @@ export default function RetreatCorporatePage() {
             </Link>
           </div>
           <p className="mt-6 mb-0 text-[14px] text-paper/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.7)]">
-            {RATING_SUMMARY.value} din 5 pe Google, din peste{" "}
+            {RATING_SUMMARY.value} din 5 pe Google, din{" "}
             {RATING_SUMMARY.count} de recenzii · Rezervare confirmată garantată
           </p>
         </div>

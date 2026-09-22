@@ -32,9 +32,9 @@ const CARDS = [
     title: "Retreat și teambuilding",
     body: "Offsite de echipă în exclusivitate, cu sală de lucru, agendă flexibilă și tot ce ține de logistică rezolvat înainte să ajungeți.",
     points: ["Sală pentru grupuri", "Ofertă completă în 24 de ore lucrătoare", "Factură pe firmă"],
-    photo: "/servicii-facilitati/sala-pentru-grupuri.jpg",
-    photoLabel: "[ FOTO: sala aranjată pentru o sesiune de lucru, cu echipa la masă ]",
-    alt: "Sala pentru grupuri de la Pensiunea Amonte, pregătită pentru un retreat corporate",
+    photo: "/retreat/sala-evenimente.jpg",
+    photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",
+    alt: "Sala pentru grupuri de la Pensiunea Amonte, cu scaune aranjate pentru o prezentare",
     href: "/retreat-corporate",
     cta: "Vezi pagina pentru echipe",
     whatsapp: false as const,
@@ -78,7 +78,7 @@ export default function EvenimentePage() {
             până la plecare vorbiți cu un singur om, nu cu trei departamente.
           </p>
           <p className="mt-5 mb-0 text-[14px] text-muted-2">
-            {RATING_SUMMARY.value} din 5 pe Google, din peste {RATING_SUMMARY.count} de recenzii
+            {RATING_SUMMARY.value} din 5 pe Google, din {RATING_SUMMARY.count} de recenzii
           </p>
         </div>
       </section>

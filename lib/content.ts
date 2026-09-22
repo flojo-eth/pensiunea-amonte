@@ -437,7 +437,7 @@ export type Review = {
   initial: string;
 };
 
-export const RATING_SUMMARY = { value: "5", count: 80 } as const;
+export const RATING_SUMMARY = { value: "4,9", count: 114 } as const;
 
 export const REVIEWS: Review[] = [
   {

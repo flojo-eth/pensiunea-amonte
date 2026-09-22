@@ -18,7 +18,7 @@ const DEFAULT_BANNER = {
 
 const BY_ROUTE: Record<string, typeof DEFAULT_BANNER> = {
   "/retreat-corporate": {
-    text: "Perioadele de toamnă pentru grupuri se rezervă cu 4-6 săptămâni înainte",
+    text: "Perioadele de toamnă pentru grupuri se rezervă cu 3-6 săptămâni înainte",
     cta: "cere oferta →",
     href: "/retreat-corporate#cere-oferta",
   },
