@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CurrentYear from "./CurrentYear";
+import WhatsAppButton from "./WhatsAppButton";
 import { CONTACT, NAV_LINKS, WEBSITE, SOCIAL_PROFILES } from "@/lib/content";
 
 export default function Footer() {
@@ -69,14 +70,15 @@ export default function Footer() {
             <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/60">
               Contact
             </div>
-            <a
-              href="https://wa.me/40747342280?text=Salut!%20A%C8%99%20dori%20s%C4%83%20verific%20disponibilitatea%20pentru%20o%20rezervare%20la%20Pensiunea%20Amonte."
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Era un <a> cu URL scris de mână, deci clicurile din footer nu
+                ajungeau deloc în dataLayer. `page_source: footer` le ține
+                separate de CTA-urile de pagină, ca să nu umfle conversiile. */}
+            <WhatsAppButton
+              pageSource="footer"
               className="text-sm text-paper/80 no-underline hover:text-paper"
             >
               WhatsApp
-            </a>
+            </WhatsAppButton>
             <a
               href={`tel:${CONTACT.phoneMobile.replace(/\s/g, "")}`}
               className="text-sm text-paper/80 no-underline hover:text-paper"
