@@ -1,7 +1,7 @@
 "use client";
 
 import { WHATSAPP_URL } from "@/lib/content";
-import { pushDataLayer } from "@/lib/gtm";
+import { pushWhatsAppClick } from "@/lib/gtm";
 
 type Props = {
   children: React.ReactNode;
@@ -9,8 +9,9 @@ type Props = {
   /** Override the destination if ever needed; defaults to the tracked WA link. */
   href?: string;
   /**
-   * Tags the conversion with its origin, e.g. "retreat-corporate", so B2B and
-   * leisure clicks can be told apart in GA4. Omitted for the site-wide CTAs.
+   * Tags the conversion with its origin, so B2B and leisure clicks can be told
+   * apart in GA4. Pass it only for CTAs whose origin is not their page, like
+   * "footer"; left out, it falls back to the current path at click time.
    */
   pageSource?: string;
   /** Which CTA on the page was clicked, so the winning placement is visible in GA4. */
@@ -32,11 +33,7 @@ export default function WhatsAppButton({
   ctaPosition,
 }: Props) {
   function handleClick() {
-    pushDataLayer({
-      event: "whatsapp_click",
-      ...(pageSource ? { page_source: pageSource } : {}),
-      ...(ctaPosition ? { cta_position: ctaPosition } : {}),
-    });
+    pushWhatsAppClick({ pageSource, ctaPosition });
   }
 
   return (

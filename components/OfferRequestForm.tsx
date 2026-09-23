@@ -92,9 +92,12 @@ export default function OfferRequestForm({ showFnb }: Props) {
 
   function track(channel: "whatsapp" | "email") {
     // No personal data reaches the dataLayer, only the shape of the request.
+    // cta_position e trimis explicit null: altfel GTM ar păstra valoarea de la
+    // ultimul click pe un buton WhatsApp și ar lipi-o pe acest eveniment.
     pushDataLayer({
       event: "offer_request_submit",
       page_source: RETREAT_PAGE_SOURCE,
+      cta_position: null,
       group_size: f.groupSize,
       nights: f.nights,
       channel,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { pushDataLayer } from "@/lib/gtm";
+import { pushWhatsAppClick } from "@/lib/gtm";
 import { useIsHydrated } from "@/lib/hooks";
 
 // ── Helpers (zero deps) ──────────────────────────────────────────────
@@ -297,11 +297,10 @@ export default function BookingCalendar() {
             if (!whatsappHref) {
               e.preventDefault(); 
             } else {
-              // GTM Tracking
-              pushDataLayer({
-                event: "whatsapp_click",
-                event_category: "conversion",
-                event_label: "Rezervare WhatsApp",
+              // page_source se deduce din calea curentă ("rezerva-acum").
+              pushWhatsAppClick({
+                eventCategory: "conversion",
+                eventLabel: "Rezervare WhatsApp",
               });
             }
           }}
