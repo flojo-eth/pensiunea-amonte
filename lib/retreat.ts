@@ -9,13 +9,11 @@ import { SHOW_FNB } from "./flags";
  * Pre-filled WhatsApp message for the plain CTAs (the form builds its own).
  *
  * Says "retreat de echipă" rather than "grup", so a corporate enquiry is not
- * mistaken for a family booking, and leaves two bracketed blanks: group size
- * and dates are what gate the offer, and asking for them in the first message
- * saves a round trip against the 24-working-hour promise on the page. Left
- * unfilled, the brackets still tell us the sender skipped them.
+ * mistaken for a family booking. Deliberately asks for nothing else: this is
+ * the low-friction path, and the form next to it is where the details belong.
  */
 export const RETREAT_WHATSAPP_MESSAGE =
-  "Bună ziua! Aș dori o ofertă pentru un retreat de echipă la Pensiunea Amonte. Suntem [număr] persoane, în perioada [perioada].";
+  "Bună ziua! Aș dori o ofertă pentru un retreat de echipă la Pensiunea Amonte.";
 
 /** Distinguishes B2B conversions from leisure ones in GA4. */
 export const RETREAT_PAGE_SOURCE = "retreat-corporate";
