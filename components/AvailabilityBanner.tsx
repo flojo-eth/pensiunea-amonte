@@ -6,14 +6,15 @@ import { usePathname } from "next/navigation";
 /**
  * Terracotta strip above the nav.
  *
- * Route-aware on purpose: the default line sells scarcity ("ultimele locuri"),
- * which reads wrong on /retreat-corporate, where the offer is exclusivity of the
- * whole property. Same slot, different promise.
+ * Route-aware on purpose. Everywhere else the strip is the one place a leisure
+ * visitor is told the property also takes teams, so it points at the offer form
+ * on /retreat-corporate. On that page the visitor is already there, so the line
+ * switches from discovery to lead time. Same slot, different job.
  */
 const DEFAULT_BANNER = {
-  text: "Ultimele locuri disponibile pentru weekend-urile din sezon - rezervă din timp",
-  cta: "cere disponibilitate →",
-  href: "/rezerva-acum",
+  text: "Ultimele date libere pentru retreaturi de echipă",
+  cta: "cere oferta →",
+  href: "/retreat-corporate#cere-oferta",
 };
 
 const BY_ROUTE: Record<string, typeof DEFAULT_BANNER> = {
