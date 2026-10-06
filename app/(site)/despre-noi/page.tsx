@@ -4,6 +4,7 @@ import Script from "next/script";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import ConsentMap from "@/components/ConsentMap";
 import { STATS, CONTACT, WEBSITE, CHECK_IN, CHECK_OUT, HOSTS, CANCELLATION, FIRE_SAFETY_AUTH } from "@/lib/content";
 import { SHOW_FB_AND_EVENTS } from "@/lib/site";
 import { btnTerracotta } from "@/lib/ui";
@@ -31,7 +32,7 @@ const FAQ_BASE = [
   },
   {
     q: "Ce facilități de relaxare aveți?",
-    a: "Amonte dispune de jacuzzi, saună, living cu șemineu, terasă panoramică, firepit exterior și bar. Peste drum, pe malul râului, există și o zonă unde oaspeții se pot relaxa în aer liber.",
+    a: "Amonte dispune de jacuzzi, saună, living cu șemineu, terasă panoramică, foc de tabără și bar. Peste drum, pe malul râului, există și o zonă unde oaspeții se pot relaxa în aer liber.",
   },
   {
     q: "Se poate rezerva întreaga pensiune pentru un grup?",
@@ -142,8 +143,8 @@ const FACILITIES = [
   "Saună",
   "Living cu șemineu",
   "Terasă panoramică",
-  "Firepit exterior",
-  "Bar / lounge (ambianță)",
+  "Foc de tabără",
+  "Bar / zonă de relaxare (ambianță)",
   "Sală pentru grupuri / corporate",
   "Mini teren de fotbal",
   "Masă de ping-pong",
@@ -277,7 +278,7 @@ export default function DesprePage() {
           <p className="mt-6 text-[17px] leading-relaxed text-muted">
             Sosirea e fără grabă. Cele 8 camere duble și 2 studiouri de familie
             sunt gândite pentru cupluri și familii care vor confort real. Serile
-            se petrec în livingul cu șemineu sau afară, la firepit, sub cerul
+            se petrec în livingul cu șemineu sau afară, la focul de tabără, sub cerul
             înstelat.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
@@ -289,7 +290,7 @@ export default function DesprePage() {
         </div>
       </section>
 
-      {/* ── GASTRONOMIE - PUBLIC NUMAI DUPĂ AUTORIZAȚII CAEN 5621/5630/5611 ── */}
+      {/* ── GASTRONOMIE ── */}
       {SHOW_FB_AND_EVENTS && (
         <section className={`${pad} bg-sand`}>
           <div className={container}>
@@ -309,7 +310,7 @@ export default function DesprePage() {
         </section>
       )}
 
-      {/* ── EVENIMENTE - PUBLIC NUMAI DUPĂ AUTORIZAȚII CAEN 8230 ── */}
+      {/* ── EVENIMENTE ── */}
       {SHOW_FB_AND_EVENTS && (
         <section className={`${container} ${pad}`}>
           <SectionHeading
@@ -399,19 +400,7 @@ export default function DesprePage() {
                 </li>
               </ul>
             </div>
-            {/* TODO: înlocuiește div-ul de mai jos cu un <iframe> Google Maps real */}
-            <div className="relative min-h-[340px] flex-[1.4] basis-[380px] rounded-xl overflow-hidden bg-[#e9e8e2]">
-              <iframe
-                src="https://maps.google.com/maps?q=Pensiunea%20Amonte,%20Avrig,%20Romania&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 h-full w-full"
-              ></iframe>
-            </div>
+            <ConsentMap />
           </div>
         </div>
       </section>

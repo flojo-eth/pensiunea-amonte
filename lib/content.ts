@@ -230,15 +230,14 @@ export type Amenity = {
 
 // Facilități confirmate - afișate pe home și pe pagina de servicii.
 // Mic dejun și bar active pe staging (SHOW_FB_AND_EVENTS = true în site.ts).
-// Migrarea la producție (pensiunea-amonte.ro) necesită CAEN 5611/5621/5630 + DSP/ANSVSA.
 export const AMENITIES: Amenity[] = [
   { icon: "🧖", label: "Jacuzzi & saună", photo: "/jacuzzi-sauna.jpeg", photoLabel: "[ jacuzzi & saună ]" },
   { icon: "🔥", label: "Living cu șemineu", photo: "/semineu.jpeg", photoLabel: "[ living / șemineu ]" },
   { icon: "🏔️", label: "Terasă panoramică", photo: "/priveliste-fagaras.jpg", photoLabel: "[ terasă panoramică ]" },
-  { icon: "🪵", label: "Firepit exterior", photo: "/firepit.jpeg", photoLabel: "[ firepit exterior ]" },
+  { icon: "🪵", label: "Foc de tabără", photo: "/firepit.jpeg", photoLabel: "[ foc de tabără ]" },
   { icon: "🍳", label: "Mic dejun", photo: "/servicii-facilitati/mic-dejun.jpg", photoLabel: "[ mic dejun ]" },
   { icon: "🍽️", label: "Cină la cerere", photo: "/servicii-facilitati/mancare-coaste-porc-iberic.jpeg", photoLabel: "[ cină la cerere ]" },
-  { icon: "🍸", label: "Bar / lounge", photo: "/servicii-facilitati/bar-lounge.jpeg", photoLabel: "[ bar / lounge ]" },
+  { icon: "🍸", label: "Bar / zonă de relaxare", photo: "/servicii-facilitati/bar-lounge.jpeg", photoLabel: "[ bar / zonă de relaxare ]" },
   { icon: "🎯", label: "Sală pentru grupuri", photo: "/servicii-facilitati/sala-pentru-grupuri.jpg", photoLabel: "[ sală grupuri ]" },
   { icon: "⚽", label: "Mini teren de fotbal", photo: "/servicii-facilitati/teren-fotbal.jpeg", photoLabel: "[ teren fotbal ]" },
   { icon: "🏓", label: "Masă de ping-pong", photo: "/servicii-facilitati/ping-pong.jpeg", photoLabel: "[ ping-pong ]" },
@@ -387,7 +386,7 @@ export const ACTIVITIES: Activity[] = [
   },
   {
     name: "Corabia Piraților",
-    desc: "Piscină tematică pentru copii și familii, în Avrig.",
+    desc: "Beach Club cu plajă și corabie pirat, pentru copii și familii, în Avrig.",
     dist: "în apropiere",
     photoLabel: "[ Corabia Piraților ]",
     photo: "/Corabia-piratilor.jpeg",
@@ -418,7 +417,7 @@ export const GALLERY: GalleryItem[] = [
   { photo: "/semineu.jpeg", label: "Șemineu călduros", span: 1 },
   { photo: "/detaliu-lemn.jpeg", label: "Detaliu lemn rustic", span: 1 },
   { photo: "/priveliste-fagaras.jpg", label: "Priveliște spre Făgăraș", span: 2 },
-  { photo: "/firepit.jpeg", label: "Firepit pe terasă, seara", span: 1 },
+  { photo: "/firepit.jpeg", label: "Foc de tabără pe terasă, seara", span: 1 },
   { photo: "/bruno.jpeg", label: "Bruno", span: 1 },
   { photo: "/ebike.jpeg", label: "Trasee cu e-bike", span: 1 },
   { photo: "/trasee-fagaras.jpg", label: "Trasee în Făgăraș", span: 1 },
@@ -446,13 +445,6 @@ export const REVIEWS: Review[] = [
     name: "Mihaela Marcuț",
     meta: "Google · acum o lună",
     initial: "M",
-  },
-  {
-    stars: "★★★★★",
-    text: "Locația este uimitoare! Piscina și sauna sunt absolut superbe și foarte curate. Mâncarea a fost extrem de delicioasă, toate preparatele au fost excelente și gătite cu mult gust. Băieții au servit impecabil, fiind foarte atenți la fiecare detaliu.",
-    name: "Larisa Larisa",
-    meta: "Google · acum o lună",
-    initial: "L",
   },
   {
     stars: "★★★★★",
@@ -523,13 +515,6 @@ export const REVIEWS: Review[] = [
     name: "Filip Mihaela",
     meta: "Google · acum o lună",
     initial: "F",
-  },
-  {
-    stars: "★★★★★",
-    text: "Camerele erau curate și îngrijite, iar mâncarea a fost foarte bună. Accesul la piscină a fost super plăcut și a făcut totul mult mai relaxant. Designul pensiunii este modern și plăcut, te face să te simți bine din prima clipă.",
-    name: "Herta Florina",
-    meta: "Google · acum o lună",
-    initial: "H",
   },
   {
     stars: "★★★★★",

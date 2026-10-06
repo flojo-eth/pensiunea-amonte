@@ -121,12 +121,50 @@ ordinary booking. So:
 
 ## Content rules
 
-Romanian, factual register, no brochure language. These apply to our own copy —
-guest reviews are quoted verbatim, with their real names and dates.
+Romanian, factual register, no brochure language. Guest reviews are quoted
+verbatim, with their real names and dates, but they are still published content
+and the rules below apply to them too.
 
 - **No em or en dashes** anywhere in our own copy. Use commas, full stops or a plain hyphen.
 - **No invented numbers.** Capacities, distances and durations must be confirmed. The current drive times were measured and confirmed by the owner.
 - **No published prices.** Rates are negotiated per group; `SHOW_PRICING` is off on purpose. The page promises a complete offer within 24 working hours instead.
-- **"Piscină" never appears in our own copy** — only inside a verbatim guest quote.
-- **The riverside area is across the road**, so describe it without implying the guesthouse owns it.
+- **Never the word "piscină", anywhere**, including inside guest reviews and inside descriptions of nearby attractions. There is no pool. Two reviews that mentioned one were removed from the carousel; do not reinstate them.
+- **No star or daisy classification** until the ANT certificate is issued. Do not state a category for the guesthouse anywhere.
+- **The riverside area belongs to the landowner.** Always "peste drum", never "a noastră", "grădina noastră" or anything that implies we run it. The Terms disclaim it explicitly; keep that in step.
+- **Romanian words, not English ones:** "foc de tabără", never "firepit"; "zonă de relaxare", never "lounge". Proper names are exempt: the nearby attraction really is called Beach Club Avrig, so it keeps its name.
 - **The NAP format is fixed:** `Valea Avrigului nr. 642, jud. Sibiu, 555200, România`, with no separate "Avrig" locality. The company's registered office (Strada Iazului nr. 23, Avrig) is a different address and stays as it is.
+
+**Authorised and promotable:** restaurant and bar (CAEN 5611, 5630, DSP and
+ANSVSA since September 2026) and the spa, jacuzzi and sauna (CAEN 9623, since
+late September 2026). Meals, the bar, the signature cocktail and paid spa access
+may all be described as services. `SHOW_FNB` and `SHOW_FB_AND_EVENTS` stay on;
+they are kept for editorial control, not for compliance.
+
+## Consent and third-party embeds
+
+Every external embed goes through consent. Google Maps is rendered only by
+`components/ConsentMap`, which waits for the visitor to accept and offers a
+per-visit "Afișează harta" override that does not change the stored choice.
+
+Never drop a raw `<iframe>` into a page. `/despre-noi` carried one for months
+and loaded Google cookies before anyone had agreed to anything. Any new embed
+(map, video, booking widget, social feed) is either gated the same way or it
+does not ship.
+
+## Do not touch without Flo's approval
+
+These are configured outside the code and a well-meant edit can silently break
+reporting or rankings:
+
+- the corporate tracking setup and the GTM mapping;
+- the dataLayer event names and their keys (`whatsapp_click`, `offer_request_submit`);
+- the schema.org blocks and the values that feed them (`AMENITIES` reaches `amenityFeature`).
+
+Describe what you would change and wait.
+
+## Deploying
+
+**A push to `main` is a deploy.** Vercel builds and publishes automatically,
+with no further confirmation step. So: commit locally, show Flo exactly what
+changes, and wait for his word before pushing. This holds even for a one-word
+copy fix.

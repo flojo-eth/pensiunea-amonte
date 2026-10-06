@@ -8,7 +8,7 @@ import { btnPaper } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Galerie",
   description:
-    "Galerie foto Pensiunea Amonte: exterior, jacuzzi & saună, camere, priveliște spre Munții Făgăraș și serile lângă firepit.",
+    "Galerie foto Pensiunea Amonte: exterior, jacuzzi & saună, camere, priveliște spre Munții Făgăraș și serile lângă focul de tabără.",
   path: "/galerie",
 });
 

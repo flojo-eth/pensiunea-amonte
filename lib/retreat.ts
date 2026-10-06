@@ -105,11 +105,11 @@ export const LEISURE: Space[] = [
     alt: "Jacuzzi și saună, acces exclusiv pentru grupul cazat",
   },
   {
-    title: "Firepit și foc de tabără",
+    title: "Foc de tabără",
     body: "Serile lungi se întâmplă aici. Singurul punct de pe agendă fără agendă.",
     photo: "/firepit.jpeg",
     photoLabel: "[ FOTO: foc de tabără seara, grup relaxat în jur ]",
-    alt: "Firepit exterior, seară de grup la Pensiunea Amonte",
+    alt: "Foc de tabără, seară de grup la Pensiunea Amonte",
   },
   {
     title: "Mini fotbal și ping-pong",
@@ -158,7 +158,7 @@ const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
       { time: "16:00", title: "Sosire și check-in", body: "Vă instalați fără grabă. Pensiunea e deja doar a voastră." },
       { time: "18:00", title: "Sesiune de deschidere", body: "În sala pentru grupuri." },
       { time: "20:00", title: "Cină", body: "Meniu pregătit pentru tot grupul, la o masă comună.", fnb: true },
-      { time: "21:30", title: "Seară la firepit", body: "Partea nescrisă a agendei." },
+      { time: "21:30", title: "Seară la focul de tabără", body: "Partea nescrisă a agendei." },
     ],
   },
   {
@@ -210,7 +210,7 @@ export const PRICING_LINES = [
   },
   {
     label: "Include",
-    value: "Toate cele 10 unități, sala pentru grupuri, livingul, terasa, firepit, teren și ping-pong.",
+    value: "Toate cele 10 unități, sala pentru grupuri, livingul, terasa, focul de tabără, terenul și ping-pongul.",
   },
   {
     label: "Jacuzzi și saună",
@@ -292,7 +292,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Ce activități se pot organiza la fața locului?",
-    a: "Jacuzzi și saună cu acces exclusiv pentru grup, firepit, teren de mini fotbal, masă de ping-pong și drumeții cu plecare din vale spre Bârcaciu, Negoiu și Suru. Brambura Park este la circa 10 minute.",
+    a: "Jacuzzi și saună cu acces exclusiv pentru grup, foc de tabără, teren de mini fotbal, masă de ping-pong și drumeții cu plecare din vale spre Bârcaciu, Negoiu și Suru. Brambura Park este la circa 10 minute.",
   },
   {
     q: "Cât timp înainte trebuie să rezervăm?",
