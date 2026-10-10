@@ -31,7 +31,7 @@ export const DRIVE_BRASOV = "2 ore";
 
 export const ROOM_CONFIG = [
   {
-    unit: "camere duble cu balcon și vedere la munte",
+    unit: "camere duble cu balcon",
     count: "8",
     perUnit: "2",
     beds: "pat matrimonial",

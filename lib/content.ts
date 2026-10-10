@@ -100,7 +100,7 @@ export const ROOMS: Room[] = [
       "Bucură-te de o cameră premium, mult mai spațioasă, dotată cu un dulap mare și mobilier elegant. Priveliștea către Munții Făgăraș completează perfect experiența unei vacanțe de vis.",
     price: "650",
     features: [
-      "2 persoane",
+      "2 persoane", "2 camere de acest tip",
       "Mic dejun inclus", "Balcon privat",
       "Cameră spațioasă",
       "Dulap mare",
@@ -126,7 +126,7 @@ export const ROOMS: Room[] = [
       "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu mic dejun inclus și acces la toate spațiile comune.",
     price: "600",
     features: [
-      "2 persoane",
+      "2 persoane", "4 camere de acest tip",
       "Mic dejun inclus",
       "Balcon privat",
       "Vedere la munte",
@@ -154,7 +154,7 @@ export const ROOMS: Room[] = [
       "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă - potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la toate spațiile comune.",
     price: "de la 800",
     features: [
-      "4 persoane", "Mic dejun inclus", "Balcon privat",
+      "4 persoane", "2 studiouri de acest tip", "Mic dejun inclus", "Balcon privat",
       "Pat matrimonial + canapea extensibilă",
       "Potrivit pentru familii",
       "Încălzire în pardoseală",
@@ -185,7 +185,7 @@ export const ROOMS: Room[] = [
       "Această cameră modernă oferă un balcon privat cu o priveliște liniștitoare spre pădure. Spațiul este gândit pentru confort absolut, incluzând micul dejun și acces la toate facilitățile pensiunii.",
     price: "550",
     features: [
-      "2 persoane",
+      "2 persoane", "2 camere de acest tip",
       "Mic dejun inclus",
       "Balcon privat",
       "Vedere la pădure",
