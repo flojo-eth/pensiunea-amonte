@@ -2,7 +2,7 @@ import JsonLd from "@/components/JsonLd";
 import AvailabilityBanner from "@/components/AvailabilityBanner";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 import {
   CONTACT,
   AMENITIES,
@@ -55,6 +55,12 @@ const lodging = {
   "@type": "BedAndBreakfast",
   "@id": `${WEBSITE}/#lodging`,
   parentOrganization: { "@id": `${WEBSITE}/#organization` },
+  description: SITE_DESCRIPTION,
+  logo: `${WEBSITE}/logo_amonte.jpg`,
+  numberOfRooms: 10,
+  // Termeni §3.4 (cash sau card la check-in) și §7.2 (fumatul interzis în interior).
+  paymentAccepted: "Numerar, card bancar",
+  smokingAllowed: false,
   name: SITE_NAME,
   url: WEBSITE,
   image: SCHEMA_IMAGES,
