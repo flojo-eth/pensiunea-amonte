@@ -90,6 +90,7 @@ repeating it, so it cannot drift.
 - Colors come from the `@theme` tokens in `globals.css` (cream/sand/pine/forest/terracotta). Prefer tokens over arbitrary hex values.
 - `SectionHeading` renders `h2` by default; pass `as="h1"` when it is the page title. Its `eyebrow` prop is required.
 - `Breadcrumbs` drives the visible trail and the `BreadcrumbList` JSON-LD from one array.
+- **Structured data goes through `components/JsonLd`, never `next/script`.** `next/script` injects JSON-LD only after hydration, so crawlers that do not run JavaScript, most AI bots included, saw none of it. `JsonLd` writes a plain `<script>` into the prerendered HTML. The site-wide graph in `app/(site)/layout.tsx` holds `Organization` (Hostillo), `WebSite` and `BedAndBreakfast`, linked by `@id`.
 - Tailwind v4 via PostCSS — there is no `tailwind.config.js`.
 - Use the `@/*` path alias.
 - Deploy target: Vercel.

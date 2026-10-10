@@ -1,4 +1,4 @@
-import Script from "next/script";
+import JsonLd from "@/components/JsonLd";
 import AvailabilityBanner from "@/components/AvailabilityBanner";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -31,10 +31,30 @@ import {
 // third-party sites. Both would apply to the Google reviews shown in
 // ReviewsCarousel, and marking them up risks a Spammy-structured-markup manual
 // action. The star ratings in search come from Google Business Profile instead.
-const lodgingJsonLd = {
-  "@context": "https://schema.org",
+// The operator, as on the legal pages. Its registered office is deliberately
+// left out: a second address next to the guesthouse would blur the local NAP.
+const organization = {
+  "@type": "Organization",
+  "@id": `${WEBSITE}/#organization`,
+  name: "Hostillo S.R.L.",
+  legalName: "Hostillo S.R.L.",
+  taxID: "54352472",
+  url: WEBSITE,
+};
+
+const website = {
+  "@type": "WebSite",
+  "@id": `${WEBSITE}/#website`,
+  url: WEBSITE,
+  name: SITE_NAME,
+  inLanguage: "ro-RO",
+  publisher: { "@id": `${WEBSITE}/#organization` },
+};
+
+const lodging = {
   "@type": "BedAndBreakfast",
   "@id": `${WEBSITE}/#lodging`,
+  parentOrganization: { "@id": `${WEBSITE}/#organization` },
   name: SITE_NAME,
   url: WEBSITE,
   image: SCHEMA_IMAGES,
@@ -68,6 +88,11 @@ const lodgingJsonLd = {
   })),
 };
 
+const lodgingJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [organization, website, lodging],
+};
+
 /** Wraps all standard pages with banner + nav + footer. The /rezerva-acum
  *  conversion landing lives outside this group, so it stays distraction-free. */
 export default function SiteLayout({
@@ -77,11 +102,7 @@ export default function SiteLayout({
 }) {
   return (
     <>
-      <Script
-        id="schema-lodging"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(lodgingJsonLd) }}
-      />
+      <JsonLd id="schema-lodging" data={lodgingJsonLd} />
       {/* Invisible until focused. Lets a keyboard user jump the promo banner and
           the whole nav instead of tabbing through them on every page. */}
       <a

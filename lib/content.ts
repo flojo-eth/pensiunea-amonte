@@ -35,10 +35,10 @@ export const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=
 // Official profiles. Rendered in the footer and emitted as `sameAs` in the
 // JSON-LD, which is how Google confirms these all describe the same entity.
 export const SOCIAL_PROFILES = [
-  { label: "Instagram", url: "https://www.instagram.com/pensiunea.amonte?igsh=MXB3M2g4cHFuYWl6Ng==" },
+  { label: "Instagram", url: "https://www.instagram.com/pensiunea.amonte/" },
   { label: "Facebook", url: "https://www.facebook.com/pensiunea.amonte.avrig" },
-  { label: "TikTok", url: "https://www.tiktok.com/@pensiunea.amonte?_r=1&_t=ZN-97nsYK9mblG" },
-  { label: "LinkedIn", url: "https://ro.linkedin.com/showcase/pensiunea-amonte-avrig/?trk=affiliated-pages" },
+  { label: "TikTok", url: "https://www.tiktok.com/@pensiunea.amonte" },
+  { label: "LinkedIn", url: "https://www.linkedin.com/showcase/pensiunea-amonte-avrig/" },
 ] as const;
 
 // Photos for the JSON-LD `image` property. Google asks for several aspect
@@ -219,7 +219,7 @@ export function getRoom(slug: string): Room | undefined {
 const roomPrices = ROOMS.map((r) => Number(r.price.replace(/\D/g, ""))).filter(
   (n) => Number.isFinite(n) && n > 0,
 );
-export const PRICE_RANGE = `${Math.min(...roomPrices)}–${Math.max(...roomPrices)} RON`;
+export const PRICE_RANGE = `${Math.min(...roomPrices)}-${Math.max(...roomPrices)} RON`;
 
 export type Amenity = {
   icon: string;

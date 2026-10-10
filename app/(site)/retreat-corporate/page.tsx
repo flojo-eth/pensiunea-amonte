@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import JsonLd from "@/components/JsonLd";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import Eyebrow from "@/components/Eyebrow";
@@ -72,11 +72,7 @@ export default function RetreatCorporatePage() {
   return (
     // Bottom padding clears the sticky mobile bar so it never covers the footer CTA.
     <div className="pb-[76px] md:pb-0">
-      <Script
-        id="schema-retreat-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd id="schema-retreat-faq" data={faqJsonLd} />
 
       {/* ── S1. HERO ── */}
       <section className="relative flex min-h-[calc(100vh-140px)] items-end px-[clamp(20px,5vw,64px)] pb-[clamp(48px,6vw,80px)] pt-[clamp(40px,6vw,90px)]">

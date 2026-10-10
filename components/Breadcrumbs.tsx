@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Script from "next/script";
+import JsonLd from "@/components/JsonLd";
 import { WEBSITE } from "@/lib/content";
 
 export type Crumb = {
@@ -41,11 +41,7 @@ export default function Breadcrumbs({
 
   return (
     <>
-      <Script
-        id={id}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd id={id} data={jsonLd} />
       <nav aria-label="Firimituri">
         <ol className={`m-0 flex flex-wrap items-center gap-x-2 gap-y-1 p-0 text-[13px] ${text}`}>
           {items.map((c, i) => (

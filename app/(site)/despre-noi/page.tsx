@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
-import Script from "next/script";
+import JsonLd from "@/components/JsonLd";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
@@ -159,11 +159,7 @@ export default function DesprePage() {
   return (
     <>
       {/* Structured data — JSON-LD uses production URL regardless of staging */}
-      <Script
-        id="schema-despre"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd id="schema-despre" data={jsonLd} />
 
       {/* ── H1 + BLOC RĂSPUNS DIRECT ── */}
       <section className={`${container} pt-[clamp(56px,7vw,96px)] pb-[clamp(36px,5vw,56px)]`}>
