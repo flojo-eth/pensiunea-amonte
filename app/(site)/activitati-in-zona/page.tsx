@@ -9,7 +9,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Activități în zonă",
   description:
-    "Ce poți face în jurul Pensiunii Amonte: drumeții în Munții Făgăraș, Brambura Park, Palatul Brukenthal, închirieri e-bike, călărie & ATV, ferma de cerbi, Corabia Piraților.",
+    "Ce faci lângă Pensiunea Amonte: drumeții în Făgăraș, Brambura Park, Palatul Brukenthal, e-bike, călărie și ATV, ferma de cerbi, Beach Club Avrig.",
   path: "/activitati-in-zona",
 });
 

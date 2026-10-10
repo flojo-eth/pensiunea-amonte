@@ -19,7 +19,7 @@ import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Evenimente la Amonte, lângă Sibiu",
   description:
-    "Pensiunea se închiriază integral pentru un singur grup: 24 de locuri, mese pregătite la fața locului și un singur interlocutor. Retreaturi corporate și evenimente private.",
+    "Pensiunea Amonte, lângă Sibiu, se închiriază integral pentru un singur grup: 24 de locuri și mese la pensiune. Retreaturi corporate și evenimente private.",
   path: "/evenimente",
   image: "/exterior-pensiune.jpeg",
 });

@@ -26,9 +26,9 @@ export default function CookieBanner() {
     <div className="fixed bottom-5 left-5 right-5 z-50 mx-auto max-w-[650px] rounded-xl border border-line bg-paper p-6 shadow-xl transition-all duration-300 animate-slide-up md:left-auto md:right-8">
       <div className="flex flex-col gap-4">
         <div>
-          <h4 className="font-serif text-[18px] font-semibold text-pine mb-1.5">
+          <h2 className="font-serif text-[18px] font-semibold text-pine mb-1.5">
             Politica de Cookie-uri & Confidențialitate
-          </h4>
+          </h2>
           <p className="text-[13.5px] leading-relaxed text-muted">
             Folosim cookie-uri pentru a optimiza funcționarea site-ului, a analiza traficul și a îmbunătăți experiența ta. Prin apăsarea butonului „Acceptă tot”, ești de acord cu stocarea acestora. Poți citi detaliile în{" "}
             <Link href="/politica-de-confidentialitate" className="underline hover:text-pine">

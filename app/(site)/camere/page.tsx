@@ -9,7 +9,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Camere",
   description:
-    "Camerele Pensiunii Amonte: cameră dublă cu vedere la munte și studio de familie. Balcon privat, acces la jacuzzi & saună, terasă panoramică.",
+    "Camerele Pensiunii Amonte, lângă Sibiu: duble Deluxe, cu vedere la munte, cu balcon și studiouri de familie. Toate au balcon și mic dejun inclus.",
   path: "/camere",
 });
 

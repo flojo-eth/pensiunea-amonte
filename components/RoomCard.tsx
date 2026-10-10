@@ -33,7 +33,7 @@ export default function RoomCard({ room }: { room: Room }) {
               />
               <PlaceholderImage
                 src={right}
-                alt={room.name}
+                alt={`${room.name}, a doua fotografie`}
                 label={room.photoLabel}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 imgClassName={rightImgClass}

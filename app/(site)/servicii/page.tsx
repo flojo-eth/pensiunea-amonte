@@ -10,7 +10,7 @@ import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Servicii & facilități",
   description:
-    "Servicii la Pensiunea Amonte: mic dejun inclus, jacuzzi & saună (contra cost), living cu șemineu, bar, terasă panoramică, foc de tabără, biciclete electrice, parcare și WiFi gratuite.",
+    "Servicii la Pensiunea Amonte: mic dejun inclus, jacuzzi și saună, bar, living cu șemineu, terasă panoramică, foc de tabără, WiFi și parcare gratuite.",
   path: "/servicii",
 });
 

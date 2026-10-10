@@ -79,6 +79,8 @@ export type Room = {
   slug: string;
   name: string;
   spec: string;
+  /** Meta description for the room page: under 155 characters, with the location. */
+  metaDesc: string;
   /** Short description for cards. */
   desc: string;
   /** Longer description for the detail page. */
@@ -96,6 +98,7 @@ export const ROOMS: Room[] = [
     slug: "camera-dubla-deluxe",
     name: "Cameră Dublă Deluxe",
     spec: "2 persoane · spațioasă · vedere la munte",
+    metaDesc: "Cameră dublă Deluxe la Pensiunea Amonte, Valea Avrigului, lângă Sibiu: spațioasă, cu balcon privat, vedere la munte și mic dejun inclus.",
     desc: "Cameră spațioasă și elegantă, cu vedere la munte și facilități premium. Perfectă pentru o escapadă în doi.",
     longDesc:
       "Bucură-te de o cameră premium, mult mai spațioasă, dotată cu un dulap mare și mobilier elegant. Priveliștea către Munții Făgăraș completează perfect experiența unei vacanțe de vis.",
@@ -122,6 +125,7 @@ export const ROOMS: Room[] = [
     slug: "camera-dubla-vedere-munte",
     name: "Cameră dublă cu vedere la munte",
     spec: "2 persoane · balcon privat · vedere munte",
+    metaDesc: "Cameră dublă cu vedere la Munții Făgăraș la Pensiunea Amonte, lângă Sibiu: balcon privat, încălzire în pardoseală și mic dejun inclus.",
     desc: "Cameră modernă cu balcon privat, priveliște spre munte și mic dejun inclus. Ideală pentru relaxare în cuplu.",
     longDesc:
       "Cameră modernă, luminoasă, cu balcon privat și priveliște deschisă spre Munții Făgăraș. Gândită pentru relaxare în cuplu, cu mic dejun inclus și acces la toate spațiile comune.",
@@ -150,6 +154,7 @@ export const ROOMS: Room[] = [
     slug: "studio-de-familie",
     name: "Studio de familie",
     spec: "4 persoane · pat matrimonial + canapea extensibilă",
+    metaDesc: "Studio de familie pentru 4 persoane la Pensiunea Amonte, lângă Sibiu: pat matrimonial, canapea extensibilă, balcon privat, mic dejun inclus.",
     desc: "Spațios și confortabil, potrivit pentru familii și grupuri mici.",
     longDesc:
       "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă - potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la toate spațiile comune.",
@@ -181,6 +186,7 @@ export const ROOMS: Room[] = [
     slug: "camera-cu-balcon",
     name: "Cameră cu Balcon",
     spec: "2 persoane · balcon privat · vedere la pădure",
+    metaDesc: "Cameră dublă cu balcon și vedere la pădure la Pensiunea Amonte, Valea Avrigului, lângă Sibiu: liniște, încălzire în pardoseală, mic dejun inclus.",
     desc: "Cameră luminoasă cu balcon privat orientat spre pădure. Ideală pentru un sejur liniștit în mijlocul naturii.",
     longDesc:
       "Această cameră modernă oferă un balcon privat cu o priveliște liniștitoare spre pădure. Spațiul este gândit pentru confort absolut, incluzând micul dejun și acces la toate facilitățile pensiunii.",
@@ -258,7 +264,8 @@ export const SERVICE_DETAILS = [
       "Acces la toate spațiile comune",
       "Living primitor, cu șemineu",
       "Terasă panoramică",
-      "Wi-Fi & parcare privată",
+      "Wi-Fi gratuit",
+      "Parcare gratuită, interioară și exterioară",
       "Vedere spre munte și liniște naturală",
     ],
     note: null as string | null,
@@ -718,7 +725,7 @@ export const ABOUT_FAQ_FB = [
   },
   {
     q: "Pot organiza un eveniment privat sau corporate la Amonte?",
-    a: "Da. Amonte se poate rezerva integral și oferă un cadru privat pentru retreaturi corporate, team building, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
+    a: "Da. Amonte se poate rezerva integral și oferă un cadru privat pentru retreaturi corporate, teambuilding, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
   },
 ];
 
@@ -769,7 +776,7 @@ export const ABOUT_FACILITIES = [
   "Mini teren de fotbal",
   "Masă de ping-pong",
   "WiFi gratuit",
-  "Parcare gratuită",
+  "Parcare gratuită, interioară și exterioară",
   "Rezervare integrală disponibilă",
 ];
 
@@ -784,7 +791,7 @@ export const EVENT_CARDS = [
   {
     eyebrow: "Corporate",
     title: "Retreat și teambuilding",
-    body: "Offsite de echipă în exclusivitate, cu sală de lucru, agendă flexibilă și tot ce ține de logistică rezolvat înainte să ajungeți.",
+    body: "Ieșire de echipă în exclusivitate, cu sală de lucru, agendă flexibilă și tot ce ține de logistică rezolvat înainte să ajungeți.",
     points: ["Sală pentru grupuri", "Ofertă completă în 24 de ore lucrătoare", "Factură pe firmă"],
     photo: "/retreat/sala-evenimente.jpg",
     photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",

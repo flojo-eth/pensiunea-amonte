@@ -22,7 +22,7 @@ export async function generateMetadata({
   // rather than the generic exterior shot.
   return pageMeta({
     title: room.name,
-    description: room.desc,
+    description: room.metaDesc,
     path: `/camere/${room.slug}`,
     image: room.photo,
   });

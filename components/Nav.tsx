@@ -23,7 +23,7 @@ export default function Nav() {
         <Link
           href="/"
           className="flex items-center gap-3 text-card-2 no-underline"
-          aria-label="Pensiunea Amonte - acasă"
+          aria-label="Amonte, pensiune montană, prima pagină"
           onClick={() => {
             setOpen(false);
             scrollTop();

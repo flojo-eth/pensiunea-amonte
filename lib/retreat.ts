@@ -260,7 +260,7 @@ type FaqItem = { q: string; a: string; fnb?: true };
 const FAQ_SOURCE: FaqItem[] = [
   {
     q: "Câte persoane pot fi cazate?",
-    a: "Maximum 24 de persoane, în 8 camere duble și 2 studiouri de familie. Pentru un offsite de conducere, formatul funcționează cel mai bine între 8 și 20 de participanți.",
+    a: "Maximum 24 de persoane, în 8 camere duble și 2 studiouri de familie. Pentru un retreat de conducere, formatul funcționează cel mai bine între 8 și 20 de participanți.",
   },
   {
     q: "Putem închiria toată pensiunea doar pentru echipa noastră?",
@@ -322,7 +322,7 @@ export const ACCESS_POINTS = [
   `Sibiu, centru: ${DRIVE_SIBIU}, 35 km`,
   `Aeroportul Sibiu: ${DRIVE_AIRPORT}, 42 km`,
   `Brașov, centru: ${DRIVE_BRASOV}, 130 km`,
-  "Parcare la proprietate, interioară și exterioară",
+  "Parcare gratuită, interioară și exterioară",
   "Check-in de la 15:00, check-out până la 12:00, cu prelungire până la 15:00",
 ] as const;
 
@@ -331,7 +331,7 @@ export const ACCESS_POINTS = [
 export const FNB_ITEMS = [
   "Mic dejun inclus în închirierea integrală",
   "Prânz și cină pregătite la pensiune pentru tot grupul",
-  "Coffee break pe toată durata șederii",
+  "Pauze de cafea pe toată durata șederii",
   "Două variante de meniu, una tradițională și una modernă, trimise ca PDF odată cu oferta",
   "Bar disponibil pentru grup pe durata șederii",
 ] as const;

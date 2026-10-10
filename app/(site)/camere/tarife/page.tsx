@@ -8,7 +8,7 @@ import { btnTerracotta } from "@/lib/ui";
 export const metadata: Metadata = pageMeta({
   title: "Tarife cazare",
   description:
-    "Tarifele Pensiunii Amonte: cameră dublă cu vedere la munte - 600 lei/noapte (mic dejun inclus), studio de familie de la 800 lei/noapte. Cere disponibilitate pe WhatsApp.",
+    "Tarife la Pensiunea Amonte, Valea Avrigului: camere duble de la 550 lei pe noapte și studio de familie de la 800 lei, cu mic dejun inclus.",
   path: "/camere/tarife",
 });
 

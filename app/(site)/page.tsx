@@ -23,7 +23,7 @@ import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
 
 export const metadata: Metadata = {
   description:
-    "Pensiunea Amonte - refugiu de munte în Valea Avrigului, la 40 de minute de Sibiu. 10 spații de cazare, jacuzzi & saună, terasă panoramică. Cere disponibilitate pe WhatsApp.",
+    "Pensiune la munte în Valea Avrigului, la 40 de minute de Sibiu: 10 unități cu balcon, jacuzzi și saună, terasă spre Făgăraș. Rezervări pe WhatsApp.",
   alternates: { canonical: "/" },
 };
 

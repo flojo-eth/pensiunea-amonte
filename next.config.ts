@@ -62,6 +62,9 @@ const securityHeaders = [
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },
+  // Replaces Next's default "X-Powered-By: Next.js" (turned off below), which
+  // only advertised the framework version to anyone scanning for it.
+  { key: "X-Powered-By", value: "Hostillo" },
 ];
 
 /**
@@ -86,6 +89,7 @@ const legacyRedirects = [
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   images: {
     // AVIF first: ~20-30% smaller than WebP on photography, which is all this site serves.
     formats: ["image/avif", "image/webp"],

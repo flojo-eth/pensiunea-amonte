@@ -14,5 +14,3 @@ export const btnOutlineLight = `${base} border border-paper/55 text-paper px-7 p
 
 /** Outline on light backgrounds. */
 export const btnOutlineDark = `${base} border border-line-2 text-forest px-7 py-4 text-[15px] hover:border-muted-2`;
-
-/** Small pill (used inside cards). */

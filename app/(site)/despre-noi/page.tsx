@@ -13,9 +13,9 @@ import { SHOW_FB_AND_EVENTS } from "@/lib/site";
 import { btnTerracotta } from "@/lib/ui";
 
 export const metadata: Metadata = pageMeta({
-  title: "Despre noi - Pensiunea Amonte, cazare boutique în Valea Avrigului",
+  title: "Despre noi, pensiune boutique în Valea Avrigului",
   description:
-    "Pensiune boutique de munte în Valea Avrigului, jud. Sibiu, la poalele Făgărașului. 10 spații, 24 locuri, jacuzzi, saună, terasă, sală pentru grupuri. La 40 min de Sibiu.",
+    "Pensiune boutique în Valea Avrigului, la poalele Făgărașului: 10 unități, 24 de locuri, jacuzzi, saună și sală pentru grupuri, la 40 de minute de Sibiu.",
   path: "/despre-noi",
 });
 
@@ -222,7 +222,7 @@ export default function DesprePage() {
           <div className="mt-6 max-w-[720px]">
             <p className="text-[17px] leading-relaxed text-muted">
               Amonte se poate rezerva integral și se transformă într-un cadru
-              privat pentru retreaturi corporate, team building, sesiuni de lucru
+              privat pentru retreaturi corporate, teambuilding, sesiuni de lucru
               în liniște și evenimente de familie. Capacitatea de 24 de locuri,
               spațiile comune și ambianța de munte fac din pensiune o gazdă
               potrivită pentru grupuri care vor intimitate și un loc doar al lor.
