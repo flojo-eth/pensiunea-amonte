@@ -57,7 +57,7 @@ export default function TarifePage() {
       </div>
 
       <p className="mt-6 text-[14.5px] leading-relaxed text-muted">
-        Cazare de la 225 lei / persoană pe noapte. Pentru grupuri, sejururi mai
+        Pentru grupuri, sejururi mai
         lungi sau perioade speciale, scrie-ne și îți facem o ofertă.
       </p>
 

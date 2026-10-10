@@ -296,7 +296,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Cât timp înainte trebuie să rezervăm?",
-    a: "Pentru weekendurile din mai, iunie, septembrie și octombrie recomandăm 6 până la 8 săptămâni înainte. În restul anului, 3 până la 4 săptămâni sunt de obicei suficiente.",
+    a: "Recomandăm să rezervați cu 3 până la 6 săptămâni înainte, mai ales pentru weekendurile din sezon.",
   },
   {
     q: "Asigurați mesele pentru grup?",

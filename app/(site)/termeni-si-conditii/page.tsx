@@ -147,7 +147,7 @@ export default function TermeniPage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">9. Facilități incluse</h2>
           <p>
-            Tariful de cazare include accesul la facilitățile generale ale pensiunii, conform descrierii din oferta/rezervarea confirmată (ex. foișor cu șemineu, terasă panoramică, foc de tabără, teren de minifotbal, tenis de masă), disponibile în limita programului de funcționare și a condițiilor meteo/tehnice.
+            Tariful de cazare include accesul la facilitățile generale ale pensiunii, conform descrierii din oferta/rezervarea confirmată (ex. living cu șemineu, terasă panoramică, teren de minifotbal, tenis de masă), disponibile în limita programului de funcționare și a condițiilor meteo/tehnice.
           </p>
           <p>
             Zona de relaxare de pe malul râului, situată vizavi de pensiune, aparține proprietarului terenului și nu face parte din facilitățile administrate de Hostillo S.R.L.; accesul, dacă este permis, se face pe propria răspundere a Oaspetelui.

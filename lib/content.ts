@@ -101,7 +101,7 @@ export const ROOMS: Room[] = [
     price: "650",
     features: [
       "2 persoane",
-      "Mic dejun inclus",
+      "Mic dejun inclus", "Balcon privat",
       "Cameră spațioasă",
       "Dulap mare",
       "Vedere la munte",
@@ -154,7 +154,7 @@ export const ROOMS: Room[] = [
       "Studio spațios și confortabil, cu pat matrimonial și canapea extensibilă - potrivit pentru familii și grupuri mici de până la 4 persoane. Acces la toate spațiile comune.",
     price: "de la 800",
     features: [
-      "4 persoane",
+      "4 persoane", "Mic dejun inclus", "Balcon privat",
       "Pat matrimonial + canapea extensibilă",
       "Potrivit pentru familii",
       "Încălzire în pardoseală",
@@ -300,7 +300,7 @@ export const SERVICE_DETAILS = [
     items: [
       "Terasă panoramică cu vedere spre Făgăraș",
       "Curte spațioasă",
-      "Foc de tabără, disponibil pentru grupuri, contra cost",
+      "Loc amenajat pentru foc de tabără, în aer liber",
     ],
     note: null as string | null,
   },

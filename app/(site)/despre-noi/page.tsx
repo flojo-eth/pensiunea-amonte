@@ -193,7 +193,8 @@ export default function DesprePage() {
               <strong className="font-semibold text-forest">Hostillo SRL</strong>
               , o companie românească de management hotelier care preia și
               administrează integral pensiuni boutique, cu accent pe ospitalitate
-              autentică și pe experiențe de calitate.{/* TODO: din ce an operează Hostillo Pensiunea Amonte / de când e deschisă */}
+              autentică și pe experiențe de calitate. Pensiunea funcționează din 2024, iar Hostillo o
+              administrează din mai 2026.
             </p>
             <p className="mt-4 text-[17px] leading-relaxed text-muted">
               Ne-am construit în jurul unei idei simple: un loc mic și îngrijit,
