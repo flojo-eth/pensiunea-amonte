@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CurrentYear from "./CurrentYear";
 import WhatsAppButton from "./WhatsAppButton";
-import { CONTACT, NAV_LINKS, WEBSITE, SOCIAL_PROFILES } from "@/lib/content";
+import { CONTACT, NAV_LINKS, WEBSITE, SOCIAL_PROFILES, OPERATOR } from "@/lib/content";
 
 export default function Footer() {
   return (
@@ -122,7 +122,16 @@ export default function Footer() {
       <div className="mx-auto mt-10 max-w-[1280px] border-t border-paper/10 pt-[22px] text-[13px] text-paper/60 flex flex-wrap justify-between gap-4">
         <div>
           © <CurrentYear fallback={new Date().getFullYear()} /> Pensiunea
-          Amonte. Toate drepturile rezervate.
+          Amonte. Toate drepturile rezervate. Administrată de{" "}
+          <a
+            href={OPERATOR.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-paper/80 underline underline-offset-2 hover:text-paper"
+          >
+            {OPERATOR.name}
+          </a>
+          .
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px]">
           <Link href="/termeni-si-conditii" className="no-underline hover:underline hover:text-paper">

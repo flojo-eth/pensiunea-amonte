@@ -64,6 +64,9 @@ export const CONTACT = {
   social: "@pensiunea.amonte", // Instagram · Facebook · TikTok
 } as const;
 
+// Operatorul, afișat în footer.
+export const OPERATOR = { name: "Hostillo", url: "https://www.hostillo.ro/" } as const;
+
 export const LOCATION = "Valea Avrigului · Munții Făgăraș";
 
 export const STATS = [
