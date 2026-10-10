@@ -16,4 +16,3 @@ export const btnOutlineLight = `${base} border border-paper/55 text-paper px-7 p
 export const btnOutlineDark = `${base} border border-line-2 text-forest px-7 py-4 text-[15px] hover:border-muted-2`;
 
 /** Small pill (used inside cards). */
-export const btnSmall = `${base} border border-line-2 text-forest px-4 py-2.5 text-[13.5px] hover:border-muted-2`;

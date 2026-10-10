@@ -11,7 +11,7 @@ import {
   GROUP_REVIEWS,
   RATING_SUMMARY,
   CONTACT,
-  PRIVATE_EVENTS_WHATSAPP,
+  EVENT_CARDS,
   whatsappUrl,
 } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
@@ -32,32 +32,6 @@ const EVENTS_PAGE_SOURCE = "evenimente";
 // apoi treci asta pe true.
 const SHOW_VIDEO = false;
 
-const CARDS = [
-  {
-    eyebrow: "Corporate",
-    title: "Retreat și teambuilding",
-    body: "Offsite de echipă în exclusivitate, cu sală de lucru, agendă flexibilă și tot ce ține de logistică rezolvat înainte să ajungeți.",
-    points: ["Sală pentru grupuri", "Ofertă completă în 24 de ore lucrătoare", "Factură pe firmă"],
-    photo: "/retreat/sala-evenimente.jpg",
-    photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",
-    alt: "Sala pentru grupuri de la Pensiunea Amonte, cu scaune aranjate pentru o prezentare",
-    href: "/retreat-corporate",
-    cta: "Vezi pagina pentru echipe",
-    whatsapp: false as const,
-  },
-  {
-    eyebrow: "Privat",
-    title: "Evenimente private",
-    body: "Aniversări, botezuri, petreceri de familie sau escapade cu prietenii, cu toată proprietatea rezervată doar pentru voi.",
-    points: ["Până la 24 de locuri de cazare", "Mese pregătite la pensiune", "Un singur grup odată"],
-    photo: "/salon.jpeg",
-    photoLabel: "[ FOTO: salon aranjat pentru un eveniment privat ]",
-    alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment privat",
-    href: PRIVATE_EVENTS_WHATSAPP,
-    cta: "Întreabă pe WhatsApp",
-    whatsapp: true as const,
-  },
-];
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
 const sectionPad = "py-[clamp(56px,7vw,96px)]";
@@ -91,7 +65,7 @@ export default function EvenimentePage() {
       {/* ── CELE DOUĂ DIRECȚII ── */}
       <section className={`${container} pb-[clamp(48px,6vw,80px)]`}>
         <div className="grid gap-7 md:grid-cols-2">
-          {CARDS.map((c) => (
+          {EVENT_CARDS.map((c) => (
             <article
               key={c.title}
               className="flex flex-col overflow-hidden rounded-2xl border border-line bg-card"

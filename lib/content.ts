@@ -1,5 +1,6 @@
-// Real, validated content for Pensiunea Amonte (extracted from the approved
-// design prototype). Conversion is WhatsApp-only - there is no custom form.
+// Real, validated content for Pensiunea Amonte. Conversion runs through
+// WhatsApp; the only form is the offer form on /retreat-corporate, which also
+// hands off to WhatsApp or email rather than posting to a server.
 
 export const WHATSAPP_NUMBER = "40747342280";
 
@@ -229,7 +230,7 @@ export type Amenity = {
 };
 
 // Facilități confirmate - afișate pe home și pe pagina de servicii.
-// Mic dejun și bar active pe staging (SHOW_FB_AND_EVENTS = true în site.ts).
+// Intră și în schema.org, ca amenityFeature: o schimbare aici cere acordul lui Flo.
 export const AMENITIES: Amenity[] = [
   { icon: "🧖", label: "Jacuzzi & saună", photo: "/jacuzzi-sauna.jpeg", photoLabel: "[ jacuzzi & saună ]" },
   { icon: "🔥", label: "Living cu șemineu", photo: "/semineu.jpeg", photoLabel: "[ living / șemineu ]" },
@@ -424,7 +425,7 @@ export const GALLERY: GalleryItem[] = [
 ];
 
 // Recenzii reale, selectate din Google Business Profile și Tripadvisor
-// (rating agregat: 4.9/5 din 77 recenzii Google). Recenziile scrise inițial
+// (rezumatul afișat este RATING_SUMMARY, mai jos). Recenziile scrise inițial
 // în engleză sunt păstrate ca atare; cele traduse din română de Google au
 // fost redate în română, păstrând sensul exact. Nu inventa recenzii noi -
 // la actualizare, adaugă mereu de la sursă.
@@ -645,10 +646,10 @@ export const CANCELLATION = {
     "Anulare cu cel puțin 7 zile înainte de sosire: avansul se restituie integral.",
     "Anulare cu mai puțin de 7 zile înainte de sosire: avansul se reține.",
     "Neprezentare (no-show): se reține avansul.",
-    "Pentru închirierea integrală a pensiunii (grupuri), termenul de anulare gratuită este de 28 zile înainte de sosire, având în vedere rezervarea întregului spațiu.",
-    "Modificarea datelor este posibilă în funcție de disponibilitate - scrie-ne pe WhatsApp și găsim o soluție.",
+    "Pentru închirierea integrală a pensiunii (grupuri), termenul de anulare gratuită este de 28 de zile înainte de sosire, având în vedere rezervarea întregului spațiu.",
+    "Modificarea datelor este posibilă în funcție de disponibilitate. Scrie-ne pe WhatsApp și găsim o soluție.",
   ],
-  note: "Politica se aplică rezervărilor directe (WhatsApp, telefon, site). Rezervările făcute prin Booking.com sau Airbnb respectă politica platformei respective.",
+  note: "Politica de mai sus se aplică rezervărilor directe (WhatsApp, telefon, site). Rezervările făcute prin Booking.com, Airbnb sau alte platforme de rezervare online respectă politica de anulare a platformei respective, afișată la momentul rezervării.",
   faqs: [
     {
       q: "Care este politica de anulare?",
@@ -663,5 +664,145 @@ export const CANCELLATION = {
 
 export const FIRE_SAFETY_AUTH = "Autorizație de Securitate la Incendiu ISU Sibiu nr. 556/25/SU-SB din 24.09.2025";
 
+// ── /despre-noi ── FAQ (sincron 1:1 cu FAQPage JSON-LD), atuurile și facilitățile ──
 
+export const ABOUT_FAQ_BASE = [
+  {
+    q: "Unde este Pensiunea Amonte?",
+    a: "În Valea Avrigului nr. 642, jud. Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
+  },
+  {
+    q: "Câți oaspeți poate găzdui?",
+    a: "10 spații de cazare - 8 camere duble și 2 studiouri de familie - cu o capacitate totală de 24 de persoane.",
+  },
+  {
+    q: "Acceptați animale de companie?",
+    a: "Nu, nu primim animale de companie din exterior. Singurul rezident pe patru labe este Bruno, mascota casei, un ciobănesc de Berna.",
+  },
+  {
+    q: "Ce facilități de relaxare aveți?",
+    a: "Amonte dispune de jacuzzi, saună, living cu șemineu, terasă panoramică, foc de tabără și bar. Peste drum, pe malul râului, există și o zonă unde oaspeții se pot relaxa în aer liber.",
+  },
+  {
+    q: "Se poate rezerva întreaga pensiune pentru un grup?",
+    a: "Da. Amonte se poate rezerva integral, pentru maximum 24 de persoane - potrivit pentru sejururi de familie, retreaturi sau ieșiri corporate, cu sală dedicată pentru grupuri.",
+  },
+  {
+    q: "Ce obiective turistice și activități sunt în apropiere?",
+    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute. Palatul Brukenthal (Avrig), Castelul de Lut (Porumbacu de Sus), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
+  },
+  {
+    q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",
+    a: "Sibiul este la aproximativ 40 de minute cu mașina, 35 km. Transfăgărășanul și cascada Bâlea sunt la circa o oră, accesibile sezonier.",
+  },
+  {
+    q: "La ce oră este check-in / check-out?",
+    a: `Check-in: de la ${CHECK_IN}. Check-out: până la ${CHECK_OUT}.`,
+  },
+  {
+    q: "Cum rezerv?",
+    a: `Direct, pe WhatsApp la ${CONTACT.phoneMobile}.`,
+  },
+  ...CANCELLATION.faqs,
+];
 
+// Întrebări despre mese și bar, afișate când SHOW_FB_AND_EVENTS e pornit.
+export const ABOUT_FAQ_FB = [
+  {
+    q: "Se servește mic dejun?",
+    a: "Da, micul dejun este inclus în tarif.",
+  },
+  {
+    q: "Aveți bar?",
+    a: "Da. Barul Amonte oferă băuturi și cocktail-uri artizanale, printre care Amonte Spirit - un cocktail semnătură cu sirop de brad.",
+  },
+  {
+    q: "Pot organiza un eveniment privat sau corporate la Amonte?",
+    a: "Da. Amonte se poate rezerva integral și oferă un cadru privat pentru retreaturi corporate, team building, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
+  },
+];
+
+export const ABOUT_FEATURES = [
+  {
+    icon: "🏠",
+    title: "Boutique, nu hotel",
+    body: "Cu doar 10 spații și 24 de locuri, cunoaștem oaspeții pe nume, adaptăm fiecare sejur la ritmul lor și păstrăm liniștea pe care un loc de munte trebuie să o aibă.",
+  },
+  {
+    icon: "🛁",
+    title: "Relaxare și spa",
+    body: "Jacuzzi, saună, living cu șemineu și o terasă cu vedere spre Făgăraș, gândite pentru deconectare. După o zi pe munte, întoarcerea la Amonte e partea liniștită a zilei.",
+  },
+  {
+    icon: "🏔️",
+    title: "Natura la ușă",
+    body: "Suntem la poalele celui mai înalt masiv din Carpații românești. De aici poți pleca spre Cabana Bârcaciu, Negoiu și Suru, pe trasee pentru toate nivelurile.",
+  },
+  {
+    icon: "🤝",
+    title: "Retreaturi & corporate",
+    body: "Fiindcă putem fi rezervați integral, Amonte devine un spațiu privat pentru retreaturi corporate, teambuilding, sesiuni de lucru sau evenimente de familie.",
+  },
+  {
+    icon: "🐾",
+    title: "Bruno, gazda pe patru labe",
+    body: "Mascota casei este Bruno, un ciobănesc de Berna care întâmpină oaspeții. Nu primim însă alte animale de companie, pentru liniștea tuturor.",
+  },
+  {
+    icon: "🌄",
+    title: "40 de minute de Sibiu",
+    body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 40 de minute cu mașina.",
+  },
+];
+
+export const ABOUT_FACILITIES = [
+  "10 spații: 8 camere duble + 2 studiouri de familie",
+  "Capacitate 24 persoane",
+  "Încălzire în pardoseală",
+  "Jacuzzi",
+  "Saună",
+  "Living cu șemineu",
+  "Terasă panoramică",
+  "Foc de tabără",
+  "Bar / zonă de relaxare (ambianță)",
+  "Sală pentru grupuri / corporate",
+  "Mini teren de fotbal",
+  "Masă de ping-pong",
+  "WiFi gratuit",
+  "Parcare gratuită",
+  "Rezervare integrală disponibilă",
+];
+
+// Afișat doar când SHOW_FB_AND_EVENTS e pornit (vezi pagina).
+export const ABOUT_FACILITIES_FB = ["Mic dejun inclus"];
+
+// Notă pe paginile de camere, sub preț.
+export const ROOM_SPA_NOTE = "Zonă de relaxare (jacuzzi & saună) la cerere.";
+
+// ── /evenimente ── cele două direcții: corporate și privat ──
+export const EVENT_CARDS = [
+  {
+    eyebrow: "Corporate",
+    title: "Retreat și teambuilding",
+    body: "Offsite de echipă în exclusivitate, cu sală de lucru, agendă flexibilă și tot ce ține de logistică rezolvat înainte să ajungeți.",
+    points: ["Sală pentru grupuri", "Ofertă completă în 24 de ore lucrătoare", "Factură pe firmă"],
+    photo: "/retreat/sala-evenimente.jpg",
+    photoLabel: "[ FOTO: sala aranjată în format boardroom sau U, cu echipa la masă ]",
+    alt: "Sala pentru grupuri de la Pensiunea Amonte, cu scaune aranjate pentru o prezentare",
+    href: "/retreat-corporate",
+    cta: "Vezi pagina pentru echipe",
+    whatsapp: false as const,
+  },
+  {
+    eyebrow: "Privat",
+    title: "Evenimente private",
+    body: "Aniversări, botezuri, petreceri de familie sau escapade cu prietenii, cu toată proprietatea rezervată doar pentru voi.",
+    points: ["Până la 24 de locuri de cazare", "Mese pregătite la pensiune", "Un singur grup odată"],
+    photo: "/salon.jpeg",
+    photoLabel: "[ FOTO: salon aranjat pentru un eveniment privat ]",
+    alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment privat",
+    href: PRIVATE_EVENTS_WHATSAPP,
+    cta: "Întreabă pe WhatsApp",
+    whatsapp: true as const,
+  },
+];

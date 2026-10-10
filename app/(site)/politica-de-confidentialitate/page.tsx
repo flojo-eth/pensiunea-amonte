@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import SectionHeading from "@/components/SectionHeading";
 import { CONTACT } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Politică de Confidențialitate (GDPR)",
-  description: "Politica de confidențialitate și prelucrare a datelor cu caracter personal la Pensiunea Amonte.",
-  alternates: { canonical: "/politica-de-confidentialitate" },
-  robots: {
-    index: false,
-    follow: false,
-  },
+  ...pageMeta({
+    title: "Politică de Confidențialitate (GDPR)",
+    description: "Politica de confidențialitate și prelucrare a datelor cu caracter personal la Pensiunea Amonte.",
+    path: "/politica-de-confidentialitate",
+  }),
+  robots: { index: false, follow: false },
 };
 
 const container = "mx-auto max-w-[850px] px-[clamp(20px,5vw,64px)] py-[clamp(48px,7vw,96px)]";
@@ -40,8 +40,8 @@ export default function PoliticaConfidentialitatePage() {
             {/* Adresa vine din CONTACT ca să rămână identică cu NAP-ul canonic. */}
             <p>Punct de lucru: {CONTACT.address}</p>
             <p>Administrator: Florin Luca</p>
-            <p>E-mail contact date personale: contact@pensiunea-amonte.ro</p>
-            <p>Telefon / WhatsApp: 0747342280</p>
+            <p>E-mail contact date personale: {CONTACT.email}</p>
+            <p>Telefon / WhatsApp: {CONTACT.phoneMobile}</p>
           </div>
           <p className="mt-4">
             Hostillo S.R.L. (&quot;noi&quot;, &quot;Hostillo&quot;, &quot;Pensiunea&quot;) acționează în calitate de <strong>operator de date cu caracter personal</strong>, în sensul Regulamentului (UE) 2016/679 (&quot;GDPR&quot;) și al Legii nr. 190/2018.
@@ -169,7 +169,7 @@ export default function PoliticaConfidentialitatePage() {
             <li><strong>Retragerea consimțământului</strong> oricând, pentru prelucrările bazate pe consimțământ (ex. cookie-uri de analiză/marketing), fără a afecta legalitatea prelucrării anterioare retragerii.</li>
           </ul>
           <p>
-            Pentru exercitarea oricăruia dintre aceste drepturi, ne puteți contacta la <strong>contact@pensiunea-amonte.ro</strong>. Vom răspunde în termen de cel mult 30 de zile.
+            Pentru exercitarea oricăruia dintre aceste drepturi, ne puteți contacta la <strong>{CONTACT.email}</strong>. Vom răspunde în termen de cel mult 30 de zile.
           </p>
           <p>
             Aveți, de asemenea, dreptul de a depune o plângere la <strong>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</strong>, <a href="https://www.dataprotection.ro" target="_blank" rel="noopener noreferrer" className="underline">www.dataprotection.ro</a>.
@@ -213,7 +213,7 @@ export default function PoliticaConfidentialitatePage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">12. Contact</h2>
           <p>
-            Pentru orice întrebare legată de prelucrarea datelor dumneavoastră cu caracter personal: <a href="mailto:contact@pensiunea-amonte.ro" className="underline">contact@pensiunea-amonte.ro</a>.
+            Pentru orice întrebare legată de prelucrarea datelor dumneavoastră cu caracter personal: <a href={`mailto:${CONTACT.email}`} className="underline">{CONTACT.email}</a>.
           </p>
         </section>
       </div>

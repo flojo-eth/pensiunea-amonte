@@ -41,8 +41,7 @@ export const metadata: Metadata = {
   // canonical set at the root is inherited by every page that does not override it —
   // which made 8 pages declare themselves duplicates of the homepage. Each page now
   // sets its own canonical via `pageMeta()` in lib/seo.ts.
-  // Staging is noindex (INDEXABLE === false). Flip INDEXABLE in lib/site.ts at
-  // migration to pensiunea-amonte.ro to allow indexing.
+  // Indexing follows INDEXABLE in lib/site.ts.
   robots: INDEXABLE
     ? {
         index: true,

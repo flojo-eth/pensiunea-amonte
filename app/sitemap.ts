@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { ROOMS } from "@/lib/content";
 
-// Generated for completeness; irrelevant while the site is noindex (staging).
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "/",
@@ -18,9 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/retreat-corporate",
   ];
 
-  const now = new Date();
-  return paths.map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: now,
-  }));
+  // No lastModified: the build time changed on every deploy for every URL,
+  // and Google ignores a lastmod that never reflects a real content change.
+  return paths.map((path) => ({ url: `${SITE_URL}${path}` }));
 }

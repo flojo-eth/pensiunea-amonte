@@ -6,7 +6,7 @@ import Image from "next/image";
 import Eyebrow from "./Eyebrow";
 import PlaceholderImage from "./PlaceholderImage";
 import Lightbox from "./Lightbox";
-import type { Room } from "@/lib/content";
+import { ROOM_SPA_NOTE, type Room } from "@/lib/content";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
 const container = "mx-auto max-w-[1080px] px-[clamp(20px,5vw,64px)]";
@@ -98,7 +98,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
             </span>
             <span className="text-[13px] text-muted-2"> lei / noapte</span>
           </div>
-          <p className="mt-2 text-[14px] text-muted">Zonă de relaxare (jacuzzi & saună) la cerere.</p>
+          <p className="mt-2 text-[14px] text-muted">{ROOM_SPA_NOTE}</p>
           <div className="mt-5 flex flex-col gap-3">
             <Link href="/rezerva-acum" className={`${btnTerracotta} w-full text-center`}>
               Verifică disponibilitatea

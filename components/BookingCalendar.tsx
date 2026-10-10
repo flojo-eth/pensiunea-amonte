@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { pushWhatsAppClick } from "@/lib/gtm";
 import { useIsHydrated } from "@/lib/hooks";
+import { CONTACT, WHATSAPP_NUMBER } from "@/lib/content";
 
 // ── Helpers (zero deps) ──────────────────────────────────────────────
 
@@ -151,7 +152,7 @@ export default function BookingCalendar() {
 
   // WhatsApp link
   const whatsappHref = checkIn && checkOut
-    ? `https://wa.me/40747342280?text=${encodeURIComponent(
+    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
         `Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte în perioada ${formatRo(checkIn)} - ${formatRo(checkOut)}.`,
       )}`
     : null;
@@ -323,8 +324,8 @@ export default function BookingCalendar() {
           >
             Sau completează formularul →
           </a>
-          <a href="tel:+40747342280" className="no-underline hover:text-ink">
-            ✆ +40 747 342 280
+          <a href={`tel:${CONTACT.phoneMobile.replace(/\s/g, "")}`} className="no-underline hover:text-ink">
+            ✆ {CONTACT.phoneMobile}
           </a>
         </div>
       </div>

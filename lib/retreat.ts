@@ -1,7 +1,7 @@
 // Content for /retreat-corporate. Kept out of the JSX so the copy can be edited
-// without touching layout. Photos live in /public; entries without a `photo`
-// render as clearly-marked placeholders (see the shot list at the bottom of
-// app/(site)/retreat-corporate/page.tsx).
+// without touching layout. Photos live in /public. Entries without a `photo`
+// are not rendered at all (see the LEISURE grid); the shot list at the bottom
+// of app/(site)/retreat-corporate/page.tsx says which photos are still wanted.
 
 import { SHOW_FNB } from "./flags";
 
@@ -324,4 +324,14 @@ export const ACCESS_POINTS = [
   `Brașov, centru: ${DRIVE_BRASOV}, 130 km`,
   "Parcare la proprietate, interioară și exterioară",
   "Check-in de la 15:00, check-out până la 12:00, cu prelungire până la 15:00",
+] as const;
+
+// ── S5. Meals (components/FnbSection) ────────────────────────────────────────
+
+export const FNB_ITEMS = [
+  "Mic dejun inclus în închirierea integrală",
+  "Prânz și cină pregătite la pensiune pentru tot grupul",
+  "Coffee break pe toată durata șederii",
+  "Două variante de meniu, una tradițională și una modernă, trimise ca PDF odată cu oferta",
+  "Bar disponibil pentru grup pe durata șederii",
 ] as const;

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 import { SHOW_FNB } from "@/lib/flags";
+import { FNB_ITEMS } from "@/lib/retreat";
 
 const MEAL_PHOTO = "/retreat/masa-mare-living.jpg";
 
@@ -29,13 +30,7 @@ export default function FnbSection() {
             pentru tot grupul, ca toată lumea să stea jos în același timp.
           </SectionHeading>
           <ul className="mt-7 space-y-3 pl-0 list-none">
-            {[
-              "Mic dejun inclus în închirierea integrală",
-              "Prânz și cină pregătite la pensiune pentru tot grupul",
-              "Coffee break pe toată durata șederii",
-              "Două variante de meniu, una tradițională și una modernă, trimise ca PDF odată cu oferta",
-              "Bar disponibil pentru grup pe durata șederii",
-            ].map((item) => (
+            {FNB_ITEMS.map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-3 text-[15px] leading-relaxed text-[#33392f]"

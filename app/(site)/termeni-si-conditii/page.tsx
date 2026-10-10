@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import SectionHeading from "@/components/SectionHeading";
-import { CONTACT } from "@/lib/content";
+import { CONTACT, CANCELLATION } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Termeni și Condiții",
-  description: "Termenii și condițiile de utilizare a serviciilor Pensiunii Amonte (Hostillo S.R.L.).",
-  alternates: { canonical: "/termeni-si-conditii" },
-  robots: {
-    index: false,
-    follow: false,
-  },
+  ...pageMeta({
+    title: "Termeni și Condiții",
+    description: "Termenii și condițiile de utilizare a serviciilor Pensiunii Amonte (Hostillo S.R.L.).",
+    path: "/termeni-si-conditii",
+  }),
+  robots: { index: false, follow: false },
 };
 
 const container = "mx-auto max-w-[850px] px-[clamp(20px,5vw,64px)] py-[clamp(48px,7vw,96px)]";
@@ -41,8 +41,8 @@ export default function TermeniPage() {
             {/* Adresa vine din CONTACT ca să rămână identică cu NAP-ul canonic. */}
             <p>Punct de lucru / locația pensiunii: {CONTACT.address}</p>
             <p>Administrator: Florin Luca</p>
-            <p>E-mail: contact@pensiunea-amonte.ro</p>
-            <p>Telefon / WhatsApp: 0747342280</p>
+            <p>E-mail: {CONTACT.email}</p>
+            <p>Telefon / WhatsApp: {CONTACT.phoneMobile}</p>
           </div>
           <p className="mt-4">
             denumită în continuare <strong>„Pensiunea”</strong> sau <strong>„Hostillo”</strong>.
@@ -90,20 +90,16 @@ export default function TermeniPage() {
 
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">5. Politica de anulare, modificare și neprezentare</h2>
+          {/* Citit din CANCELLATION, ca termenii de 7 și 28 de zile să nu mai poată rămâne în urmă. */}
           <p>
-            Rezervarea ta confirmată este garantată. O rezervare confirmată la Amonte nu se anulează niciodată din partea noastră. Locul tău rămâne al tău.
+            {CANCELLATION.promiseTitle} {CANCELLATION.promiseSub}
           </p>
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
-            <li>Rezervarea se confirmă printr-un avans de 30% (sau o sumă stabilită de comun acord).</li>
-            <li>Anulare cu cel puțin 7 zile înainte de sosire: avansul se restituie integral.</li>
-            <li>Anulare cu mai puțin de 7 zile înainte de sosire: avansul se reține.</li>
-            <li>Neprezentare (no-show): se reține avansul.</li>
-            <li>Pentru închirierea integrală a pensiunii (grupuri), termenul de anulare gratuită este de 28 de zile înainte de sosire, având în vedere rezervarea întregului spațiu.</li>
-            <li>Modificarea datelor este posibilă în funcție de disponibilitate. Scrie-ne pe WhatsApp și găsim o soluție.</li>
+            {CANCELLATION.details.map((d) => (
+              <li key={d}>{d}</li>
+            ))}
           </ul>
-          <p className="pt-2 text-sm italic">
-            Politica de mai sus se aplică rezervărilor directe (WhatsApp, telefon, site). Rezervările făcute prin Booking.com, Airbnb sau alte platforme de rezervare online respectă politica de anulare a platformei respective, afișată la momentul rezervării.
-          </p>
+          <p className="pt-2 text-sm italic">{CANCELLATION.note}</p>
         </section>
 
         <section className="space-y-4">
@@ -194,7 +190,7 @@ export default function TermeniPage() {
             14.2. Datele nu sunt transmise către terți, cu excepția situațiilor impuse de lege (ex. autorități competente) sau a platformei prin care s-a efectuat rezervarea.
           </p>
           <p>
-            14.3. Oaspetele își poate exercita drepturile prevăzute de GDPR (acces, rectificare, ștergere, opoziție etc.) printr-o solicitare transmisă la contact@pensiunea-amonte.ro.
+            14.3. Oaspetele își poate exercita drepturile prevăzute de GDPR (acces, rectificare, ștergere, opoziție etc.) printr-o solicitare transmisă la {CONTACT.email}.
           </p>
         </section>
 
@@ -219,7 +215,7 @@ export default function TermeniPage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">17. Dispoziții finale</h2>
           <p>
-            Hostillo S.R.L. își rezervă dreptul de a actualiza periodic prezentul document; versiunea aplicabilă este cea afișată la momentul confirmării rezervării. Pentru orice întrebări, Oaspeții pot contacta Pensiunea la contact@pensiunea-amonte.ro sau prin WhatsApp.
+            Hostillo S.R.L. își rezervă dreptul de a actualiza periodic prezentul document; versiunea aplicabilă este cea afișată la momentul confirmării rezervării. Pentru orice întrebări, Oaspeții pot contacta Pensiunea la {CONTACT.email} sau prin WhatsApp.
           </p>
         </section>
       </div>

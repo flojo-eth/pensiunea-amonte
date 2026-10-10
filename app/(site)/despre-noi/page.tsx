@@ -5,7 +5,10 @@ import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import ConsentMap from "@/components/ConsentMap";
-import { STATS, CONTACT, WEBSITE, CHECK_IN, CHECK_OUT, HOSTS, CANCELLATION, FIRE_SAFETY_AUTH } from "@/lib/content";
+import {
+  STATS, CONTACT, WEBSITE, HOSTS, FIRE_SAFETY_AUTH,
+  ABOUT_FAQ_BASE, ABOUT_FAQ_FB, ABOUT_FEATURES, ABOUT_FACILITIES, ABOUT_FACILITIES_FB,
+} from "@/lib/content";
 import { SHOW_FB_AND_EVENTS } from "@/lib/site";
 import { btnTerracotta } from "@/lib/ui";
 
@@ -16,64 +19,12 @@ export const metadata: Metadata = pageMeta({
   path: "/despre-noi",
 });
 
-// ── FAQ data ─── sync 1:1 cu FAQPage JSON-LD de mai jos ──────────────────────
-const FAQ_BASE = [
-  {
-    q: "Unde este Pensiunea Amonte?",
-    a: "În Valea Avrigului nr. 642, jud. Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
-  },
-  {
-    q: "Câți oaspeți poate găzdui?",
-    a: "10 spații de cazare - 8 camere duble și 2 studiouri de familie - cu o capacitate totală de 24 de persoane.",
-  },
-  {
-    q: "Acceptați animale de companie?",
-    a: "Nu, nu primim animale de companie din exterior. Singurul rezident pe patru labe este Bruno, mascota casei, un ciobănesc de Berna.",
-  },
-  {
-    q: "Ce facilități de relaxare aveți?",
-    a: "Amonte dispune de jacuzzi, saună, living cu șemineu, terasă panoramică, foc de tabără și bar. Peste drum, pe malul râului, există și o zonă unde oaspeții se pot relaxa în aer liber.",
-  },
-  {
-    q: "Se poate rezerva întreaga pensiune pentru un grup?",
-    a: "Da. Amonte se poate rezerva integral, pentru maximum 24 de persoane - potrivit pentru sejururi de familie, retreaturi sau ieșiri corporate, cu sală dedicată pentru grupuri.",
-  },
-  {
-    q: "Ce obiective turistice și activități sunt în apropiere?",
-    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute. Palatul Brukenthal (Avrig), Castelul de Lut (Porumbacu de Sus), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
-  },
-  {
-    q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",
-    a: "Sibiul este la aproximativ 40 de minute cu mașina, 35 km. Transfăgărășanul și cascada Bâlea sunt la circa o oră, accesibile sezonier.",
-  },
-  {
-    q: "La ce oră este check-in / check-out?",
-    a: `Check-in: de la ${CHECK_IN}. Check-out: până la ${CHECK_OUT}.`,
-  },
-  {
-    q: "Cum rezerv?",
-    a: "Direct, pe WhatsApp la +40 747 342 280.",
-  },
-  ...CANCELLATION.faqs,
-];
 
-// F&B questions - visible when SHOW_FB_AND_EVENTS = true (see lib/site.ts).
-const FAQ_FB = [
-  {
-    q: "Se servește mic dejun?",
-    a: "Da, micul dejun este inclus în tarif.",
-  },
-  {
-    q: "Aveți bar?",
-    a: "Da. Barul Amonte oferă băuturi și cocktail-uri artizanale, printre care Amonte Spirit - un cocktail semnătură cu sirop de brad.",
-  },
-  {
-    q: "Pot organiza un eveniment privat sau corporate la Amonte?",
-    a: "Da. Amonte se poate rezerva integral și oferă un cadru privat pentru retreaturi corporate, team building, sesiuni de lucru și evenimente de familie, pentru maximum 24 de persoane.",
-  },
-];
 
-const FAQ = SHOW_FB_AND_EVENTS ? [...FAQ_BASE, ...FAQ_FB] : FAQ_BASE;
+// Conținutul stă în lib/content.ts; aici doar se decide ce se afișează.
+const FAQ = SHOW_FB_AND_EVENTS ? [...ABOUT_FAQ_BASE, ...ABOUT_FAQ_FB] : ABOUT_FAQ_BASE;
+const FACILITIES = SHOW_FB_AND_EVENTS ? [...ABOUT_FACILITIES, ...ABOUT_FACILITIES_FB] : ABOUT_FACILITIES;
+const FEATURES = ABOUT_FEATURES;
 
 // ── JSON-LD ── LodgingBusiness e în (site)/layout.tsx; aici: AboutPage + FAQPage ─
 const jsonLd = {
@@ -102,57 +53,7 @@ const jsonLd = {
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
 const pad = "py-[clamp(56px,7vw,96px)]";
 
-const FEATURES = [
-  {
-    icon: "🏠",
-    title: "Boutique, nu hotel",
-    body: "Cu doar 10 spații și 24 de locuri, cunoaștem oaspeții pe nume, adaptăm fiecare sejur la ritmul lor și păstrăm liniștea pe care un loc de munte trebuie să o aibă.",
-  },
-  {
-    icon: "🛁",
-    title: "Relaxare și spa",
-    body: "Jacuzzi, saună, living cu șemineu și o terasă cu vedere spre Făgăraș, gândite pentru deconectare. După o zi pe munte, întoarcerea la Amonte e partea liniștită a zilei.",
-  },
-  {
-    icon: "🏔️",
-    title: "Natura la ușă",
-    body: "Suntem la poalele celui mai înalt masiv din Carpații românești. De aici poți pleca spre Cabana Bârcaciu, Negoiu și Suru, pe trasee pentru toate nivelurile.",
-  },
-  {
-    icon: "🤝",
-    title: "Retreaturi & corporate",
-    body: "Fiindcă putem fi rezervați integral, Amonte devine un spațiu privat pentru retreaturi corporate, team building, sesiuni de lucru sau evenimente de familie.",
-  },
-  {
-    icon: "🐾",
-    title: "Bruno, gazda pe patru labe",
-    body: "Mascota casei este Bruno, un ciobănesc de Berna care întâmpină oaspeții. Nu primim însă alte animale de companie, pentru liniștea tuturor.",
-  },
-  {
-    icon: "🌄",
-    title: "40 de minute de Sibiu",
-    body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 40 de minute cu mașina.",
-  },
-];
 
-const FACILITIES = [
-  "10 spații: 8 camere duble + 2 studiouri de familie",
-  "Capacitate 24 persoane",
-  "Încălzire în pardoseală",
-  "Jacuzzi",
-  "Saună",
-  "Living cu șemineu",
-  "Terasă panoramică",
-  "Foc de tabără",
-  "Bar / zonă de relaxare (ambianță)",
-  "Sală pentru grupuri / corporate",
-  "Mini teren de fotbal",
-  "Masă de ping-pong",
-  "WiFi gratuit",
-  "Parcare gratuită",
-  "Rezervare integrală disponibilă",
-  ...(SHOW_FB_AND_EVENTS ? ["Mic dejun inclus"] : []),
-];
 
 // ── component ────────────────────────────────────────────────────────────────
 export default function DesprePage() {
@@ -347,9 +248,9 @@ export default function DesprePage() {
                     Pensiunea Amonte
                   </strong>
                   <br />
-                  Valea Avrigului nr. 642
+                  {CONTACT.address.split(", ")[0]}
                   <br />
-                  jud. Sibiu, 555200, România
+                  {CONTACT.address.split(", ").slice(1).join(", ")}
                 </p>
               </address>
               <ul className="mt-7 space-y-3 text-[15px] leading-snug text-paper/70">
