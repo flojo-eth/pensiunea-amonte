@@ -126,7 +126,7 @@ export default function Home() {
           />
           <div className="flex flex-1 flex-col gap-4">
             <PlaceholderImage src="/semineu.jpeg" alt="Șemineu" label="[ șemineu ]" className="flex-1 rounded-md" sizes="30vw" />
-            <PlaceholderImage src="/servicii-facilitati/bar-lounge.jpeg" alt="Bar & Lounge" label="[ bar / lounge ]" className="flex-1 rounded-md" sizes="30vw" />
+            <PlaceholderImage src="/servicii-facilitati/bar-lounge.jpeg" alt="Bar și zonă de relaxare" label="[ bar / zonă de relaxare ]" className="flex-1 rounded-md" sizes="30vw" />
           </div>
         </div>
       </section>

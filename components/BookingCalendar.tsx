@@ -272,7 +272,7 @@ export default function BookingCalendar() {
           className="mt-4 rounded-lg bg-terracotta/10 px-4 py-3 text-center text-[13px] leading-relaxed text-[#7c531f]"
         >
           Nu am putut încărca disponibilitatea în acest moment. Datele afișate ca
-          libere sunt orientative — te rugăm să confirmi perioada cu noi.
+          libere sunt orientative. Te rugăm să confirmi perioada cu noi.
         </p>
       )}
 

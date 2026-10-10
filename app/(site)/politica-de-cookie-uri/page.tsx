@@ -25,7 +25,7 @@ export default function PoliticaCookieuriPage() {
 
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
-          Pensiunea Amonte – operată de Hostillo S.R.L. <br />
+          Pensiunea Amonte, operată de Hostillo S.R.L. <br />
           Ultima actualizare: 21.07.2026
         </p>
 

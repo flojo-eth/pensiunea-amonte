@@ -392,7 +392,7 @@ export default function RetreatCorporatePage() {
         <section className={`${sectionPad} border-t border-line`}>
           <div className={container}>
             <SectionHeading
-              eyebrow="Social proof"
+              eyebrow="Recenzii"
               title="Ce spun echipele care au fost"
               center
               className="mb-[clamp(28px,4vw,44px)]"

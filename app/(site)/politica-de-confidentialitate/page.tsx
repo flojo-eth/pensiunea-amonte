@@ -26,7 +26,7 @@ export default function PoliticaConfidentialitatePage() {
 
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
-          Prelucrarea datelor cu caracter personal – Pensiunea Amonte / Hostillo S.R.L. <br />
+          Prelucrarea datelor cu caracter personal, Pensiunea Amonte / Hostillo S.R.L. <br />
           Ultima actualizare: 21.07.2026
         </p>
 
@@ -58,7 +58,7 @@ export default function PoliticaConfidentialitatePage() {
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
             <li><strong>La rezervare:</strong> nume, prenume, telefon, e-mail, număr de persoane, perioada sejurului, preferințe/cereri speciale.</li>
             <li><strong>La check-in:</strong> date din actul de identitate/pașaport (nume, CNP/serie și număr, cetățenie), conform obligației legale de evidență a turiștilor cazați.</li>
-            <li><strong>La plată:</strong> date necesare procesării plății (nu stocăm datele complete ale cardului — acestea sunt procesate direct de terminalul POS/aplicația de plată a băncii).</li>
+            <li><strong>La plată:</strong> date necesare procesării plății (nu stocăm datele complete ale cardului; acestea sunt procesate direct de terminalul POS/aplicația de plată a băncii).</li>
             <li><strong>Corespondență:</strong> mesaje transmise prin e-mail, WhatsApp sau formularele de pe site.</li>
           </ul>
 
@@ -70,7 +70,7 @@ export default function PoliticaConfidentialitatePage() {
           <h3 className="font-semibold text-pine mt-4">2.3. Date primite de la terți</h3>
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
             <li>Din platformele de rezervare, atunci când rezervarea este făcută prin acestea: Booking.com, Airbnb.</li>
-            <li>Din sistemul de gestiune a rezervărilor (Pynbooking – PMS/Booking Engine), care centralizează datele rezervării indiferent de canal.</li>
+            <li>Din sistemul de gestiune a rezervărilor (Pynbooking, PMS/Booking Engine), care centralizează datele rezervării indiferent de canal.</li>
           </ul>
         </section>
 

@@ -265,9 +265,9 @@ export const SERVICE_DETAILS = [
   {
     id: "spa",
     icon: "🧖",
-    title: "Zona SPA — jacuzzi & saună",
+    title: "Zona SPA: jacuzzi & saună",
     items: [
-      "Saună: 2–3 sesiuni pe zi, pe bază de programare",
+      "Saună: 2-3 sesiuni pe zi, pe bază de programare",
       "Jacuzzi: acces disponibil până la ora 22:00",
       "Acces comun, într-un cadru relaxat și ordonat",
     ],
@@ -279,7 +279,7 @@ export const SERVICE_DETAILS = [
     title: "Mese & mic dejun",
     items: [
       "Mic dejun inclus, servit zilnic",
-      "Cină la cerere — disponibilă în weekend, meniu restrâns de 2–3 preparate zilnice",
+      "Cină la cerere, disponibilă în weekend, meniu restrâns de 2-3 preparate zilnice",
     ],
     note: "Cina este gândită pentru o experiență relaxată, nu ca un restaurant clasic." as string | null,
   },
@@ -300,7 +300,7 @@ export const SERVICE_DETAILS = [
     items: [
       "Terasă panoramică cu vedere spre Făgăraș",
       "Curte spațioasă",
-      "Foc de tabără — disponibil pentru grupuri, contra cost",
+      "Foc de tabără, disponibil pentru grupuri, contra cost",
     ],
     note: null as string | null,
   },
@@ -628,6 +628,8 @@ export const AUDIENCES: Audience[] = [
 export const HOSTS = {
   eyebrow: "Gazdele Amonte",
   title: "Oameni, nu doar o pensiune",
+  // Fără poză încă: secțiunea se afișează doar cu text până există una.
+  photo: null as string | null,
   body: [
     "La Amonte, diferența o fac oamenii. Suntem o echipă tânără, implicată, care ține la fiecare detaliu - de la camere impecabile la o cafea bună dimineața. Ne place să fim aproape de oaspeți și să ne asigurăm că nu le lipsește nimic pe tot parcursul șederii.",
     "Ne vei găsi mereu la îndemână pentru o recomandare de traseu, un pont despre zonă sau pur și simplu o poveste seara, lângă foc. Iar Bruno, ciobănescul nostru de Berna, e mereu primul care întâmpină oaspeții.",

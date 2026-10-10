@@ -101,7 +101,7 @@ export const LEISURE: Space[] = [
     title: "Jacuzzi și saună",
     body: "Acces exclusiv pentru grup, contra cost.",
     photo: "/jacuzzi-sauna.jpeg",
-    photoLabel: "[ FOTO: zona de wellness la apus ]",
+    photoLabel: "[ FOTO: zona spa la apus ]",
     alt: "Jacuzzi și saună, acces exclusiv pentru grupul cazat",
   },
   {
@@ -179,7 +179,7 @@ const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
     label: "Închidere și plecare",
     items: [
       { time: "09:00", title: "Mic dejun", body: "În ritmul fiecăruia.", fnb: true },
-      { time: "10:30", title: "Sesiune de închidere", body: "Decizii și next steps, cât sunteți toți în același loc." },
+      { time: "10:30", title: "Sesiune de închidere", body: "Decizii și pașii următori, cât sunteți toți în același loc." },
       { time: "12:00", title: "Check-out", body: "Cu posibilitate de prelungire până la 15:00." },
       // No title, just the body line: rendered non-bold, unlike every other
       // item. Own entry rather than folded into Check-out's body, because

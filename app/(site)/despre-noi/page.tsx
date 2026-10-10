@@ -28,7 +28,7 @@ const FAQ_BASE = [
   },
   {
     q: "Acceptați animale de companie?",
-    a: "Nu, nu primim animale de companie din exterior. Singurul rezident pe patru labe este Bruno, mascota casei, un Bernese Mountain Dog.",
+    a: "Nu, nu primim animale de companie din exterior. Singurul rezident pe patru labe este Bruno, mascota casei, un ciobănesc de Berna.",
   },
   {
     q: "Ce facilități de relaxare aveți?",
@@ -110,7 +110,7 @@ const FEATURES = [
   },
   {
     icon: "🛁",
-    title: "Relaxare & wellness",
+    title: "Relaxare și spa",
     body: "Jacuzzi, saună, living cu șemineu și o terasă cu vedere spre Făgăraș, gândite pentru deconectare. După o zi pe munte, întoarcerea la Amonte e partea liniștită a zilei.",
   },
   {
@@ -126,11 +126,11 @@ const FEATURES = [
   {
     icon: "🐾",
     title: "Bruno, gazda pe patru labe",
-    body: "Mascota casei este Bruno, un Bernese Mountain Dog care întâmpină oaspeții. Nu primim însă alte animale de companie, pentru liniștea tuturor.",
+    body: "Mascota casei este Bruno, un ciobănesc de Berna care întâmpină oaspeții. Nu primim însă alte animale de companie, pentru liniștea tuturor.",
   },
   {
     icon: "🌄",
-    title: "40 minute de Sibiu",
+    title: "40 de minute de Sibiu",
     body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 40 de minute cu mașina.",
   },
 ];
@@ -180,7 +180,7 @@ export default function DesprePage() {
           de minute de Sibiu. Oferim 10 spații de cazare pentru maximum 24 de
           oaspeți, într-un cadru intim, cu jacuzzi, saună, șemineu, terasă
           panoramică, bar și acces direct la natură. Putem fi rezervați integral
-          pentru grupuri, retreaturi și events private.
+          pentru grupuri, retreaturi și evenimente private.
         </p>
       </section>
 
@@ -258,13 +258,17 @@ export default function DesprePage() {
               ))}
             </div>
           </div>
-          <div className="flex-1 basis-[360px]">
-            <PlaceholderImage
-              label="[ echipa Amonte ]"
-              className="aspect-[4/3] rounded-xl"
-              sizes="(max-width: 768px) 100vw, 40vw"
-            />
-          </div>
+          {HOSTS.photo && (
+            <div className="flex-1 basis-[360px]">
+              <PlaceholderImage
+                src={HOSTS.photo}
+                alt="Echipa Pensiunii Amonte"
+                label="[ echipa Amonte ]"
+                className="aspect-[4/3] rounded-xl"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
+          )}
         </div>
       </section>
 

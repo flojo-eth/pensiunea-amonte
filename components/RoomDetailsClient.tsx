@@ -140,7 +140,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
       {/* Lightbox Modal */}
       {selectedPhoto && (
         <Lightbox
-          label={`${room.name} — fotografia ${selectedPhoto.index + 1} din ${allPhotos.length}`}
+          label={`${room.name}, fotografia ${selectedPhoto.index + 1} din ${allPhotos.length}`}
           onClose={() => setSelectedPhoto(null)}
         >
           {/* Close button */}

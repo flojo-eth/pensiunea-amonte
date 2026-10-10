@@ -54,7 +54,7 @@ export default function GalleryGrid() {
       {/* Lightbox Modal */}
       {selectedPhoto && selected !== null && (
         <Lightbox
-          label={`${selectedPhoto.label} — imaginea ${selected + 1} din ${GALLERY.length}`}
+          label={`${selectedPhoto.label}, imaginea ${selected + 1} din ${GALLERY.length}`}
           onClose={() => setSelected(null)}
         >
           {/* Close button */}

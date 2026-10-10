@@ -55,7 +55,7 @@ export default function ServicesGridClient() {
       {/* Lightbox Modal */}
       {selectedAmenity && selected !== null && (
         <Lightbox
-          label={`${selectedAmenity.label} — ${selected + 1} din ${AMENITIES.length}`}
+          label={`${selectedAmenity.label}, ${selected + 1} din ${AMENITIES.length}`}
           onClose={() => setSelected(null)}
         >
           {/* Close button */}

@@ -178,7 +178,7 @@ export default function EvenimentePage() {
         <section className={sectionPad}>
           <div className={container}>
             <SectionHeading
-              eyebrow="Social proof"
+              eyebrow="Recenzii"
               title="Ce spun grupurile care au fost"
               center
               className="mb-[clamp(28px,4vw,44px)]"

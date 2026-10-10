@@ -26,7 +26,7 @@ export default function TermeniPage() {
       
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
-          Pensiunea Amonte – operată de Hostillo S.R.L. <br />
+          Pensiunea Amonte, operată de Hostillo S.R.L. <br />
           Ultima actualizare: 21.07.2026
         </p>
 
@@ -91,7 +91,7 @@ export default function TermeniPage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">5. Politica de anulare, modificare și neprezentare</h2>
           <p>
-            Rezervarea ta confirmată este garantată. O rezervare confirmată la Amonte nu se anulează niciodată din partea noastră — locul tău rămâne al tău.
+            Rezervarea ta confirmată este garantată. O rezervare confirmată la Amonte nu se anulează niciodată din partea noastră. Locul tău rămâne al tău.
           </p>
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
             <li>Rezervarea se confirmă printr-un avans de 30% (sau o sumă stabilită de comun acord).</li>
@@ -99,7 +99,7 @@ export default function TermeniPage() {
             <li>Anulare cu mai puțin de 7 zile înainte de sosire: avansul se reține.</li>
             <li>Neprezentare (no-show): se reține avansul.</li>
             <li>Pentru închirierea integrală a pensiunii (grupuri), termenul de anulare gratuită este de 28 de zile înainte de sosire, având în vedere rezervarea întregului spațiu.</li>
-            <li>Modificarea datelor este posibilă în funcție de disponibilitate — scrie-ne pe WhatsApp și găsim o soluție.</li>
+            <li>Modificarea datelor este posibilă în funcție de disponibilitate. Scrie-ne pe WhatsApp și găsim o soluție.</li>
           </ul>
           <p className="pt-2 text-sm italic">
             Politica de mai sus se aplică rezervărilor directe (WhatsApp, telefon, site). Rezervările făcute prin Booking.com, Airbnb sau alte platforme de rezervare online respectă politica de anulare a platformei respective, afișată la momentul rezervării.
@@ -127,7 +127,7 @@ export default function TermeniPage() {
             7.2. Este interzis fumatul în interiorul unităților de cazare și al spațiilor comune închise.
           </p>
           <p>
-            7.3. Se solicită respectarea liniștii și a celorlalți oaspeți, în special în intervalul orar 22:00–08:00.
+            7.3. Se solicită respectarea liniștii și a celorlalți oaspeți, în special în intervalul orar 22:00-08:00.
           </p>
           <p>
             7.4. Minorii sunt acceptați doar însoțiți de un adult responsabil, care răspunde de supravegherea acestora pe toată durata sejurului.

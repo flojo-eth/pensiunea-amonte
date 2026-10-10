@@ -127,7 +127,7 @@ and the rules below apply to them too.
 
 - **No em or en dashes** anywhere in our own copy. Use commas, full stops or a plain hyphen.
 - **No invented numbers.** Capacities, distances and durations must be confirmed. The current drive times were measured and confirmed by the owner.
-- **No published prices.** Rates are negotiated per group; `SHOW_PRICING` is off on purpose. The page promises a complete offer within 24 working hours instead.
+- **No published group prices.** Group and corporate rates are negotiated per group; `SHOW_PRICING` keeps the price block on `/retreat-corporate` off on purpose, and the page promises a complete offer within 24 working hours instead. Room rates for individual stays are a different matter: they are public on purpose, on the room pages, `/camere/tarife` and in `priceRange`.
 - **Never the word "piscină", anywhere**, including inside guest reviews and inside descriptions of nearby attractions. There is no pool. Two reviews that mentioned one were removed from the carousel; do not reinstate them.
 - **No star or daisy classification** until the ANT certificate is issued. Do not state a category for the guesthouse anywhere.
 - **The riverside area belongs to the landowner.** Always "peste drum", never "a noastră", "grădina noastră" or anything that implies we run it. The Terms disclaim it explicitly; keep that in step.
