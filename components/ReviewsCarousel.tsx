@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Review } from "@/lib/content";
+import { useIsHydrated } from "@/lib/hooks";
 
 const SPEED_PX_PER_SEC = 32;
 const RESUME_DELAY_MS = 2500;
@@ -19,7 +20,9 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
   // Duplicate the list so scrollLeft can loop seamlessly at the halfway point.
-  const loop = [...reviews, ...reviews];
+  // Only after hydration: the prerendered HTML then carries each review once.
+  const hydrated = useIsHydrated();
+  const loop = hydrated ? [...reviews, ...reviews] : reviews;
 
   useEffect(() => {
     const track = trackRef.current;
@@ -99,6 +102,9 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
           return (
           <div
             key={i}
+            // Second half exists only for the loop; keep it out of the a11y tree and tab order.
+            aria-hidden={i >= reviews.length || undefined}
+            inert={i >= reviews.length || undefined}
             className="flex w-[300px] shrink-0 flex-col rounded-[10px] bg-card p-8 sm:w-[340px]"
           >
             <div className="mb-[18px] text-[16px] tracking-[2px] text-terracotta">
