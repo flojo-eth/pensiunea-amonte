@@ -73,7 +73,10 @@ export default function PoliticaCookieuriPage() {
             <div className="bg-card border border-line rounded-lg p-5">
               <h3 className="font-semibold text-pine mb-2">4.2. Cookie-uri de analiză și statistică</h3>
               <p className="text-sm">
-                Ne ajută să înțelegem cum interacționează vizitatorii cu site-ul nostru (ex. ce pagini sunt cele mai accesate, cum se navighează pe site). Folosim <strong>Google Analytics 4</strong> și serviciile integrate <strong>Vercel Analytics</strong> pentru a colecta aceste date în mod anonim. Activarea lor se face doar pe baza consimțământului exprimat prin bannerul de cookies.
+                Ne ajută să înțelegem cum interacționează vizitatorii cu site-ul nostru (ex. ce pagini sunt cele mai accesate, cum se navighează pe site). Folosim <strong>Google Analytics 4</strong>, care se activează doar pe baza consimțământului exprimat prin bannerul de cookies.
+              </p>
+              <p className="text-sm mt-3">
+                Folosim și serviciile integrate de găzduire <strong>Vercel Analytics</strong> și <strong>Vercel Speed Insights</strong>, care măsoară anonim numărul de vizite și viteza de încărcare a paginilor. Acestea nu folosesc cookie-uri, nu stochează nimic pe dispozitivul dumneavoastră și nu colectează date care vă pot identifica, motiv pentru care funcționează fără consimțământ.
               </p>
             </div>
 
