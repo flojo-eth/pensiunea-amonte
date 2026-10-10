@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pensiunea Amonte
 
-## Getting Started
+Site-ul pensiunii din Valea Avrigului, județul Sibiu: [www.pensiunea-amonte.ro](https://www.pensiunea-amonte.ro).
 
-First, run the development server:
+Next.js 16 (App Router), React 19, TypeScript strict, Tailwind CSS v4. Găzduit pe Vercel. Fără CMS și fără bază de date: tot textul stă în `lib/content.ts` și `lib/retreat.ts`.
+
+## Rulare locală
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de producție
+npm run start    # servește build-ul de producție
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ruta `/api/calendar` citește disponibilitatea din Google Calendar și are nevoie de trei variabile în `.env.local`: `GOOGLE_CLIENT_EMAIL`, `GOOGLE_PRIVATE_KEY`, `GOOGLE_CALENDAR_ID`. Fișierul nu se comite.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Un push pe `main` publică automat pe Vercel. Nu există alt pas de confirmare.
 
-## Learn More
+## Reguli
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Arhitectura, capcanele cunoscute, regulile de tracking și de conținut sunt în [`CLAUDE.md`](CLAUDE.md). Citește-l înainte de orice modificare.

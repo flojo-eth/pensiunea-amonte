@@ -1,5 +1,7 @@
 # Audit `/retreat-corporate` — Faza 1
 
+> **Document depășit.** Descrie starea din 14 septembrie 2026, înainte de restructurarea paginii. Multe constatări de aici (redirecturi lipsă, flag-uri, 30 față de 40 de minute) au fost rezolvate de atunci. Pentru starea curentă, vezi `CLAUDE.md` și istoricul git. Păstrat doar ca arhivă.
+
 Data: 14 septembrie 2026. Nicio modificare aplicată, doar constatări.
 
 ---
