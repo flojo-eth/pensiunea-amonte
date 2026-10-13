@@ -165,7 +165,7 @@ const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
     day: "Sâmbătă",
     label: "Ziua de lucru",
     items: [
-      { time: "08:30", title: "Mic dejun", body: "Inclus, servit la pensiune.", fnb: true },
+      { time: "08:30", title: "Mic dejun", body: "Servit la pensiune.", fnb: true },
       { time: "10:00", title: "Sesiune de dimineață", body: "Blocul lung de lucru, fără întreruperi din exterior." },
       { time: "13:00", title: "Prânz", body: "Pregătit la pensiune pentru tot grupul.", fnb: true },
       { time: "15:00", title: "Pauză activă", body: "Vale, mini fotbal sau ping-pong." },
@@ -224,11 +224,7 @@ export const PRICING_FNB_LINES = [
   {
     label: "Mese",
     value: "la cerere, în oferta trimisă",
-    note: "Prânz și cină.",
-  },
-  {
-    label: "Mic dejun",
-    value: "Inclus în închirierea integrală.",
+    note: "Mic dejun, prânz și cină, ofertate separat de cazare.",
   },
 ] as const;
 
@@ -300,7 +296,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Asigurați mesele pentru grup?",
-    a: "Da. Micul dejun este inclus, iar prânzul și cina se pregătesc la pensiune pentru tot grupul. Primiți meniul, cu multe preparate, de la tradiționale la moderne, odată cu oferta.",
+    a: "Da. Micul dejun, prânzul și cina se pregătesc la pensiune pentru tot grupul, într-un pachet de masă ofertat separat de cazare. Primiți meniul, cu multe preparate, de la tradiționale la moderne, odată cu oferta.",
     fnb: true,
   },
   {
