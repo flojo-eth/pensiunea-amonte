@@ -300,7 +300,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Asigurați mesele pentru grup?",
-    a: "Da. Micul dejun este inclus, iar prânzul și cina se pregătesc la pensiune pentru tot grupul. Primiți două variante de meniu, una tradițională și una modernă, odată cu oferta.",
+    a: "Da. Micul dejun este inclus, iar prânzul și cina se pregătesc la pensiune pentru tot grupul. Primiți meniul, cu multe preparate, de la tradiționale la moderne, odată cu oferta.",
     fnb: true,
   },
   {
@@ -329,9 +329,9 @@ export const ACCESS_POINTS = [
 // ── S5. Meals (components/FnbSection) ────────────────────────────────────────
 
 export const FNB_ITEMS = [
-  "Mic dejun inclus în închirierea integrală",
-  "Prânz și cină pregătite la pensiune pentru tot grupul",
+  "Mese pregătite de noi, la pensiune, din produse locale proaspete",
+  "Prânz și cină pentru tot grupul",
   "Pauze de cafea pe toată durata șederii",
-  "Două variante de meniu, una tradițională și una modernă, trimise ca PDF odată cu oferta",
+  "Un meniu cu multe preparate, de la tradiționale la moderne, trimis ca PDF odată cu oferta",
   "Bar disponibil pentru grup pe durata șederii",
 ] as const;

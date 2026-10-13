@@ -26,7 +26,7 @@ export default function FnbSection() {
       <div className="flex flex-wrap items-center gap-[clamp(32px,5vw,64px)]">
         <div className="flex-1 basis-[340px]">
           <SectionHeading eyebrow="Mesele" title="Mesele echipei">
-            Micul dejun este inclus. Prânzul și cina se pregătesc la pensiune
+            Mesele le pregătim noi, la pensiune, din produse locale proaspete,
             pentru tot grupul, ca toată lumea să stea jos în același timp.
           </SectionHeading>
           <ul className="mt-7 space-y-3 pl-0 list-none">
