@@ -296,7 +296,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Asigurați mesele pentru grup?",
-    a: "Da. Micul dejun, prânzul și cina se pregătesc la pensiune pentru tot grupul, într-un pachet de masă ofertat separat de cazare. Primiți meniul, cu multe preparate, de la tradiționale la moderne, odată cu oferta.",
+    a: "Da. Micul dejun, prânzul și cina se pregătesc la pensiune, din produse locale proaspete, pentru tot grupul.",
     fnb: true,
   },
   {
