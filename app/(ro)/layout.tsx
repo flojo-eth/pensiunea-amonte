@@ -4,7 +4,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import CookieBanner from "@/components/CookieBanner";
-import "./globals.css";
+import "../globals.css";
 import {
   SITE_URL,
   SITE_NAME,

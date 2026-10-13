@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import Link from "next/link";
 import { WHATSAPP_NUMBER, CONTACT } from "@/lib/content";
 import { NIGHT_OPTIONS, MEAL_OPTIONS, RETREAT_PAGE_SOURCE } from "@/lib/retreat";
 import { pushDataLayer } from "@/lib/gtm";
@@ -239,9 +240,9 @@ export default function OfferRequestForm({ showFnb }: Props) {
             />
             <span>
               Sunt de acord ca datele să fie folosite pentru a primi oferta, conform{" "}
-              <a href="/politica-de-confidentialitate" className="text-terracotta underline underline-offset-2">
+              <Link href="/politica-de-confidentialitate" className="text-terracotta underline underline-offset-2">
                 politicii de confidențialitate
-              </a>
+              </Link>
               .
             </span>
           </label>

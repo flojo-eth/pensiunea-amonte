@@ -90,6 +90,11 @@ const legacyRedirects = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // One root layout per language means no shared layout for the 404, so the
+  // documented global-not-found.tsx answers unmatched URLs instead.
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     // AVIF first: ~20-30% smaller than WebP on photography, which is all this site serves.
     formats: ["image/avif", "image/webp"],
