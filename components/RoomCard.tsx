@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { CardPhoto, Room } from "@/lib/content";
+import { roomHref, type Lang } from "@/lib/i18n/config";
+import { UI } from "@/lib/i18n/ui";
 import PlaceholderImage from "./PlaceholderImage";
 
 const photoSrc = (p: CardPhoto | undefined) =>
@@ -7,10 +9,12 @@ const photoSrc = (p: CardPhoto | undefined) =>
 const photoClass = (p: CardPhoto | undefined) =>
   typeof p === "string" ? "" : p?.imgClassName;
 
-export default function RoomCard({ room }: { room: Room }) {
+export default function RoomCard({ lang, room }: { lang: Lang; room: Room }) {
+  const t = UI[lang].room;
+  const roomUrl = roomHref(lang, room.slug);
   return (
     <div className="flex flex-col overflow-hidden rounded-[10px] bg-card shadow-[0_1px_3px_rgba(40,44,38,0.06)]">
-      <Link href={`/camere/${room.slug}`} className="block group relative">
+      <Link href={roomUrl} className="block group relative">
         {(() => {
           const leftVal = room.cardPhotos?.[0] ?? room.photos?.[0] ?? room.photo;
           const rightVal = room.cardPhotos?.[1] ?? room.photos?.[1];
@@ -33,7 +37,7 @@ export default function RoomCard({ room }: { room: Room }) {
               />
               <PlaceholderImage
                 src={right}
-                alt={`${room.name}, a doua fotografie`}
+                alt={t.secondPhoto(room.name)}
                 label={room.photoLabel}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 imgClassName={rightImgClass}
@@ -55,7 +59,7 @@ export default function RoomCard({ room }: { room: Room }) {
       </Link>
       <div className="flex flex-1 flex-col p-[26px]">
         <h3 className="font-serif text-[26px] font-semibold text-pine">
-          <Link href={`/camere/${room.slug}`} className="no-underline hover:underline">
+          <Link href={roomUrl} className="no-underline hover:underline">
             {room.name}
           </Link>
         </h3>
@@ -68,13 +72,13 @@ export default function RoomCard({ room }: { room: Room }) {
             <span className="font-serif text-[30px] font-semibold text-terracotta">
               {room.price}
             </span>
-            <span className="text-[13px] text-muted-2"> lei / noapte</span>
+            <span className="text-[13px] text-muted-2">{t.perNight}</span>
           </div>
           <Link
-            href={`/camere/${room.slug}`}
+            href={roomUrl}
             className="rounded-full border border-line-2 px-4 py-2.5 text-[13.5px] font-semibold text-forest no-underline hover:border-muted-2"
           >
-            Detalii
+            {t.details}
           </Link>
         </div>
       </div>

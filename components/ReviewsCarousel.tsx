@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { Review } from "@/lib/content";
 import { useIsHydrated } from "@/lib/hooks";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 
 const SPEED_PX_PER_SEC = 32;
 const RESUME_DELAY_MS = 2500;
@@ -12,6 +14,7 @@ const RESUME_DELAY_MS = 2500;
 const CLAMP_THRESHOLD_CHARS = 220;
 
 export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
+  const t = UI[useLang()].reviews;
   const trackRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
@@ -121,7 +124,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
                 onClick={() => toggleExpanded(i)}
                 className="mb-5 self-start text-[13px] font-semibold text-forest underline-offset-2 hover:underline"
               >
-                {isExpanded ? "Arată mai puțin" : "Citește mai mult"}
+                {isExpanded ? t.readLess : t.readMore}
               </button>
             )}
             {!isLong && <div className="mb-5" />}
@@ -134,6 +137,9 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
                   {r.name}
                 </div>
                 <div className="text-[12.5px] text-muted-2">{r.meta}</div>
+                {r.translated && (
+                  <div className="text-[12px] italic text-muted-2">{t.translated}</div>
+                )}
               </div>
             </div>
           </div>
@@ -143,7 +149,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
 
       <button
         type="button"
-        aria-label="Recenzia anterioară"
+        aria-label={t.prev}
         onClick={() => scrollByCard(-1)}
         className="absolute left-0 top-1/2 hidden -translate-x-4 -translate-y-1/2 items-center justify-center rounded-full border border-line-2 bg-card text-[18px] text-forest shadow-[0_2px_8px_rgba(40,44,38,0.12)] hover:border-muted-2 sm:flex sm:h-11 sm:w-11"
       >
@@ -151,7 +157,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
       </button>
       <button
         type="button"
-        aria-label="Recenzia următoare"
+        aria-label={t.next}
         onClick={() => scrollByCard(1)}
         className="absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-4 items-center justify-center rounded-full border border-line-2 bg-card text-[18px] text-forest shadow-[0_2px_8px_rgba(40,44,38,0.12)] hover:border-muted-2 sm:flex sm:h-11 sm:w-11"
       >

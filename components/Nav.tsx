@@ -4,26 +4,32 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { NAV_LINKS } from "@/lib/content";
+import type { NavLink } from "@/lib/content";
+import { href } from "@/lib/i18n/config";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 import WhatsAppButton from "./WhatsAppButton";
 
 function scrollTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-export default function Nav() {
+/** `links` arrive from the server in the page's language (see SiteShell). */
+export default function Nav({ links }: { links: readonly NavLink[] }) {
   const [open, setOpen] = useState(false);
   const [submenu, setSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const lang = useLang();
+  const t = UI[lang].nav;
 
   return (
     <header className="sticky top-0 z-40 bg-pine/95 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-[clamp(20px,5vw,64px)] py-4">
         {/* Logo */}
         <Link
-          href="/"
+          href={href(lang, "home")}
           className="flex items-center gap-3 text-card-2 no-underline"
-          aria-label="Amonte, pensiune montană, prima pagină"
+          aria-label={t.logoAria}
           onClick={() => {
             setOpen(false);
             scrollTop();
@@ -42,14 +48,14 @@ export default function Nav() {
               Amonte
             </span>
             <span className="mt-[3px] text-[9.5px] uppercase tracking-[3.5px] opacity-75">
-              Pensiune montană
+              {t.tagline}
             </span>
           </span>
         </Link>
 
         {/* Desktop links */}
         <div className="flex flex-wrap items-center gap-[clamp(14px,2vw,28px)]">
-          {NAV_LINKS.map((l) =>
+          {links.map((l) =>
             l.children ? (
               /* State-driven rather than CSS-only: the submenu has to open on
                  hover AND on keyboard focus, and a purely CSS version has to
@@ -128,17 +134,17 @@ export default function Nav() {
             ),
           )}
           <Link
-            href="/rezerva-acum"
+            href={href(lang, "book")}
             onClick={scrollTop}
             className="hidden rounded-full bg-paper px-5 py-2.5 text-[13.5px] font-semibold text-pine no-underline hover:bg-card-2 sm:inline-block"
           >
-            Rezervă
+            {t.book}
           </Link>
 
           {/* Hamburger — mobile only */}
           <button
             className="flex h-10 w-10 flex-col items-center justify-center gap-[6px] rounded-lg sm:hidden"
-            aria-label={open ? "Închide meniul" : "Deschide meniul"}
+            aria-label={open ? t.closeMenu : t.openMenu}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
@@ -163,7 +169,7 @@ export default function Nav() {
       >
         <div className="overflow-hidden">
           <div className="flex flex-col px-[clamp(20px,5vw,64px)] pb-5 pt-3">
-          {NAV_LINKS.map((l) => (
+          {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -177,14 +183,14 @@ export default function Nav() {
             </Link>
           ))}
           <Link
-            href="/rezerva-acum"
+            href={href(lang, "book")}
             onClick={() => {
               setOpen(false);
               scrollTop();
             }}
             className="mt-4 rounded-full bg-paper py-3.5 text-center text-[15px] font-semibold text-pine no-underline hover:bg-card-2"
           >
-            Rezervă acum
+            {t.bookNow}
           </Link>
         </div>
         </div>

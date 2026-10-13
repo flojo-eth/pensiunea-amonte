@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 import { SHOW_FNB } from "@/lib/flags";
-import { FNB_ITEMS } from "@/lib/retreat";
+import { getCopy, getRetreat, type Lang } from "@/lib/i18n";
 
 const MEAL_PHOTO = "/retreat/masa-mare-living.jpg";
 
@@ -18,16 +18,17 @@ const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
  * Deliberately never calls Amonte a restaurant: it is a guesthouse that feeds
  * the group staying there, not a venue open to the public.
  */
-export default function FnbSection() {
+export default function FnbSection({ lang }: { lang: Lang }) {
   if (!SHOW_FNB) return null;
+  const t = getCopy(lang).corporate.fnb;
+  const { FNB_ITEMS } = getRetreat(lang);
 
   return (
     <section className={`${container} py-[clamp(56px,7vw,96px)] border-t border-line`}>
       <div className="flex flex-wrap items-center gap-[clamp(32px,5vw,64px)]">
         <div className="flex-1 basis-[340px]">
-          <SectionHeading eyebrow="Mesele" title="Mesele echipei">
-            Mesele le pregătim noi, la pensiune, din produse locale proaspete,
-            pentru tot grupul, ca toată lumea să stea jos în același timp.
+          <SectionHeading eyebrow={t.eyebrow} title={t.title}>
+            {t.lead}
           </SectionHeading>
           <ul className="mt-7 space-y-3 pl-0 list-none">
             {FNB_ITEMS.map((item) => (
@@ -43,8 +44,7 @@ export default function FnbSection() {
             ))}
           </ul>
           <p className="mt-6 text-[14px] italic text-muted">
-            Tarifele pentru mese se regăsesc în oferta trimisă pentru perioada
-            voastră.
+            {t.note}
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function FnbSection() {
               relative to the cover-cropped version, nothing cut off. */}
           <Image
             src={MEAL_PHOTO}
-            alt="Masa mare din livingul Pensiunii Amonte, unde ia loc tot grupul"
+            alt={t.alt}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="relative object-contain"

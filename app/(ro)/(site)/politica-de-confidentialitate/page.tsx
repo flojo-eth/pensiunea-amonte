@@ -5,6 +5,7 @@ import { CONTACT } from "@/lib/content";
 
 export const metadata: Metadata = {
   ...pageMeta({
+    lang: "ro",
     title: "Politică de Confidențialitate (GDPR)",
     description: "Politica de confidențialitate și prelucrare a datelor cu caracter personal la Pensiunea Amonte.",
     path: "/politica-de-confidentialitate",

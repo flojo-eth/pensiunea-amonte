@@ -1,6 +1,8 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { WEBSITE } from "@/lib/content";
+import type { Lang } from "@/lib/i18n/config";
+import { UI } from "@/lib/i18n/ui";
 
 export type Crumb = {
   label: string;
@@ -16,10 +18,12 @@ export type Crumb = {
  * without a link, per schema.org guidance.
  */
 export default function Breadcrumbs({
+  lang,
   items,
   id,
   tone = "light",
 }: {
+  lang: Lang;
   items: Crumb[];
   /** Unique script id; two BreadcrumbList blocks on one page would collide. */
   id: string;
@@ -42,7 +46,7 @@ export default function Breadcrumbs({
   return (
     <>
       <JsonLd id={id} data={jsonLd} />
-      <nav aria-label="Firimituri">
+      <nav aria-label={UI[lang].breadcrumbs}>
         <ol className={`m-0 flex flex-wrap items-center gap-x-2 gap-y-1 p-0 text-[13px] ${text}`}>
           {items.map((c, i) => (
             <li key={c.label} className="flex items-center gap-2">

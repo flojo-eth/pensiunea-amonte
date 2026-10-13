@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { CONTACT, GOOGLE_MAPS_URL } from "@/lib/content";
 import { useConsent } from "@/lib/useConsent";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 
 const EMBED_SRC =
   "https://maps.google.com/maps?q=Pensiunea%20Amonte,%20Avrig,%20Romania&t=&z=13&ie=UTF8&iwloc=&output=embed";
@@ -19,6 +21,7 @@ const EMBED_SRC =
 export default function ConsentMap() {
   const consent = useConsent();
   const [loadedOnce, setLoadedOnce] = useState(false);
+  const t = UI[useLang()].map;
 
   const show = consent === "accepted" || loadedOnce;
 
@@ -26,8 +29,8 @@ export default function ConsentMap() {
     <div className="relative min-h-[340px] flex-[1.4] basis-[380px] overflow-hidden rounded-xl bg-[#e9e8e2]">
       {show ? (
         <iframe
-          src={EMBED_SRC}
-          title="Harta - Pensiunea Amonte, Valea Avrigului"
+          src={t.hl ? `${EMBED_SRC}&hl=${t.hl}` : EMBED_SRC}
+          title={t.title}
           width="100%"
           height="100%"
           style={{ border: 0 }}
@@ -39,8 +42,7 @@ export default function ConsentMap() {
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
           <p className="m-0 max-w-[38ch] text-[14px] leading-relaxed text-muted">
-            Harta este încărcată de Google și poate seta cookie-uri. O afișăm
-            doar cu acordul tău.
+            {t.notice}
           </p>
           <p className="m-0 text-[15px] font-medium text-[#33392f]">
             {CONTACT.address}
@@ -50,7 +52,7 @@ export default function ConsentMap() {
               onClick={() => setLoadedOnce(true)}
               className="cursor-pointer rounded-full border border-line-2 bg-card px-5 py-2.5 text-[13px] font-semibold text-forest transition-colors hover:border-muted-2"
             >
-              Afișează harta
+              {t.show}
             </button>
             <a
               href={GOOGLE_MAPS_URL}
@@ -58,7 +60,7 @@ export default function ConsentMap() {
               rel="noopener noreferrer"
               className="text-[13px] font-semibold text-forest underline-offset-2 hover:underline"
             >
-              Deschide în Google Maps →
+              {t.open}
             </a>
           </div>
         </div>

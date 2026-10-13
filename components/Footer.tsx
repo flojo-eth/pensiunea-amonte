@@ -3,9 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import CurrentYear from "./CurrentYear";
 import WhatsAppButton from "./WhatsAppButton";
-import { CONTACT, NAV_LINKS, WEBSITE, SOCIAL_PROFILES, OPERATOR } from "@/lib/content";
+import { CONTACT, WEBSITE, SOCIAL_PROFILES, OPERATOR } from "@/lib/content";
+import { getContent, href, type Lang } from "@/lib/i18n";
+import { UI } from "@/lib/i18n/ui";
 
-export default function Footer() {
+export default function Footer({ lang }: { lang: Lang }) {
+  const t = UI[lang].footer;
+  const { NAV_LINKS, WHATSAPP_URL } = getContent(lang);
   return (
     <footer className="bg-pine-dark px-[clamp(20px,5vw,64px)] pb-10 pt-[clamp(48px,6vw,72px)] text-paper/70">
       <div className="mx-auto flex max-w-[1280px] flex-wrap items-start justify-between gap-8">
@@ -14,10 +18,10 @@ export default function Footer() {
             Amonte
           </div>
           <div className="mt-1 text-[10px] uppercase tracking-[3.5px] opacity-70">
-            Pensiune montană
+            {t.tagline}
           </div>
           <p className="mt-[18px] max-w-[36ch] text-sm leading-relaxed">
-            Pensiune boutique în Valea Avrigului, la poalele Munților Făgăraș.
+            {t.blurb}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
@@ -28,7 +32,7 @@ export default function Footer() {
             >
               <Image
                 src="/anpc-sal.svg"
-                alt="Soluționarea Alternativă a Litigiilor"
+                alt={t.salAlt}
                 width={250}
                 height={50}
                 className="h-10 w-auto rounded-md"
@@ -42,7 +46,7 @@ export default function Footer() {
             >
               <Image
                 src="/anpc-sol.svg"
-                alt="Soluționarea Online a Litigiilor"
+                alt={t.solAlt}
                 width={250}
                 height={50}
                 className="h-10 w-auto rounded-md"
@@ -54,7 +58,7 @@ export default function Footer() {
         <div className="flex flex-wrap gap-[clamp(32px,5vw,72px)]">
           <div className="flex flex-col gap-2.5">
             <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/60">
-              Navigare
+              {t.explore}
             </div>
             {NAV_LINKS.map((l) => (
               <Link
@@ -68,12 +72,13 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2.5">
             <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/60">
-              Contact
+              {t.contact}
             </div>
             {/* Era un <a> cu URL scris de mână, deci clicurile din footer nu
                 ajungeau deloc în dataLayer. `page_source: footer` le ține
                 separate de CTA-urile de pagină, ca să nu umfle conversiile. */}
             <WhatsAppButton
+              href={WHATSAPP_URL}
               pageSource="footer"
               className="text-sm text-paper/80 no-underline hover:text-paper"
             >
@@ -121,8 +126,7 @@ export default function Footer() {
 
       <div className="mx-auto mt-10 max-w-[1280px] border-t border-paper/10 pt-[22px] text-[13px] text-paper/60 flex flex-wrap justify-between gap-4">
         <div>
-          © <CurrentYear fallback={new Date().getFullYear()} /> Pensiunea
-          Amonte. Toate drepturile rezervate. Administrată de{" "}
+          © <CurrentYear fallback={new Date().getFullYear()} /> {t.rights}{" "}
           <a
             href={OPERATOR.url}
             target="_blank"
@@ -134,14 +138,14 @@ export default function Footer() {
           .
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px]">
-          <Link href="/termeni-si-conditii" className="no-underline hover:underline hover:text-paper">
-            Termeni și Condiții
+          <Link href={href(lang, "terms")} className="no-underline hover:underline hover:text-paper">
+            {t.terms}
           </Link>
-          <Link href="/politica-de-confidentialitate" className="no-underline hover:underline hover:text-paper">
-            Politică de Confidențialitate
+          <Link href={href(lang, "privacy")} className="no-underline hover:underline hover:text-paper">
+            {t.privacy}
           </Link>
-          <Link href="/politica-de-cookie-uri" className="no-underline hover:underline hover:text-paper">
-            Politică de Cookie-uri
+          <Link href={href(lang, "cookies")} className="no-underline hover:underline hover:text-paper">
+            {t.cookies}
           </Link>
         </div>
       </div>

@@ -3,15 +3,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { pushWhatsAppClick } from "@/lib/gtm";
 import { useIsHydrated } from "@/lib/hooks";
-import { CONTACT, WHATSAPP_NUMBER } from "@/lib/content";
+import { CONTACT, GOOGLE_FORM_URL, WHATSAPP_NUMBER } from "@/lib/content";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI, type UiStrings } from "@/lib/i18n/ui";
+
+type Strings = UiStrings["calendar"];
 
 // ── Helpers (zero deps) ──────────────────────────────────────────────
-
-const MONTHS_RO = [
-  "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
-  "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie",
-];
-const DAYS_RO = ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"];
 
 /** yyyy-MM-dd */
 function toKey(d: Date) {
@@ -27,8 +25,8 @@ function isBetween(d: Date, from: Date, to: Date) {
   return t >= from.getTime() && t <= to.getTime();
 }
 
-function formatRo(d: Date) {
-  return d.toLocaleDateString("ro-RO", { day: "numeric", month: "short", year: "numeric" });
+function formatDate(d: Date, locale: string) {
+  return d.toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric" });
 }
 
 function daysInMonth(year: number, month: number) {
@@ -48,7 +46,7 @@ function startOfToday() {
 
 
 /** Pre-hydration placeholder. Mirrors the real calendar's box so nothing shifts. */
-function CalendarSkeleton() {
+function CalendarSkeleton({ t }: { t: Strings }) {
   return (
     <div
       className="flex flex-col rounded-2xl border border-line bg-card p-[clamp(20px,4vw,32px)]"
@@ -56,14 +54,14 @@ function CalendarSkeleton() {
     >
       <div className="text-center mb-5">
         <h2 className="font-serif text-[clamp(22px,3vw,28px)] font-semibold text-pine mb-1">
-          Alege perioada dorită
+          {t.title}
         </h2>
         <p className="text-[14px] text-muted">
-          Selectează ziua de sosire și ziua de plecare
+          {t.subtitle}
         </p>
       </div>
       <div className="grid grid-cols-7 mb-1">
-        {DAYS_RO.map((d) => (
+        {t.days.map((d) => (
           <div
             key={d}
             className="py-2 text-center text-[12px] font-semibold uppercase tracking-wider text-muted-2"
@@ -78,7 +76,7 @@ function CalendarSkeleton() {
         ))}
       </div>
       <p className="mt-5 pt-5 border-t border-line text-center text-[14px] text-muted">
-        Se încarcă disponibilitatea…
+        {t.loading}
       </p>
     </div>
   );
@@ -95,6 +93,8 @@ export default function BookingCalendar() {
   // server and client, and the actual date is only read once hydrated.
   const isHydrated = useIsHydrated();
   const [monthOffset, setMonthOffset] = useState(0);
+  const t = UI[useLang()].calendar;
+  const format = (d: Date) => formatDate(d, t.locale);
 
   const [checkIn, setCheckIn] = useState<Date | null>(null);
   const [checkOut, setCheckOut] = useState<Date | null>(null);
@@ -153,13 +153,13 @@ export default function BookingCalendar() {
   // WhatsApp link
   const whatsappHref = checkIn && checkOut
     ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        `Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte în perioada ${formatRo(checkIn)} - ${formatRo(checkOut)}.`,
+        t.message(format(checkIn), format(checkOut)),
       )}`
     : null;
 
   // Everything below depends on the current date, so it is only rendered once
   // hydrated. The skeleton keeps the same footprint to avoid a layout shift.
-  if (!isHydrated) return <CalendarSkeleton />;
+  if (!isHydrated) return <CalendarSkeleton t={t} />;
 
   const today = startOfToday();
   const view = new Date(today.getFullYear(), today.getMonth() + monthOffset, 1);
@@ -182,10 +182,10 @@ export default function BookingCalendar() {
       {/* Header */}
       <div className="text-center mb-5">
         <h2 className="font-serif text-[clamp(22px,3vw,28px)] font-semibold text-pine mb-1">
-          Alege perioada dorită
+          {t.title}
         </h2>
         <p className="text-[14px] text-muted">
-          Selectează ziua de sosire și ziua de plecare
+          {t.subtitle}
         </p>
       </div>
 
@@ -195,17 +195,17 @@ export default function BookingCalendar() {
           onClick={prevMonth}
           disabled={!canPrev}
           className="flex h-9 w-9 items-center justify-center rounded-full text-pine hover:bg-sand transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          aria-label="Luna anterioară"
+          aria-label={t.prevMonth}
         >
           ‹
         </button>
         <span className="font-serif text-[18px] font-semibold text-pine">
-          {MONTHS_RO[month]} {year}
+          {t.months[month]} {year}
         </span>
         <button
           onClick={nextMonth}
           className="flex h-9 w-9 items-center justify-center rounded-full text-pine hover:bg-sand transition-colors"
-          aria-label="Luna următoare"
+          aria-label={t.nextMonth}
         >
           ›
         </button>
@@ -213,7 +213,7 @@ export default function BookingCalendar() {
 
       {/* Day-of-week header */}
       <div className="grid grid-cols-7 mb-1">
-        {DAYS_RO.map((d) => (
+        {t.days.map((d) => (
           <div key={d} className="py-2 text-center text-[12px] font-semibold uppercase tracking-wider text-muted-2">
             {d}
           </div>
@@ -272,8 +272,7 @@ export default function BookingCalendar() {
           role="status"
           className="mt-4 rounded-lg bg-terracotta/10 px-4 py-3 text-center text-[13px] leading-relaxed text-[#7c531f]"
         >
-          Nu am putut încărca disponibilitatea în acest moment. Datele afișate ca
-          libere sunt orientative. Te rugăm să confirmi perioada cu noi.
+          {t.unknown}
         </p>
       )}
 
@@ -281,11 +280,11 @@ export default function BookingCalendar() {
       <div className="mt-5 pt-5 border-t border-line">
         <div className="text-center text-[15px] font-medium text-pine min-h-[24px] mb-4">
           {checkIn && checkOut ? (
-            <>{formatRo(checkIn)} → {formatRo(checkOut)}</>
+            <>{format(checkIn)} → {format(checkOut)}</>
           ) : checkIn ? (
-            <span className="text-muted">Selectează data de plecare</span>
+            <span className="text-muted">{t.pickCheckout}</span>
           ) : (
-            <span className="text-muted-2">Nicio perioadă selectată</span>
+            <span className="text-muted-2">{t.nothingSelected}</span>
           )}
         </div>
 
@@ -311,19 +310,28 @@ export default function BookingCalendar() {
               : "bg-terracotta/40 text-paper/60 cursor-not-allowed"
           }`}
         >
-          Verifică disponibilitatea pe WhatsApp
+          {t.cta}
         </a>
 
         {/* Fallback contact */}
         <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[14px] text-muted">
-          <a
-            href="https://forms.gle/Ft4iFEuRJUfbyAPV6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-forest no-underline hover:underline"
-          >
-            Sau completează formularul →
-          </a>
+          {t.fallback === "form" ? (
+            <a
+              href={GOOGLE_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-forest no-underline hover:underline"
+            >
+              {t.fallbackLabel}
+            </a>
+          ) : (
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="font-medium text-forest no-underline hover:underline"
+            >
+              {t.fallbackLabel}
+            </a>
+          )}
           <a href={`tel:${CONTACT.phoneMobile.replace(/\s/g, "")}`} className="no-underline hover:text-ink">
             ✆ {CONTACT.phoneMobile}
           </a>

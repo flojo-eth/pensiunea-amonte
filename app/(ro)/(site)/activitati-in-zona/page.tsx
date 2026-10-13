@@ -1,44 +1,8 @@
 import type { Metadata } from "next";
-import { pageMeta } from "@/lib/seo";
-import SectionHeading from "@/components/SectionHeading";
-import ActivityCard from "@/components/ActivityCard";
-import Link from "next/link";
-import { ACTIVITIES } from "@/lib/content";
-import { btnTerracotta } from "@/lib/ui";
+import ActivitiesPage, { activitiesMetadata } from "@/components/pages/ActivitiesPage";
 
-export const metadata: Metadata = pageMeta({
-  title: "Activități în zonă",
-  description:
-    "Ce faci lângă Pensiunea Amonte: drumeții în Făgăraș, Brambura Park, Palatul Brukenthal, e-bike, călărie și ATV, ferma de cerbi, Beach Club Avrig.",
-  path: "/activitati-in-zona",
-});
+export const metadata: Metadata = activitiesMetadata("ro");
 
-const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
-
-export default function ActivitatiPage() {
-  return (
-    <section className={`${container} py-[clamp(56px,7vw,96px)]`}>
-      <SectionHeading
-        as="h1"
-        eyebrow="În jurul pensiunii"
-        title="Activități în zonă"
-        className="mb-[clamp(36px,5vw,56px)]"
-      >
-        De la drumeții pe creste la seri lângă foc - muntele are mereu un plan
-        pentru tine.
-      </SectionHeading>
-
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {ACTIVITIES.map((a) => (
-          <ActivityCard key={a.name} activity={a} />
-        ))}
-      </div>
-
-      <div className="mt-10">
-        <Link href="/rezerva-acum" className={btnTerracotta}>
-          Rezervă-ți sejurul la munte
-        </Link>
-      </div>
-    </section>
-  );
+export default function Page() {
+  return <ActivitiesPage lang="ro" />;
 }

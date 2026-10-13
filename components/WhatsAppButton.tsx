@@ -1,13 +1,16 @@
 "use client";
 
-import { WHATSAPP_URL } from "@/lib/content";
 import { pushWhatsAppClick } from "@/lib/gtm";
 
 type Props = {
   children: React.ReactNode;
   className?: string;
-  /** Override the destination if ever needed; defaults to the tracked WA link. */
-  href?: string;
+  /**
+   * The wa.me link, with its pre-filled message. Required: the message is in
+   * the page's language, so the caller passes it (usually WHATSAPP_URL from
+   * the content for that language) rather than this component guessing.
+   */
+  href: string;
   /**
    * Tags the conversion with its origin, so B2B and leisure clicks can be told
    * apart in GA4. Pass it only for CTAs whose origin is not their page, like
@@ -28,7 +31,7 @@ type Props = {
 export default function WhatsAppButton({
   children,
   className,
-  href = WHATSAPP_URL,
+  href,
   pageSource,
   ctaPosition,
 }: Props) {

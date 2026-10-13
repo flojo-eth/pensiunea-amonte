@@ -1,6 +1,13 @@
 // Real, validated content for Pensiunea Amonte. Conversion runs through
 // WhatsApp; the only form is the offer form on /retreat-corporate, which also
 // hands off to WhatsApp or email rather than posting to a server.
+//
+// This file is the Romanian content and the single home of everything that
+// does not depend on language (contact, coordinates, profiles). The English
+// content lives in lib/content.en.ts, typed against the exports here, and
+// lib/i18n/index.ts hands each page the set for its language.
+
+import type { RoomId } from "./i18n/config";
 
 export const WHATSAPP_NUMBER = "40747342280";
 
@@ -69,17 +76,20 @@ export const OPERATOR = { name: "Hostillo", url: "https://www.hostillo.ro/" } as
 
 export const LOCATION = "Valea Avrigului · Munții Făgăraș";
 
-export const STATS = [
+export type Stat = { value: string; label: string };
+
+export const STATS: Stat[] = [
   { value: "10", label: "Unități de cazare" },
   { value: "24", label: "Oaspeți" },
   { value: "40'", label: "De Sibiu" },
-] as const;
+];
 
 /** A card photo: either a plain path, or a path plus per-image classes. */
 export type CardPhoto = string | { src: string; imgClassName?: string };
 
 export type Room = {
-  slug: string;
+  /** The Romanian slug, which is also the room's id across languages (see ROOM_SLUGS). */
+  slug: RoomId;
   name: string;
   spec: string;
   /** Meta description for the room page: under 155 characters, with the location. */
@@ -256,7 +266,15 @@ export const AMENITIES: Amenity[] = [
 
 // Detalii structurate afișate pe /servicii — sub grid-ul de facilități.
 // Actualizează DOAR aici, pagina le preia automat.
-export const SERVICE_DETAILS = [
+export type ServiceDetail = {
+  id: string;
+  icon: string;
+  title: string;
+  items: string[];
+  note: string | null;
+};
+
+export const SERVICE_DETAILS: ServiceDetail[] = [
   {
     id: "inclus",
     icon: "✓",
@@ -271,7 +289,7 @@ export const SERVICE_DETAILS = [
       "Parcare gratuită, interioară și exterioară",
       "Vedere spre munte și liniște naturală",
     ],
-    note: null as string | null,
+    note: null,
   },
   {
     id: "spa",
@@ -282,7 +300,7 @@ export const SERVICE_DETAILS = [
       "Jacuzzi: acces disponibil până la ora 22:00",
       "Acces comun, într-un cadru relaxat și ordonat",
     ],
-    note: "Zona SPA se accesează contra cost, în funcție de disponibilitate. Rezervarea se face la recepție." as string | null,
+    note: "Zona SPA se accesează contra cost, în funcție de disponibilitate. Rezervarea se face la recepție.",
   },
   {
     id: "masa",
@@ -292,7 +310,7 @@ export const SERVICE_DETAILS = [
       "Mic dejun inclus, servit zilnic",
       "Cină la cerere, disponibilă în weekend, meniu restrâns de 2-3 preparate zilnice",
     ],
-    note: "Cina este gândită pentru o experiență relaxată, nu ca un restaurant clasic." as string | null,
+    note: "Cina este gândită pentru o experiență relaxată, nu ca un restaurant clasic.",
   },
   {
     id: "bar",
@@ -302,7 +320,7 @@ export const SERVICE_DETAILS = [
       "Bar funcțional zilnic, până la miezul nopții",
       "Spații comune gândite pentru seri liniștite, conversații și relaxare",
     ],
-    note: null as string | null,
+    note: null,
   },
   {
     id: "exterior",
@@ -313,7 +331,7 @@ export const SERVICE_DETAILS = [
       "Curte spațioasă",
       "Loc amenajat pentru foc de tabără, în aer liber",
     ],
-    note: null as string | null,
+    note: null,
   },
   {
     id: "ebike",
@@ -323,7 +341,7 @@ export const SERVICE_DETAILS = [
       "5 biciclete electrice disponibile pentru închiriere",
       "Ideale pentru plimbări în zonă și trasee ușoare",
     ],
-    note: "Disponibilitatea și detaliile se confirmă la recepție sau la cerere." as string | null,
+    note: "Disponibilitatea și detaliile se confirmă la recepție sau la cerere.",
   },
 ];
 
@@ -445,9 +463,11 @@ export type Review = {
   name: string;
   meta: string;
   initial: string;
+  /** Set on the English site for reviews translated from Romanian; shows a label. */
+  translated?: true;
 };
 
-export const RATING_SUMMARY = { value: "4,9", count: 114 } as const;
+export const RATING_SUMMARY: { value: string; count: number } = { value: "4,9", count: 114 };
 
 export const REVIEWS: Review[] = [
   {
@@ -540,7 +560,10 @@ export const REVIEWS: Review[] = [
 // property). Shared by /retreat-corporate and /evenimente so the two pages
 // can't drift apart on which quotes count as "group" social proof.
 const GROUP_REVIEWERS = ["Adrian Migiu", "Dan Velcu", "Filip Mihaela", "Cristina Sosoi"];
-export const GROUP_REVIEWS = REVIEWS.filter((r) => GROUP_REVIEWERS.includes(r.name));
+export function groupReviews(reviews: Review[]) {
+  return reviews.filter((r) => GROUP_REVIEWERS.includes(r.name));
+}
+export const GROUP_REVIEWS = groupReviews(REVIEWS);
 
 // Deep link to the reviews tab of the Google Business Profile (same place_id
 // verified elsewhere against the site's Maps links), used for "see all
@@ -636,18 +659,32 @@ export const AUDIENCES: Audience[] = [
   },
 ];
 
-export const HOSTS = {
+export type Faq = { q: string; a: string };
+
+export const HOSTS: {
+  eyebrow: string;
+  title: string;
+  photo: string | null;
+  body: string[];
+} = {
   eyebrow: "Gazdele Amonte",
   title: "Oameni, nu doar o pensiune",
   // Fără poză încă: secțiunea se afișează doar cu text până există una.
-  photo: null as string | null,
+  photo: null,
   body: [
     "La Amonte, diferența o fac oamenii. Suntem o echipă tânără, implicată, care ține la fiecare detaliu - de la camere impecabile la o cafea bună dimineața. Ne place să fim aproape de oaspeți și să ne asigurăm că nu le lipsește nimic pe tot parcursul șederii.",
     "Ne vei găsi mereu la îndemână pentru o recomandare de traseu, un pont despre zonă sau pur și simplu o poveste seara, lângă foc. Iar Bruno, ciobănescul nostru de Berna, e mereu primul care întâmpină oaspeții.",
   ],
-} as const;
+};
 
-export const CANCELLATION = {
+export const CANCELLATION: {
+  eyebrow: string;
+  promiseTitle: string;
+  promiseSub: string;
+  details: string[];
+  note: string;
+  faqs: Faq[];
+} = {
   eyebrow: "Politica de anulare",
   promiseTitle: "Rezervarea ta confirmată este garantată.",
   promiseSub: "O rezervare confirmată la Amonte nu se anulează niciodată din partea noastră. Locul tău rămâne al tău.",
@@ -670,13 +707,13 @@ export const CANCELLATION = {
       a: "Da, în funcție de disponibilitate. Scrie-ne pe WhatsApp și găsim împreună o soluție.",
     },
   ],
-} as const;
+};
 
 export const FIRE_SAFETY_AUTH = "Autorizație de Securitate la Incendiu ISU Sibiu nr. 556/25/SU-SB din 24.09.2025";
 
 // ── /despre-noi ── FAQ (sincron 1:1 cu FAQPage JSON-LD), atuurile și facilitățile ──
 
-export const ABOUT_FAQ_BASE = [
+export const ABOUT_FAQ_BASE: Faq[] = [
   {
     q: "Unde este Pensiunea Amonte?",
     a: "În Valea Avrigului nr. 642, jud. Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
@@ -717,7 +754,7 @@ export const ABOUT_FAQ_BASE = [
 ];
 
 // Întrebări despre mese și bar, afișate când SHOW_FB_AND_EVENTS e pornit.
-export const ABOUT_FAQ_FB = [
+export const ABOUT_FAQ_FB: Faq[] = [
   {
     q: "Se servește mic dejun?",
     a: "Da, micul dejun este inclus în tarif.",
@@ -790,7 +827,21 @@ export const ABOUT_FACILITIES_FB = ["Mic dejun inclus"];
 export const ROOM_SPA_NOTE = "Zonă de relaxare (jacuzzi & saună) la cerere.";
 
 // ── /evenimente ── cele două direcții: corporate și privat ──
-export const EVENT_CARDS = [
+export type EventCard = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  points: string[];
+  photo: string;
+  photoLabel: string;
+  alt: string;
+  href: string;
+  cta: string;
+  /** wa.me link: opens in a new tab and is tracked as a conversion. */
+  whatsapp: boolean;
+};
+
+export const EVENT_CARDS: EventCard[] = [
   {
     eyebrow: "Corporate",
     title: "Retreat și teambuilding",
@@ -801,7 +852,7 @@ export const EVENT_CARDS = [
     alt: "Sala pentru grupuri de la Pensiunea Amonte, cu scaune aranjate pentru o prezentare",
     href: "/retreat-corporate",
     cta: "Vezi pagina pentru echipe",
-    whatsapp: false as const,
+    whatsapp: false,
   },
   {
     eyebrow: "Privat",
@@ -813,6 +864,6 @@ export const EVENT_CARDS = [
     alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment privat",
     href: PRIVATE_EVENTS_WHATSAPP,
     cta: "Întreabă pe WhatsApp",
-    whatsapp: true as const,
+    whatsapp: true,
   },
 ];

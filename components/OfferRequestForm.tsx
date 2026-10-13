@@ -3,8 +3,11 @@
 import { useId, useState } from "react";
 import Link from "next/link";
 import { WHATSAPP_NUMBER, CONTACT } from "@/lib/content";
-import { NIGHT_OPTIONS, MEAL_OPTIONS, RETREAT_PAGE_SOURCE } from "@/lib/retreat";
+import { NIGHT_OPTIONS, RETREAT_PAGE_SOURCE } from "@/lib/retreat";
 import { pushDataLayer } from "@/lib/gtm";
+import { href } from "@/lib/i18n/config";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
 /**
@@ -18,6 +21,10 @@ import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
  * `showFnb` arrives as a prop rather than being imported: lib/flags.ts reads
  * process.env.VERCEL_ENV, which is server-only, so a client component that
  * imported it directly would silently get the development value.
+ *
+ * The labels and the composed message follow the page's language. What reaches
+ * the dataLayer does not: `page_source` stays "retreat-corporate" and `nights`
+ * is one of NIGHT_OPTIONS, so the two languages report as one funnel.
  */
 type Props = { showFnb: boolean };
 
@@ -54,6 +61,8 @@ const field =
   "w-full rounded-lg border border-line-2 bg-card px-4 py-3 text-[15px] text-ink outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-terracotta";
 
 export default function OfferRequestForm({ showFnb }: Props) {
+  const lang = useLang();
+  const t = UI[lang].offerForm;
   const [f, setF] = useState<Fields>(EMPTY);
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const uid = useId();
@@ -62,31 +71,32 @@ export default function OfferRequestForm({ showFnb }: Props) {
   /** Returns the freshly computed errors, so callers never read stale state. */
   function validate() {
     const e: Partial<Record<keyof Fields, string>> = {};
-    if (!f.name.trim()) e.name = "Spune-ne cum te cheamă.";
-    if (!f.company.trim()) e.company = "Completează numele firmei.";
-    if (!f.email.trim()) e.email = "Avem nevoie de un email pentru ofertă.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = "Emailul nu pare valid.";
-    if (!f.groupSize.trim()) e.groupSize = "Câți sunteți, aproximativ?";
-    if (!f.period.trim()) e.period = "Spune-ne ce perioadă ai în minte.";
-    if (!f.consent) e.consent = "Avem nevoie de acordul tău ca să îți răspundem.";
+    if (!f.name.trim()) e.name = t.errors.name;
+    if (!f.company.trim()) e.company = t.errors.company;
+    if (!f.email.trim()) e.email = t.errors.emailMissing;
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = t.errors.emailInvalid;
+    if (!f.groupSize.trim()) e.groupSize = t.errors.groupSize;
+    if (!f.period.trim()) e.period = t.errors.period;
+    if (!f.consent) e.consent = t.errors.consent;
     setErrors(e);
     return e;
   }
 
   function compose() {
+    const m = t.compose;
     const lines = [
-      "Bună ziua! Aș dori o ofertă pentru un grup la Pensiunea Amonte.",
+      m.greeting,
       "",
-      `Nume: ${f.name}`,
-      `Firmă: ${f.company}`,
-      `Email: ${f.email}`,
-      ...(f.phone.trim() ? [`Telefon: ${f.phone}`] : []),
-      `Număr de persoane: ${f.groupSize}`,
-      `Perioada dorită: ${f.period}`,
-      `Număr de nopți: ${f.nights}`,
-      `Sală de lucru: ${f.needsRoom}`,
-      ...(showFnb && f.meals.length ? [`Mese dorite: ${f.meals.join(", ")}`] : []),
-      ...(f.message.trim() ? ["", `Mesaj: ${f.message}`] : []),
+      `${m.name}: ${f.name}`,
+      `${m.company}: ${f.company}`,
+      `${m.email}: ${f.email}`,
+      ...(f.phone.trim() ? [`${m.phone}: ${f.phone}`] : []),
+      `${m.groupSize}: ${f.groupSize}`,
+      `${m.period}: ${f.period}`,
+      `${m.nights}: ${f.nights}`,
+      `${m.needsRoom}: ${f.needsRoom === "da" ? m.yes : m.no}`,
+      ...(showFnb && f.meals.length ? [`${m.meals}: ${f.meals.join(", ")}`] : []),
+      ...(f.message.trim() ? ["", `${m.message}: ${f.message}`] : []),
     ];
     return lines.join("\n");
   }
@@ -123,7 +133,7 @@ export default function OfferRequestForm({ showFnb }: Props) {
         "noopener",
       );
     } else {
-      const subject = `Cerere ofertă grup ${f.company} ${f.period}`.trim();
+      const subject = `${t.compose.subject} ${f.company} ${f.period}`.trim();
       window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
   }
@@ -146,61 +156,61 @@ export default function OfferRequestForm({ showFnb }: Props) {
     <div className="rounded-2xl border border-line bg-card p-[clamp(22px,4vw,36px)]">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label className={label} htmlFor={id("name")}>Numele tău</label>
+          <label className={label} htmlFor={id("name")}>{t.labels.name}</label>
           <input id={id("name")} className={field} value={f.name} autoComplete="name"
             onChange={(e) => setF({ ...f, name: e.target.value })} {...aria("name")} />
           {err("name")}
         </div>
         <div>
-          <label className={label} htmlFor={id("company")}>Firma</label>
+          <label className={label} htmlFor={id("company")}>{t.labels.company}</label>
           <input id={id("company")} className={field} value={f.company} autoComplete="organization"
             onChange={(e) => setF({ ...f, company: e.target.value })} {...aria("company")} />
           {err("company")}
         </div>
         <div>
-          <label className={label} htmlFor={id("email")}>Email</label>
+          <label className={label} htmlFor={id("email")}>{t.labels.email}</label>
           <input id={id("email")} type="email" className={field} value={f.email} autoComplete="email"
             onChange={(e) => setF({ ...f, email: e.target.value })} {...aria("email")} />
           {err("email")}
         </div>
         <div>
-          <label className={label} htmlFor={id("phone")}>Telefon (opțional)</label>
+          <label className={label} htmlFor={id("phone")}>{t.labels.phone}</label>
           <input id={id("phone")} type="tel" className={field} value={f.phone} autoComplete="tel"
             onChange={(e) => setF({ ...f, phone: e.target.value })} />
         </div>
         <div>
-          <label className={label} htmlFor={id("groupSize")}>Număr de persoane</label>
-          <input id={id("groupSize")} className={field} value={f.groupSize} placeholder="de exemplu 18"
+          <label className={label} htmlFor={id("groupSize")}>{t.labels.groupSize}</label>
+          <input id={id("groupSize")} className={field} value={f.groupSize} placeholder={t.placeholders.groupSize}
             onChange={(e) => setF({ ...f, groupSize: e.target.value })} {...aria("groupSize")} />
           {err("groupSize")}
         </div>
         <div>
-          <label className={label} htmlFor={id("nights")}>Număr de nopți</label>
+          <label className={label} htmlFor={id("nights")}>{t.labels.nights}</label>
           <select id={id("nights")} className={field} value={f.nights}
             onChange={(e) => setF({ ...f, nights: e.target.value })}>
             {NIGHT_OPTIONS.map((n) => <option key={n} value={n}>{n}</option>)}
           </select>
         </div>
         <div className="sm:col-span-2">
-          <label className={label} htmlFor={id("period")}>Perioada dorită</label>
-          <input id={id("period")} className={field} value={f.period} placeholder="de exemplu 9-11 octombrie"
+          <label className={label} htmlFor={id("period")}>{t.labels.period}</label>
+          <input id={id("period")} className={field} value={f.period} placeholder={t.placeholders.period}
             onChange={(e) => setF({ ...f, period: e.target.value })} {...aria("period")} />
           {err("period")}
         </div>
         <div>
-          <label className={label} htmlFor={id("needsRoom")}>Aveți nevoie de sala de lucru?</label>
+          <label className={label} htmlFor={id("needsRoom")}>{t.labels.needsRoom}</label>
           <select id={id("needsRoom")} className={field} value={f.needsRoom}
             onChange={(e) => setF({ ...f, needsRoom: e.target.value })}>
-            <option value="da">Da</option>
-            <option value="nu">Nu</option>
+            <option value="da">{t.yes}</option>
+            <option value="nu">{t.no}</option>
           </select>
         </div>
 
         {showFnb && (
           <fieldset className="sm:col-span-2 m-0 border-0 p-0">
-            <legend className={label}>Mese dorite</legend>
+            <legend className={label}>{t.labels.meals}</legend>
             <div className="flex flex-wrap gap-4">
-              {MEAL_OPTIONS.map((m) => (
+              {t.mealOptions.map((m) => (
                 <label key={m} className="flex items-center gap-2 text-[14px] text-ink">
                   <input
                     type="checkbox"
@@ -223,7 +233,7 @@ export default function OfferRequestForm({ showFnb }: Props) {
         )}
 
         <div className="sm:col-span-2">
-          <label className={label} htmlFor={id("message")}>Mesaj (opțional)</label>
+          <label className={label} htmlFor={id("message")}>{t.labels.message}</label>
           <textarea id={id("message")} rows={3} className={field} value={f.message}
             onChange={(e) => setF({ ...f, message: e.target.value })} />
         </div>
@@ -239,9 +249,9 @@ export default function OfferRequestForm({ showFnb }: Props) {
               {...aria("consent")}
             />
             <span>
-              Sunt de acord ca datele să fie folosite pentru a primi oferta, conform{" "}
-              <Link href="/politica-de-confidentialitate" className="text-terracotta underline underline-offset-2">
-                politicii de confidențialitate
+              {t.consent}{" "}
+              <Link href={href(lang, "privacy")} className="text-terracotta underline underline-offset-2">
+                {t.consentLink}
               </Link>
               .
             </span>
@@ -252,14 +262,14 @@ export default function OfferRequestForm({ showFnb }: Props) {
 
       <div className="mt-7 flex flex-wrap gap-3">
         <button type="button" onClick={() => submit("whatsapp")} className={`${btnTerracotta} cursor-pointer`}>
-          Trimite pe WhatsApp
+          {t.sendWhatsApp}
         </button>
         <button type="button" onClick={() => submit("email")} className={`${btnOutlineDark} cursor-pointer`}>
-          Trimite pe email
+          {t.sendEmail}
         </button>
       </div>
       <p className="mt-4 mb-0 text-[13px] text-muted-2">
-        Primești oferta completă în 24 de ore lucrătoare.
+        {t.footnote}
       </p>
     </div>
   );

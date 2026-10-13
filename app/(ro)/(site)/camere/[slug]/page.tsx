@@ -1,41 +1,18 @@
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { pageMeta } from "@/lib/seo";
-import RoomDetailsClient from "@/components/RoomDetailsClient";
-import { ROOMS, getRoom } from "@/lib/content";
+import RoomPage, { roomMetadata, roomSlugs } from "@/components/pages/RoomPage";
 
 export function generateStaticParams() {
-  return ROOMS.map((r) => ({ slug: r.slug }));
+  return roomSlugs("ro");
 }
 
 export const dynamicParams = false;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const room = getRoom(slug);
-  if (!room) return {};
-  // The room's own hero photo makes the WhatsApp share preview show that room
-  // rather than the generic exterior shot.
-  return pageMeta({
-    title: room.name,
-    description: room.metaDesc,
-    path: `/camere/${room.slug}`,
-    image: room.photo,
-  });
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return roomMetadata("ro", (await params).slug);
 }
 
-export default async function RoomPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const room = getRoom(slug);
-  if (!room) notFound();
-
-  return <RoomDetailsClient room={room} />;
+export default async function Page({ params }: Props) {
+  return <RoomPage lang="ro" slug={(await params).slug} />;
 }

@@ -6,12 +6,19 @@ import Image from "next/image";
 import Eyebrow from "./Eyebrow";
 import PlaceholderImage from "./PlaceholderImage";
 import Lightbox from "./Lightbox";
-import { ROOM_SPA_NOTE, type Room } from "@/lib/content";
+import type { Room } from "@/lib/content";
+import { href } from "@/lib/i18n/config";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
 const container = "mx-auto max-w-[1080px] px-[clamp(20px,5vw,64px)]";
 
-export default function RoomDetailsClient({ room }: { room: Room }) {
+/** `room` and `spaNote` arrive from the server in the page's language. */
+export default function RoomDetailsClient({ room, spaNote }: { room: Room; spaNote: string }) {
+  const lang = useLang();
+  const t = UI[lang].room;
+  const lb = UI[lang].lightbox;
   const [selectedPhoto, setSelectedPhoto] = useState<{
     photo: string;
     index: number;
@@ -44,10 +51,10 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
   return (
     <section className={`${container} py-[clamp(48px,6vw,88px)]`}>
       <Link
-        href="/camere"
+        href={href(lang, "rooms")}
         className="text-sm font-semibold text-terracotta no-underline hover:underline"
       >
-        ← Toate camerele
+        {t.back}
       </Link>
 
       {/* Main photo - clickable to open lightbox */}
@@ -73,7 +80,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
 
       <div className="mt-8 flex flex-wrap gap-[clamp(28px,4vw,56px)]">
         <div className="flex-1 basis-[320px]">
-          <Eyebrow className="mb-3">Cazare</Eyebrow>
+          <Eyebrow className="mb-3">{t.eyebrow}</Eyebrow>
           <h1 className="m-0 font-serif text-[clamp(32px,4.5vw,52px)] font-semibold leading-[1.05] text-pine">
             {room.name}
           </h1>
@@ -96,15 +103,15 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
             <span className="font-serif text-[34px] font-semibold text-terracotta">
               {room.price}
             </span>
-            <span className="text-[13px] text-muted-2"> lei / noapte</span>
+            <span className="text-[13px] text-muted-2">{t.perNight}</span>
           </div>
-          <p className="mt-2 text-[14px] text-muted">{ROOM_SPA_NOTE}</p>
+          <p className="mt-2 text-[14px] text-muted">{spaNote}</p>
           <div className="mt-5 flex flex-col gap-3">
-            <Link href="/rezerva-acum" className={`${btnTerracotta} w-full text-center`}>
-              Verifică disponibilitatea
+            <Link href={href(lang, "book")} className={`${btnTerracotta} w-full text-center`}>
+              {t.checkAvailability}
             </Link>
-            <Link href="/camere/tarife" className={`${btnOutlineDark} w-full`}>
-              Vezi toate tarifele
+            <Link href={href(lang, "rates")} className={`${btnOutlineDark} w-full`}>
+              {t.allRates}
             </Link>
           </div>
         </aside>
@@ -114,7 +121,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
       {allPhotos.length > 1 && (
         <div className="mt-16 border-t border-line pt-12">
           <h2 className="font-serif text-[24px] font-semibold text-pine mb-6">
-            Galerie foto
+            {t.gallery}
           </h2>
           <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 md:grid-cols-4">
             {allPhotos.map((p, idx) => (
@@ -125,7 +132,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
               >
                 <PlaceholderImage
                   src={p}
-                  alt={`${room.name} - foto ${idx + 1}`}
+                  alt={t.photoAlt(room.name, idx + 1)}
                   label={room.photoLabel}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 768px) 50vw, 25vw"
@@ -140,14 +147,14 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
       {/* Lightbox Modal */}
       {selectedPhoto && (
         <Lightbox
-          label={`${room.name}, fotografia ${selectedPhoto.index + 1} din ${allPhotos.length}`}
+          label={lb.roomLabel(room.name, selectedPhoto.index + 1, allPhotos.length)}
           onClose={() => setSelectedPhoto(null)}
         >
           {/* Close button */}
           <button
             onClick={() => setSelectedPhoto(null)}
             className="absolute right-6 top-6 z-50 text-[36px] text-paper/85 hover:text-paper leading-none transition-colors"
-            aria-label="Închide"
+            aria-label={lb.close}
           >
             &times;
           </button>
@@ -162,7 +169,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
                   setSelectedPhoto({ photo: allPhotos[prevIdx], index: prevIdx });
                 }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-[36px] text-paper/70 hover:text-paper p-3 leading-none transition-colors"
-                aria-label="Precedenta"
+                aria-label={lb.prev}
               >
                 &#10094;
               </button>
@@ -173,7 +180,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
                   setSelectedPhoto({ photo: allPhotos[nextIdx], index: nextIdx });
                 }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-[36px] text-paper/70 hover:text-paper p-3 leading-none transition-colors"
-                aria-label="Următoarea"
+                aria-label={lb.next}
               >
                 &#10095;
               </button>
@@ -187,7 +194,7 @@ export default function RoomDetailsClient({ room }: { room: Room }) {
           >
             <Image
               src={selectedPhoto.photo}
-              alt={`${room.name} - complet`}
+              alt={t.fullAlt(room.name)}
               width={1600}
               height={1200}
               className="max-h-[80vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"

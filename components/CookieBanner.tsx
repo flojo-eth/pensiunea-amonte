@@ -5,6 +5,9 @@ import { btnTerracotta } from "@/lib/ui";
 import { setConsent } from "@/lib/consent";
 import { useConsent } from "@/lib/useConsent";
 import { useIsHydrated } from "@/lib/hooks";
+import { href } from "@/lib/i18n/config";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 
 /**
  * GDPR consent banner.
@@ -17,6 +20,8 @@ import { useIsHydrated } from "@/lib/hooks";
 export default function CookieBanner() {
   const isHydrated = useIsHydrated();
   const consent = useConsent();
+  const lang = useLang();
+  const t = UI[lang].cookie;
 
   // Rendering nothing before hydration keeps the banner out of the static HTML,
   // so a returning visitor never sees it flash in before their stored choice is read.
@@ -27,16 +32,16 @@ export default function CookieBanner() {
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="font-serif text-[18px] font-semibold text-pine mb-1.5">
-            Politica de Cookie-uri & Confidențialitate
+            {t.title}
           </h2>
           <p className="text-[13.5px] leading-relaxed text-muted">
-            Folosim cookie-uri pentru a optimiza funcționarea site-ului, a analiza traficul și a îmbunătăți experiența ta. Prin apăsarea butonului „Acceptă tot”, ești de acord cu stocarea acestora. Poți citi detaliile în{" "}
-            <Link href="/politica-de-confidentialitate" className="underline hover:text-pine">
-              Politică de Confidențialitate
+            {t.text}{" "}
+            <Link href={href(lang, "privacy")} className="underline hover:text-pine">
+              {t.privacy}
             </Link>{" "}
-            și{" "}
-            <Link href="/politica-de-cookie-uri" className="underline hover:text-pine">
-              Politică de Cookie-uri
+            {t.and}{" "}
+            <Link href={href(lang, "cookies")} className="underline hover:text-pine">
+              {t.cookies}
             </Link>.
           </p>
         </div>
@@ -45,13 +50,13 @@ export default function CookieBanner() {
             onClick={() => setConsent("declined")}
             className="rounded-full border border-line-2 px-5 py-2.5 text-[13px] font-semibold text-forest hover:border-muted-2 transition-colors cursor-pointer"
           >
-            Doar necesare
+            {t.decline}
           </button>
           <button
             onClick={() => setConsent("accepted")}
             className={`${btnTerracotta} px-5 py-2.5 text-[13px] cursor-pointer`}
           >
-            Acceptă tot
+            {t.accept}
           </button>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { CONTACT, CANCELLATION } from "@/lib/content";
 
 export const metadata: Metadata = {
   ...pageMeta({
+    lang: "ro",
     title: "Termeni și Condiții",
     description: "Termenii și condițiile de utilizare a serviciilor Pensiunii Amonte (Hostillo S.R.L.).",
     path: "/termeni-si-conditii",

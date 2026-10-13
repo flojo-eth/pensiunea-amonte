@@ -1,0 +1,340 @@
+// Strings that belong to components rather than to a page: the menu, the
+// banners, the calendar, the offer form, the lightboxes. Client components read
+// them through useLang(); server components get `lang` as a prop.
+//
+// Deliberately free of imports beyond types: client components pull this file
+// into the browser bundle, so it must not drag lib/content.ts in with it. Page
+// copy, which only the server needs, lives in lib/copy.ts and lib/copy.en.ts.
+
+import type { Lang } from "./config";
+
+const ro = {
+  layout: {
+    skipToContent: "Sari la conținut",
+  },
+  nav: {
+    logoAria: "Amonte, pensiune montană, prima pagină",
+    tagline: "Pensiune montană",
+    book: "Rezervă",
+    bookNow: "Rezervă acum",
+    openMenu: "Deschide meniul",
+    closeMenu: "Închide meniul",
+    languages: "Limba site-ului",
+  },
+  footer: {
+    tagline: "Pensiune montană",
+    blurb: "Pensiune boutique în Valea Avrigului, la poalele Munților Făgăraș.",
+    explore: "Navigare",
+    contact: "Contact",
+    salAlt: "Soluționarea Alternativă a Litigiilor",
+    solAlt: "Soluționarea Online a Litigiilor",
+    rights: "Pensiunea Amonte. Toate drepturile rezervate. Administrată de",
+    terms: "Termeni și Condiții",
+    privacy: "Politică de Confidențialitate",
+    cookies: "Politică de Cookie-uri",
+  },
+  breadcrumbs: "Firimituri",
+  banner: {
+    default: {
+      text: "Ultimele date libere pentru retreaturi de echipă",
+      cta: "cere oferta →",
+    },
+    corporate: {
+      text: "Perioadele de toamnă pentru grupuri se rezervă cu 3-6 săptămâni înainte",
+      cta: "cere oferta →",
+    },
+  },
+  cookie: {
+    title: "Politica de Cookie-uri & Confidențialitate",
+    text: "Folosim cookie-uri pentru a optimiza funcționarea site-ului, a analiza traficul și a îmbunătăți experiența ta. Prin apăsarea butonului „Acceptă tot”, ești de acord cu stocarea acestora. Poți citi detaliile în",
+    privacy: "Politică de Confidențialitate",
+    and: "și",
+    cookies: "Politică de Cookie-uri",
+    decline: "Doar necesare",
+    accept: "Acceptă tot",
+  },
+  calendar: {
+    locale: "ro-RO",
+    months: [
+      "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
+      "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie",
+    ],
+    days: ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"],
+    title: "Alege perioada dorită",
+    subtitle: "Selectează ziua de sosire și ziua de plecare",
+    loading: "Se încarcă disponibilitatea…",
+    prevMonth: "Luna anterioară",
+    nextMonth: "Luna următoare",
+    unknown:
+      "Nu am putut încărca disponibilitatea în acest moment. Datele afișate ca libere sunt orientative. Te rugăm să confirmi perioada cu noi.",
+    pickCheckout: "Selectează data de plecare",
+    nothingSelected: "Nicio perioadă selectată",
+    cta: "Verifică disponibilitatea pe WhatsApp",
+    /** The Google Form is in Romanian, so the English page offers email instead. */
+    fallback: "form" as "form" | "email",
+    fallbackLabel: "Sau completează formularul →",
+    message: (from: string, to: string) =>
+      `Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte în perioada ${from} - ${to}.`,
+  },
+  offerForm: {
+    errors: {
+      name: "Spune-ne cum te cheamă.",
+      company: "Completează numele firmei.",
+      emailMissing: "Avem nevoie de un email pentru ofertă.",
+      emailInvalid: "Emailul nu pare valid.",
+      groupSize: "Câți sunteți, aproximativ?",
+      period: "Spune-ne ce perioadă ai în minte.",
+      consent: "Avem nevoie de acordul tău ca să îți răspundem.",
+    },
+    labels: {
+      name: "Numele tău",
+      company: "Firma",
+      email: "Email",
+      phone: "Telefon (opțional)",
+      groupSize: "Număr de persoane",
+      nights: "Număr de nopți",
+      period: "Perioada dorită",
+      needsRoom: "Aveți nevoie de sala de lucru?",
+      meals: "Mese dorite",
+      message: "Mesaj (opțional)",
+    },
+    placeholders: {
+      groupSize: "de exemplu 18",
+      period: "de exemplu 9-11 octombrie",
+    },
+    yes: "Da",
+    no: "Nu",
+    mealOptions: ["Mic dejun", "Prânz", "Cină"],
+    consent: "Sunt de acord ca datele să fie folosite pentru a primi oferta, conform",
+    consentLink: "politicii de confidențialitate",
+    sendWhatsApp: "Trimite pe WhatsApp",
+    sendEmail: "Trimite pe email",
+    footnote: "Primești oferta completă în 24 de ore lucrătoare.",
+    /** The message composed for WhatsApp or email. */
+    compose: {
+      greeting: "Bună ziua! Aș dori o ofertă pentru un grup la Pensiunea Amonte.",
+      name: "Nume",
+      company: "Firmă",
+      email: "Email",
+      phone: "Telefon",
+      groupSize: "Număr de persoane",
+      period: "Perioada dorită",
+      nights: "Număr de nopți",
+      needsRoom: "Sală de lucru",
+      yes: "da",
+      no: "nu",
+      meals: "Mese dorite",
+      message: "Mesaj",
+      subject: "Cerere ofertă grup",
+    },
+  },
+  reviews: {
+    readMore: "Citește mai mult",
+    readLess: "Arată mai puțin",
+    prev: "Recenzia anterioară",
+    next: "Recenzia următoare",
+    translated: "Tradusă din engleză",
+  },
+  map: {
+    title: "Harta - Pensiunea Amonte, Valea Avrigului",
+    notice:
+      "Harta este încărcată de Google și poate seta cookie-uri. O afișăm doar cu acordul tău.",
+    show: "Afișează harta",
+    open: "Deschide în Google Maps →",
+    /** Interface language of the embedded map; empty keeps Google's default. */
+    hl: "",
+  },
+  audiences: {
+    tapForDetails: "Apasă pentru detalii",
+  },
+  lightbox: {
+    close: "Închide",
+    prev: "Precedenta",
+    next: "Următoarea",
+    galleryLabel: (label: string, i: number, n: number) => `${label}, imaginea ${i} din ${n}`,
+    amenityLabel: (label: string, i: number, n: number) => `${label}, ${i} din ${n}`,
+    roomLabel: (name: string, i: number, n: number) => `${name}, fotografia ${i} din ${n}`,
+  },
+  room: {
+    eyebrow: "Cazare",
+    perNight: " lei / noapte",
+    details: "Detalii",
+    secondPhoto: (name: string) => `${name}, a doua fotografie`,
+    back: "← Toate camerele",
+    checkAvailability: "Verifică disponibilitatea",
+    allRates: "Vezi toate tarifele",
+    gallery: "Galerie foto",
+    photoAlt: (name: string, i: number) => `${name} - foto ${i}`,
+    fullAlt: (name: string) => `${name} - complet`,
+  },
+  sticky: {
+    whatsapp: "WhatsApp",
+    requestOffer: "Cere oferta",
+  },
+};
+
+export type UiStrings = typeof ro;
+
+const en: UiStrings = {
+  layout: {
+    skipToContent: "Skip to content",
+  },
+  nav: {
+    logoAria: "Amonte, mountain guesthouse, home page",
+    tagline: "Mountain guesthouse",
+    book: "Book",
+    bookNow: "Book now",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    languages: "Site language",
+  },
+  footer: {
+    tagline: "Mountain guesthouse",
+    blurb: "A boutique guesthouse in Valea Avrigului, at the foot of the Făgăraș Mountains.",
+    explore: "Explore",
+    contact: "Contact",
+    salAlt: "Alternative Dispute Resolution (ANPC)",
+    solAlt: "Online Dispute Resolution (European Commission)",
+    rights: "Pensiunea Amonte. All rights reserved. Operated by",
+    terms: "Terms and Conditions",
+    privacy: "Privacy Policy",
+    cookies: "Cookie Policy",
+  },
+  breadcrumbs: "Breadcrumb",
+  banner: {
+    default: {
+      text: "Last open dates for team retreats",
+      cta: "request an offer →",
+    },
+    corporate: {
+      text: "Autumn dates for groups are booked 3-6 weeks in advance",
+      cta: "request an offer →",
+    },
+  },
+  cookie: {
+    title: "Cookies & Privacy",
+    text: "We use cookies to keep the site running smoothly, understand our traffic and improve your experience. By clicking “Accept all”, you agree to them being stored. You can read the details in our",
+    privacy: "Privacy Policy",
+    and: "and",
+    cookies: "Cookie Policy",
+    decline: "Necessary only",
+    accept: "Accept all",
+  },
+  calendar: {
+    locale: "en-US",
+    months: [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December",
+    ],
+    days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    title: "Choose your dates",
+    subtitle: "Select your arrival and departure days",
+    loading: "Loading availability…",
+    prevMonth: "Previous month",
+    nextMonth: "Next month",
+    unknown:
+      "We couldn't load availability right now, so dates shown as free are only a guide. Please confirm your dates with us.",
+    pickCheckout: "Now select your departure date",
+    nothingSelected: "No dates selected",
+    cta: "Check availability on WhatsApp",
+    fallback: "email",
+    fallbackLabel: "Or send us an email →",
+    message: (from: string, to: string) =>
+      `Hello! I'd like to check availability for a stay at Pensiunea Amonte from ${from} to ${to}.`,
+  },
+  offerForm: {
+    errors: {
+      name: "Please tell us your name.",
+      company: "Please add your company name.",
+      emailMissing: "We need an email address to send the offer to.",
+      emailInvalid: "That email address doesn't look right.",
+      groupSize: "Roughly how many of you are there?",
+      period: "Tell us which dates you have in mind.",
+      consent: "We need your consent before we can reply.",
+    },
+    labels: {
+      name: "Your name",
+      company: "Company",
+      email: "Email",
+      phone: "Phone (optional)",
+      groupSize: "Number of people",
+      nights: "Number of nights",
+      period: "Preferred dates",
+      needsRoom: "Do you need the meeting room?",
+      meals: "Meals",
+      message: "Message (optional)",
+    },
+    placeholders: {
+      groupSize: "e.g. 18",
+      period: "e.g. October 9-11",
+    },
+    yes: "Yes",
+    no: "No",
+    mealOptions: ["Breakfast", "Lunch", "Dinner"],
+    consent: "I agree to my details being used to prepare the offer, as described in the",
+    consentLink: "privacy policy",
+    sendWhatsApp: "Send via WhatsApp",
+    sendEmail: "Send via email",
+    footnote: "You'll get the complete offer within 24 business hours.",
+    compose: {
+      greeting: "Hello! I'd like an offer for a group stay at Pensiunea Amonte.",
+      name: "Name",
+      company: "Company",
+      email: "Email",
+      phone: "Phone",
+      groupSize: "Number of people",
+      period: "Preferred dates",
+      nights: "Number of nights",
+      needsRoom: "Meeting room",
+      yes: "yes",
+      no: "no",
+      meals: "Meals",
+      message: "Message",
+      subject: "Group offer request",
+    },
+  },
+  reviews: {
+    readMore: "Read more",
+    readLess: "Show less",
+    prev: "Previous review",
+    next: "Next review",
+    translated: "Translated from Romanian",
+  },
+  map: {
+    title: "Map - Pensiunea Amonte, Valea Avrigului",
+    notice:
+      "The map is loaded from Google and may set cookies, so we only show it with your consent.",
+    show: "Show the map",
+    open: "Open in Google Maps →",
+    hl: "en",
+  },
+  audiences: {
+    tapForDetails: "Tap for details",
+  },
+  lightbox: {
+    close: "Close",
+    prev: "Previous",
+    next: "Next",
+    galleryLabel: (label: string, i: number, n: number) => `${label}, image ${i} of ${n}`,
+    amenityLabel: (label: string, i: number, n: number) => `${label}, ${i} of ${n}`,
+    roomLabel: (name: string, i: number, n: number) => `${name}, photo ${i} of ${n}`,
+  },
+  room: {
+    eyebrow: "Accommodation",
+    perNight: " RON / night",
+    details: "Details",
+    secondPhoto: (name: string) => `${name}, second photo`,
+    back: "← All rooms",
+    checkAvailability: "Check availability",
+    allRates: "See all rates",
+    gallery: "Photo gallery",
+    photoAlt: (name: string, i: number) => `${name}, photo ${i}`,
+    fullAlt: (name: string) => `${name}, full view`,
+  },
+  sticky: {
+    whatsapp: "WhatsApp",
+    requestOffer: "Request an offer",
+  },
+};
+
+export const UI: Record<Lang, UiStrings> = { ro, en };

@@ -2,10 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { AUDIENCES } from "@/lib/content";
+import type { Audience } from "@/lib/content";
+import { useLang } from "@/lib/i18n/useLang";
+import { UI } from "@/lib/i18n/ui";
 import { btnTerracotta, btnOutlineDark } from "@/lib/ui";
 
-export default function AudiencesGridClient() {
+/** `items` arrive from the server in the page's language. */
+export default function AudiencesGridClient({ items }: { items: Audience[] }) {
+  const t = UI[useLang()].audiences;
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -25,7 +29,7 @@ export default function AudiencesGridClient() {
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {AUDIENCES.map((audience, idx) => {
+      {items.map((audience, idx) => {
         const isExpanded = expandedIndex === idx;
 
         return (
@@ -72,7 +76,7 @@ export default function AudiencesGridClient() {
               </h3>
               {!isExpanded && (
                 <span className="mt-3 text-xs tracking-wider text-paper/70 uppercase">
-                  Apasă pentru detalii
+                  {t.tapForDetails}
                 </span>
               )}
             </button>

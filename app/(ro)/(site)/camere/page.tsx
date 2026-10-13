@@ -1,50 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { pageMeta } from "@/lib/seo";
-import SectionHeading from "@/components/SectionHeading";
-import RoomCard from "@/components/RoomCard";
-import { ROOMS } from "@/lib/content";
-import { btnTerracotta } from "@/lib/ui";
+import RoomsPage, { roomsMetadata } from "@/components/pages/RoomsPage";
 
-export const metadata: Metadata = pageMeta({
-  title: "Camere",
-  description:
-    "Camerele Pensiunii Amonte, lângă Sibiu: duble Deluxe, cu vedere la munte, cu balcon și studiouri de familie. Toate au balcon și mic dejun inclus.",
-  path: "/camere",
-});
+export const metadata: Metadata = roomsMetadata("ro");
 
-const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
-
-export default function CamerePage() {
-  return (
-    <section className={`${container} py-[clamp(56px,7vw,96px)]`}>
-      <SectionHeading
-        as="h1"
-        eyebrow="Cazare"
-        title="Camerele noastre"
-        className="mb-[clamp(36px,5vw,56px)]"
-      >
-        Spații generoase, lemn cald și vedere spre Munții Făgăraș. Acces la
-        jacuzzi & saună și terasă panoramică.
-      </SectionHeading>
-
-      <div className="grid gap-6 sm:grid-cols-2">
-        {ROOMS.map((room) => (
-          <RoomCard key={room.slug} room={room} />
-        ))}
-      </div>
-
-      <div className="mt-10 flex flex-wrap items-center gap-5">
-        <Link href="/rezerva-acum" className={btnTerracotta}>
-          Verifică disponibilitatea
-        </Link>
-        <Link
-          href="/camere/tarife"
-          className="text-sm font-semibold text-terracotta no-underline hover:underline"
-        >
-          Vezi tarifele detaliate →
-        </Link>
-      </div>
-    </section>
-  );
+export default function Page() {
+  return <RoomsPage lang="ro" />;
 }

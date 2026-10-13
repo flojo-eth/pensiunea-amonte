@@ -1,7 +1,9 @@
 // Content for /retreat-corporate. Kept out of the JSX so the copy can be edited
 // without touching layout. Photos live in /public. Entries without a `photo`
 // are not rendered at all (see the LEISURE grid); the shot list at the bottom
-// of app/(site)/retreat-corporate/page.tsx says which photos are still wanted.
+// of components/pages/CorporatePage.tsx says which photos are still wanted.
+//
+// Romanian here; the English version is lib/retreat.en.ts, typed against it.
 
 import { SHOW_FNB } from "./flags";
 
@@ -29,7 +31,18 @@ export const DRIVE_BRASOV = "2 ore";
 
 // ── S6. Room configuration ───────────────────────────────────────────────────
 
-export const ROOM_CONFIG = [
+export type RoomConfig = {
+  unit: string;
+  count: string;
+  perUnit: string;
+  beds: string;
+  total: string;
+  photo: string;
+  photoLabel: string;
+  alt: string;
+};
+
+export const ROOM_CONFIG: RoomConfig[] = [
   {
     unit: "camere duble cu balcon",
     count: "8",
@@ -50,13 +63,13 @@ export const ROOM_CONFIG = [
     photoLabel: "[ FOTO: studio de familie, configurație pentru 4 persoane ]",
     alt: "Studio de familie cu canapea extensibilă",
   },
-] as const;
+];
 
 export const ROOM_CONFIG_TOTAL = { count: "10", total: "24" } as const;
 
-export const ROOM_NOTES = [
+export const ROOM_NOTES: string[] = [
   "Fiecare unitate are balcon și baie proprie.",
-] as const;
+];
 
 // ── S3. Work spaces ──────────────────────────────────────────────────────────
 
@@ -142,7 +155,7 @@ export const LEISURE: Space[] = [
 
 // ── S7. Sample agenda ────────────────────────────────────────────────────────
 
-type AgendaItem = {
+export type AgendaItem = {
   time: string;
   title: string;
   body: string;
@@ -150,7 +163,17 @@ type AgendaItem = {
   fnb?: true;
 };
 
-const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
+export type AgendaDay = { day: string; label: string; items: AgendaItem[] };
+
+/** Drops the meal items when SHOW_FNB is off. Shared with the English agenda. */
+export function gateAgenda(days: AgendaDay[]): AgendaDay[] {
+  return days.map((day) => ({
+    ...day,
+    items: day.items.filter((item) => SHOW_FNB || !item.fnb),
+  }));
+}
+
+const AGENDA_SOURCE: AgendaDay[] = [
   {
     day: "Vineri",
     label: "Sosire și prima sesiune",
@@ -190,10 +213,7 @@ const AGENDA_SOURCE: { day: string; label: string; items: AgendaItem[] }[] = [
   },
 ];
 
-export const AGENDA = AGENDA_SOURCE.map((day) => ({
-  ...day,
-  items: day.items.filter((item) => SHOW_FNB || !item.fnb),
-}));
+export const AGENDA = gateAgenda(AGENDA_SOURCE);
 
 // ── S8. Pricing ──────────────────────────────────────────────────────────────
 //
@@ -202,7 +222,9 @@ export const AGENDA = AGENDA_SOURCE.map((day) => ({
 // complete in 24 de ore lucratoare. Datele raman aici, in spatele flag-ului
 // SHOW_PRICING (false), in caz ca decizia se schimba.
 
-export const PRICING_LINES = [
+export type PricingLine = { label: string; value: string; note?: string };
+
+export const PRICING_LINES: PricingLine[] = [
   {
     label: "Închiriere integrală",
     value: "la cerere, în oferta trimisă",
@@ -217,20 +239,20 @@ export const PRICING_LINES = [
     value: "la cerere, în oferta trimisă",
     note: "Acces exclusiv pentru grup.",
   },
-] as const;
+];
 
 /** Extra rows shown only when both pricing and F&B are on. */
-export const PRICING_FNB_LINES = [
+export const PRICING_FNB_LINES: PricingLine[] = [
   {
     label: "Mese",
     value: "la cerere, în oferta trimisă",
     note: "Mic dejun, prânz și cină, ofertate separat de cazare.",
   },
-] as const;
+];
 
 // ── S9. Booking process ──────────────────────────────────────────────────────
 
-export const BOOKING_STEPS = [
+export const BOOKING_STEPS: { title: string; body: string }[] = [
   {
     title: "Ne scrieți",
     body: "Pe WhatsApp sau prin formularul de mai jos. Numărul de persoane și perioada sunt suficiente pentru început.",
@@ -247,11 +269,16 @@ export const BOOKING_STEPS = [
     title: "Perioada e blocată",
     body: "O rezervare confirmată nu se anulează din partea noastră. Anulare gratuită cu 28 de zile înainte de sosire pentru închirierea integrală.",
   },
-] as const;
+];
 
 // ── S11. FAQ (also emitted as FAQPage JSON-LD) ───────────────────────────────
 
-type FaqItem = { q: string; a: string; fnb?: true };
+export type FaqItem = { q: string; a: string; fnb?: true };
+
+/** Drops the meal question when SHOW_FNB is off. Shared with the English FAQ. */
+export function gateFaq(items: FaqItem[]): FaqItem[] {
+  return items.filter((item) => SHOW_FNB || !item.fnb);
+}
 
 const FAQ_SOURCE: FaqItem[] = [
   {
@@ -305,29 +332,31 @@ const FAQ_SOURCE: FaqItem[] = [
   },
 ];
 
-export const FAQ = FAQ_SOURCE.filter((item) => SHOW_FNB || !item.fnb);
+export const FAQ = gateFaq(FAQ_SOURCE);
 
 // ── S12. Offer form options ──────────────────────────────────────────────────
+// The meal labels are translated, so they live with the form's strings in
+// lib/i18n/ui.ts. The night counts read the same in both languages and are
+// also sent to the dataLayer, so they stay here, once.
 
 export const NIGHT_OPTIONS = ["1", "2", "3+"] as const;
-export const MEAL_OPTIONS = ["Mic dejun", "Prânz", "Cină"] as const;
 
 // ── S13. Location ────────────────────────────────────────────────────────────
 
-export const ACCESS_POINTS = [
+export const ACCESS_POINTS: string[] = [
   `Sibiu, centru: ${DRIVE_SIBIU}, 35 km`,
   `Aeroportul Sibiu: ${DRIVE_AIRPORT}, 42 km`,
   `Brașov, centru: ${DRIVE_BRASOV}, 130 km`,
   "Parcare gratuită, interioară și exterioară",
   "Check-in de la 15:00, check-out până la 12:00, cu prelungire până la 15:00",
-] as const;
+];
 
 // ── S5. Meals (components/FnbSection) ────────────────────────────────────────
 
-export const FNB_ITEMS = [
+export const FNB_ITEMS: string[] = [
   "Mese pregătite de noi, la pensiune, din produse locale proaspete",
   "Prânz și cină pentru tot grupul",
   "Pauze de cafea pe toată durata șederii",
   "Un meniu cu multe preparate, de la tradiționale la moderne, trimis ca PDF odată cu oferta",
   "Bar disponibil pentru grup pe durata șederii",
-] as const;
+];

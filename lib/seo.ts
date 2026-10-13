@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_TAGLINE } from "./site";
+import { SITE_NAME, SITE_URL, INDEXABLE } from "./site";
+import { getCopy, href, OG_LOCALE, type Lang } from "./i18n";
 
 /** Share image (1200x630, the Open Graph aspect ratio). */
 export const OG_IMAGE = "/og-amonte.jpg";
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
 
-export const DEFAULT_TITLE = `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`;
-
 type PageMetaInput = {
+  lang: Lang;
   /** Page title, as passed to `metadata.title` (runs through the `%s | …` template). */
   title: string;
   description: string;
@@ -30,6 +30,7 @@ type PageMetaInput = {
  * only `title`/`description` would drop `images`, `siteName`, `type` and `locale`.
  */
 export function pageMeta({
+  lang,
   title,
   description,
   path,
@@ -41,7 +42,7 @@ export function pageMeta({
     alternates: { canonical: path },
     openGraph: {
       type: "website",
-      locale: "ro_RO",
+      locale: OG_LOCALE[lang],
       siteName: SITE_NAME,
       title: `${title} | ${SITE_NAME}`,
       description,
@@ -64,20 +65,62 @@ export function pageMeta({
   };
 }
 
-/** Root-level defaults, used by the homepage and inherited where a page adds nothing. */
-export const siteOpenGraph = {
-  type: "website" as const,
-  locale: "ro_RO",
-  siteName: SITE_NAME,
-  title: DEFAULT_TITLE,
-  description: SITE_DESCRIPTION,
-  url: "/",
-  images: [
-    {
-      url: OG_IMAGE,
-      width: OG_IMAGE_WIDTH,
-      height: OG_IMAGE_HEIGHT,
-      alt: `${SITE_NAME} - ${SITE_TAGLINE}`,
+/** Root-level Open Graph defaults, used by the homepage and inherited where a page adds nothing. */
+export function siteOpenGraph(lang: Lang) {
+  const site = getCopy(lang).site;
+  return {
+    type: "website" as const,
+    locale: OG_LOCALE[lang],
+    siteName: SITE_NAME,
+    title: site.defaultTitle,
+    description: site.description,
+    url: href(lang, "home"),
+    images: [
+      {
+        url: OG_IMAGE,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        alt: `${SITE_NAME} - ${site.tagline}`,
+      },
+    ],
+  };
+}
+
+/** Metadata for a language's root layout. */
+export function rootMetadata(lang: Lang): Metadata {
+  const site = getCopy(lang).site;
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: site.defaultTitle,
+      template: `%s | ${SITE_NAME}`,
     },
-  ],
-};
+    description: site.description,
+    applicationName: SITE_NAME,
+    // NOTE: no `alternates` here on purpose. Next.js merges metadata shallowly, so a
+    // canonical set at the root is inherited by every page that does not override it —
+    // which made 8 pages declare themselves duplicates of the homepage. Each page now
+    // sets its own canonical via `pageMeta()`.
+    // Indexing follows INDEXABLE in lib/site.ts.
+    robots: INDEXABLE
+      ? {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        }
+      : { index: false, follow: false },
+    openGraph: siteOpenGraph(lang),
+    twitter: {
+      card: "summary_large_image",
+      title: site.defaultTitle,
+      description: site.description,
+      images: [OG_IMAGE],
+    },
+  };
+}
