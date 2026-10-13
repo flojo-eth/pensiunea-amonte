@@ -116,7 +116,7 @@ English pages.
 **No visible placeholders on indexed pages.** `PlaceholderImage` renders a striped box with a `[ FOTO: … ]` label when it has no `src`, which reads as unfinished work to a visitor. Render only entries that have a photo (see the `LEISURE` grid), and keep sections whose asset is missing behind a flag (see `SHOW_VIDEO` on `/evenimente`).
 
 **Other:**
-- Fonts are `--font-cormorant` (serif headings) and `--font-hanken` (sans body), exposed through `@theme` in `globals.css` as `--font-serif` / `--font-sans`. Reuse them; don't import new fonts.
+- Fonts are `--font-cormorant` (serif headings) and `--font-hanken` (sans body), exposed through `@theme` in `globals.css` as `--font-serif` / `--font-sans`. Reuse them; don't import new fonts. **Their classes belong on `<html>`, not `<body>`:** the theme variables are resolved at `:root`, and with the classes on `<body>` every font silently fell back to the system sans, on production, until October 2026.
 - Colors come from the `@theme` tokens in `globals.css` (cream/sand/pine/forest/terracotta). Prefer tokens over arbitrary hex values.
 - `SectionHeading` renders `h2` by default; pass `as="h1"` when it is the page title. Its `eyebrow` prop is required.
 - `Breadcrumbs` drives the visible trail and the `BreadcrumbList` JSON-LD from one array.

@@ -17,8 +17,9 @@ export const metadata: Metadata = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang="ro">
-      <body className={`${cormorant.variable} ${hanken.variable} antialiased`}>
+    // Font variables on <html>, as in components/RootDocument.tsx.
+    <html lang="ro" className={`${cormorant.variable} ${hanken.variable}`}>
+      <body className="antialiased">
         <main className="flex min-h-screen flex-col items-center justify-center bg-cream px-6 text-center">
           <span className="font-serif text-[64px] font-semibold leading-none text-forest">404</span>
           <h1 className="mt-4 font-serif text-[clamp(26px,4vw,40px)] font-semibold text-pine">

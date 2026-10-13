@@ -9,6 +9,10 @@ import type { Lang } from "@/lib/i18n/config";
 import "@/app/globals.css";
 
 // Headings (serif) + body (sans), exposed as CSS variables for the Tailwind theme.
+// The variable classes go on <html>, not <body>: globals.css defines
+// --font-serif / --font-sans at :root from these, and a variable that only
+// exists on <body> is undefined there, so every font fell back to the system
+// sans. That was live until October 2026.
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
@@ -39,7 +43,7 @@ export default function RootDocument({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={lang}>
+    <html lang={lang} className={`${cormorant.variable} ${hanken.variable}`}>
       {/* The rule targets pages/_document; this is an App Router root layout,
           where a plain <head> is the documented way. It only exempts files
           under app/, which this shared component is not. */}
@@ -61,9 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
       </head>
-      <body
-        className={`${cormorant.variable} ${hanken.variable} antialiased`}
-      >
+      <body className="antialiased">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
