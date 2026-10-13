@@ -9,6 +9,7 @@ import { href } from "@/lib/i18n/config";
 import { useLang } from "@/lib/i18n/useLang";
 import { UI } from "@/lib/i18n/ui";
 import WhatsAppButton from "./WhatsAppButton";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function scrollTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -133,6 +134,11 @@ export default function Nav({ links }: { links: readonly NavLink[] }) {
               </Link>
             ),
           )}
+          {/* Desktop only: on a phone the English tagline leaves no room next to
+              the hamburger, so the switcher moves into the menu below. */}
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
           <Link
             href={href(lang, "book")}
             onClick={scrollTop}
@@ -182,6 +188,9 @@ export default function Nav({ links }: { links: readonly NavLink[] }) {
               {l.label}
             </Link>
           ))}
+          <div className="flex justify-center border-b border-paper/10 py-2">
+            <LanguageSwitcher />
+          </div>
           <Link
             href={href(lang, "book")}
             onClick={() => {

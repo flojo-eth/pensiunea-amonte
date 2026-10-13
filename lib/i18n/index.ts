@@ -3,8 +3,11 @@
 // (or read lib/i18n/ui.ts) instead of importing this.
 
 import * as contentRo from "@/lib/content";
+import * as contentEn from "@/lib/content.en";
 import * as retreatRo from "@/lib/retreat";
+import * as retreatEn from "@/lib/retreat.en";
 import { COPY as copyRo, type Copy } from "@/lib/copy";
+import { COPY as copyEn } from "@/lib/copy.en";
 import type { Lang } from "./config";
 
 export * from "./config";
@@ -53,9 +56,11 @@ type RetreatKeys =
 export type Content = Pick<typeof contentRo, ContentKeys>;
 export type Retreat = Pick<typeof retreatRo, RetreatKeys>;
 
-const CONTENT: Record<Lang, Content> = { ro: contentRo, en: contentRo };
-const RETREAT: Record<Lang, Retreat> = { ro: retreatRo, en: retreatRo };
-const COPY: Record<Lang, Copy> = { ro: copyRo, en: copyRo };
+// Typed maps: if the English modules miss an export listed above, or give it
+// a different shape, this is where the build fails.
+const CONTENT: Record<Lang, Content> = { ro: contentRo, en: contentEn };
+const RETREAT: Record<Lang, Retreat> = { ro: retreatRo, en: retreatEn };
+const COPY: Record<Lang, Copy> = { ro: copyRo, en: copyEn };
 
 export const getContent = (lang: Lang) => CONTENT[lang];
 export const getRetreat = (lang: Lang) => RETREAT[lang];

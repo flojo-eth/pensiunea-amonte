@@ -11,6 +11,9 @@ export const DEFAULT_LANG: Lang = "ro";
 /** Open Graph locale per language. */
 export const OG_LOCALE: Record<Lang, string> = { ro: "ro_RO", en: "en_US" };
 
+/** Each language's name in that language, for the switcher's accessible labels. */
+export const LANG_NAMES: Record<Lang, string> = { ro: "Română", en: "English" };
+
 /** Every page, by a language-neutral id. */
 export const ROUTES = {
   home: { ro: "/", en: "/en" },
@@ -90,6 +93,15 @@ export function counterpartPath(pathname: string, target: Lang): string {
     if (id) return roomHref(target, id);
   }
   return ROUTES.home[target];
+}
+
+/**
+ * Both language versions of any path, plus x-default (Romanian), for hreflang
+ * in the page metadata and in the sitemap.
+ */
+export function hreflangPaths(pathname: string): Record<Lang | "x-default", string> {
+  const ro = counterpartPath(pathname, "ro");
+  return { ro, en: counterpartPath(pathname, "en"), "x-default": ro };
 }
 
 /**

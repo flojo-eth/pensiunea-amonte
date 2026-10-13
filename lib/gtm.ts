@@ -1,3 +1,5 @@
+import { canonicalRoPath } from "./i18n/config";
+
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
@@ -13,9 +15,14 @@ export function pushDataLayer(event: Record<string, unknown>) {
   window.dataLayer.push(event);
 }
 
-/** "/" → "home"; "/retreat-corporate" → "retreat-corporate" (fără slash, ca să se potrivească triggerul corporate). */
+/**
+ * "/" → "home"; "/retreat-corporate" → "retreat-corporate" (fără slash, ca să se
+ * potrivească triggerul corporate). Paginile în engleză raportează adresa lor
+ * românească ("/en/corporate-retreat" → "retreat-corporate"), deci GA4 și GTM
+ * văd o singură pâlnie pe pagină, indiferent de limbă.
+ */
 function pageSourceFromPath() {
-  const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+  const path = canonicalRoPath(window.location.pathname).replace(/^\/+|\/+$/g, "");
   return path === "" ? "home" : path;
 }
 

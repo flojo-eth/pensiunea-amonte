@@ -1,6 +1,7 @@
 // Server-safe half of the consent layer: constants, plain functions and the
-// inline bootstrap script. Deliberately free of React imports so app/layout.tsx
-// (a server component) can build the inline script from the same source of truth.
+// inline bootstrap script. Deliberately free of React imports so
+// components/RootDocument.tsx (a server component) can build the inline script
+// from the same source of truth.
 // The hook lives in lib/useConsent.ts.
 
 export const CONSENT_KEY = "cookie-consent";

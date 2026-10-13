@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 import BookingCalendar from "@/components/BookingCalendar";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { CONTACT, GOOGLE_FORM_URL } from "@/lib/content";
 import { getContent, getCopy, href, type Lang } from "@/lib/i18n";
 import { UI } from "@/lib/i18n/ui";
@@ -25,7 +26,7 @@ export default function BookPage({ lang }: { lang: Lang }) {
   return (
     <main className="min-h-screen bg-cream">
       {/* Logo only header — distraction-free conversion page */}
-      <header className="border-b border-sand px-[clamp(20px,5vw,64px)] py-5">
+      <header className="flex items-center justify-between gap-4 border-b border-sand px-[clamp(20px,5vw,64px)] py-5">
         <Link
           href={href(lang, "home")}
           className="flex flex-col leading-none text-pine no-underline"
@@ -37,6 +38,7 @@ export default function BookPage({ lang }: { lang: Lang }) {
             {UI[lang].nav.tagline}
           </span>
         </Link>
+        <LanguageSwitcher tone="light" />
       </header>
 
       <section className="mx-auto max-w-[1100px] px-[clamp(20px,5vw,64px)] py-[clamp(40px,6vw,72px)]">

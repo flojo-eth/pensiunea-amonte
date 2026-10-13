@@ -13,7 +13,7 @@ import { UI } from "@/lib/i18n/ui";
  * GDPR consent banner.
  *
  * The choice is not cosmetic: it drives Google Consent Mode v2 (see setConsent
- * in lib/consent.ts and the defaults inline in app/layout.tsx) and gates the
+ * in lib/consent.ts and the defaults inline in components/RootDocument.tsx) and gates the
  * Google Maps embed on the homepage. "Doar necesare" leaves every marketing and
  * analytics signal denied.
  */

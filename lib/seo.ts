@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL, INDEXABLE } from "./site";
-import { getCopy, href, OG_LOCALE, type Lang } from "./i18n";
+import { getCopy, href, hreflangPaths, LANGS, OG_LOCALE, type Lang } from "./i18n";
 
 /** Share image (1200x630, the Open Graph aspect ratio). */
 export const OG_IMAGE = "/og-amonte.jpg";
@@ -18,6 +18,18 @@ type PageMetaInput = {
   image?: string;
 };
 
+/** Canonical plus hreflang alternates: every page points at both of its versions. */
+function languageAlternates(path: string) {
+  return { canonical: path, languages: hreflangPaths(path) };
+}
+
+const otherLocales = (lang: Lang) => LANGS.filter((l) => l !== lang).map((l) => OG_LOCALE[l]);
+
+/** Metadata for the homepage, which takes its title and Open Graph from the root layout. */
+export function homeMeta(lang: Lang, description: string): Metadata {
+  return { description, alternates: languageAlternates(href(lang, "home")) };
+}
+
 /**
  * Builds per-page metadata with an explicit canonical and a complete Open Graph block.
  *
@@ -28,6 +40,10 @@ type PageMetaInput = {
  *
  * Because the merge is shallow, `openGraph` must be emitted in full here — spreading
  * only `title`/`description` would drop `images`, `siteName`, `type` and `locale`.
+ *
+ * The canonical is always the page's own language version; `languages` adds the
+ * hreflang links to both versions, so Google pairs them instead of treating the
+ * translation as a duplicate.
  */
 export function pageMeta({
   lang,
@@ -39,10 +55,11 @@ export function pageMeta({
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: languageAlternates(path),
     openGraph: {
       type: "website",
       locale: OG_LOCALE[lang],
+      alternateLocale: otherLocales(lang),
       siteName: SITE_NAME,
       title: `${title} | ${SITE_NAME}`,
       description,
@@ -71,6 +88,7 @@ export function siteOpenGraph(lang: Lang) {
   return {
     type: "website" as const,
     locale: OG_LOCALE[lang],
+    alternateLocale: otherLocales(lang),
     siteName: SITE_NAME,
     title: site.defaultTitle,
     description: site.description,

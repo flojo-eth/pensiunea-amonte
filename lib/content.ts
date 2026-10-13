@@ -74,7 +74,7 @@ export const CONTACT = {
 // Operatorul, afișat în footer.
 export const OPERATOR = { name: "Hostillo", url: "https://www.hostillo.ro/" } as const;
 
-export const LOCATION = "Valea Avrigului · Munții Făgăraș";
+export const LOCATION: string = "Valea Avrigului · Munții Făgăraș";
 
 export type Stat = { value: string; label: string };
 
@@ -824,7 +824,7 @@ export const ABOUT_FACILITIES = [
 export const ABOUT_FACILITIES_FB = ["Mic dejun inclus"];
 
 // Notă pe paginile de camere, sub preț.
-export const ROOM_SPA_NOTE = "Zonă de relaxare (jacuzzi & saună) la cerere.";
+export const ROOM_SPA_NOTE: string = "Zonă de relaxare (jacuzzi & saună) la cerere.";
 
 // ── /evenimente ── cele două direcții: corporate și privat ──
 export type EventCard = {

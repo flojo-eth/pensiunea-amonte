@@ -35,24 +35,37 @@ The scope is `calendar.readonly`. Never log or echo these values.
 
 ## Architecture
 
-Marketing site for **Pensiunea Amonte**, a guesthouse in Valea Avrigului (Sibiu). Next.js 16 App Router, React 19, TypeScript (strict), Tailwind CSS v4. Content is in Romanian; conversion runs through WhatsApp, not an on-site form.
+Marketing site for **Pensiunea Amonte**, a guesthouse in Valea Avrigului (Sibiu). Next.js 16 App Router, React 19, TypeScript (strict), Tailwind CSS v4. Bilingual: Romanian is the default and keeps its URLs; English lives under `/en` with English slugs. Conversion runs through WhatsApp, not an on-site form.
 
 ```
 app/
-  layout.tsx              root: fonts, metadata defaults, Consent Mode + GTM, CookieBanner
-  (site)/                 route group: adds AvailabilityBanner + Nav + Footer + LodgingBusiness JSON-LD
-    page.tsx              homepage
-    camere/               listing, tarife, [slug] (SSG, dynamicParams = false)
-    despre-noi/ galerie/ servicii/ activitati-in-zona/
-    evenimente/           hub: corporate + private, with Breadcrumbs
-    retreat-corporate/    B2B landing (teambuilding / retreat); content in lib/retreat.ts
-    politica-*/ termeni-si-conditii/   legal pages, noindex
-  rezerva-acum/           deliberately OUTSIDE (site): no nav/footer, distraction-free
+  (ro)/                   Romanian root layout: <html lang="ro">
+    layout.tsx            RootDocument lang="ro" + rootMetadata("ro")
+    (site)/               SiteShell: AvailabilityBanner + Nav + Footer + site-wide JSON-LD
+      page.tsx camere/ despre-noi/ galerie/ servicii/ activitati-in-zona/
+      evenimente/ retreat-corporate/ politica-*/ termeni-si-conditii/
+    rezerva-acum/         deliberately OUTSIDE (site): no nav/footer, distraction-free
+  (en)/                   English root layout: <html lang="en">
+    en/(site)/            same pages, English slugs (about-us, rooms, things-to-do...)
+    en/book-now/          the English booking page, outside (site) like rezerva-acum
+  global-not-found.tsx    bilingual 404 for every unmatched URL (experimental.globalNotFound)
   api/calendar/route.ts   the only server code; revalidate = 300
+  sitemap.ts              both languages, each URL with its hreflang pair
+components/
+  pages/                  one body per page, taking `lang`; the route files only call it
+  RootDocument.tsx        <html>, fonts, Consent Mode + GTM, CookieBanner (both root layouts)
+  SiteShell.tsx           banner, nav, footer, LodgingBusiness JSON-LD (both (site) groups)
+  LanguageSwitcher.tsx    "RO / EN", links to the same page in the other language
 lib/
-  content.ts              site-wide content + the canonical NAP (CONTACT)
-  retreat.ts              content for /retreat-corporate, kept separate
-  seo.ts                  pageMeta() — canonical + Open Graph per page
+  i18n/config.ts          LANGS, ROUTES (every page's path in both languages), ROOM_SLUGS,
+                          href(), counterpartPath(), canonicalRoPath(); client-safe
+  i18n/index.ts           getContent / getRetreat / getCopy (lang): server-side
+  i18n/ui.ts              strings owned by components (menu, calendar, form), both languages
+  i18n/useLang.ts         the current language in a client component, from the path
+  content.ts  content.en.ts   rooms, reviews, FAQs... + the canonical NAP (CONTACT, Romanian only)
+  retreat.ts  retreat.en.ts   content for the corporate page
+  copy.ts     copy.en.ts      page headings, leads, buttons and metadata
+  seo.ts                  pageMeta() — canonical, hreflang and Open Graph per page
   flags.ts                SHOW_FNB / SHOW_PRICING, derived from VERCEL_ENV (server-only)
   gtm.ts                  pushWhatsAppClick() — the only source of whatsapp_click
   consent.ts              consent constants + inline bootstrap (server-safe, no React)
@@ -62,14 +75,31 @@ lib/
 
 There is no CMS and no data fetching outside `/api/calendar`.
 
-**Content never lives in JSX.** Copy, rooms, reviews and FAQs belong in
-`lib/content.ts` (or `lib/retreat.ts` for the B2B page). The NAP has one source:
-`CONTACT` in `lib/content.ts`. The legal pages read `CONTACT.address` rather than
-repeating it, so it cannot drift.
+**Content never lives in JSX.** Rooms, reviews and FAQs belong in
+`lib/content.ts` (or `lib/retreat.ts` for the B2B page), page copy in
+`lib/copy.ts`, component strings in `lib/i18n/ui.ts`, each with its English
+counterpart. The `.en` files are typed against the Romanian ones, so a key
+missing in English fails the build. The NAP has one source: `CONTACT` in
+`lib/content.ts`, shared by both languages. The legal pages read
+`CONTACT.address` rather than repeating it, so it cannot drift.
+
+**The legal pages are the one exception:** each language has its own JSX file,
+because they are read as whole documents. The English ones open with a note
+that the Romanian version prevails. Change one, change the other.
+
+**Adding a page:** add its paths to `ROUTES` in `lib/i18n/config.ts`, write the
+body in `components/pages/`, its copy in `lib/copy.ts` and `lib/copy.en.ts`,
+and a route file under both `app/(ro)/` and `app/(en)/en/`. Use `href(lang, id)`
+for every internal link, never a hard-coded path, so the English pages link to
+English pages.
 
 ## Conventions and traps
 
-**Metadata — always use `pageMeta()` from `lib/seo.ts` for new pages.** Next merges metadata *shallowly*. A page that omits `alternates` inherits the parent canonical (this previously made 8 pages declare themselves duplicates of the homepage), and a page that sets a partial `openGraph` **drops `og:image`** rather than merging it. `pageMeta()` emits both in full.
+**Metadata — always use `pageMeta()` from `lib/seo.ts` for new pages.** Next merges metadata *shallowly*. A page that omits `alternates` inherits the parent canonical (this previously made 8 pages declare themselves duplicates of the homepage), and a page that sets a partial `openGraph` **drops `og:image`** rather than merging it. `pageMeta()` emits both in full, plus the hreflang pair (`ro`, `en`, `x-default` → Romanian), derived from `ROUTES`.
+
+**Client components read the language from the URL** (`useLang()`), never from `lib/i18n/index.ts`: that module pulls in all the content of both languages. Content they need arrives as props from the server parent (see `Nav`'s `links`, `GalleryGrid`'s `items`). `WhatsAppButton` has no default link for the same reason: pass `href`, usually `WHATSAPP_URL` from the content for that language.
+
+**Switching language is a full page load.** Each language has its own root layout, so `LanguageSwitcher` uses a plain `<a>`, not `next/link`.
 
 **Feature flags are server-only.** `lib/flags.ts` reads `process.env.VERCEL_ENV`, which has no `NEXT_PUBLIC_` prefix. A client component that imports the module directly gets the development values, silently. Read flags in a server component and pass the value down as a prop — see `OfferRequestForm`'s `showFnb`.
 
@@ -77,7 +107,7 @@ repeating it, so it cannot drift.
 
 **`/api/calendar` fails open.** On error it returns an empty blocked list plus `stale: true`. The client must surface that, or booked dates get presented as available.
 
-**Consent gates third-party embeds.** GTM starts denied via the inline script in `app/layout.tsx`; anything that sets third-party cookies (e.g. the Maps embed) must be gated on `useConsent()` — see `ConsentMap`.
+**Consent gates third-party embeds.** GTM starts denied via the inline script in `components/RootDocument.tsx`; anything that sets third-party cookies (e.g. the Maps embed) must be gated on `useConsent()` — see `ConsentMap`.
 
 **Tailwind v4 outline trap.** `outline-none` sets `--tw-outline-style: none`, and `outline-2` resolves `outline-style` from that variable — so a focus ring needs `focus-visible:outline-solid` too, or it silently never renders.
 
@@ -90,7 +120,7 @@ repeating it, so it cannot drift.
 - Colors come from the `@theme` tokens in `globals.css` (cream/sand/pine/forest/terracotta). Prefer tokens over arbitrary hex values.
 - `SectionHeading` renders `h2` by default; pass `as="h1"` when it is the page title. Its `eyebrow` prop is required.
 - `Breadcrumbs` drives the visible trail and the `BreadcrumbList` JSON-LD from one array.
-- **Structured data goes through `components/JsonLd`, never `next/script`.** `next/script` injects JSON-LD only after hydration, so crawlers that do not run JavaScript, most AI bots included, saw none of it. `JsonLd` writes a plain `<script>` into the prerendered HTML. The site-wide graph in `app/(site)/layout.tsx` holds `Organization` (Hostillo), `WebSite` and `BedAndBreakfast`, linked by `@id`.
+- **Structured data goes through `components/JsonLd`, never `next/script`.** `next/script` injects JSON-LD only after hydration, so crawlers that do not run JavaScript, most AI bots included, saw none of it. `JsonLd` writes a plain `<script>` into the prerendered HTML. The site-wide graph in `components/SiteShell.tsx` holds `Organization` (Hostillo), `WebSite` and `BedAndBreakfast`, linked by `@id`. The English pages emit the same entities with the same `@id`s; only the text fields (description, amenity names, `paymentAccepted`, `inLanguage`) are in English.
 - Tailwind v4 via PostCSS — there is no `tailwind.config.js`.
 - Use the `@/*` path alias.
 - Deploy target: Vercel.
@@ -119,12 +149,23 @@ ordinary booking. So:
   `/retreat-corporate` yields exactly `retreat-corporate`, `/` yields `home`. An
   explicit `pageSource` prop wins, and is only for CTAs that do not belong to
   their page (the footer sends `footer`).
+- **`page_source` does not change with the language.** An English page reports
+  its Romanian address (`canonicalRoPath()`): `/en/corporate-retreat` sends
+  `retreat-corporate`, `/en` sends `home`. The offer form's `nights` comes from
+  `NIGHT_OPTIONS`, which reads the same in both languages. GTM sees one funnel
+  per page; only the visible text and the pre-filled messages are translated.
 
 ## Content rules
 
 Romanian, factual register, no brochure language. Guest reviews are quoted
 verbatim, with their real names and dates, but they are still published content
 and the rules below apply to them too.
+
+The English site is American English, translated for meaning rather than word
+for word, under the same rules. Place names and the address stay in Romanian
+("Valea Avrigului", never "Avrig Valley"). Reviews written in English are quoted
+as written; Romanian ones are translated faithfully and marked
+`translated: true`, which shows "Translated from Romanian" under them.
 
 - **No em or en dashes** anywhere in our own copy. Use commas, full stops or a plain hyphen.
 - **No invented numbers.** Capacities, distances and durations must be confirmed. The current drive times were measured and confirmed by the owner.

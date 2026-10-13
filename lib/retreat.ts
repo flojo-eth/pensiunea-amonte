@@ -14,7 +14,7 @@ import { SHOW_FNB } from "./flags";
  * mistaken for a family booking. Deliberately asks for nothing else: this is
  * the low-friction path, and the form next to it is where the details belong.
  */
-export const RETREAT_WHATSAPP_MESSAGE =
+export const RETREAT_WHATSAPP_MESSAGE: string =
   "Bună ziua! Aș dori o ofertă pentru un retreat de echipă la Pensiunea Amonte.";
 
 /** Distinguishes B2B conversions from leisure ones in GA4. */

@@ -9,13 +9,11 @@ import AudiencesGridClient from "@/components/AudiencesGridClient";
 import ConsentMap from "@/components/ConsentMap";
 import { CONTACT, GOOGLE_FORM_URL } from "@/lib/content";
 import { getContent, getCopy, href, type Lang } from "@/lib/i18n";
+import { homeMeta } from "@/lib/seo";
 import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
 
 export function homeMetadata(lang: Lang): Metadata {
-  return {
-    description: getCopy(lang).home.meta.description,
-    alternates: { canonical: href(lang, "home") },
-  };
+  return homeMeta(lang, getCopy(lang).home.meta.description);
 }
 
 const container = "mx-auto max-w-[1280px] px-[clamp(20px,5vw,64px)]";
