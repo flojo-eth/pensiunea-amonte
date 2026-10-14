@@ -429,7 +429,7 @@ const de: UiStrings = {
       return children ? `${a} und ${children} ${children === 1 ? "Kind" : "Kinder"}` : a;
     },
     message: (from: string, to: string, guests: string) =>
-      `Guten Tag! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte vom ${from} bis zum ${to} für ${guests} anfragen.`,
+      `Hallo! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte vom ${from} bis zum ${to} für ${guests} anfragen.`,
   },
   offerForm: {
     errors: {
@@ -466,7 +466,7 @@ const de: UiStrings = {
     sendEmail: "Per E-Mail senden",
     footnote: "Sie erhalten das vollständige Angebot innerhalb von 24 Arbeitsstunden.",
     compose: {
-      greeting: "Guten Tag! Ich möchte ein Angebot für einen Gruppenaufenthalt in der Pensiunea Amonte anfragen.",
+      greeting: "Hallo! Ich möchte ein Angebot für einen Gruppenaufenthalt in der Pensiunea Amonte anfragen.",
       name: "Name",
       company: "Firma",
       email: "E-Mail",

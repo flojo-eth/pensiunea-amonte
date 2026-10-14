@@ -17,7 +17,7 @@ import {
 
 /** Pre-filled WhatsApp message for the plain CTAs (the form builds its own). */
 export const RETREAT_WHATSAPP_MESSAGE =
-  "Guten Tag! Ich möchte ein Angebot für ein Team-Retreat in der Pensiunea Amonte anfragen.";
+  "Hallo! Ich möchte ein Angebot für ein Team-Retreat in der Pensiunea Amonte anfragen.";
 
 /** Drive times, the same figures as the Romanian ones (confirmed by Flo). */
 export const DRIVE_SIBIU = "40 Minuten";

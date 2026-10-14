@@ -36,7 +36,7 @@ import {
 import { href, roomHref } from "./i18n/config";
 
 export const WHATSAPP_URL = whatsappUrl(
-  "Guten Tag! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte anfragen.",
+  "Hallo! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte anfragen.",
 );
 
 export const LOCATION = "Valea Avrigului · Făgăraș-Gebirge";
@@ -444,7 +444,7 @@ export const REVIEWS: Review[] = [
 export const GROUP_REVIEWS = groupReviews(REVIEWS);
 
 export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
-  "Guten Tag, ich hätte gern Informationen zu einer privaten Veranstaltung in der Pensiunea Amonte",
+  "Hallo, ich hätte gern Informationen zu einer privaten Veranstaltung in der Pensiunea Amonte",
 );
 
 export const NAV_LINKS: readonly NavLink[] = [

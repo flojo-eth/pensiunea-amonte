@@ -263,7 +263,7 @@ export const COPY: Copy = {
       eyebrow: "Sprechen wir darüber",
       title: "Erzählen Sie uns, welche Veranstaltung Sie planen",
       lead: "Wie viele Sie sind und wann. Den Rest gestalten wir gemeinsam.",
-      message: "Guten Tag! Ich hätte gern Informationen zur Ausrichtung einer Veranstaltung in der Pensiunea Amonte.",
+      message: "Hallo! Ich hätte gern Informationen zur Ausrichtung einer Veranstaltung in der Pensiunea Amonte.",
       button: "Per WhatsApp schreiben",
     },
   },
