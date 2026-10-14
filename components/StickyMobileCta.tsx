@@ -21,20 +21,22 @@ export default function StickyMobileCta({ whatsappHref }: { whatsappHref: string
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-card/95 px-4 py-3 backdrop-blur-sm md:hidden">
       <div className="flex gap-3">
+        {/* The offer form leads: filled, on the left. WhatsApp stays as the
+            quicker alternative, outlined, on the right. */}
+        <a
+          href={`#${OFFER_FORM_ANCHOR[lang]}`}
+          className="flex-1 rounded-full bg-terracotta px-4 py-3 text-center text-[14px] font-semibold text-paper no-underline"
+        >
+          {t.requestOffer}
+        </a>
         <WhatsAppButton
           href={whatsappHref}
           pageSource={RETREAT_PAGE_SOURCE}
           ctaPosition="sticky"
-          className="flex-1 rounded-full bg-terracotta px-4 py-3 text-center text-[14px] font-semibold text-paper no-underline"
+          className="flex-1 rounded-full border border-forest px-4 py-3 text-center text-[14px] font-semibold text-forest no-underline"
         >
           {t.whatsapp}
         </WhatsAppButton>
-        <a
-          href={`#${OFFER_FORM_ANCHOR[lang]}`}
-          className="flex-1 rounded-full border border-forest px-4 py-3 text-center text-[14px] font-semibold text-forest no-underline"
-        >
-          {t.requestOffer}
-        </a>
       </div>
     </div>
   );
