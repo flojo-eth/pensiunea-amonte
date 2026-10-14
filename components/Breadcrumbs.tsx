@@ -22,9 +22,15 @@ export default function Breadcrumbs({
   items,
   id,
   tone = "light",
+  linked = true,
 }: {
   lang: Lang;
   items: Crumb[];
+  /**
+   * false renders the trail as plain text, for landing pages that keep the
+   * visitor on the page. The JSON-LD keeps the item URLs either way.
+   */
+  linked?: boolean;
   /** Unique script id; two BreadcrumbList blocks on one page would collide. */
   id: string;
   tone?: "light" | "dark";
@@ -55,12 +61,12 @@ export default function Breadcrumbs({
                   ›
                 </span>
               )}
-              {c.href ? (
+              {c.href && linked ? (
                 <Link href={c.href} className={`no-underline ${link} hover:underline`}>
                   {c.label}
                 </Link>
               ) : (
-                <span aria-current="page">{c.label}</span>
+                <span aria-current={c.href ? undefined : "page"}>{c.label}</span>
               )}
             </li>
           ))}

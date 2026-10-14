@@ -300,7 +300,6 @@ export const COPY = {
       eyebrow: "Despre noi",
       title: "Oameni, nu doar o locație",
       lead: `Suntem o echipă mică și implicată, care administrează direct Pensiunea Amonte, în Valea Avrigului, la ${DRIVE_SIBIU} de Sibiu, și rămânem prezenți pe toată durata șederii. Comunicarea rămâne cu aceeași echipă, din prima zi până la plecare.`,
-      more: "Află mai multe despre noi →",
     },
     workspaces: {
       eyebrow: "Spații de lucru",
@@ -311,7 +310,6 @@ export const COPY = {
       title: "Ce faceți între sesiuni",
       bruno:
         "Bruno, ciobănescul de Berna al casei, e mascota locului. Animalele de companie ale oaspeților rămân acasă.",
-      more: "Vezi toate activitățile din zonă →",
     },
     fnb: {
       eyebrow: "Mesele",
@@ -328,7 +326,7 @@ export const COPY = {
         `${perUnit} persoane, ${beds}. ${total} locuri în total.`,
       total: (count: string, total: string) =>
         `Total: ${count} unități de cazare, ${total} de locuri.`,
-      more: "Vezi toate camerele →",
+      cta: "Cere oferta pentru echipa ta",
     },
     agenda: {
       eyebrow: "Exemplu",
@@ -346,7 +344,6 @@ export const COPY = {
     reviews: {
       eyebrow: "Recenzii",
       title: "Ce spun echipele care au fost",
-      all: "Vezi toate recenziile pe Google →",
     },
     faq: {
       eyebrow: "Întrebări frecvente",

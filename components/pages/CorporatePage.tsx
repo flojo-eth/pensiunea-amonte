@@ -16,7 +16,6 @@ import { SHOW_FNB, SHOW_PRICING } from "@/lib/flags";
 import {
   CONTACT,
   GOOGLE_MAPS_URL,
-  GOOGLE_REVIEWS_URL,
   whatsappUrl,
 } from "@/lib/content";
 import { btnPaper, btnOutlineLight, btnOutlineDark, btnTerracotta } from "@/lib/ui";
@@ -97,12 +96,15 @@ export default function CorporatePage({ lang }: { lang: Lang }) {
         />
         <div className="relative mx-auto w-full max-w-[1280px]">
           {/* Breadcrumb peste hero: URL-ul, canonicalul și sitemap-ul rămân
-              neschimbate, se adaugă doar contextul ierarhic. */}
+              neschimbate, se adaugă doar contextul ierarhic. Fără linkuri:
+              pagina e o landing izolată, ca /rezerva-acum, iar BreadcrumbList
+              din JSON-LD rămâne același. */}
           <div className="mb-6 [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
             <Breadcrumbs
               lang={lang}
               id="schema-retreat-breadcrumb"
               tone="dark"
+              linked={false}
               items={[
                 { label: copy.common.home, href: href(lang, "home") },
                 { label: copy.events.crumb, href: href(lang, "events") },
@@ -143,11 +145,6 @@ export default function CorporatePage({ lang }: { lang: Lang }) {
         <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title}>
           {t.about.lead}
         </SectionHeading>
-        <p className="mt-6 mb-0">
-          <Link href={href(lang, "about")} className="text-[15px] font-semibold text-terracotta no-underline hover:underline">
-            {t.about.more}
-          </Link>
-        </p>
       </section>
 
       {/* ── S3. SPAȚIILE DE LUCRU ── */}
@@ -208,11 +205,6 @@ export default function CorporatePage({ lang }: { lang: Lang }) {
         <p className="mt-7 mb-0 text-[14.5px] leading-relaxed text-muted">
           {t.leisure.bruno}
         </p>
-        <p className="mt-4 mb-0">
-          <Link href={href(lang, "activities")} className="text-[14.5px] font-semibold text-terracotta no-underline hover:underline">
-            {t.leisure.more}
-          </Link>
-        </p>
       </section>
 
       {/* ── S5. MESE (gated pe SHOW_FNB) ── */}
@@ -262,11 +254,12 @@ export default function CorporatePage({ lang }: { lang: Lang }) {
           ))}
         </ul>
 
-        <p className="mt-6 mb-0">
-          <Link href={href(lang, "rooms")} className="text-[15px] font-semibold text-terracotta no-underline hover:underline">
-            {t.rooms.more}
+        {/* Mid-page shortcut: by here the visitor knows the team fits. */}
+        <div className="mt-8">
+          <Link href={`#${formAnchor}`} className={btnTerracotta}>
+            {t.rooms.cta}
           </Link>
-        </p>
+        </div>
       </section>
 
       {/* ── S7. AGENDĂ EXEMPLU ── */}
@@ -387,20 +380,26 @@ export default function CorporatePage({ lang }: { lang: Lang }) {
             />
           </div>
           <ReviewsCarousel reviews={GROUP_REVIEWS} />
-          <div className={`${container} mt-8 text-center`}>
-            <a
-              href={GOOGLE_REVIEWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[15px] font-semibold text-terracotta no-underline hover:underline"
-            >
-              {t.reviews.all}
-            </a>
-          </div>
         </section>
       )}
 
-      {/* ── S11. FAQ ── */}
+      {/* ── S11. FORMULAR ── */}
+      <section id={formAnchor} className={`${sectionPad} scroll-mt-24 bg-sand`}>
+        <div className={`${container} mx-auto max-w-[900px]`}>
+          <SectionHeading
+            eyebrow={t.form.eyebrow}
+            title={t.form.title}
+            className="mb-8"
+          >
+            {t.form.lead}
+          </SectionHeading>
+          {/* SHOW_FNB is read on the server and passed down: lib/flags.ts is
+              server-only, see the note in that file. */}
+          <OfferRequestForm showFnb={SHOW_FNB} />
+        </div>
+      </section>
+
+      {/* ── S12. FAQ, după formular: răspunde la ce îl oprește pe cine încă ezită ── */}
       <section className={`${container} ${sectionPad} border-t border-line`}>
         <SectionHeading
           eyebrow={t.faq.eyebrow}
@@ -419,24 +418,8 @@ export default function CorporatePage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      {/* ── S12. FORMULAR ── */}
-      <section id={formAnchor} className={`${sectionPad} scroll-mt-24 bg-sand`}>
-        <div className={`${container} mx-auto max-w-[900px]`}>
-          <SectionHeading
-            eyebrow={t.form.eyebrow}
-            title={t.form.title}
-            className="mb-8"
-          >
-            {t.form.lead}
-          </SectionHeading>
-          {/* SHOW_FNB is read on the server and passed down: lib/flags.ts is
-              server-only, see the note in that file. */}
-          <OfferRequestForm showFnb={SHOW_FNB} />
-        </div>
-      </section>
-
       {/* ── S13. LOCAȚIE ── */}
-      <section className={`${container} ${sectionPad}`}>
+      <section className={`${container} ${sectionPad} border-t border-line`}>
         <div className="flex flex-wrap gap-[clamp(28px,4vw,56px)]">
           <div className="flex-1 basis-[320px]">
             <SectionHeading eyebrow={t.location.eyebrow} title={t.location.title} className="mb-7" />

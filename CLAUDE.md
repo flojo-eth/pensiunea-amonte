@@ -43,7 +43,10 @@ app/
     layout.tsx            RootDocument lang="ro" + rootMetadata("ro")
     (site)/               SiteShell: AvailabilityBanner + Nav + Footer + site-wide JSON-LD
       page.tsx camere/ despre-noi/ galerie/ servicii/ activitati-in-zona/
-      evenimente/ retreat-corporate/ politica-*/ termeni-si-conditii/
+      evenimente/ politica-*/ termeni-si-conditii/
+    retreat-corporate/    B2B landing, OUTSIDE (site): SiteShell `landing` swaps the
+                          nav for LandingHeader (logo + language only); no links
+                          off the page except the footer; content in lib/retreat.ts
     rezerva-acum/         deliberately OUTSIDE (site): no nav/footer, distraction-free
   (en)/                   English root layout: <html lang="en">
     en/(site)/            same pages, English slugs (about-us, rooms, things-to-do...)
@@ -57,7 +60,8 @@ app/
 components/
   pages/                  one body per page, taking `lang`; the route files only call it
   RootDocument.tsx        <html>, fonts, Consent Mode + GTM, CookieBanner (both root layouts)
-  SiteShell.tsx           banner, nav, footer, LodgingBusiness JSON-LD (both (site) groups)
+  SiteShell.tsx           banner, nav, footer, LodgingBusiness JSON-LD (every (site) group,
+                          and the corporate landing with `landing`)
   LanguageMenu.tsx        "RO ▾" dropdown in the desktop nav, links to the same page per language
   LanguageSwitcher.tsx    "RO / EN / DE" inline list, for the phone menu and the booking page
 lib/

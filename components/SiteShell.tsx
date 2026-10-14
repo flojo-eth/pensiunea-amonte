@@ -1,6 +1,7 @@
 import JsonLd from "@/components/JsonLd";
 import AvailabilityBanner from "@/components/AvailabilityBanner";
 import Nav from "@/components/Nav";
+import LandingHeader from "@/components/LandingHeader";
 import Footer from "@/components/Footer";
 import { SITE_NAME } from "@/lib/site";
 import {
@@ -110,12 +111,18 @@ function lodgingJsonLd(lang: Lang) {
 }
 
 /** Wraps all standard pages with banner + nav + footer. The booking page
- *  lives outside this shell, so it stays distraction-free. */
+ *  lives outside this shell, so it stays distraction-free.
+ *
+ *  `landing` swaps the nav for LandingHeader (logo and language picker only),
+ *  for the corporate page: same banner, footer and JSON-LD, no way into the
+ *  rest of the site from the top of the page. */
 export default function SiteShell({
   lang,
+  landing = false,
   children,
 }: {
   lang: Lang;
+  landing?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -130,7 +137,7 @@ export default function SiteShell({
         {UI[lang].layout.skipToContent}
       </a>
       <AvailabilityBanner />
-      <Nav links={getContent(lang).NAV_LINKS} />
+      {landing ? <LandingHeader lang={lang} /> : <Nav links={getContent(lang).NAV_LINKS} />}
       {/* tabIndex -1 so the skip link can actually move focus here, not just scroll */}
       <main id="continut" tabIndex={-1} className="outline-none">
         {children}
