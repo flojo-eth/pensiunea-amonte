@@ -137,7 +137,7 @@ export default function Nav({ links }: { links: readonly NavLink[] }) {
           {/* Desktop only: on a phone the English tagline leaves no room next to
               the hamburger, so the switcher moves into the menu below. */}
           <div className="hidden sm:block">
-            <LanguageSwitcher />
+            <LanguageSwitcher compact />
           </div>
           <Link
             href={href(lang, "book")}

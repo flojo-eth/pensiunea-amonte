@@ -88,6 +88,15 @@ const legacyRedirects = [
   { source: "/contact", destination: "/rezerva-acum" },
 ];
 
+/**
+ * Pages that were live under a different address and have since been renamed.
+ * The English balcony room was briefly published (and submitted in the sitemap)
+ * as "forest-view-double-room" before Flo settled on its current name.
+ */
+const renamedRedirects = [
+  { source: "/en/rooms/forest-view-double-room", destination: "/en/rooms/double-room-with-balcony" },
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // One root layout per language means no shared layout for the 404, so the
@@ -103,7 +112,7 @@ const nextConfig: NextConfig = {
     // Explicit 301 rather than `permanent: true`, which emits 308. Both are
     // permanent and Google treats them the same, but these are GET-only
     // marketing URLs and 301 is what every SEO tool and audit expects to see.
-    return legacyRedirects.map((r) => ({ ...r, statusCode: 301 as const }));
+    return [...legacyRedirects, ...renamedRedirects].map((r) => ({ ...r, statusCode: 301 as const }));
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

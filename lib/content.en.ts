@@ -134,10 +134,9 @@ export const ROOMS: Room[] = [
     photoLabel: "[ family studio ]",
   },
   {
-    // "Cameră cu Balcon" in Romanian. Every unit has a balcony, so in English
-    // the room is named after what sets it apart: the view of the forest.
+    // "Cameră cu Balcon" in Romanian; the English name follows it (Flo's choice).
     slug: "camera-cu-balcon",
-    name: "Forest View Double Room",
+    name: "Double Room with Balcony",
     spec: "2 guests · private balcony · forest view",
     metaDesc: "Double room with a balcony and forest view at Pensiunea Amonte, Valea Avrigului, near Sibiu: quiet, heated floors, breakfast included.",
     desc: "A bright room with a private balcony facing the forest. Ideal for a quiet stay surrounded by nature.",
@@ -163,7 +162,7 @@ export const ROOMS: Room[] = [
       "/camera-balcon/baie.jpeg",
       "/camera-balcon/detalii.jpeg",
     ],
-    photoLabel: "[ forest view double room ]",
+    photoLabel: "[ double room with balcony ]",
   },
 ];
 
@@ -327,8 +326,8 @@ export const GALLERY: GalleryItem[] = [
   { photo: "/camera-dubla-folder/poza-pat-si-camera.jpeg", label: "Double room, bedroom", span: 1 },
   { photo: "/camera-dubla-folder/birou-cu-priveliste.jpeg", label: "Desk with a view", span: 1 },
   { photo: "/camera-dubla-folder/baie.jpeg", label: "Double room, bathroom", span: 1 },
-  { photo: "/camera-balcon/poza-pat.jpeg", label: "Forest view room, bedroom", span: 1 },
-  { photo: "/camera-balcon/balcon1.jpeg", label: "Forest view room, private balcony", span: 1 },
+  { photo: "/camera-balcon/poza-pat.jpeg", label: "Room with balcony, bedroom", span: 1 },
+  { photo: "/camera-balcon/balcon1.jpeg", label: "Room with balcony, private balcony", span: 1 },
   { photo: "/camera-balcon/priveliste.jpeg", label: "View of the forest", span: 1 },
   { photo: "/camera-deluxe/1-din-2.jpg", label: "Deluxe room, details", span: 1 },
   { photo: "/apartament/pat_dormitor.JPG", label: "Family studio, bedroom", span: 1 },

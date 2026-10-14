@@ -14,6 +14,9 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Design prototype (source of truth, not application code).
     "files 2/**",
+    // Claude Code worktrees: full checkouts with their own .next builds, which
+    // ran ESLint out of memory when they were linted as part of this project.
+    ".claude/**",
   ]),
 ]);
 

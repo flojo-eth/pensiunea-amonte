@@ -41,7 +41,7 @@ export const ROOM_SLUGS = {
   "camera-dubla-deluxe": "deluxe-double-room",
   "camera-dubla-vedere-munte": "mountain-view-double-room",
   "studio-de-familie": "family-studio",
-  "camera-cu-balcon": "forest-view-double-room",
+  "camera-cu-balcon": "double-room-with-balcony",
 } as const satisfies Record<string, string>;
 
 export type RoomId = keyof typeof ROOM_SLUGS;

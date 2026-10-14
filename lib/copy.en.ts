@@ -176,7 +176,7 @@ export const COPY: Copy = {
     meta: {
       title: "Rooms",
       description:
-        "Rooms at Pensiunea Amonte near Sibiu: Deluxe doubles, mountain view and forest view doubles, and family studios. All with a balcony and breakfast included.",
+        "Rooms at Pensiunea Amonte near Sibiu: Deluxe and mountain view doubles, doubles with a balcony and family studios, all with breakfast included.",
     },
     eyebrow: "Accommodation",
     title: "Our rooms",
