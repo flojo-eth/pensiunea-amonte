@@ -73,8 +73,19 @@ const ro = {
     /** The Google Form is in Romanian, so the English page offers email instead. */
     fallback: "form" as "form" | "email",
     fallbackLabel: "Sau completează formularul →",
-    message: (from: string, to: string) =>
-      `Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte în perioada ${from} - ${to}.`,
+    adults: "Adulți",
+    children: "Copii",
+    fewer: "Mai puțini",
+    more: "Mai mulți",
+    /** "2 adulți și 1 copil"; from 20 up Romanian puts "de" before the noun. */
+    guests: (adults: number, children: number) => {
+      const n = (k: number, one: string, many: string) =>
+        k === 1 ? `1 ${one}` : `${k} ${k >= 20 ? "de " : ""}${many}`;
+      const a = n(adults, "adult", "adulți");
+      return children ? `${a} și ${n(children, "copil", "copii")}` : a;
+    },
+    message: (from: string, to: string, guests: string) =>
+      `Salut! Aș dori să verific disponibilitatea pentru o rezervare la Pensiunea Amonte în perioada ${from} - ${to}, pentru ${guests}.`,
   },
   offerForm: {
     errors: {
@@ -239,8 +250,16 @@ const en: UiStrings = {
     cta: "Check availability on WhatsApp",
     fallback: "email",
     fallbackLabel: "Or send us an email →",
-    message: (from: string, to: string) =>
-      `Hello! I'd like to check availability for a stay at Pensiunea Amonte from ${from} to ${to}.`,
+    adults: "Adults",
+    children: "Children",
+    fewer: "Fewer",
+    more: "More",
+    guests: (adults: number, children: number) => {
+      const a = `${adults} ${adults === 1 ? "adult" : "adults"}`;
+      return children ? `${a} and ${children} ${children === 1 ? "child" : "children"}` : a;
+    },
+    message: (from: string, to: string, guests: string) =>
+      `Hello! I'd like to check availability for a stay at Pensiunea Amonte from ${from} to ${to}, for ${guests}.`,
   },
   offerForm: {
     errors: {
@@ -401,8 +420,16 @@ const de: UiStrings = {
     cta: "Verfügbarkeit per WhatsApp anfragen",
     fallback: "email",
     fallbackLabel: "Oder schreiben Sie uns eine E-Mail →",
-    message: (from: string, to: string) =>
-      `Guten Tag! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte vom ${from} bis zum ${to} anfragen.`,
+    adults: "Erwachsene",
+    children: "Kinder",
+    fewer: "Weniger",
+    more: "Mehr",
+    guests: (adults: number, children: number) => {
+      const a = `${adults} ${adults === 1 ? "Erwachsenen" : "Erwachsene"}`;
+      return children ? `${a} und ${children} ${children === 1 ? "Kind" : "Kinder"}` : a;
+    },
+    message: (from: string, to: string, guests: string) =>
+      `Guten Tag! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte vom ${from} bis zum ${to} für ${guests} anfragen.`,
   },
   offerForm: {
     errors: {

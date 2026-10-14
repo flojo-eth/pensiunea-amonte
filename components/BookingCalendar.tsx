@@ -82,6 +82,57 @@ function CalendarSkeleton({ t }: { t: Strings }) {
   );
 }
 
+/** The whole guesthouse sleeps 24, so no request can ask for more. */
+const MAX_GUESTS = 24;
+
+/** "−  2  +" with a label: a number input would bring up a keyboard on a phone. */
+function GuestStepper({
+  label,
+  value,
+  min,
+  max,
+  onChange,
+  t,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (v: number) => void;
+  t: Strings;
+}) {
+  const btn =
+    "flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-line-2 text-[18px] leading-none text-pine transition-colors hover:border-muted-2 disabled:cursor-not-allowed disabled:opacity-30";
+  return (
+    <div className="flex items-center justify-between gap-4 py-2">
+      <span className="text-[15px] font-medium text-pine">{label}</span>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          className={btn}
+          onClick={() => onChange(value - 1)}
+          disabled={value <= min}
+          aria-label={`${t.fewer}: ${label}`}
+        >
+          −
+        </button>
+        <span aria-live="polite" className="w-6 text-center text-[16px] font-semibold text-pine">
+          {value}
+        </span>
+        <button
+          type="button"
+          className={btn}
+          onClick={() => onChange(value + 1)}
+          disabled={value >= max}
+          aria-label={`${t.more}: ${label}`}
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Component ────────────────────────────────────────────────────────
 
 export default function BookingCalendar() {
@@ -98,6 +149,9 @@ export default function BookingCalendar() {
 
   const [checkIn, setCheckIn] = useState<Date | null>(null);
   const [checkOut, setCheckOut] = useState<Date | null>(null);
+  // Sent in the WhatsApp message, so the reply can quote the right rooms.
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 
   const [blockedKeys, setBlockedKeys] = useState<Set<string>>(new Set());
@@ -153,7 +207,7 @@ export default function BookingCalendar() {
   // WhatsApp link
   const whatsappHref = checkIn && checkOut
     ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        t.message(format(checkIn), format(checkOut)),
+        t.message(format(checkIn), format(checkOut), t.guests(adults, children)),
       )}`
     : null;
 
@@ -286,6 +340,12 @@ export default function BookingCalendar() {
           ) : (
             <span className="text-muted-2">{t.nothingSelected}</span>
           )}
+        </div>
+
+        {/* Guests: part of the WhatsApp message, never of the dataLayer. */}
+        <div className="mb-4 divide-y divide-line border-y border-line">
+          <GuestStepper label={t.adults} value={adults} min={1} max={MAX_GUESTS - children} onChange={setAdults} t={t} />
+          <GuestStepper label={t.children} value={children} min={0} max={MAX_GUESTS - adults} onChange={setChildren} t={t} />
         </div>
 
         {/* WhatsApp CTA */}
