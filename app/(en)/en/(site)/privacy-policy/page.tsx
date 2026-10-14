@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
       />
 
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
-        <LegalTranslationNote romanianHref={href("ro", "privacy")} />
+        <LegalTranslationNote lang="en" page="privacy" />
 
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Processing of personal data, Pensiunea Amonte / Hostillo S.R.L. <br />

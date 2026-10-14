@@ -32,7 +32,7 @@ export default function TermsPage() {
       />
 
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
-        <LegalTranslationNote romanianHref={href("ro", "terms")} />
+        <LegalTranslationNote lang="en" page="terms" />
 
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Pensiunea Amonte, operated by Hostillo S.R.L. <br />

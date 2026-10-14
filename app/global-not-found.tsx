@@ -5,7 +5,7 @@ import "./globals.css";
 import { btnTerracotta } from "@/lib/ui";
 
 // Each language has its own root layout, so there is no single layout to build
-// a 404 from. This page answers every unmatched URL, in both languages, and is
+// a 404 from. This page answers every unmatched URL, in every language, and is
 // rendered on the server in full (a catch-all route only sent an empty shell).
 const cormorant = Cormorant_Garamond({ variable: "--font-cormorant", subsets: ["latin"], weight: ["600"], display: "swap" });
 const hanken = Hanken_Grotesk({ variable: "--font-hanken", subsets: ["latin"], weight: ["400", "600"], display: "swap" });
@@ -35,6 +35,12 @@ export default function GlobalNotFound() {
             Page not found.{" "}
             <Link href="/en" className="text-forest underline underline-offset-2">
               Back to the English site
+            </Link>
+          </p>
+          <p lang="de" className="mt-2 text-[14px] text-muted-2">
+            Seite nicht gefunden.{" "}
+            <Link href="/de" className="text-forest underline underline-offset-2">
+              Zur deutschen Website
             </Link>
           </p>
         </main>

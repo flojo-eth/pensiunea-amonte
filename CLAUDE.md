@@ -35,7 +35,7 @@ The scope is `calendar.readonly`. Never log or echo these values.
 
 ## Architecture
 
-Marketing site for **Pensiunea Amonte**, a guesthouse in Valea Avrigului (Sibiu). Next.js 16 App Router, React 19, TypeScript (strict), Tailwind CSS v4. Bilingual: Romanian is the default and keeps its URLs; English lives under `/en` with English slugs. Conversion runs through WhatsApp, not an on-site form.
+Marketing site for **Pensiunea Amonte**, a guesthouse in Valea Avrigului (Sibiu). Next.js 16 App Router, React 19, TypeScript (strict), Tailwind CSS v4. Three languages: Romanian is the default and keeps its URLs; English lives under `/en` and German under `/de`, each with its own slugs (ASCII only, `ueber-uns` not `über-uns`). Conversion runs through WhatsApp, not an on-site form.
 
 ```
 app/
@@ -48,6 +48,9 @@ app/
   (en)/                   English root layout: <html lang="en">
     en/(site)/            same pages, English slugs (about-us, rooms, things-to-do...)
     en/book-now/          the English booking page, outside (site) like rezerva-acum
+  (de)/                   German root layout: <html lang="de">
+    de/(site)/            same pages, German slugs (ueber-uns, zimmer, ausflugsziele...)
+    de/jetzt-buchen/      the German booking page, outside (site)
   global-not-found.tsx    bilingual 404 for every unmatched URL (experimental.globalNotFound)
   api/calendar/route.ts   the only server code; revalidate = 300
   sitemap.ts              both languages, each URL with its hreflang pair
@@ -55,16 +58,17 @@ components/
   pages/                  one body per page, taking `lang`; the route files only call it
   RootDocument.tsx        <html>, fonts, Consent Mode + GTM, CookieBanner (both root layouts)
   SiteShell.tsx           banner, nav, footer, LodgingBusiness JSON-LD (both (site) groups)
-  LanguageSwitcher.tsx    "RO / EN", links to the same page in the other language
+  LanguageMenu.tsx        "RO ▾" dropdown in the desktop nav, links to the same page per language
+  LanguageSwitcher.tsx    "RO / EN / DE" inline list, for the phone menu and the booking page
 lib/
   i18n/config.ts          LANGS, ROUTES (every page's path in both languages), ROOM_SLUGS,
                           href(), counterpartPath(), canonicalRoPath(); client-safe
   i18n/index.ts           getContent / getRetreat / getCopy (lang): server-side
   i18n/ui.ts              strings owned by components (menu, calendar, form), both languages
   i18n/useLang.ts         the current language in a client component, from the path
-  content.ts  content.en.ts   rooms, reviews, FAQs... + the canonical NAP (CONTACT, Romanian only)
-  retreat.ts  retreat.en.ts   content for the corporate page
-  copy.ts     copy.en.ts      page headings, leads, buttons and metadata
+  content.ts  content.en.ts  content.de.ts   rooms, reviews, FAQs... + the canonical NAP (CONTACT)
+  retreat.ts  retreat.en.ts  retreat.de.ts   content for the corporate page
+  copy.ts     copy.en.ts     copy.de.ts      page headings, leads, buttons and metadata
   seo.ts                  pageMeta() — canonical, hreflang and Open Graph per page
   flags.ts                SHOW_FNB / SHOW_PRICING, derived from VERCEL_ENV (server-only)
   gtm.ts                  pushWhatsAppClick() — the only source of whatsapp_click
@@ -78,28 +82,36 @@ There is no CMS and no data fetching outside `/api/calendar`.
 **Content never lives in JSX.** Rooms, reviews and FAQs belong in
 `lib/content.ts` (or `lib/retreat.ts` for the B2B page), page copy in
 `lib/copy.ts`, component strings in `lib/i18n/ui.ts`, each with its English
-counterpart. The `.en` files are typed against the Romanian ones, so a key
-missing in English fails the build. The NAP has one source: `CONTACT` in
-`lib/content.ts`, shared by both languages. The legal pages read
+and German counterparts. The `.en` and `.de` files are typed against the
+Romanian ones, so a key missing in either fails the build. The NAP has one
+source: `CONTACT` in `lib/content.ts`, shared by every language. The legal pages read
 `CONTACT.address` rather than repeating it, so it cannot drift.
 
 **The legal pages are the one exception:** each language has its own JSX file,
-because they are read as whole documents. The English ones open with a note
-that the Romanian version prevails. Change one, change the other.
+because they are read as whole documents. The English and German ones open
+with a note that the Romanian version prevails (`LegalTranslationNote`).
+Change one, change all three.
 
 **Adding a page:** add its paths to `ROUTES` in `lib/i18n/config.ts`, write the
-body in `components/pages/`, its copy in `lib/copy.ts` and `lib/copy.en.ts`,
-and a route file under both `app/(ro)/` and `app/(en)/en/`. Use `href(lang, id)`
-for every internal link, never a hard-coded path, so the English pages link to
-English pages.
+body in `components/pages/`, its copy in `lib/copy.ts`, `lib/copy.en.ts` and
+`lib/copy.de.ts`, and a route file under `app/(ro)/`, `app/(en)/en/` and
+`app/(de)/de/`. Use `href(lang, id)` for every internal link, never a
+hard-coded path, so each language links to its own pages.
+
+**Adding a language:** add it to `LANGS` (and `OG_LOCALE`, `LANG_NAMES`,
+`OFFER_FORM_ANCHOR`), give every entry in `ROUTES` and `ROOM_SLUGS` its path,
+then follow the compiler: it lists every content, copy and UI string still
+missing. Add the route group `app/(xx)/xx/`, the legal pages and a line on
+`global-not-found.tsx`. Sitemap, hreflang and the switcher pick it up on
+their own.
 
 ## Conventions and traps
 
-**Metadata — always use `pageMeta()` from `lib/seo.ts` for new pages.** Next merges metadata *shallowly*. A page that omits `alternates` inherits the parent canonical (this previously made 8 pages declare themselves duplicates of the homepage), and a page that sets a partial `openGraph` **drops `og:image`** rather than merging it. `pageMeta()` emits both in full, plus the hreflang pair (`ro`, `en`, `x-default` → Romanian), derived from `ROUTES`.
+**Metadata — always use `pageMeta()` from `lib/seo.ts` for new pages.** Next merges metadata *shallowly*. A page that omits `alternates` inherits the parent canonical (this previously made 8 pages declare themselves duplicates of the homepage), and a page that sets a partial `openGraph` **drops `og:image`** rather than merging it. `pageMeta()` emits both in full, plus hreflang for every language and `x-default` → Romanian, derived from `ROUTES`.
 
 **Client components read the language from the URL** (`useLang()`), never from `lib/i18n/index.ts`: that module pulls in all the content of both languages. Content they need arrives as props from the server parent (see `Nav`'s `links`, `GalleryGrid`'s `items`). `WhatsAppButton` has no default link for the same reason: pass `href`, usually `WHATSAPP_URL` from the content for that language.
 
-**Switching language is a full page load.** Each language has its own root layout, so `LanguageSwitcher` uses a plain `<a>`, not `next/link`.
+**Switching language is a full page load.** Each language has its own root layout, so `LanguageMenu` and `LanguageSwitcher` use a plain `<a>`, not `next/link`.
 
 **Feature flags are server-only.** `lib/flags.ts` reads `process.env.VERCEL_ENV`, which has no `NEXT_PUBLIC_` prefix. A client component that imports the module directly gets the development values, silently. Read flags in a server component and pass the value down as a prop — see `OfferRequestForm`'s `showFnb`.
 
@@ -149,9 +161,9 @@ ordinary booking. So:
   `/retreat-corporate` yields exactly `retreat-corporate`, `/` yields `home`. An
   explicit `pageSource` prop wins, and is only for CTAs that do not belong to
   their page (the footer sends `footer`).
-- **`page_source` does not change with the language.** An English page reports
-  its Romanian address (`canonicalRoPath()`): `/en/corporate-retreat` sends
-  `retreat-corporate`, `/en` sends `home`. The offer form's `nights` comes from
+- **`page_source` does not change with the language.** English and German pages
+  report their Romanian address (`canonicalRoPath()`): `/en/corporate-retreat`
+  and `/de/firmen-retreat` send `retreat-corporate`, `/en` and `/de` send `home`. The offer form's `nights` comes from
   `NIGHT_OPTIONS`, which reads the same in both languages. GTM sees one funnel
   per page; only the visible text and the pre-filled messages are translated.
 
@@ -166,6 +178,11 @@ for word, under the same rules. Place names and the address stay in Romanian
 ("Valea Avrigului", never "Avrig Valley"). Reviews written in English are quoted
 as written; Romanian ones are translated faithfully and marked
 `translated: true`, which shows "Translated from Romanian" under them.
+
+The German site uses the formal "Sie" and calls the place a "Pension", not a
+"Gasthaus" (which reads as an inn with a restaurant). The hot tub is always
+"Jacuzzi"; the riverside is "auf der anderen Straßenseite". Romanian reviews
+are translated ("Aus dem Rumänischen übersetzt"); English ones stay in English.
 
 - **No em or en dashes** anywhere in our own copy. Use commas, full stops or a plain hyphen.
 - **No invented numbers.** Capacities, distances and durations must be confirmed. The current drive times were measured and confirmed by the owner.

@@ -10,6 +10,7 @@ import { useLang } from "@/lib/i18n/useLang";
 import { UI } from "@/lib/i18n/ui";
 import WhatsAppButton from "./WhatsAppButton";
 import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageMenu from "./LanguageMenu";
 
 function scrollTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -134,10 +135,11 @@ export default function Nav({ links }: { links: readonly NavLink[] }) {
               </Link>
             ),
           )}
-          {/* Desktop only: on a phone the English tagline leaves no room next to
-              the hamburger, so the switcher moves into the menu below. */}
+          {/* Desktop and tablet: a dropdown, narrow enough to keep the nav on
+              one line. On a phone the logo leaves no room next to the
+              hamburger, so the full list sits in the menu below instead. */}
           <div className="hidden sm:block">
-            <LanguageSwitcher compact />
+            <LanguageMenu />
           </div>
           <Link
             href={href(lang, "book")}

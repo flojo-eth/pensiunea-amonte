@@ -2,18 +2,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 import RoomDetailsClient from "@/components/RoomDetailsClient";
-import { getContent, roomHref, ROOM_SLUGS, type Lang, type RoomId } from "@/lib/i18n";
-
-/** Romanian slug (the room id) from the slug in the URL, in either language. */
-function roomIdFromSlug(lang: Lang, slug: string): RoomId | undefined {
-  const ids = Object.keys(ROOM_SLUGS) as RoomId[];
-  return lang === "ro" ? ids.find((id) => id === slug) : ids.find((id) => ROOM_SLUGS[id] === slug);
-}
+import { getContent, roomHref, roomIdFromSlug, ROOM_SLUGS, type Lang } from "@/lib/i18n";
 
 /** The URL slugs of every room, for generateStaticParams. */
 export function roomSlugs(lang: Lang) {
   return getContent(lang).ROOMS.map((r) => ({
-    slug: lang === "ro" ? r.slug : ROOM_SLUGS[r.slug],
+    slug: ROOM_SLUGS[r.slug][lang],
   }));
 }
 

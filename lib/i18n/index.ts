@@ -4,10 +4,13 @@
 
 import * as contentRo from "@/lib/content";
 import * as contentEn from "@/lib/content.en";
+import * as contentDe from "@/lib/content.de";
 import * as retreatRo from "@/lib/retreat";
 import * as retreatEn from "@/lib/retreat.en";
+import * as retreatDe from "@/lib/retreat.de";
 import { COPY as copyRo, type Copy } from "@/lib/copy";
 import { COPY as copyEn } from "@/lib/copy.en";
+import { COPY as copyDe } from "@/lib/copy.de";
 import type { Lang } from "./config";
 
 export * from "./config";
@@ -56,11 +59,11 @@ type RetreatKeys =
 export type Content = Pick<typeof contentRo, ContentKeys>;
 export type Retreat = Pick<typeof retreatRo, RetreatKeys>;
 
-// Typed maps: if the English modules miss an export listed above, or give it
+// Typed maps: if the English or German modules miss an export listed above, or give it
 // a different shape, this is where the build fails.
-const CONTENT: Record<Lang, Content> = { ro: contentRo, en: contentEn };
-const RETREAT: Record<Lang, Retreat> = { ro: retreatRo, en: retreatEn };
-const COPY: Record<Lang, Copy> = { ro: copyRo, en: copyEn };
+const CONTENT: Record<Lang, Content> = { ro: contentRo, en: contentEn, de: contentDe };
+const RETREAT: Record<Lang, Retreat> = { ro: retreatRo, en: retreatEn, de: retreatDe };
+const COPY: Record<Lang, Copy> = { ro: copyRo, en: copyEn, de: copyDe };
 
 export const getContent = (lang: Lang) => CONTENT[lang];
 export const getRetreat = (lang: Lang) => RETREAT[lang];
