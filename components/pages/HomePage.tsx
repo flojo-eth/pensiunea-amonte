@@ -40,7 +40,6 @@ export default function HomePage({ lang }: { lang: Lang }) {
     REVIEWS,
     RATING_SUMMARY,
     STATS,
-    LOCATION,
     AUDIENCES,
   } = getContent(lang);
 
@@ -67,12 +66,14 @@ export default function HomePage({ lang }: { lang: Lang }) {
           }}
         />
         <div className="relative mx-auto w-full max-w-[1280px]">
-          <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
-            {LOCATION}
-          </span>
-          <h1 className="m-0 max-w-[16ch] font-serif text-[clamp(44px,7.5vw,96px)] font-semibold leading-[1.0] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
-            {t.hero.title}
+          {/* The h1 says what and where the place is, for search engines and AI
+              answers; the slogan below keeps its look but is not the heading. */}
+          <h1 className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
+            {t.hero.h1}
           </h1>
+          <p className="m-0 max-w-[16ch] font-serif text-[clamp(44px,7.5vw,96px)] font-semibold leading-[1.0] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+            {t.hero.title}
+          </p>
           <p className="mb-9 mt-[22px] max-w-[54ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
             {t.hero.lead}
           </p>

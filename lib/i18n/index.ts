@@ -18,7 +18,6 @@ export * from "./config";
 /** The exports of lib/content.ts that change with the language. */
 type ContentKeys =
   | "WHATSAPP_URL"
-  | "LOCATION"
   | "STATS"
   | "ROOMS"
   | "AMENITIES"

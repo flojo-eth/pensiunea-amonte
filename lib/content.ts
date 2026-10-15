@@ -74,7 +74,6 @@ export const CONTACT = {
 // Operatorul, afișat în footer.
 export const OPERATOR = { name: "Hostillo", url: "https://www.hostillo.ro/" } as const;
 
-export const LOCATION: string = "Valea Avrigului · Munții Făgăraș";
 
 export type Stat = { value: string; label: string };
 

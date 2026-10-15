@@ -39,7 +39,6 @@ export const WHATSAPP_URL = whatsappUrl(
   "Hallo! Ich möchte die Verfügbarkeit für einen Aufenthalt in der Pensiunea Amonte anfragen.",
 );
 
-export const LOCATION = "Valea Avrigului · Făgăraș-Gebirge";
 
 export const STATS: Stat[] = [
   { value: "10", label: "Zimmer und Studios" },

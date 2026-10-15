@@ -33,18 +33,20 @@ export const COPY = {
         "Pensiune la munte în Valea Avrigului, la 40 de minute de Sibiu: 10 unități cu balcon, jacuzzi și saună, terasă spre Făgăraș. Rezervări pe WhatsApp.",
     },
     hero: {
+      /** The page's h1: what and where, in plain words. Sits above the slogan. */
+      h1: "Pensiune la munte în Valea Avrigului, lângă Sibiu",
       alt: "Pensiunea Amonte - vedere exterioară",
       label: "[ FOTO - vedere exterioară pensiune ]",
       title: "Locul unde liniștea îți încarcă sufletul",
-      lead: "Pensiunea Amonte te primește cu căldură și aer curat - un refugiu la poalele Munților Făgăraș, departe de zgomot, aproape de tot ce contează.",
+      lead: "Pensiunea Amonte te primește cu căldură și aer curat - un refugiu la poalele Munților Făgăraș, departe de zgomot, aproape de natură.",
       primary: "Verifică disponibilitatea",
       secondary: "Vezi camerele",
     },
     about: {
       eyebrow: "Despre noi",
       title: "Un refugiu la munte, construit pentru relaxare.",
-      p1: "Situată la poalele Munților Făgăraș, în Valea Avrigului, Pensiunea Amonte îmbină rafinamentul cu ospitalitatea autentică. Camere generoase cu vedere spre munte, living cu șemineu și terasă panoramică.",
-      p2: "Te răsfățăm cu o zonă de relaxare cu jacuzzi și saună și cu liniștea pe care doar muntele o știe da - la doar 40 de minute de Sibiu.",
+      p1: "Situată la poalele Munților Făgăraș, în Valea Avrigului, Pensiunea Amonte îmbină rafinamentul cu ospitalitatea autentică. Camere moderne cu vedere spre munte, living cu șemineu și terasă panoramică.",
+      p2: "Te răsfățăm cu o zonă de relaxare cu jacuzzi și saună și cu liniștea pe care doar la munte o găsești - la doar 40 de minute de Sibiu.",
       more: "Citește mai mult despre noi",
       salon: { alt: "Salonul pensiunii", label: "[ interior / salon ]" },
       fireplace: { alt: "Șemineu", label: "[ șemineu ]" },

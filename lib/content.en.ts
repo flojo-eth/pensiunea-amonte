@@ -40,7 +40,6 @@ export const WHATSAPP_URL = whatsappUrl(
   "Hello! I'd like to check availability for a stay at Pensiunea Amonte.",
 );
 
-export const LOCATION = "Valea Avrigului · Făgăraș Mountains";
 
 export const STATS: Stat[] = [
   { value: "10", label: "Rooms and studios" },
