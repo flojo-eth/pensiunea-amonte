@@ -3,7 +3,9 @@
 // under the same content rules as the Romanian copy.
 
 import type { Copy } from "./copy";
-import { DRIVE_SIBIU } from "./retreat.de";
+import { CHECK_IN, CHECK_OUT, PRICE_FROM } from "./content";
+import { RATING_SUMMARY } from "./content.de";
+import { DRIVE_AIRPORT, DRIVE_SIBIU } from "./retreat.de";
 import { SITE_NAME } from "./site";
 
 const TAGLINE = "Bergpension";
@@ -45,6 +47,20 @@ export const COPY: Copy = {
       salon: { alt: "Der Salon der Pension", label: "[ Innenansicht / Salon ]" },
       fireplace: { alt: "Kamin", label: "[ Kamin ]" },
       bar: { alt: "Bar und Lounge", label: "[ Bar / Lounge ]" },
+    },
+    facts: {
+      eyebrow: "Auf einen Blick",
+      title: "Praktische Informationen",
+      items: [
+        { label: "Unterkunft", value: "10 Einheiten: 8 Doppelzimmer und 2 Familienstudios" },
+        { label: "Kapazität", value: "Bis zu 24 Gäste" },
+        { label: "Preise", value: `Ab ${PRICE_FROM} RON pro Nacht, Frühstück inklusive` },
+        { label: "Check-in / Check-out", value: `Ab ${CHECK_IN} Uhr / bis ${CHECK_OUT} Uhr` },
+        { label: "Entfernungen", value: `Sibiu: ${DRIVE_SIBIU}, 35 km. Flughafen Sibiu: ${DRIVE_AIRPORT}, 42 km` },
+        { label: "Entspannung", value: "Jacuzzi und Sauna (gegen Aufpreis), Wohnzimmer mit Kamin, Panoramaterrasse" },
+        { label: "Gruppen", value: "Exklusivmiete, mit Seminarraum für Gruppen" },
+        { label: "Bewertungen", value: `${RATING_SUMMARY.value} von 5, aus ${RATING_SUMMARY.count} Google-Bewertungen` },
+      ],
     },
     audiences: {
       eyebrow: "Für wen Amonte gemacht ist",

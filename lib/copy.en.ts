@@ -3,7 +3,9 @@
 // for word, under the same content rules as the Romanian copy.
 
 import type { Copy } from "./copy";
-import { DRIVE_SIBIU } from "./retreat.en";
+import { PRICE_FROM } from "./content";
+import { RATING_SUMMARY } from "./content.en";
+import { DRIVE_AIRPORT, DRIVE_SIBIU } from "./retreat.en";
 import { SITE_NAME } from "./site";
 
 const TAGLINE = "Mountain guesthouse";
@@ -45,6 +47,20 @@ export const COPY: Copy = {
       salon: { alt: "The guesthouse lounge", label: "[ interior / lounge ]" },
       fireplace: { alt: "Fireplace", label: "[ fireplace ]" },
       bar: { alt: "Bar and lounge", label: "[ bar / lounge ]" },
+    },
+    facts: {
+      eyebrow: "At a glance",
+      title: "Practical details",
+      items: [
+        { label: "Accommodation", value: "10 units: 8 double rooms and 2 family studios" },
+        { label: "Capacity", value: "Up to 24 guests" },
+        { label: "Rates", value: `From ${PRICE_FROM} RON a night, breakfast included` },
+        { label: "Check-in / check-out", value: `From 3 p.m. / by noon` },
+        { label: "Distances", value: `Sibiu: ${DRIVE_SIBIU}, 35 km. Sibiu Airport: ${DRIVE_AIRPORT}, 42 km` },
+        { label: "Relaxation", value: "Hot tub and sauna (for a fee), living room with fireplace, panoramic terrace" },
+        { label: "Groups", value: "Whole-property rental, with a group meeting room" },
+        { label: "Reviews", value: `${RATING_SUMMARY.value} out of 5, from ${RATING_SUMMARY.count} Google reviews` },
+      ],
     },
     audiences: {
       eyebrow: "Who Amonte is for",

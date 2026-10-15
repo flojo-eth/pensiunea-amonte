@@ -9,9 +9,18 @@
 // Server-only in practice: a few entries are functions, so never pass a whole
 // section to a client component.
 
-import { FIRE_SAFETY_AUTH } from "./content";
-import { DRIVE_SIBIU } from "./retreat";
+import { CHECK_IN, CHECK_OUT, FIRE_SAFETY_AUTH, PRICE_FROM, RATING_SUMMARY } from "./content";
+import { DRIVE_AIRPORT, DRIVE_SIBIU } from "./retreat";
 import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION } from "./site";
+
+/**
+ * "114 recenzii", "120 de recenzii": Romanian puts "de" before the noun when
+ * the last two digits of the number are 00 or from 20 up (and never below 20).
+ */
+function reviews(count: number) {
+  const lastTwo = count % 100;
+  return `${count} ${count >= 20 && (lastTwo === 0 || lastTwo >= 20) ? "de " : ""}recenzii`;
+}
 
 export const COPY = {
   site: {
@@ -52,6 +61,21 @@ export const COPY = {
       fireplace: { alt: "Șemineu", label: "[ șemineu ]" },
       bar: { alt: "Bar și zonă de relaxare", label: "[ bar / zonă de relaxare ]" },
     },
+    facts: {
+      eyebrow: "Pe scurt",
+      title: "Informații practice",
+      /** Only confirmed figures, read from the same constants as the rest of the site. */
+      items: [
+        { label: "Cazare", value: "10 unități: 8 camere duble și 2 studiouri de familie" },
+        { label: "Capacitate", value: "Până la 24 de oaspeți" },
+        { label: "Tarife", value: `De la ${PRICE_FROM} lei pe noapte, cu mic dejun inclus` },
+        { label: "Check-in / check-out", value: `De la ${CHECK_IN} / până la ${CHECK_OUT}` },
+        { label: "Distanțe", value: `Sibiu: ${DRIVE_SIBIU}, 35 km. Aeroportul Sibiu: ${DRIVE_AIRPORT}, 42 km` },
+        { label: "Relaxare", value: "Jacuzzi și saună (contra cost), living cu șemineu, terasă panoramică" },
+        { label: "Grupuri", value: "Închiriere integrală, cu sală pentru grupuri" },
+        { label: "Recenzii", value: `${RATING_SUMMARY.value} din 5, din ${reviews(RATING_SUMMARY.count)} Google` },
+      ],
+    },
     audiences: {
       eyebrow: "Pentru cine e Amonte",
       title: "Trei moduri de a trăi la munte",
@@ -83,7 +107,7 @@ export const COPY = {
       eyebrow: "Ce spun oaspeții",
       title: "Recenzii",
       summary: (value: string, count: number) =>
-        `${value} din 5 ⭐, pe baza a ${count} de recenzii Google`,
+        `${value} din 5 ⭐, pe baza a ${reviews(count)} Google`,
     },
     booking: {
       eyebrow: "Rezervare",
@@ -257,7 +281,7 @@ export const COPY = {
     eyebrow: "Evenimente",
     title: "Evenimente la Amonte",
     lead: "Pensiunea se închiriază integral, pentru un singur grup odată, fără alți oaspeți în curte. Sunt 24 de locuri de cazare, iar mesele se pregătesc la fața locului, pentru tot grupul.",
-    rating: (value: string, count: number) => `${value} din 5 pe Google, din ${count} de recenzii`,
+    rating: (value: string, count: number) => `${value} din 5 pe Google, din ${reviews(count)}`,
     video: {
       eyebrow: "Cum arată",
       title: "Locul, pe scurt",
@@ -296,7 +320,7 @@ export const COPY = {
       whatsapp: "Cere oferta pe WhatsApp",
       form: "Completează cererea de ofertă",
       rating: (value: string, count: number) =>
-        `${value} din 5 pe Google, din ${count} de recenzii · Rezervare confirmată garantată`,
+        `${value} din 5 pe Google, din ${reviews(count)} · Rezervare confirmată garantată`,
     },
     about: {
       eyebrow: "Despre noi",

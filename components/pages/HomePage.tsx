@@ -340,6 +340,25 @@ export default function HomePage({ lang }: { lang: Lang }) {
         </div>
         <ConsentMap />
       </section>
+
+      {/* PE SCURT: fapte confirmate, ușor de citat de motoarele de căutare și AI */}
+      <section className={`${container} ${sectionPad} border-t border-line`}>
+        <SectionHeading
+          eyebrow={t.facts.eyebrow}
+          title={t.facts.title}
+          className="mb-[clamp(32px,4vw,48px)]"
+        />
+        <dl className="m-0 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+          {t.facts.items.map((f) => (
+            <div key={f.label} className="rounded-lg border border-sand bg-card-2 p-[22px]">
+              <dt className="mb-1.5 text-[12.5px] font-semibold uppercase tracking-[1px] text-muted-2">
+                {f.label}
+              </dt>
+              <dd className="m-0 text-[15px] leading-snug text-[#33392f]">{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
     </>
   );
 }

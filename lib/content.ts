@@ -239,6 +239,8 @@ const roomPrices = ROOMS.map((r) => Number(r.price.replace(/\D/g, ""))).filter(
   (n) => Number.isFinite(n) && n > 0,
 );
 export const PRICE_RANGE = `${Math.min(...roomPrices)}-${Math.max(...roomPrices)} RON`;
+/** Lowest nightly rate, for "de la ... lei" in the homepage facts. */
+export const PRICE_FROM = Math.min(...roomPrices);
 
 export type Amenity = {
   icon: string;
