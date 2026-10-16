@@ -673,7 +673,14 @@ export const EVENT_CARDS: EventCard[] = [
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Bei einer Feier im Freien sind bis zu 60 Gäste möglich, drinnen bis zu 35; 24 von ihnen können in den 10 Einheiten der Pension übernachten. Die Mahlzeiten kochen wir selbst im Haus, Kuchen und Torte dürfen Sie mitbringen. Die Mindestbuchung beträgt 2 Nächte, und jede Feier erhält ein eigenes Angebot.",
+    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Bei einer Feier im Freien sind bis zu 60 Gäste möglich, drinnen bis zu 35; 24 von ihnen können in den 10 Einheiten der Pension übernachten. Wir bieten einen Rundum-Service, gemeinsam mit unseren Partnern: Die Mahlzeiten kochen wir selbst im Haus, und um die Organisation kümmern wir uns, damit Sie die Feier sorgenfrei genießen. Die Mindestbuchung beträgt 2 Nächte, und jede Feier erhält ein eigenes Angebot.",
+  organize: [
+    "Das Essen, von uns im Haus aus frischen regionalen Produkten gekocht",
+    "Die Dekoration, von uns oder von unseren Partnern gestellt",
+    "Unterkunft für bis zu 24 Gäste, am selben Ort wie die Feier",
+    "Zuverlässige Partner für alles Weitere, von uns koordiniert",
+    "Ein Angebot und dasselbe Team, vom ersten Gespräch bis zur Abreise",
+  ],
   types: [
     { title: "Taufen", body: "Das Essen nach der Taufe, mit Familie und Paten an einem Tisch, und Zimmer für die Gäste von weiter her." },
     { title: "Standesamtliche Trauungen", body: "Die Feier nach der Zeremonie, in privatem Rahmen, mit Blick auf das Făgăraș-Gebirge." },
@@ -683,22 +690,26 @@ export const PRIVATE_EVENTS: PrivateEvents = {
   facts: [
     { label: "Gäste", value: "Bis zu 60 im Freien, bis zu 35 drinnen" },
     { label: "Unterkunft", value: "24 Schlafplätze, in 8 Doppelzimmern und 2 Familienstudios" },
-    { label: "Essen", value: "Von uns im Haus gekocht. Kuchen und Torte dürfen Sie mitbringen" },
+    { label: "Essen", value: "Von uns im Haus gekocht, aus frischen regionalen Produkten" },
     { label: "Musik", value: "Musik und DJ erlaubt, keine Ruhezeit: Die Pension gehört ganz Ihnen" },
     { label: "Dekoration", value: "Von einem externen Dekorateur Ihrer Wahl oder von uns gestellt" },
     { label: "Räume", value: "Salon, Wohnzimmer mit Kamin, Panoramaterrasse, Hof und Lagerfeuer" },
     { label: "Buchung", value: "Exklusivmiete, mindestens 2 Nächte" },
-    { label: "Angebot", value: "Individuell für jede Feier" },
+    { label: "Organisation", value: "Rundum-Service, mit unseren Partnern, in einem Angebot" },
   ],
   steps: [
     { title: "Sie schreiben uns", body: "Per WhatsApp: Art der Feier, Datum und ungefähre Zahl der Gäste." },
-    { title: "Sie erhalten das Angebot", body: "Passend zu Ihrer Feier: Essen, Unterkunft, Dekoration und Bedingungen." },
+    { title: "Sie erhalten das Angebot", body: "Ein Angebot für die ganze Feier: Essen, Unterkunft, Dekoration und Partner." },
     { title: "Sie bestätigen", body: "Mit einer Anzahlung ist die Buchung bestätigt, und der Termin ist nur für Sie reserviert." },
   ],
   faq: [
     {
       q: "Welche privaten Feiern sind in der Pensiunea Amonte möglich?",
       a: "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Die Pension wird komplett vermietet, während Ihrer Feier gibt es also keine anderen Gäste.",
+    },
+    {
+      q: "Kümmern Sie sich um die Organisation der Feier?",
+      a: "Ja. Wir bieten einen Rundum-Service: Die Mahlzeiten kochen wir selbst, und für alles Weitere arbeiten wir mit Partnern, die wir koordinieren. Alles kommt in einem Angebot, und Sie genießen die Feier sorgenfrei.",
     },
     {
       q: "Wie viele Gäste können an einer Feier teilnehmen?",
@@ -710,7 +721,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     },
     {
       q: "Wer bereitet das Essen zu?",
-      a: "Die Mahlzeiten kochen wir selbst in der Pension. Kuchen und Torte dürfen Sie mitbringen.",
+      a: "Die Mahlzeiten kochen wir selbst in der Pension, aus frischen regionalen Produkten.",
     },
     {
       q: "Ist Musik erlaubt, und bis wann?",

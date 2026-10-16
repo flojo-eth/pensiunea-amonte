@@ -28,7 +28,8 @@ const sectionPad = "py-[clamp(56px,7vw,96px)]";
  * Private events: christenings, civil weddings, small weddings, birthdays.
  *
  * Minimal on purpose: a video hero, one paragraph that answers the question
- * outright, the facts as a definition list, photos and the FAQ (also emitted as
+ * outright, what "servicii complete" covers (the organizing is ours, the party
+ * theirs), the facts as a definition list, photos and the FAQ (also emitted as
  * FAQPage JSON-LD). Every figure on the page was confirmed by Flo; WhatsApp
  * clicks report page_source "evenimente-private", derived from the path.
  */
@@ -131,8 +132,27 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+      {/* ── SERVICII COMPLETE: organizarea e a noastră, petrecerea a lor ── */}
+      <section className={`${sectionPad} bg-pine`}>
+        <div className={`${container} flex flex-wrap gap-[clamp(32px,5vw,72px)]`}>
+          <div className="flex-1 basis-[340px]">
+            <SectionHeading eyebrow={t.organize.eyebrow} title={t.organize.title} tone="dark">
+              {t.organize.lead}
+            </SectionHeading>
+          </div>
+          <ul className="m-0 flex-1 basis-[340px] list-none space-y-4 self-center pl-0">
+            {PRIVATE_EVENTS.organize.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-[16px] leading-relaxed text-paper/90">
+                <span className="mt-1 text-[12px] text-gold" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ── TIPURI DE EVENIMENTE ── */}
-      <section className={`${container} pb-[clamp(56px,7vw,96px)]`}>
+      <section className={`${container} ${sectionPad}`}>
         <SectionHeading eyebrow={t.types.eyebrow} title={t.types.title} className="mb-[clamp(28px,4vw,44px)]" />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PRIVATE_EVENTS.types.map((type) => (

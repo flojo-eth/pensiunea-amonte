@@ -674,7 +674,14 @@ export const EVENT_CARDS: EventCard[] = [
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. An outdoor event can host up to 60 guests and an indoor one up to 35, and 24 of them can stay overnight in the guesthouse's 10 units. We cook the meals ourselves, on site, and you're welcome to bring your own cake and desserts. A booking is for at least 2 nights, and every event gets its own offer.",
+    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. An outdoor event can host up to 60 guests and an indoor one up to 35, and 24 of them can stay overnight in the guesthouse's 10 units. We offer a full service together with our partners: we cook the meals on site and take care of the organizing, so you can enjoy the party without a worry. A booking is for at least 2 nights, and every event gets its own offer.",
+  organize: [
+    "The meals, cooked by us on site from fresh local produce",
+    "The decor, provided by us or by our partners",
+    "Rooms for up to 24 guests, in the same place as the party",
+    "Trusted partners for everything else, coordinated by us",
+    "One offer and the same team, from the first conversation to departure",
+  ],
   types: [
     { title: "Christenings", body: "The meal after the christening, with family and godparents at one table, and rooms for those who travel from afar." },
     { title: "Civil weddings", body: "The celebration after the ceremony, in a private setting with a view of the Făgăraș Mountains." },
@@ -684,22 +691,26 @@ export const PRIVATE_EVENTS: PrivateEvents = {
   facts: [
     { label: "Guests", value: "Up to 60 outdoors, up to 35 indoors" },
     { label: "Accommodation", value: "24 beds, in 8 double rooms and 2 family studios" },
-    { label: "Meals", value: "Cooked by us, on site. You can bring your own cake and desserts" },
+    { label: "Meals", value: "Cooked by us, on site, from fresh local produce" },
     { label: "Music", value: "Music and DJs welcome, no quiet hours: the guesthouse is all yours" },
     { label: "Decor", value: "From an outside decorator of your choice, or provided by us" },
     { label: "Spaces", value: "Lounge, living room with fireplace, panoramic terrace, yard and campfire" },
     { label: "Booking", value: "Whole-property rental, 2-night minimum" },
-    { label: "Offer", value: "Tailored to each event" },
+    { label: "Organizing", value: "Full service, with our partners, in a single offer" },
   ],
   steps: [
     { title: "Message us", body: "On WhatsApp: the type of event, the date and roughly how many guests." },
-    { title: "Get your offer", body: "Built around your event: meals, accommodation, decor and terms." },
+    { title: "Get your offer", body: "One offer for the whole event: meals, accommodation, decor and partners." },
     { title: "Confirm", body: "A deposit confirms the booking, and the date is reserved for you alone." },
   ],
   faq: [
     {
       q: "What private events can be held at Pensiunea Amonte?",
       a: "Christenings, civil weddings, small weddings and birthdays. The guesthouse is rented in full, so there are no other guests during your event.",
+    },
+    {
+      q: "Do you take care of organizing the event?",
+      a: "Yes. We offer a full service: we cook the meals ourselves, and for everything else we work with partners we coordinate. It all comes in a single offer, and you get to enjoy the party without a worry.",
     },
     {
       q: "How many guests can attend an event?",
@@ -711,7 +722,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     },
     {
       q: "Who prepares the food?",
-      a: "We cook the meals ourselves, at the guesthouse. You're welcome to bring your own cake and desserts.",
+      a: "We cook the meals ourselves, at the guesthouse, from fresh local produce.",
     },
     {
       q: "Is music allowed, and until what time?",

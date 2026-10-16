@@ -305,13 +305,13 @@ export const COPY = {
     meta: {
       title: "Evenimente private lângă Sibiu",
       description:
-        "Botezuri, cununii civile, nunți mici și aniversări la Pensiunea Amonte, lângă Sibiu: până la 60 de invitați, cazare pentru 24, mese gătite la pensiune.",
+        "Botezuri, cununii civile, nunți mici și aniversări lângă Sibiu, cu organizare completă: până la 60 de invitați, cazare pentru 24, mese gătite la pensiune.",
     },
     crumb: "Evenimente private",
     hero: {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} de Sibiu`,
       title: "Evenimente private în Valea Avrigului, lângă Sibiu",
-      lead: "Botezuri, cununii civile, nunți mici și aniversări, cu toată pensiunea rezervată doar pentru voi.",
+      lead: "Botezuri, cununii civile, nunți mici și aniversări, cu toată pensiunea doar pentru voi. Noi ne ocupăm de organizare, voi vă bucurați de petrecere.",
       whatsapp: "Cere o ofertă pe WhatsApp",
       details: "Vezi detaliile",
       alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment",
@@ -319,6 +319,11 @@ export const COPY = {
     /** id of the details section, the target of the hero's second button. */
     detailsAnchor: "detalii",
     answer: { eyebrow: "Pe scurt", title: "Evenimentul vostru, la munte" },
+    organize: {
+      eyebrow: "Servicii complete",
+      title: "Voi petreceți, noi ne ocupăm de rest",
+      lead: "Împreună cu colaboratorii noștri, preluăm organizarea de la un capăt la altul. Ne spuneți ce vă doriți, iar voi rămâneți doar cu partea frumoasă: petrecerea.",
+    },
     types: { eyebrow: "Ce organizăm", title: "Patru tipuri de evenimente" },
     facts: { eyebrow: "Detalii", title: "Informații practice" },
     gallery: { eyebrow: "Galerie", title: "Spațiile pentru eveniment" },

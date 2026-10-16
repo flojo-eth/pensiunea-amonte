@@ -882,6 +882,8 @@ export const PRIVATE_EVENTS_VIDEO: { src: string | null; poster: string } = {
 export type PrivateEvents = {
   /** The direct answer under the hero: what, for whom, how many. */
   answer: string;
+  /** What "servicii complete" covers: the organizing is ours, the party theirs. */
+  organize: string[];
   types: { title: string; body: string }[];
   facts: { label: string; value: string }[];
   steps: { title: string; body: string }[];
@@ -891,7 +893,14 @@ export type PrivateEvents = {
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. La un eveniment în aer liber pot participa până la 60 de invitați, iar în interior până la 35; 24 dintre ei pot fi cazați în cele 10 unități ale pensiunii. Mesele le gătim noi, la pensiune, iar prăjiturile și tortul le puteți aduce. Rezervarea minimă este de 2 nopți, iar oferta se face pentru fiecare eveniment în parte.",
+    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. La un eveniment în aer liber pot participa până la 60 de invitați, iar în interior până la 35; 24 dintre ei pot fi cazați în cele 10 unități ale pensiunii. Oferim servicii complete, împreună cu colaboratorii noștri: mesele le gătim noi, la pensiune, iar de organizare ne ocupăm noi, ca voi să vă bucurați de petrecere fără griji. Rezervarea minimă este de 2 nopți, iar oferta se face pentru fiecare eveniment în parte.",
+  organize: [
+    "Mesele, gătite de noi la pensiune, din produse locale proaspete",
+    "Decorul, pus la dispoziție de noi sau de colaboratorii noștri",
+    "Cazarea pentru până la 24 de invitați, în același loc cu petrecerea",
+    "Colaboratori de încredere pentru tot ce mai e nevoie, coordonați de noi",
+    "O singură ofertă și aceeași echipă, de la prima discuție până la plecare",
+  ],
   types: [
     { title: "Botezuri", body: "Masa de după botez, cu familia și nașii la aceeași masă, și cazare pentru cei veniți de departe." },
     { title: "Cununii civile", body: "Petrecerea de după ceremonie, într-un cadru privat, cu priveliște spre Munții Făgăraș." },
@@ -901,22 +910,26 @@ export const PRIVATE_EVENTS: PrivateEvents = {
   facts: [
     { label: "Invitați", value: "Până la 60 în aer liber, până la 35 în interior" },
     { label: "Cazare", value: "24 de locuri, în 8 camere duble și 2 studiouri de familie" },
-    { label: "Mese", value: "Gătite de noi, la pensiune. Prăjiturile și tortul le puteți aduce" },
+    { label: "Mese", value: "Gătite de noi, la pensiune, din produse locale proaspete" },
     { label: "Muzică", value: "Muzică și DJ permise, fără oră de liniște: pensiunea e doar a voastră" },
     { label: "Decor", value: "Decorațiuni de la furnizori externi sau puse la dispoziție de noi" },
     { label: "Spații", value: "Salon, living cu șemineu, terasă panoramică, curte și foc de tabără" },
     { label: "Rezervare", value: "Închiriere integrală, minimum 2 nopți" },
-    { label: "Ofertă", value: "Personalizată, pentru fiecare eveniment" },
+    { label: "Organizare", value: "Servicii complete, cu colaboratorii noștri, într-o singură ofertă" },
   ],
   steps: [
     { title: "Ne scrieți", body: "Pe WhatsApp: tipul evenimentului, data și numărul aproximativ de invitați." },
-    { title: "Primiți oferta", body: "Construită pentru evenimentul vostru: mese, cazare, decor și condiții." },
+    { title: "Primiți oferta", body: "O singură ofertă pentru tot evenimentul: mese, cazare, decor și colaboratori." },
     { title: "Confirmați", body: "Rezervarea se confirmă cu un avans, iar data rămâne blocată doar pentru voi." },
   ],
   faq: [
     {
       q: "Ce evenimente private se pot organiza la Pensiunea Amonte?",
       a: "Botezuri, cununii civile, nunți mici și aniversări. Pensiunea se închiriază integral, deci la eveniment nu există alți oaspeți.",
+    },
+    {
+      q: "Vă ocupați voi de organizarea evenimentului?",
+      a: "Da. Oferim servicii complete: mesele le gătim noi, iar pentru restul lucrăm cu colaboratorii noștri, pe care îi coordonăm noi. Totul vine într-o singură ofertă, iar voi vă bucurați de petrecere fără griji.",
     },
     {
       q: "Câți invitați pot participa la un eveniment?",
@@ -928,7 +941,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     },
     {
       q: "Cine pregătește mâncarea?",
-      a: "Mesele le gătim noi, la pensiune. Prăjiturile și tortul le puteți aduce.",
+      a: "Mesele le gătim noi, la pensiune, din produse locale proaspete.",
     },
     {
       q: "Este permisă muzica și până la ce oră?",
