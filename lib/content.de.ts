@@ -691,7 +691,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     { label: "Gäste", value: "Bis zu 60 im Freien, bis zu 35 drinnen" },
     { label: "Unterkunft", value: "24 Schlafplätze, in 8 Doppelzimmern und 2 Familienstudios" },
     { label: "Essen", value: "Von uns im Haus gekocht, aus frischen regionalen Produkten" },
-    { label: "Musik", value: "Musik und DJ erlaubt, keine Ruhezeit: Die Pension gehört ganz Ihnen" },
+    { label: "Musik", value: "Musik und DJ erlaubt" },
     { label: "Dekoration", value: "Von einem externen Dekorateur Ihrer Wahl oder von uns gestellt" },
     { label: "Räume", value: "Salon, Wohnzimmer mit Kamin, Panoramaterrasse, Hof und Lagerfeuer" },
     { label: "Buchung", value: "Exklusivmiete, mindestens 2 Nächte" },
@@ -724,8 +724,8 @@ export const PRIVATE_EVENTS: PrivateEvents = {
       a: "Die Mahlzeiten kochen wir selbst in der Pension, aus frischen regionalen Produkten.",
     },
     {
-      q: "Ist Musik erlaubt, und bis wann?",
-      a: "Ja, auch mit DJ. Bei Feiern gibt es keine Ruhezeit, da die Pension komplett vermietet ist.",
+      q: "Ist Musik bei der Feier erlaubt?",
+      a: "Ja, auch mit DJ. Den Ablauf des Abends planen wir für jede Feier gemeinsam.",
     },
     {
       q: "Dürfen wir Dekoration mitbringen?",

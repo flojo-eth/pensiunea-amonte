@@ -692,7 +692,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     { label: "Guests", value: "Up to 60 outdoors, up to 35 indoors" },
     { label: "Accommodation", value: "24 beds, in 8 double rooms and 2 family studios" },
     { label: "Meals", value: "Cooked by us, on site, from fresh local produce" },
-    { label: "Music", value: "Music and DJs welcome, no quiet hours: the guesthouse is all yours" },
+    { label: "Music", value: "Music and DJs welcome" },
     { label: "Decor", value: "From an outside decorator of your choice, or provided by us" },
     { label: "Spaces", value: "Lounge, living room with fireplace, panoramic terrace, yard and campfire" },
     { label: "Booking", value: "Whole-property rental, 2-night minimum" },
@@ -725,8 +725,8 @@ export const PRIVATE_EVENTS: PrivateEvents = {
       a: "We cook the meals ourselves, at the guesthouse, from fresh local produce.",
     },
     {
-      q: "Is music allowed, and until what time?",
-      a: "Yes, DJs included. There are no quiet hours during events, since the guesthouse is rented in full.",
+      q: "Is music allowed at the event?",
+      a: "Yes, DJs included. We plan the evening's schedule together for each event.",
     },
     {
       q: "Can we bring decorations?",

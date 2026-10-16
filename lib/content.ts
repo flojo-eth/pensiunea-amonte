@@ -911,7 +911,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     { label: "Invitați", value: "Până la 60 în aer liber, până la 35 în interior" },
     { label: "Cazare", value: "24 de locuri, în 8 camere duble și 2 studiouri de familie" },
     { label: "Mese", value: "Gătite de noi, la pensiune, din produse locale proaspete" },
-    { label: "Muzică", value: "Muzică și DJ permise, fără oră de liniște: pensiunea e doar a voastră" },
+    { label: "Muzică", value: "Muzică și DJ permise" },
     { label: "Decor", value: "Decorațiuni de la furnizori externi sau puse la dispoziție de noi" },
     { label: "Spații", value: "Salon, living cu șemineu, terasă panoramică, curte și foc de tabără" },
     { label: "Rezervare", value: "Închiriere integrală, minimum 2 nopți" },
@@ -944,8 +944,8 @@ export const PRIVATE_EVENTS: PrivateEvents = {
       a: "Mesele le gătim noi, la pensiune, din produse locale proaspete.",
     },
     {
-      q: "Este permisă muzica și până la ce oră?",
-      a: "Da, inclusiv cu DJ. La evenimente nu există oră de liniște, pentru că pensiunea este închiriată integral.",
+      q: "Este permisă muzica la eveniment?",
+      a: "Da, inclusiv cu DJ. Programul serii îl stabilim împreună, pentru fiecare eveniment.",
     },
     {
       q: "Putem aduce decorațiuni?",
