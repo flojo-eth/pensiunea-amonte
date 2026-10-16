@@ -312,12 +312,13 @@ export const COPY = {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} de Sibiu`,
       title: "Evenimente private în Valea Avrigului, lângă Sibiu",
       lead: "Botezuri, cununii civile, nunți mici și aniversări, cu toată pensiunea doar pentru voi. Noi ne ocupăm de organizare, voi vă bucurați de petrecere.",
-      whatsapp: "Cere o ofertă pe WhatsApp",
-      details: "Vezi detaliile",
+      form: "Completează formularul",
+      whatsapp: "Scrie-ne pe WhatsApp",
       alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment",
     },
-    /** id of the details section, the target of the hero's second button. */
+    /** ids of the details and form sections, targets of in-page links. */
     detailsAnchor: "detalii",
+    formAnchor: "formular",
     answer: { eyebrow: "Pe scurt", title: "Evenimentul vostru, la munte" },
     organize: {
       eyebrow: "Servicii complete",
@@ -327,7 +328,16 @@ export const COPY = {
     types: { eyebrow: "Ce organizăm", title: "Patru tipuri de evenimente" },
     facts: { eyebrow: "Detalii", title: "Informații practice" },
     gallery: { eyebrow: "Galerie", title: "Spațiile pentru eveniment" },
-    steps: { eyebrow: "Rezervare", title: "Cum rezervați" },
+    steps: {
+      eyebrow: "Rezervare",
+      title: "Cum rezervați",
+      lead: "Fiecare eveniment are detaliile lui, de aceea vă invităm întâi să vedeți locul, iar oferta o facem după.",
+    },
+    form: {
+      eyebrow: "Cerere",
+      title: "Spuneți-ne despre eveniment",
+      lead: "Completați formularul și vă contactăm pentru a stabili o vizită la pensiune.",
+    },
     faq: { eyebrow: "Întrebări frecvente", title: "Ce ne întreabă cei care organizează" },
     cta: {
       eyebrow: "Hai să vorbim",

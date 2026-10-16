@@ -682,10 +682,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     "Ein Angebot und dasselbe Team, vom ersten Gespräch bis zur Abreise",
   ],
   types: [
-    { title: "Taufen", body: "Das Essen nach der Taufe, mit Familie und Paten an einem Tisch, und Zimmer für die Gäste von weiter her." },
-    { title: "Standesamtliche Trauungen", body: "Die Feier nach der Zeremonie, in privatem Rahmen, mit Blick auf das Făgăraș-Gebirge." },
-    { title: "Kleine Hochzeiten", body: "Bis zu 60 Gäste im Freien oder 35 drinnen, mit der ganzen Pension nur für Sie." },
-    { title: "Geburtstage", body: "Geburtstage und Jubiläen, mit Musik, Lagerfeuer und nur einer Gruppe im ganzen Haus." },
+    { title: "Taufen", option: "Taufe", body: "Das Essen nach der Taufe, mit Familie und Paten an einem Tisch, und Zimmer für die Gäste von weiter her." },
+    { title: "Standesamtliche Trauungen", option: "Standesamtliche Trauung", body: "Die Feier nach der Zeremonie, in privatem Rahmen, mit Blick auf das Făgăraș-Gebirge." },
+    { title: "Kleine Hochzeiten", option: "Kleine Hochzeit", body: "Bis zu 60 Gäste im Freien oder 35 drinnen, mit der ganzen Pension nur für Sie." },
+    { title: "Geburtstage", option: "Geburtstag", body: "Geburtstage und Jubiläen, mit Musik, Lagerfeuer und nur einer Gruppe im ganzen Haus." },
   ],
   facts: [
     { label: "Gäste", value: "Bis zu 60 im Freien, bis zu 35 drinnen" },
@@ -698,9 +698,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     { label: "Organisation", value: "Rundum-Service, mit unseren Partnern, in einem Angebot" },
   ],
   steps: [
-    { title: "Sie schreiben uns", body: "Per WhatsApp: Art der Feier, Datum und ungefähre Zahl der Gäste." },
-    { title: "Sie erhalten das Angebot", body: "Ein Angebot für die ganze Feier: Essen, Unterkunft, Dekoration und Partner." },
-    { title: "Sie bestätigen", body: "Mit einer Anzahlung ist die Buchung bestätigt, und der Termin ist nur für Sie reserviert." },
+    { title: "Formular ausfüllen", body: "Art der Feier, Datum und ungefähre Zahl der Gäste. Dauert eine Minute." },
+    { title: "Besichtigung vereinbaren", body: "Wir vereinbaren ein Treffen in der Pension, damit Sie den Ort sehen und Ihre Wünsche mit uns besprechen." },
+    { title: "Individuelles Angebot erhalten", body: "Nach der Besichtigung erstellen wir das Angebot für Ihre Feier: Essen, Unterkunft, Dekoration und Partner." },
+    { title: "Mit Anzahlung bestätigen", body: "Mit einer Anzahlung ist die Buchung bestätigt, und der Termin ist nur für Sie reserviert." },
   ],
   faq: [
     {
@@ -710,6 +711,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     {
       q: "Kümmern Sie sich um die Organisation der Feier?",
       a: "Ja. Wir bieten einen Rundum-Service: Die Mahlzeiten kochen wir selbst, und für alles Weitere arbeiten wir mit Partnern, die wir koordinieren. Alles kommt in einem Angebot, und Sie genießen die Feier sorgenfrei.",
+    },
+    {
+      q: "Können wir die Pension besichtigen, bevor wir ein Angebot erhalten?",
+      a: "Ja, darum bitten wir sogar. Jede Feier hat ihre eigenen Details, deshalb vereinbaren wir nach dem Formular eine Besichtigung und besprechen vor Ort, was Sie sich wünschen. Das Angebot senden wir nach der Besichtigung.",
     },
     {
       q: "Wie viele Gäste können an einer Feier teilnehmen?",
@@ -737,7 +742,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     },
     {
       q: "Was kostet eine private Feier?",
-      a: "Feste Preise gibt es nicht: Das Angebot hängt von der Zahl der Gäste, vom Menü und vom Zeitraum ab. Schreiben Sie uns per WhatsApp, und wir senden Ihnen ein Angebot für Ihre Feier.",
+      a: "Feste Preise gibt es nicht: Das Angebot hängt von der Zahl der Gäste, vom Menü und vom Zeitraum ab. Füllen Sie das Formular aus, besichtigen Sie die Pension, und nach der Besichtigung senden wir Ihnen das Angebot für Ihre Feier.",
     },
     {
       q: "Welche Stornobedingungen gelten?",

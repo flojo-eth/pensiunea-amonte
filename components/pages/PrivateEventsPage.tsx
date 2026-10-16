@@ -7,6 +7,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GalleryGrid from "@/components/GalleryGrid";
+import EventRequestForm from "@/components/EventRequestForm";
 import { pageMeta } from "@/lib/seo";
 import { CONTACT, PRIVATE_EVENTS_VIDEO } from "@/lib/content";
 import { getContent, getCopy, href, type Lang } from "@/lib/i18n";
@@ -29,8 +30,9 @@ const sectionPad = "py-[clamp(56px,7vw,96px)]";
  *
  * Minimal on purpose: a video hero, one paragraph that answers the question
  * outright, what "servicii complete" covers (the organizing is ours, the party
- * theirs), the facts as a definition list, photos and the FAQ (also emitted as
- * FAQPage JSON-LD). Every figure on the page was confirmed by Flo; WhatsApp
+ * theirs), the facts as a definition list, photos, the four booking steps
+ * (form, visit, offer, deposit: people see the place before any offer), the
+ * request form and the FAQ (also emitted as FAQPage JSON-LD). Every figure on the page was confirmed by Flo; WhatsApp
  * clicks report page_source "evenimente-private", derived from the path.
  */
 export default function PrivateEventsPage({ lang }: { lang: Lang }) {
@@ -111,13 +113,14 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
           <p className="mb-8 mt-[22px] max-w-[58ch] text-[clamp(16px,2vw,19px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
             {t.hero.lead}
           </p>
+          {/* The form leads: step 1 of booking is the form, then a visit. */}
           <div className="flex flex-wrap gap-3.5">
-            <WhatsAppButton href={PRIVATE_EVENTS_WHATSAPP} ctaPosition="hero" className={btnPaper}>
+            <Link href={`#${t.formAnchor}`} className={btnPaper}>
+              {t.hero.form}
+            </Link>
+            <WhatsAppButton href={PRIVATE_EVENTS_WHATSAPP} ctaPosition="hero" className={btnOutlineLight}>
               {t.hero.whatsapp}
             </WhatsAppButton>
-            <Link href={`#${t.detailsAnchor}`} className={btnOutlineLight}>
-              {t.hero.details}
-            </Link>
           </div>
         </div>
       </section>
@@ -195,10 +198,12 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      {/* ── CUM REZERVAȚI ── */}
+      {/* ── CUM REZERVAȚI: formular, vizită, ofertă, avans ── */}
       <section className={`${container} ${sectionPad}`}>
-        <SectionHeading eyebrow={t.steps.eyebrow} title={t.steps.title} className="mb-[clamp(28px,4vw,44px)]" />
-        <ol className="m-0 grid list-none gap-5 pl-0 md:grid-cols-3">
+        <SectionHeading eyebrow={t.steps.eyebrow} title={t.steps.title} className="mb-[clamp(28px,4vw,44px)]">
+          {t.steps.lead}
+        </SectionHeading>
+        <ol className="m-0 grid list-none gap-5 pl-0 sm:grid-cols-2 lg:grid-cols-4">
           {PRIVATE_EVENTS.steps.map((step, i) => (
             <li key={step.title} className="rounded-xl border border-line bg-card p-[clamp(18px,3vw,24px)]">
               <span className="font-serif text-[30px] font-semibold leading-none text-terracotta">{i + 1}</span>
@@ -207,6 +212,16 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
             </li>
           ))}
         </ol>
+      </section>
+
+      {/* ── FORMULAR: pasul 1 ── */}
+      <section id={t.formAnchor} className={`${sectionPad} scroll-mt-24 bg-sand`}>
+        <div className={`${container} mx-auto max-w-[900px]`}>
+          <SectionHeading eyebrow={t.form.eyebrow} title={t.form.title} className="mb-8">
+            {t.form.lead}
+          </SectionHeading>
+          <EventRequestForm eventTypes={PRIVATE_EVENTS.types.map((type) => type.option)} />
+        </div>
       </section>
 
       {/* ── FAQ, 1:1 cu FAQPage JSON-LD de mai sus ── */}

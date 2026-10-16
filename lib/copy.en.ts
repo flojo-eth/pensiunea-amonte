@@ -296,11 +296,12 @@ export const COPY: Copy = {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} from Sibiu`,
       title: "Private events in Valea Avrigului, near Sibiu",
       lead: "Christenings, civil weddings, small weddings and birthdays, with the whole guesthouse just for you. We take care of the organizing, you enjoy the party.",
-      whatsapp: "Request an offer on WhatsApp",
-      details: "See the details",
+      form: "Fill in the form",
+      whatsapp: "Message us on WhatsApp",
       alt: "The Pensiunea Amonte lounge, set up for an event",
     },
     detailsAnchor: "details",
+    formAnchor: "request-form",
     answer: { eyebrow: "At a glance", title: "Your event, in the mountains" },
     organize: {
       eyebrow: "Full service",
@@ -310,7 +311,16 @@ export const COPY: Copy = {
     types: { eyebrow: "What we host", title: "Four kinds of events" },
     facts: { eyebrow: "Details", title: "Practical details" },
     gallery: { eyebrow: "Gallery", title: "The spaces for your event" },
-    steps: { eyebrow: "Booking", title: "How to book" },
+    steps: {
+      eyebrow: "Booking",
+      title: "How to book",
+      lead: "Every event has its own details, so we invite you to see the place first and put the offer together after.",
+    },
+    form: {
+      eyebrow: "Request",
+      title: "Tell us about your event",
+      lead: "Fill in the form and we'll get in touch to arrange a visit to the guesthouse.",
+    },
     faq: { eyebrow: "Frequently asked questions", title: "What hosts ask us" },
     cta: {
       eyebrow: "Let's talk",

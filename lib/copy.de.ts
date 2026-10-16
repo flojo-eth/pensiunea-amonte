@@ -296,11 +296,12 @@ export const COPY: Copy = {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} bis Sibiu`,
       title: "Private Feiern in Valea Avrigului bei Sibiu",
       lead: "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage, mit der ganzen Pension nur für Sie. Wir kümmern uns um die Organisation, Sie genießen die Feier.",
-      whatsapp: "Angebot per WhatsApp anfordern",
-      details: "Details ansehen",
+      form: "Formular ausfüllen",
+      whatsapp: "Per WhatsApp schreiben",
       alt: "Der Salon der Pensiunea Amonte, für eine Feier hergerichtet",
     },
     detailsAnchor: "details",
+    formAnchor: "anfrage",
     answer: { eyebrow: "Auf einen Blick", title: "Ihre Feier in den Bergen" },
     organize: {
       eyebrow: "Rundum-Service",
@@ -310,7 +311,16 @@ export const COPY: Copy = {
     types: { eyebrow: "Was wir ausrichten", title: "Vier Arten von Feiern" },
     facts: { eyebrow: "Details", title: "Praktische Informationen" },
     gallery: { eyebrow: "Galerie", title: "Die Räume für Ihre Feier" },
-    steps: { eyebrow: "Buchung", title: "So buchen Sie" },
+    steps: {
+      eyebrow: "Buchung",
+      title: "So buchen Sie",
+      lead: "Jede Feier hat ihre eigenen Details, deshalb laden wir Sie zuerst zur Besichtigung ein und erstellen das Angebot danach.",
+    },
+    form: {
+      eyebrow: "Anfrage",
+      title: "Erzählen Sie uns von Ihrer Feier",
+      lead: "Füllen Sie das Formular aus, und wir melden uns, um eine Besichtigung der Pension zu vereinbaren.",
+    },
     faq: { eyebrow: "Häufige Fragen", title: "Was Gastgeber uns fragen" },
     cta: {
       eyebrow: "Sprechen wir darüber",

@@ -683,10 +683,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     "One offer and the same team, from the first conversation to departure",
   ],
   types: [
-    { title: "Christenings", body: "The meal after the christening, with family and godparents at one table, and rooms for those who travel from afar." },
-    { title: "Civil weddings", body: "The celebration after the ceremony, in a private setting with a view of the Făgăraș Mountains." },
-    { title: "Small weddings", body: "Up to 60 guests outdoors or 35 indoors, with the whole guesthouse just for you." },
-    { title: "Birthdays", body: "Birthdays and anniversaries, with music, a campfire and only one group in the whole guesthouse." },
+    { title: "Christenings", option: "Christening", body: "The meal after the christening, with family and godparents at one table, and rooms for those who travel from afar." },
+    { title: "Civil weddings", option: "Civil wedding", body: "The celebration after the ceremony, in a private setting with a view of the Făgăraș Mountains." },
+    { title: "Small weddings", option: "Small wedding", body: "Up to 60 guests outdoors or 35 indoors, with the whole guesthouse just for you." },
+    { title: "Birthdays", option: "Birthday", body: "Birthdays and anniversaries, with music, a campfire and only one group in the whole guesthouse." },
   ],
   facts: [
     { label: "Guests", value: "Up to 60 outdoors, up to 35 indoors" },
@@ -699,9 +699,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     { label: "Organizing", value: "Full service, with our partners, in a single offer" },
   ],
   steps: [
-    { title: "Message us", body: "On WhatsApp: the type of event, the date and roughly how many guests." },
-    { title: "Get your offer", body: "One offer for the whole event: meals, accommodation, decor and partners." },
-    { title: "Confirm", body: "A deposit confirms the booking, and the date is reserved for you alone." },
+    { title: "Fill in the form", body: "The type of event, the date and roughly how many guests. It takes a minute." },
+    { title: "Schedule a visit", body: "We arrange a meeting at the guesthouse, so you can see the place and talk through the details you have in mind." },
+    { title: "Get a tailored offer", body: "After the visit, we put together the offer for your event: meals, accommodation, decor and partners." },
+    { title: "Confirm with a deposit", body: "A deposit confirms the booking, and the date is reserved for you alone." },
   ],
   faq: [
     {
@@ -711,6 +712,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     {
       q: "Do you take care of organizing the event?",
       a: "Yes. We offer a full service: we cook the meals ourselves, and for everything else we work with partners we coordinate. It all comes in a single offer, and you get to enjoy the party without a worry.",
+    },
+    {
+      q: "Can we see the guesthouse before we get an offer?",
+      a: "Yes, and we'd like you to. Every event has its own details, so once you've filled in the form we arrange a visit to the guesthouse and talk through what you have in mind on site. We send the offer after the visit.",
     },
     {
       q: "How many guests can attend an event?",
@@ -738,7 +743,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     },
     {
       q: "How much does a private event cost?",
-      a: "There are no fixed rates: the offer depends on the number of guests, the menu and the dates. Message us on WhatsApp and we'll send an offer for your event.",
+      a: "There are no fixed rates: the offer depends on the number of guests, the menu and the dates. Fill in the form, come and see the guesthouse, and we'll send the offer for your event after the visit.",
     },
     {
       q: "What is the cancellation policy?",

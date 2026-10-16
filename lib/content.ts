@@ -884,7 +884,8 @@ export type PrivateEvents = {
   answer: string;
   /** What "servicii complete" covers: the organizing is ours, the party theirs. */
   organize: string[];
-  types: { title: string; body: string }[];
+  /** `option` is the singular, for the request form's event-type list. */
+  types: { title: string; option: string; body: string }[];
   facts: { label: string; value: string }[];
   steps: { title: string; body: string }[];
   faq: Faq[];
@@ -902,10 +903,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     "O singură ofertă și aceeași echipă, de la prima discuție până la plecare",
   ],
   types: [
-    { title: "Botezuri", body: "Masa de după botez, cu familia și nașii la aceeași masă, și cazare pentru cei veniți de departe." },
-    { title: "Cununii civile", body: "Petrecerea de după ceremonie, într-un cadru privat, cu priveliște spre Munții Făgăraș." },
-    { title: "Nunți mici", body: "Până la 60 de invitați în aer liber sau 35 în interior, cu pensiunea doar pentru voi." },
-    { title: "Aniversări", body: "Zile de naștere și aniversări, cu muzică, foc de tabără și un singur grup în toată pensiunea." },
+    { title: "Botezuri", option: "Botez", body: "Masa de după botez, cu familia și nașii la aceeași masă, și cazare pentru cei veniți de departe." },
+    { title: "Cununii civile", option: "Cununie civilă", body: "Petrecerea de după ceremonie, într-un cadru privat, cu priveliște spre Munții Făgăraș." },
+    { title: "Nunți mici", option: "Nuntă mică", body: "Până la 60 de invitați în aer liber sau 35 în interior, cu pensiunea doar pentru voi." },
+    { title: "Aniversări", option: "Aniversare", body: "Zile de naștere și aniversări, cu muzică, foc de tabără și un singur grup în toată pensiunea." },
   ],
   facts: [
     { label: "Invitați", value: "Până la 60 în aer liber, până la 35 în interior" },
@@ -918,9 +919,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     { label: "Organizare", value: "Servicii complete, cu colaboratorii noștri, într-o singură ofertă" },
   ],
   steps: [
-    { title: "Ne scrieți", body: "Pe WhatsApp: tipul evenimentului, data și numărul aproximativ de invitați." },
-    { title: "Primiți oferta", body: "O singură ofertă pentru tot evenimentul: mese, cazare, decor și colaboratori." },
-    { title: "Confirmați", body: "Rezervarea se confirmă cu un avans, iar data rămâne blocată doar pentru voi." },
+    { title: "Completați formularul", body: "Tipul evenimentului, data și numărul aproximativ de invitați. Durează un minut." },
+    { title: "Programați o vizită", body: "Stabilim împreună o întâlnire la pensiune, ca să vedeți locul și să discutăm detaliile pe care le aveți în minte." },
+    { title: "Primiți oferta personalizată", body: "După vizită, construim oferta pentru evenimentul vostru: mese, cazare, decor și colaboratori." },
+    { title: "Confirmați cu un avans", body: "Rezervarea se confirmă cu un avans, iar data rămâne blocată doar pentru voi." },
   ],
   faq: [
     {
@@ -930,6 +932,10 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     {
       q: "Vă ocupați voi de organizarea evenimentului?",
       a: "Da. Oferim servicii complete: mesele le gătim noi, iar pentru restul lucrăm cu colaboratorii noștri, pe care îi coordonăm noi. Totul vine într-o singură ofertă, iar voi vă bucurați de petrecere fără griji.",
+    },
+    {
+      q: "Putem vedea pensiunea înainte de a primi oferta?",
+      a: "Da, chiar vă rugăm să veniți. Fiecare eveniment are detaliile lui, de aceea, după ce completați formularul, stabilim o vizită la pensiune și discutăm pe loc ce vă doriți. Oferta o trimitem după vizită.",
     },
     {
       q: "Câți invitați pot participa la un eveniment?",
@@ -957,7 +963,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
     },
     {
       q: "Cât costă un eveniment privat?",
-      a: "Nu avem tarife fixe: oferta depinde de numărul de invitați, de meniu și de perioadă. Ne scrieți pe WhatsApp și vă trimitem o ofertă pentru evenimentul vostru.",
+      a: "Nu avem tarife fixe: oferta depinde de numărul de invitați, de meniu și de perioadă. Completați formularul, vă invităm să vedeți pensiunea, iar după vizită vă trimitem oferta pentru evenimentul vostru.",
     },
     {
       q: "Care este politica de anulare?",
