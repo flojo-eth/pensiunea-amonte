@@ -285,6 +285,36 @@ export const COPY: Copy = {
     },
   },
 
+  privateEvents: {
+    meta: {
+      title: "Private events near Sibiu",
+      description:
+        "Christenings, civil weddings, small weddings and birthdays at Pensiunea Amonte near Sibiu: up to 60 guests, rooms for 24, meals cooked on site.",
+    },
+    crumb: "Private events",
+    hero: {
+      eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} from Sibiu`,
+      title: "Private events in Valea Avrigului, near Sibiu",
+      lead: "Christenings, civil weddings, small weddings and birthdays, with the whole guesthouse reserved just for you.",
+      whatsapp: "Request an offer on WhatsApp",
+      details: "See the details",
+      alt: "The Pensiunea Amonte lounge, set up for an event",
+    },
+    detailsAnchor: "details",
+    answer: { eyebrow: "At a glance", title: "Your event, in the mountains" },
+    types: { eyebrow: "What we host", title: "Four kinds of events" },
+    facts: { eyebrow: "Details", title: "Practical details" },
+    gallery: { eyebrow: "Gallery", title: "The spaces for your event" },
+    steps: { eyebrow: "Booking", title: "How to book" },
+    faq: { eyebrow: "Frequently asked questions", title: "What hosts ask us" },
+    cta: {
+      eyebrow: "Let's talk",
+      title: "Tell us what you're celebrating",
+      lead: "The type of event, the date and how many guests. We'll build the rest together.",
+      button: "Message us on WhatsApp",
+    },
+  },
+
   corporate: {
     meta: {
       title: "Team building and corporate retreat venue near Sibiu",

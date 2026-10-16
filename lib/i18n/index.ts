@@ -38,7 +38,8 @@ type ContentKeys =
   | "ABOUT_FACILITIES"
   | "ABOUT_FACILITIES_FB"
   | "ROOM_SPA_NOTE"
-  | "EVENT_CARDS";
+  | "EVENT_CARDS"
+  | "PRIVATE_EVENTS";
 
 /** The exports of lib/retreat.ts that change with the language. */
 type RetreatKeys =

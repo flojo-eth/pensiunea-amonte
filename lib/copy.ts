@@ -301,6 +301,37 @@ export const COPY = {
     },
   },
 
+  privateEvents: {
+    meta: {
+      title: "Evenimente private lângă Sibiu",
+      description:
+        "Botezuri, cununii civile, nunți mici și aniversări la Pensiunea Amonte, lângă Sibiu: până la 60 de invitați, cazare pentru 24, mese gătite la pensiune.",
+    },
+    crumb: "Evenimente private",
+    hero: {
+      eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} de Sibiu`,
+      title: "Evenimente private în Valea Avrigului, lângă Sibiu",
+      lead: "Botezuri, cununii civile, nunți mici și aniversări, cu toată pensiunea rezervată doar pentru voi.",
+      whatsapp: "Cere o ofertă pe WhatsApp",
+      details: "Vezi detaliile",
+      alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment",
+    },
+    /** id of the details section, the target of the hero's second button. */
+    detailsAnchor: "detalii",
+    answer: { eyebrow: "Pe scurt", title: "Evenimentul vostru, la munte" },
+    types: { eyebrow: "Ce organizăm", title: "Patru tipuri de evenimente" },
+    facts: { eyebrow: "Detalii", title: "Informații practice" },
+    gallery: { eyebrow: "Galerie", title: "Spațiile pentru eveniment" },
+    steps: { eyebrow: "Rezervare", title: "Cum rezervați" },
+    faq: { eyebrow: "Întrebări frecvente", title: "Ce ne întreabă cei care organizează" },
+    cta: {
+      eyebrow: "Hai să vorbim",
+      title: "Spuneți-ne ce eveniment pregătiți",
+      lead: "Tipul evenimentului, data și câți invitați. Restul îl construim împreună.",
+      button: "Scrie-ne pe WhatsApp",
+    },
+  },
+
   corporate: {
     meta: {
       // The root layout template appends " | Pensiunea Amonte".

@@ -13,6 +13,7 @@ const PAGES_AFTER_ROOMS: RouteId[] = [
   "gallery",
   "book",
   "events",
+  "privateEvents",
   "corporate",
 ];
 

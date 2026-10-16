@@ -26,6 +26,7 @@ export const ROUTES = {
   activities: { ro: "/activitati-in-zona", en: "/en/things-to-do", de: "/de/ausflugsziele" },
   services: { ro: "/servicii", en: "/en/services", de: "/de/leistungen" },
   events: { ro: "/evenimente", en: "/en/events", de: "/de/veranstaltungen" },
+  privateEvents: { ro: "/evenimente-private", en: "/en/private-events", de: "/de/private-feiern" },
   corporate: { ro: "/retreat-corporate", en: "/en/corporate-retreat", de: "/de/firmen-retreat" },
   book: { ro: "/rezerva-acum", en: "/en/book-now", de: "/de/jetzt-buchen" },
   privacy: { ro: "/politica-de-confidentialitate", en: "/en/privacy-policy", de: "/de/datenschutz" },

@@ -29,6 +29,7 @@ import {
   type Faq,
   type GalleryItem,
   type NavLink,
+  type PrivateEvents,
   type Review,
   type Room,
   type ServiceDetail,
@@ -458,13 +459,7 @@ export const NAV_LINKS: readonly NavLink[] = [
     label: "Events",
     children: [
       { href: href("en", "corporate"), label: "Retreats and team building" },
-      {
-        href: PRIVATE_EVENTS_WHATSAPP,
-        label: "Private events",
-        whatsapp: true,
-        // Same page_source as on the Romanian site: one funnel, two languages.
-        pageSource: "evenimente-private-cta",
-      },
+      { href: href("en", "privateEvents"), label: "Private events" },
     ],
   },
 ];
@@ -669,8 +664,89 @@ export const EVENT_CARDS: EventCard[] = [
     photo: "/salon.jpeg",
     photoLabel: "[ PHOTO: lounge set up for a private event ]",
     alt: "The Pensiunea Amonte lounge, set up for a private event",
-    href: PRIVATE_EVENTS_WHATSAPP,
-    cta: "Ask on WhatsApp",
-    whatsapp: true,
+    href: href("en", "privateEvents"),
+    cta: "See the details",
+    whatsapp: false,
   },
 ];
+
+// ── /en/private-events ── christenings, civil weddings, small weddings, birthdays ──
+
+export const PRIVATE_EVENTS: PrivateEvents = {
+  answer:
+    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. An outdoor event can host up to 60 guests and an indoor one up to 35, and 24 of them can stay overnight in the guesthouse's 10 units. We cook the meals ourselves, on site, and you're welcome to bring your own cake and desserts. A booking is for at least 2 nights, and every event gets its own offer.",
+  types: [
+    { title: "Christenings", body: "The meal after the christening, with family and godparents at one table, and rooms for those who travel from afar." },
+    { title: "Civil weddings", body: "The celebration after the ceremony, in a private setting with a view of the Făgăraș Mountains." },
+    { title: "Small weddings", body: "Up to 60 guests outdoors or 35 indoors, with the whole guesthouse just for you." },
+    { title: "Birthdays", body: "Birthdays and anniversaries, with music, a campfire and only one group in the whole guesthouse." },
+  ],
+  facts: [
+    { label: "Guests", value: "Up to 60 outdoors, up to 35 indoors" },
+    { label: "Accommodation", value: "24 beds, in 8 double rooms and 2 family studios" },
+    { label: "Meals", value: "Cooked by us, on site. You can bring your own cake and desserts" },
+    { label: "Music", value: "Music and DJs welcome, no quiet hours: the guesthouse is all yours" },
+    { label: "Decor", value: "From an outside decorator of your choice, or provided by us" },
+    { label: "Spaces", value: "Lounge, living room with fireplace, panoramic terrace, yard and campfire" },
+    { label: "Booking", value: "Whole-property rental, 2-night minimum" },
+    { label: "Offer", value: "Tailored to each event" },
+  ],
+  steps: [
+    { title: "Message us", body: "On WhatsApp: the type of event, the date and roughly how many guests." },
+    { title: "Get your offer", body: "Built around your event: meals, accommodation, decor and terms." },
+    { title: "Confirm", body: "A deposit confirms the booking, and the date is reserved for you alone." },
+  ],
+  faq: [
+    {
+      q: "What private events can be held at Pensiunea Amonte?",
+      a: "Christenings, civil weddings, small weddings and birthdays. The guesthouse is rented in full, so there are no other guests during your event.",
+    },
+    {
+      q: "How many guests can attend an event?",
+      a: "Up to 60 guests at an outdoor event and up to 35 at an indoor one. Of these, 24 can stay overnight at the guesthouse.",
+    },
+    {
+      q: "Can guests attend without staying overnight?",
+      a: "Yes. There are 24 beds, and up to 60 guests can attend an outdoor event, or 35 an indoor one.",
+    },
+    {
+      q: "Who prepares the food?",
+      a: "We cook the meals ourselves, at the guesthouse. You're welcome to bring your own cake and desserts.",
+    },
+    {
+      q: "Is music allowed, and until what time?",
+      a: "Yes, DJs included. There are no quiet hours during events, since the guesthouse is rented in full.",
+    },
+    {
+      q: "Can we bring decorations?",
+      a: "Yes. You can work with an outside decorator, or we can provide the decorations.",
+    },
+    {
+      q: "What is the minimum booking?",
+      a: "For a private event the guesthouse is rented in full, for at least 2 nights.",
+    },
+    {
+      q: "How much does a private event cost?",
+      a: "There are no fixed rates: the offer depends on the number of guests, the menu and the dates. Message us on WhatsApp and we'll send an offer for your event.",
+    },
+    {
+      q: "What is the cancellation policy?",
+      a: "For whole-property rentals, cancellation is free up to 28 days before arrival and the deposit is refunded in full. After that, the deposit is kept.",
+    },
+    {
+      q: "Where is the guesthouse?",
+      a: "In Valea Avrigului, Sibiu County, at the foot of the Făgăraș Mountains, about 40 minutes from Sibiu.",
+    },
+  ],
+  gallery: [
+    { photo: "/salon.jpeg", label: "The guesthouse lounge", span: 2 },
+    { photo: "/retreat/masa-mare-living.jpg", label: "The large table in the living room", span: 2 },
+    { photo: "/priveliste-fagaras.jpg", label: "The terrace, facing the Făgăraș Mountains", span: 1 },
+    { photo: "/firepit.jpeg", label: "Campfire in the evening", span: 1 },
+    { photo: "/semineu.jpeg", label: "Living room with fireplace", span: 1 },
+    { photo: "/servicii-facilitati/bar-lounge.jpeg", label: "The guesthouse bar", span: 1 },
+    { photo: "/servicii-facilitati/mancare-coaste-porc-iberic.jpeg", label: "Dishes cooked on site", span: 1 },
+    { photo: "/exterior-pensiune.jpeg", label: "The guesthouse and its yard", span: 2 },
+    { photo: "/camera-deluxe/pat-tip-1.jpeg", label: "Deluxe Double Room", span: 1 },
+  ],
+};

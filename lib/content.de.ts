@@ -28,6 +28,7 @@ import {
   type Faq,
   type GalleryItem,
   type NavLink,
+  type PrivateEvents,
   type Review,
   type Room,
   type ServiceDetail,
@@ -457,13 +458,7 @@ export const NAV_LINKS: readonly NavLink[] = [
     label: "Veranstaltungen",
     children: [
       { href: href("de", "corporate"), label: "Retreats und Teambuilding" },
-      {
-        href: PRIVATE_EVENTS_WHATSAPP,
-        label: "Private Feiern",
-        whatsapp: true,
-        // Same page_source as on the Romanian site: one funnel, all languages.
-        pageSource: "evenimente-private-cta",
-      },
+      { href: href("de", "privateEvents"), label: "Private Feiern" },
     ],
   },
 ];
@@ -668,8 +663,89 @@ export const EVENT_CARDS: EventCard[] = [
     photo: "/salon.jpeg",
     photoLabel: "[ FOTO: Salon, für eine private Feier hergerichtet ]",
     alt: "Der Salon der Pensiunea Amonte, für eine private Feier hergerichtet",
-    href: PRIVATE_EVENTS_WHATSAPP,
-    cta: "Per WhatsApp fragen",
-    whatsapp: true,
+    href: href("de", "privateEvents"),
+    cta: "Details ansehen",
+    whatsapp: false,
   },
 ];
+
+// ── /de/private-feiern ── Taufen, standesamtliche Trauungen, kleine Hochzeiten, Geburtstage ──
+
+export const PRIVATE_EVENTS: PrivateEvents = {
+  answer:
+    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Bei einer Feier im Freien sind bis zu 60 Gäste möglich, drinnen bis zu 35; 24 von ihnen können in den 10 Einheiten der Pension übernachten. Die Mahlzeiten kochen wir selbst im Haus, Kuchen und Torte dürfen Sie mitbringen. Die Mindestbuchung beträgt 2 Nächte, und jede Feier erhält ein eigenes Angebot.",
+  types: [
+    { title: "Taufen", body: "Das Essen nach der Taufe, mit Familie und Paten an einem Tisch, und Zimmer für die Gäste von weiter her." },
+    { title: "Standesamtliche Trauungen", body: "Die Feier nach der Zeremonie, in privatem Rahmen, mit Blick auf das Făgăraș-Gebirge." },
+    { title: "Kleine Hochzeiten", body: "Bis zu 60 Gäste im Freien oder 35 drinnen, mit der ganzen Pension nur für Sie." },
+    { title: "Geburtstage", body: "Geburtstage und Jubiläen, mit Musik, Lagerfeuer und nur einer Gruppe im ganzen Haus." },
+  ],
+  facts: [
+    { label: "Gäste", value: "Bis zu 60 im Freien, bis zu 35 drinnen" },
+    { label: "Unterkunft", value: "24 Schlafplätze, in 8 Doppelzimmern und 2 Familienstudios" },
+    { label: "Essen", value: "Von uns im Haus gekocht. Kuchen und Torte dürfen Sie mitbringen" },
+    { label: "Musik", value: "Musik und DJ erlaubt, keine Ruhezeit: Die Pension gehört ganz Ihnen" },
+    { label: "Dekoration", value: "Von einem externen Dekorateur Ihrer Wahl oder von uns gestellt" },
+    { label: "Räume", value: "Salon, Wohnzimmer mit Kamin, Panoramaterrasse, Hof und Lagerfeuer" },
+    { label: "Buchung", value: "Exklusivmiete, mindestens 2 Nächte" },
+    { label: "Angebot", value: "Individuell für jede Feier" },
+  ],
+  steps: [
+    { title: "Sie schreiben uns", body: "Per WhatsApp: Art der Feier, Datum und ungefähre Zahl der Gäste." },
+    { title: "Sie erhalten das Angebot", body: "Passend zu Ihrer Feier: Essen, Unterkunft, Dekoration und Bedingungen." },
+    { title: "Sie bestätigen", body: "Mit einer Anzahlung ist die Buchung bestätigt, und der Termin ist nur für Sie reserviert." },
+  ],
+  faq: [
+    {
+      q: "Welche privaten Feiern sind in der Pensiunea Amonte möglich?",
+      a: "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Die Pension wird komplett vermietet, während Ihrer Feier gibt es also keine anderen Gäste.",
+    },
+    {
+      q: "Wie viele Gäste können an einer Feier teilnehmen?",
+      a: "Bis zu 60 Gäste bei einer Feier im Freien und bis zu 35 bei einer Feier drinnen. Davon können 24 in der Pension übernachten.",
+    },
+    {
+      q: "Können auch Gäste teilnehmen, die nicht übernachten?",
+      a: "Ja. Es gibt 24 Schlafplätze, und an der Feier können bis zu 60 Gäste im Freien oder 35 drinnen teilnehmen.",
+    },
+    {
+      q: "Wer bereitet das Essen zu?",
+      a: "Die Mahlzeiten kochen wir selbst in der Pension. Kuchen und Torte dürfen Sie mitbringen.",
+    },
+    {
+      q: "Ist Musik erlaubt, und bis wann?",
+      a: "Ja, auch mit DJ. Bei Feiern gibt es keine Ruhezeit, da die Pension komplett vermietet ist.",
+    },
+    {
+      q: "Dürfen wir Dekoration mitbringen?",
+      a: "Ja. Sie können mit einem externen Dekorateur arbeiten, oder wir stellen die Dekoration.",
+    },
+    {
+      q: "Wie lange muss mindestens gebucht werden?",
+      a: "Für eine private Feier wird die Pension komplett vermietet, für mindestens 2 Nächte.",
+    },
+    {
+      q: "Was kostet eine private Feier?",
+      a: "Feste Preise gibt es nicht: Das Angebot hängt von der Zahl der Gäste, vom Menü und vom Zeitraum ab. Schreiben Sie uns per WhatsApp, und wir senden Ihnen ein Angebot für Ihre Feier.",
+    },
+    {
+      q: "Welche Stornobedingungen gelten?",
+      a: "Bei Exklusivmiete ist die Stornierung bis mindestens 28 Tage vor Anreise kostenlos, und die Anzahlung wird vollständig erstattet. Danach wird die Anzahlung einbehalten.",
+    },
+    {
+      q: "Wo liegt die Pension?",
+      a: "In Valea Avrigului, im Kreis Sibiu, am Fuß des Făgăraș-Gebirges, etwa 40 Minuten von Sibiu entfernt.",
+    },
+  ],
+  gallery: [
+    { photo: "/salon.jpeg", label: "Der Salon der Pension", span: 2 },
+    { photo: "/retreat/masa-mare-living.jpg", label: "Der große Tisch im Wohnzimmer", span: 2 },
+    { photo: "/priveliste-fagaras.jpg", label: "Die Terrasse mit Blick auf das Făgăraș-Gebirge", span: 1 },
+    { photo: "/firepit.jpeg", label: "Lagerfeuer am Abend", span: 1 },
+    { photo: "/semineu.jpeg", label: "Wohnzimmer mit Kamin", span: 1 },
+    { photo: "/servicii-facilitati/bar-lounge.jpeg", label: "Die Bar der Pension", span: 1 },
+    { photo: "/servicii-facilitati/mancare-coaste-porc-iberic.jpeg", label: "Gerichte aus unserer Küche", span: 1 },
+    { photo: "/exterior-pensiune.jpeg", label: "Die Pension und der Hof", span: 2 },
+    { photo: "/camera-deluxe/pat-tip-1.jpeg", label: "Deluxe-Doppelzimmer", span: 1 },
+  ],
+};

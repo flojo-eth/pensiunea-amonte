@@ -285,6 +285,36 @@ export const COPY: Copy = {
     },
   },
 
+  privateEvents: {
+    meta: {
+      title: "Private Feiern bei Sibiu",
+      description:
+        "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage in der Pensiunea Amonte bei Sibiu: bis zu 60 Gäste, 24 Schlafplätze, eigene Küche.",
+    },
+    crumb: "Private Feiern",
+    hero: {
+      eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} bis Sibiu`,
+      title: "Private Feiern in Valea Avrigului bei Sibiu",
+      lead: "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage, mit der ganzen Pension nur für Sie.",
+      whatsapp: "Angebot per WhatsApp anfordern",
+      details: "Details ansehen",
+      alt: "Der Salon der Pensiunea Amonte, für eine Feier hergerichtet",
+    },
+    detailsAnchor: "details",
+    answer: { eyebrow: "Auf einen Blick", title: "Ihre Feier in den Bergen" },
+    types: { eyebrow: "Was wir ausrichten", title: "Vier Arten von Feiern" },
+    facts: { eyebrow: "Details", title: "Praktische Informationen" },
+    gallery: { eyebrow: "Galerie", title: "Die Räume für Ihre Feier" },
+    steps: { eyebrow: "Buchung", title: "So buchen Sie" },
+    faq: { eyebrow: "Häufige Fragen", title: "Was Gastgeber uns fragen" },
+    cta: {
+      eyebrow: "Sprechen wir darüber",
+      title: "Erzählen Sie uns, was Sie feiern",
+      lead: "Art der Feier, Datum und Zahl der Gäste. Den Rest gestalten wir gemeinsam.",
+      button: "Per WhatsApp schreiben",
+    },
+  },
+
   corporate: {
     meta: {
       title: "Location für Teambuilding und Firmen-Retreats bei Sibiu",

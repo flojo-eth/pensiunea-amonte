@@ -572,7 +572,7 @@ export const GROUP_REVIEWS = groupReviews(REVIEWS);
 export const GOOGLE_REVIEWS_URL =
   "https://www.google.com/maps/place/Pensiunea+Amonte/@45.6635569,24.451449,143m/data=!3m1!1e3!4m11!3m10!1s0x474cf3ea27771923:0xd77f268af65251e9!5m2!4m1!1i2!8m2!3d45.6635162!4d24.4515096!9m1!1b1!16s%2Fg%2F11y3clzx0j?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D";
 
-/** Pre-filled WhatsApp message while /evenimente-private does not exist yet. */
+/** Pre-filled WhatsApp message for private events (the page's own CTAs). */
 export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
   "Bună ziua, aș dori informații pentru un eveniment privat la Pensiunea Amonte",
 );
@@ -608,13 +608,7 @@ export const NAV_LINKS: readonly NavLink[] = [
     label: "Evenimente",
     children: [
       { href: "/retreat-corporate", label: "Retreat și teambuilding" },
-      {
-        // TODO: swap for /evenimente-private once that page exists.
-        href: PRIVATE_EVENTS_WHATSAPP,
-        label: "Evenimente private",
-        whatsapp: true,
-        pageSource: "evenimente-private-cta",
-      },
+      { href: "/evenimente-private", label: "Evenimente private" },
     ],
   },
 ] as const;
@@ -863,8 +857,113 @@ export const EVENT_CARDS: EventCard[] = [
     photo: "/salon.jpeg",
     photoLabel: "[ FOTO: salon aranjat pentru un eveniment privat ]",
     alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment privat",
-    href: PRIVATE_EVENTS_WHATSAPP,
-    cta: "Întreabă pe WhatsApp",
-    whatsapp: true,
+    href: "/evenimente-private",
+    cta: "Vezi detaliile",
+    whatsapp: false,
   },
 ];
+
+// ── /evenimente-private ── botezuri, cununii, nunți mici, aniversări ──
+//
+// Cifre confirmate de Flo în octombrie 2026: până la 60 de invitați la un
+// eveniment în aer liber, până la 35 în interior; 24 de locuri de cazare;
+// minimum 2 nopți la închirierea integrală. Tarifele nu se publică.
+
+/**
+ * Hero video for the private-events page. `src` stays null until the file
+ * exists (put it in /public/video/ and set the path): until then the poster
+ * photo is shown on its own, never an empty box.
+ */
+export const PRIVATE_EVENTS_VIDEO: { src: string | null; poster: string } = {
+  src: null,
+  poster: "/salon.jpeg",
+};
+
+export type PrivateEvents = {
+  /** The direct answer under the hero: what, for whom, how many. */
+  answer: string;
+  types: { title: string; body: string }[];
+  facts: { label: string; value: string }[];
+  steps: { title: string; body: string }[];
+  faq: Faq[];
+  gallery: GalleryItem[];
+};
+
+export const PRIVATE_EVENTS: PrivateEvents = {
+  answer:
+    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. La un eveniment în aer liber pot participa până la 60 de invitați, iar în interior până la 35; 24 dintre ei pot fi cazați în cele 10 unități ale pensiunii. Mesele le gătim noi, la pensiune, iar prăjiturile și tortul le puteți aduce. Rezervarea minimă este de 2 nopți, iar oferta se face pentru fiecare eveniment în parte.",
+  types: [
+    { title: "Botezuri", body: "Masa de după botez, cu familia și nașii la aceeași masă, și cazare pentru cei veniți de departe." },
+    { title: "Cununii civile", body: "Petrecerea de după ceremonie, într-un cadru privat, cu priveliște spre Munții Făgăraș." },
+    { title: "Nunți mici", body: "Până la 60 de invitați în aer liber sau 35 în interior, cu pensiunea doar pentru voi." },
+    { title: "Aniversări", body: "Zile de naștere și aniversări, cu muzică, foc de tabără și un singur grup în toată pensiunea." },
+  ],
+  facts: [
+    { label: "Invitați", value: "Până la 60 în aer liber, până la 35 în interior" },
+    { label: "Cazare", value: "24 de locuri, în 8 camere duble și 2 studiouri de familie" },
+    { label: "Mese", value: "Gătite de noi, la pensiune. Prăjiturile și tortul le puteți aduce" },
+    { label: "Muzică", value: "Muzică și DJ permise, fără oră de liniște: pensiunea e doar a voastră" },
+    { label: "Decor", value: "Decorațiuni de la furnizori externi sau puse la dispoziție de noi" },
+    { label: "Spații", value: "Salon, living cu șemineu, terasă panoramică, curte și foc de tabără" },
+    { label: "Rezervare", value: "Închiriere integrală, minimum 2 nopți" },
+    { label: "Ofertă", value: "Personalizată, pentru fiecare eveniment" },
+  ],
+  steps: [
+    { title: "Ne scrieți", body: "Pe WhatsApp: tipul evenimentului, data și numărul aproximativ de invitați." },
+    { title: "Primiți oferta", body: "Construită pentru evenimentul vostru: mese, cazare, decor și condiții." },
+    { title: "Confirmați", body: "Rezervarea se confirmă cu un avans, iar data rămâne blocată doar pentru voi." },
+  ],
+  faq: [
+    {
+      q: "Ce evenimente private se pot organiza la Pensiunea Amonte?",
+      a: "Botezuri, cununii civile, nunți mici și aniversări. Pensiunea se închiriază integral, deci la eveniment nu există alți oaspeți.",
+    },
+    {
+      q: "Câți invitați pot participa la un eveniment?",
+      a: "Până la 60 de invitați la un eveniment în aer liber și până la 35 la unul în interior. Dintre aceștia, 24 pot fi cazați la pensiune.",
+    },
+    {
+      q: "Pot participa și invitați care nu sunt cazați la pensiune?",
+      a: "Da. Cazarea are 24 de locuri, iar la eveniment pot veni până la 60 de invitați în aer liber sau 35 în interior.",
+    },
+    {
+      q: "Cine pregătește mâncarea?",
+      a: "Mesele le gătim noi, la pensiune. Prăjiturile și tortul le puteți aduce.",
+    },
+    {
+      q: "Este permisă muzica și până la ce oră?",
+      a: "Da, inclusiv cu DJ. La evenimente nu există oră de liniște, pentru că pensiunea este închiriată integral.",
+    },
+    {
+      q: "Putem aduce decorațiuni?",
+      a: "Da. Puteți lucra cu un furnizor extern de decor sau vă putem pune noi la dispoziție decorațiunile.",
+    },
+    {
+      q: "Care este perioada minimă de rezervare?",
+      a: "Pentru un eveniment privat pensiunea se închiriază integral, pentru minimum 2 nopți.",
+    },
+    {
+      q: "Cât costă un eveniment privat?",
+      a: "Nu avem tarife fixe: oferta depinde de numărul de invitați, de meniu și de perioadă. Ne scrieți pe WhatsApp și vă trimitem o ofertă pentru evenimentul vostru.",
+    },
+    {
+      q: "Care este politica de anulare?",
+      a: "Pentru închirierea integrală, anularea este gratuită cu cel puțin 28 de zile înainte de sosire, iar avansul se restituie integral. Sub acest termen, avansul se reține.",
+    },
+    {
+      q: "Unde se află pensiunea?",
+      a: "În Valea Avrigului, județul Sibiu, la poalele Munților Făgăraș, la aproximativ 40 de minute de Sibiu.",
+    },
+  ],
+  gallery: [
+    { photo: "/salon.jpeg", label: "Salonul pensiunii", span: 2 },
+    { photo: "/retreat/masa-mare-living.jpg", label: "Masa mare din living", span: 2 },
+    { photo: "/priveliste-fagaras.jpg", label: "Terasa cu priveliște spre Făgăraș", span: 1 },
+    { photo: "/firepit.jpeg", label: "Foc de tabără, seara", span: 1 },
+    { photo: "/semineu.jpeg", label: "Living cu șemineu", span: 1 },
+    { photo: "/servicii-facilitati/bar-lounge.jpeg", label: "Barul pensiunii", span: 1 },
+    { photo: "/servicii-facilitati/mancare-coaste-porc-iberic.jpeg", label: "Preparate gătite la pensiune", span: 1 },
+    { photo: "/exterior-pensiune.jpeg", label: "Pensiunea și curtea", span: 2 },
+    { photo: "/camera-deluxe/pat-tip-1.jpeg", label: "Cameră dublă Deluxe", span: 1 },
+  ],
+};

@@ -44,6 +44,9 @@ app/
     (site)/               SiteShell: AvailabilityBanner + Nav + Footer + site-wide JSON-LD
       page.tsx camere/ despre-noi/ galerie/ servicii/ activitati-in-zona/
       evenimente/ politica-*/ termeni-si-conditii/
+      evenimente-private/ botezuri, cununii, nunți mici, aniversări; content in
+                          PRIVATE_EVENTS (lib/content*.ts), hero video in
+                          PRIVATE_EVENTS_VIDEO (src null until the file exists)
     retreat-corporate/    B2B landing, OUTSIDE (site): SiteShell `landing` swaps the
                           nav for LandingHeader (logo + language only); no links
                           off the page except the footer; content in lib/retreat.ts
@@ -162,7 +165,8 @@ ordinary booking. So:
 - `whatsapp_click` has exactly one source, `pushWhatsAppClick()` in `lib/gtm.ts`
   — never push it by hand;
 - `page_source` is derived from the pathname **at click time**, not at mount.
-  `/retreat-corporate` yields exactly `retreat-corporate`, `/` yields `home`. An
+  `/retreat-corporate` yields exactly `retreat-corporate`, `/evenimente-private`
+  yields `evenimente-private`, `/` yields `home`. An
   explicit `pageSource` prop wins, and is only for CTAs that do not belong to
   their page (the footer sends `footer`).
 - **`page_source` does not change with the language.** English and German pages

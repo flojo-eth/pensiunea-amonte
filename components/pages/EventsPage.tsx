@@ -94,11 +94,10 @@ export default function EventsPage({ lang }: { lang: Lang }) {
                 </ul>
                 <div className="mt-7">
                   {c.whatsapp ? (
-                    // /evenimente-private nu există încă; până atunci intenția
-                    // merge direct pe WhatsApp, cu sursă proprie în GA4.
+                    // A card can still point straight at WhatsApp; page_source
+                    // then comes from the path ("evenimente").
                     <WhatsAppButton
                       href={c.href}
-                      pageSource="evenimente-private-cta"
                       className={`${btnTerracotta} block w-full text-center`}
                     >
                       {c.cta}
