@@ -673,8 +673,9 @@ export const EVENT_CARDS: EventCard[] = [
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Bei einer Feier im Freien sind bis zu 60 Gäste möglich, drinnen bis zu 35; 24 von ihnen können in den 10 Einheiten der Pension übernachten. Wir bieten einen Rundum-Service, gemeinsam mit unseren Partnern: Die Mahlzeiten kochen wir selbst im Haus, und um die Organisation kümmern wir uns, damit Sie die Feier sorgenfrei genießen. Die Mindestbuchung beträgt 2 Nächte, und jede Feier erhält ein eigenes Angebot.",
+    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Bei einer Feier im Freien sind bis zu 60 Gäste möglich, drinnen bis zu 35; 24 von ihnen können in den 10 Einheiten der Pension übernachten. Wir bieten einen Rundum-Service, gemeinsam mit unseren Partnern: Die Mahlzeiten kochen wir selbst im Haus, und um die Organisation kümmern wir uns, damit Sie die Feier sorgenfrei genießen. Jede Feier gestalten wir so, wie Sie sie sich wünschen. Die Mindestbuchung beträgt 2 Nächte, und jede Feier erhält ein eigenes Angebot.",
   organize: [
+    "Eine Feier nach Ihren Wünschen: Menü, Dekoration, Musik und Ablauf des Abends planen wir gemeinsam",
     "Das Essen, von uns im Haus aus frischen regionalen Produkten gekocht",
     "Die Dekoration, von uns oder von unseren Partnern gestellt",
     "Unterkunft für bis zu 24 Gäste, am selben Ort wie die Feier",

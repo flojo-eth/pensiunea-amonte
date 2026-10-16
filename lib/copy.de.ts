@@ -308,7 +308,11 @@ export const COPY: Copy = {
       title: "Sie feiern, wir kümmern uns um den Rest",
       lead: "Gemeinsam mit unseren Partnern übernehmen wir die Organisation von Anfang bis Ende. Sie sagen uns, was Sie sich wünschen, und Ihnen bleibt nur der schönste Teil: die Feier.",
     },
-    types: { eyebrow: "Was wir ausrichten", title: "Vier Arten von Feiern" },
+    types: {
+      eyebrow: "Was wir ausrichten",
+      title: "Vier Arten von Feiern",
+      lead: "Feste Pakete gibt es nicht: Jede Feier gestalten wir rund um Ihre Wünsche.",
+    },
     facts: { eyebrow: "Details", title: "Praktische Informationen" },
     gallery: { eyebrow: "Galerie", title: "Die Räume für Ihre Feier" },
     steps: {

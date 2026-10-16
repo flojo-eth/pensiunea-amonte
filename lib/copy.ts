@@ -325,7 +325,11 @@ export const COPY = {
       title: "Voi petreceți, noi ne ocupăm de rest",
       lead: "Împreună cu colaboratorii noștri, preluăm organizarea de la un capăt la altul. Ne spuneți ce vă doriți, iar voi rămâneți doar cu partea frumoasă: petrecerea.",
     },
-    types: { eyebrow: "Ce organizăm", title: "Patru tipuri de evenimente" },
+    types: {
+      eyebrow: "Ce organizăm",
+      title: "Patru tipuri de evenimente",
+      lead: "Nu avem pachete fixe: fiecare eveniment îl construim în jurul a ce vă doriți voi.",
+    },
     facts: { eyebrow: "Detalii", title: "Informații practice" },
     gallery: { eyebrow: "Galerie", title: "Spațiile pentru eveniment" },
     steps: {

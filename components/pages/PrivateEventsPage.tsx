@@ -156,7 +156,9 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
 
       {/* ── TIPURI DE EVENIMENTE ── */}
       <section className={`${container} ${sectionPad}`}>
-        <SectionHeading eyebrow={t.types.eyebrow} title={t.types.title} className="mb-[clamp(28px,4vw,44px)]" />
+        <SectionHeading eyebrow={t.types.eyebrow} title={t.types.title} className="mb-[clamp(28px,4vw,44px)]">
+          {t.types.lead}
+        </SectionHeading>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PRIVATE_EVENTS.types.map((type) => (
             <article key={type.title} className="rounded-xl border border-line bg-card p-[clamp(20px,3vw,28px)]">

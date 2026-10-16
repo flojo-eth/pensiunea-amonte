@@ -894,8 +894,9 @@ export type PrivateEvents = {
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. La un eveniment în aer liber pot participa până la 60 de invitați, iar în interior până la 35; 24 dintre ei pot fi cazați în cele 10 unități ale pensiunii. Oferim servicii complete, împreună cu colaboratorii noștri: mesele le gătim noi, la pensiune, iar de organizare ne ocupăm noi, ca voi să vă bucurați de petrecere fără griji. Rezervarea minimă este de 2 nopți, iar oferta se face pentru fiecare eveniment în parte.",
+    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. La un eveniment în aer liber pot participa până la 60 de invitați, iar în interior până la 35; 24 dintre ei pot fi cazați în cele 10 unități ale pensiunii. Oferim servicii complete, împreună cu colaboratorii noștri: mesele le gătim noi, la pensiune, iar de organizare ne ocupăm noi, ca voi să vă bucurați de petrecere fără griji. Fiecare eveniment îl construim după cum vi-l doriți. Rezervarea minimă este de 2 nopți, iar oferta se face pentru fiecare eveniment în parte.",
   organize: [
+    "Un eveniment construit după voi: meniul, decorul, muzica și programul serii le stabilim împreună",
     "Mesele, gătite de noi la pensiune, din produse locale proaspete",
     "Decorul, pus la dispoziție de noi sau de colaboratorii noștri",
     "Cazarea pentru până la 24 de invitați, în același loc cu petrecerea",
@@ -920,7 +921,7 @@ export const PRIVATE_EVENTS: PrivateEvents = {
   ],
   steps: [
     { title: "Completați formularul", body: "Tipul evenimentului, data și numărul aproximativ de invitați. Durează un minut." },
-    { title: "Programați o vizită", body: "Stabilim împreună o întâlnire la pensiune, ca să vedeți locul și să discutăm detaliile pe care le aveți în minte." },
+    { title: "Programați o vizită", body: "Stabilim împreună o întâlnire la pensiune, pentru a vedea locul și a discuta detaliile pe care le aveți în minte." },
     { title: "Primiți oferta personalizată", body: "După vizită, construim oferta pentru evenimentul vostru: mese, cazare, decor și colaboratori." },
     { title: "Confirmați cu un avans", body: "Rezervarea se confirmă cu un avans, iar data rămâne blocată doar pentru voi." },
   ],

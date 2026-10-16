@@ -674,8 +674,9 @@ export const EVENT_CARDS: EventCard[] = [
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. An outdoor event can host up to 60 guests and an indoor one up to 35, and 24 of them can stay overnight in the guesthouse's 10 units. We offer a full service together with our partners: we cook the meals on site and take care of the organizing, so you can enjoy the party without a worry. A booking is for at least 2 nights, and every event gets its own offer.",
+    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. An outdoor event can host up to 60 guests and an indoor one up to 35, and 24 of them can stay overnight in the guesthouse's 10 units. We offer a full service together with our partners: we cook the meals on site and take care of the organizing, so you can enjoy the party without a worry. Every event is built around what you want. A booking is for at least 2 nights, and every event gets its own offer.",
   organize: [
+    "An event built around you: we plan the menu, the decor, the music and the evening's schedule together",
     "The meals, cooked by us on site from fresh local produce",
     "The decor, provided by us or by our partners",
     "Rooms for up to 24 guests, in the same place as the party",

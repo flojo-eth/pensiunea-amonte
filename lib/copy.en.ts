@@ -308,7 +308,11 @@ export const COPY: Copy = {
       title: "You celebrate, we handle the rest",
       lead: "Together with our partners, we take care of the organizing from start to finish. Tell us what you'd like, and you're left with only the best part: the party.",
     },
-    types: { eyebrow: "What we host", title: "Four kinds of events" },
+    types: {
+      eyebrow: "What we host",
+      title: "Four kinds of events",
+      lead: "There are no fixed packages: we build every event around what you want.",
+    },
     facts: { eyebrow: "Details", title: "Practical details" },
     gallery: { eyebrow: "Gallery", title: "The spaces for your event" },
     steps: {
