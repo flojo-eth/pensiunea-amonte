@@ -307,13 +307,10 @@ export const COPY = {
       description:
         "Botezuri, cununii civile, nunți mici și aniversări lângă Sibiu, cu organizare completă: până la 60 de invitați, cazare pentru 24, mese gătite la pensiune.",
     },
-    crumb: "Evenimente private",
     hero: {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} de Sibiu`,
       title: "Evenimente private în Valea Avrigului, lângă Sibiu",
       lead: "Botezuri, cununii civile, nunți mici și aniversări, cu toată pensiunea doar pentru voi. Noi ne ocupăm de organizare, voi vă bucurați de petrecere.",
-      form: "Completează formularul",
-      whatsapp: "Scrie-ne pe WhatsApp",
       alt: "Salonul Pensiunii Amonte, pregătit pentru un eveniment",
     },
     /** ids of the details and form sections, targets of in-page links. */

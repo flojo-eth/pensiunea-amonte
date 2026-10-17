@@ -291,13 +291,10 @@ export const COPY: Copy = {
       description:
         "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage bei Sibiu, mit Rundum-Organisation: bis zu 60 Gäste, 24 Schlafplätze, eigene Küche.",
     },
-    crumb: "Private Feiern",
     hero: {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} bis Sibiu`,
       title: "Private Feiern in Valea Avrigului bei Sibiu",
       lead: "Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage, mit der ganzen Pension nur für Sie. Wir kümmern uns um die Organisation, Sie genießen die Feier.",
-      form: "Formular ausfüllen",
-      whatsapp: "Per WhatsApp schreiben",
       alt: "Der Salon der Pensiunea Amonte, für eine Feier hergerichtet",
     },
     detailsAnchor: "details",

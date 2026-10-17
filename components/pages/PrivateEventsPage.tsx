@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import SectionHeading from "@/components/SectionHeading";
 import Eyebrow from "@/components/Eyebrow";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import GalleryGrid from "@/components/GalleryGrid";
 import EventRequestForm from "@/components/EventRequestForm";
 import { pageMeta } from "@/lib/seo";
 import { CONTACT, PRIVATE_EVENTS_VIDEO } from "@/lib/content";
 import { getContent, getCopy, href, type Lang } from "@/lib/i18n";
-import { btnPaper, btnOutlineLight, btnTerracotta } from "@/lib/ui";
+import { btnTerracotta } from "@/lib/ui";
 
 export function privateEventsMetadata(lang: Lang): Metadata {
   return pageMeta({
@@ -36,8 +34,7 @@ const sectionPad = "py-[clamp(56px,7vw,96px)]";
  * clicks report page_source "evenimente-private", derived from the path.
  */
 export default function PrivateEventsPage({ lang }: { lang: Lang }) {
-  const copy = getCopy(lang);
-  const t = copy.privateEvents;
+  const t = getCopy(lang).privateEvents;
   const { PRIVATE_EVENTS, PRIVATE_EVENTS_WHATSAPP } = getContent(lang);
 
   const faqJsonLd = {
@@ -55,7 +52,7 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
       <JsonLd id="schema-private-events-faq" data={faqJsonLd} />
 
       {/* ── HERO: video when there is one, the poster photo until then ── */}
-      <section className="relative flex min-h-[calc(100vh-140px)] items-end px-[clamp(20px,5vw,64px)] pb-[clamp(48px,6vw,80px)] pt-[clamp(40px,6vw,90px)]">
+      <section className="relative flex min-h-[calc(100vh-140px)] items-center px-[clamp(20px,5vw,64px)] py-[clamp(48px,6vw,80px)]">
         <div className="absolute inset-0">
           <PlaceholderImage
             src={PRIVATE_EVENTS_VIDEO.poster}
@@ -88,47 +85,28 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg,rgba(18,26,20,0.55) 0%,rgba(18,26,20,0.32) 42%,rgba(15,22,17,0.94) 100%)",
+              "linear-gradient(180deg,rgba(18,26,20,0.55) 0%,rgba(18,26,20,0.45) 50%,rgba(15,22,17,0.7) 100%)",
           }}
         />
+        {/* Only the place and the title over the image: when the video plays,
+            a visitor should know what it shows at a glance. The description
+            and the buttons live further down. */}
         <div className="relative mx-auto w-full max-w-[1280px]">
-          <div className="mb-6 [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
-            <Breadcrumbs
-              lang={lang}
-              id="schema-private-events-breadcrumb"
-              tone="dark"
-              items={[
-                { label: copy.common.home, href: href(lang, "home") },
-                { label: copy.events.crumb, href: href(lang, "events") },
-                { label: t.crumb },
-              ]}
-            />
-          </div>
           <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
             {t.hero.eyebrow}
           </span>
           <h1 className="m-0 max-w-[20ch] font-serif text-[clamp(36px,6vw,76px)] font-semibold leading-[1.04] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
             {t.hero.title}
           </h1>
-          <p className="mb-8 mt-[22px] max-w-[58ch] text-[clamp(16px,2vw,19px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
-            {t.hero.lead}
-          </p>
-          {/* The form leads: step 1 of booking is the form, then a visit. */}
-          <div className="flex flex-wrap gap-3.5">
-            <Link href={`#${t.formAnchor}`} className={btnPaper}>
-              {t.hero.form}
-            </Link>
-            <WhatsAppButton href={PRIVATE_EVENTS_WHATSAPP} ctaPosition="hero" className={btnOutlineLight}>
-              {t.hero.whatsapp}
-            </WhatsAppButton>
-          </div>
         </div>
       </section>
 
       {/* ── PE SCURT: răspunsul direct, de citat ── */}
       <section className={`${container} ${sectionPad}`}>
         <div className="max-w-[780px]">
-          <SectionHeading eyebrow={t.answer.eyebrow} title={t.answer.title} />
+          <SectionHeading eyebrow={t.answer.eyebrow} title={t.answer.title}>
+            {t.hero.lead}
+          </SectionHeading>
           <p className="mt-6 mb-0 text-[clamp(17px,2vw,19px)] leading-relaxed text-muted">
             {PRIVATE_EVENTS.answer}
           </p>

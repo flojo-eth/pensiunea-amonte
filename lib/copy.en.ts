@@ -291,13 +291,10 @@ export const COPY: Copy = {
       description:
         "Christenings, civil weddings, small weddings and birthdays near Sibiu, fully organized: up to 60 guests, rooms for 24, meals cooked on site.",
     },
-    crumb: "Private events",
     hero: {
       eyebrow: `Valea Avrigului · ${DRIVE_SIBIU} from Sibiu`,
       title: "Private events in Valea Avrigului, near Sibiu",
       lead: "Christenings, civil weddings, small weddings and birthdays, with the whole guesthouse just for you. We take care of the organizing, you enjoy the party.",
-      form: "Fill in the form",
-      whatsapp: "Message us on WhatsApp",
       alt: "The Pensiunea Amonte lounge, set up for an event",
     },
     detailsAnchor: "details",
