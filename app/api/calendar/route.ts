@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { google } from "googleapis";
+import { AVAILABILITY_MONTHS } from "@/lib/availability";
 
 /**
  * Cache the response for 5 minutes.
@@ -50,19 +51,29 @@ export async function GET() {
     const calendar = google.calendar({ version: "v3", auth });
 
     const now = new Date();
-    const sixMonthsLater = new Date(now);
-    sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 6);
+    const horizon = new Date(now);
+    horizon.setMonth(horizon.getMonth() + AVAILABILITY_MONTHS);
 
-    const response = await calendar.events.list({
-      calendarId,
-      timeMin: now.toISOString(),
-      timeMax: sixMonthsLater.toISOString(),
-      maxResults: 250,
-      singleEvents: true,
-      orderBy: "startTime",
-    });
+    // Every page of results, not just the first. The calendar holds room
+    // bookings as well as whole-property ones, and only the latter count
+    // below; a single capped page could cut off an "integral" booking and
+    // show its days as free.
+    const events = [];
+    let pageToken: string | undefined;
+    do {
+      const response = await calendar.events.list({
+        calendarId,
+        timeMin: now.toISOString(),
+        timeMax: horizon.toISOString(),
+        maxResults: 2500,
+        singleEvents: true,
+        orderBy: "startTime",
+        pageToken,
+      });
+      events.push(...(response.data.items ?? []));
+      pageToken = response.data.nextPageToken ?? undefined;
+    } while (pageToken);
 
-    const events = response.data.items ?? [];
     const blocked = new Set<string>();
 
     for (const event of events) {

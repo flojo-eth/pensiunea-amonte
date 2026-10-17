@@ -356,7 +356,7 @@ export const COPY = {
   corporate: {
     meta: {
       // The root layout template appends " | Pensiunea Amonte".
-      title: "Locație teambuilding și retreat corporate lângă Sibiu",
+      title: "Teambuilding și retreat corporate lângă Sibiu",
       // 146 de caractere. "Ofertă în 24 de ore" e păstrat pentru că e diferențiatorul
       // pe care Ioana îl compară între locații.
       description:

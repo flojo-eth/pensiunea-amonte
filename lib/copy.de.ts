@@ -338,7 +338,7 @@ export const COPY: Copy = {
 
   corporate: {
     meta: {
-      title: "Location für Teambuilding und Firmen-Retreats bei Sibiu",
+      title: "Teambuilding und Firmen-Retreats bei Sibiu",
       description:
         "Exklusivmiete für Teams bis 24 Personen bei Sibiu, Rumänien. Seminarraum, Mahlzeiten für die Gruppe, Jacuzzi und Sauna. Angebot in 24 Stunden.",
     },

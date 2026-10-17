@@ -93,7 +93,7 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
               width={1600}
               height={1200}
               className="max-h-[80vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
-              priority
+              loading="eager"
             />
           </div>
 

@@ -13,7 +13,7 @@ const ro = {
     skipToContent: "Sari la conținut",
   },
   nav: {
-    logoAria: "Amonte, pensiune montană, prima pagină",
+    logoAria: "Amonte Pensiune montană, prima pagină",
     tagline: "Pensiune montană",
     book: "Rezervă",
     bookNow: "Rezervă acum",
@@ -238,7 +238,7 @@ const en: UiStrings = {
     skipToContent: "Skip to content",
   },
   nav: {
-    logoAria: "Amonte, mountain guesthouse, home page",
+    logoAria: "Amonte Mountain guesthouse, home page",
     tagline: "Mountain guesthouse",
     book: "Book",
     bookNow: "Book now",
@@ -455,7 +455,7 @@ const de: UiStrings = {
     skipToContent: "Zum Inhalt springen",
   },
   nav: {
-    logoAria: "Amonte, Bergpension, Startseite",
+    logoAria: "Amonte Bergpension, Startseite",
     tagline: "Bergpension",
     book: "Buchen",
     bookNow: "Jetzt buchen",

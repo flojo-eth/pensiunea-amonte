@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { pushWhatsAppClick } from "@/lib/gtm";
 import { useIsHydrated } from "@/lib/hooks";
 import { CONTACT, GOOGLE_FORM_URL, WHATSAPP_NUMBER } from "@/lib/content";
+import { AVAILABILITY_MONTHS } from "@/lib/availability";
 import { useLang } from "@/lib/i18n/useLang";
 import { UI, type UiStrings } from "@/lib/i18n/ui";
 
@@ -179,10 +180,14 @@ export default function BookingCalendar() {
 
   // Navigation
   const prevMonth = () => setMonthOffset((o) => Math.max(0, o - 1));
-  const nextMonth = () => setMonthOffset((o) => o + 1);
+  // No further than /api/calendar reads ahead: beyond that every day would
+  // look free whether it is booked or not.
+  const lastOffset = AVAILABILITY_MONTHS - 1;
+  const nextMonth = () => setMonthOffset((o) => Math.min(lastOffset, o + 1));
 
   // Can't go before the current month
   const canPrev = monthOffset > 0;
+  const canNext = monthOffset < lastOffset;
 
   // Click handler
   const handleDayClick = useCallback(
@@ -258,7 +263,8 @@ export default function BookingCalendar() {
         </span>
         <button
           onClick={nextMonth}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-pine hover:bg-sand transition-colors"
+          disabled={!canNext}
+          className="flex h-9 w-9 items-center justify-center rounded-full text-pine hover:bg-sand transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           aria-label={t.nextMonth}
         >
           ›

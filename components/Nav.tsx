@@ -42,7 +42,9 @@ export default function Nav({ links }: { links: readonly NavLink[] }) {
             alt="Pensiunea Amonte"
             width={44}
             height={44}
-            priority
+            // Above the fold but tiny: load it right away, without claiming
+            // the bandwidth the hero image needs.
+            loading="eager"
             className="h-11 w-11 rounded-lg object-cover"
           />
           <span className="flex flex-col leading-none">

@@ -117,7 +117,7 @@ export const COPY: Copy = {
     meta: {
       title: "About us, a boutique guesthouse in Valea Avrigului",
       description:
-        "Boutique guesthouse in Valea Avrigului, at the foot of the Făgăraș Mountains: 10 units for 24 guests, hot tub, sauna and a group meeting room, 40 minutes from Sibiu.",
+        "Boutique guesthouse in Valea Avrigului, below the Făgăraș Mountains: 10 units for 24 guests, hot tub, sauna and a meeting room, 40 minutes from Sibiu.",
     },
     schemaName: "About Pensiunea Amonte, boutique accommodation in Valea Avrigului",
     eyebrow: "About us",
@@ -338,7 +338,7 @@ export const COPY: Copy = {
 
   corporate: {
     meta: {
-      title: "Team building and corporate retreat venue near Sibiu",
+      title: "Corporate retreat and team building near Sibiu",
       description:
         "Exclusive use for teams of up to 24 near Sibiu, Romania. Meeting room, group meals, hot tub and sauna. Complete offer within 24 hours.",
     },

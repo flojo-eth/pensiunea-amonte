@@ -124,7 +124,7 @@ their own.
 
 **Never compute dates during render in a client component.** Pages are statically prerendered, so `new Date()` at render time bakes the build date into the HTML and desynchronises from the browser. Use `useIsHydrated()` from `lib/hooks.ts` and read the date only once hydrated — see `BookingCalendar`.
 
-**`/api/calendar` fails open.** On error it returns an empty blocked list plus `stale: true`. The client must surface that, or booked dates get presented as available.
+**`/api/calendar` fails open.** On error it returns an empty blocked list plus `stale: true`. The client must surface that, or booked dates get presented as available. For the same reason the API reads every page of events (not one capped page) and only as far ahead as `AVAILABILITY_MONTHS` in `lib/availability.ts`, which also stops `BookingCalendar` from browsing past it: an unread month shows every day as free.
 
 **Consent gates third-party embeds.** GTM starts denied via the inline script in `components/RootDocument.tsx`; anything that sets third-party cookies (e.g. the Maps embed) must be gated on `useConsent()` — see `ConsentMap`.
 
@@ -135,6 +135,7 @@ their own.
 **No visible placeholders on indexed pages.** `PlaceholderImage` renders a striped box with a `[ FOTO: … ]` label when it has no `src`, which reads as unfinished work to a visitor. Render only entries that have a photo (see the `LEISURE` grid), and keep sections whose asset is missing behind a flag (see `SHOW_VIDEO` on `/evenimente`).
 
 **Other:**
+- **Hero images: `PlaceholderImage priority`** renders `fetchPriority="high"` + `loading="eager"`. Next 16 deprecated the `<Image priority>` prop (it only preloads); use it on the one LCP image per page, nowhere else.
 - Fonts are `--font-cormorant` (serif headings) and `--font-hanken` (sans body), exposed through `@theme` in `globals.css` as `--font-serif` / `--font-sans`. Reuse them; don't import new fonts. **Their classes belong on `<html>`, not `<body>`:** the theme variables are resolved at `:root`, and with the classes on `<body>` every font silently fell back to the system sans, on production, until October 2026.
 - Colors come from the `@theme` tokens in `globals.css` (cream/sand/pine/forest/terracotta). Prefer tokens over arbitrary hex values.
 - `SectionHeading` renders `h2` by default; pass `as="h1"` when it is the page title. Its `eyebrow` prop is required.

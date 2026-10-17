@@ -198,7 +198,7 @@ export default function RoomDetailsClient({ room, spaNote }: { room: Room; spaNo
               width={1600}
               height={1200}
               className="max-h-[80vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
-              priority
+              loading="eager"
             />
             {/* Title / Description */}
             <div className="absolute bottom-[-45px] left-0 right-0 text-center text-sm font-medium tracking-[0.5px] text-paper/90">

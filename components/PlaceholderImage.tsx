@@ -9,6 +9,12 @@ type Props = {
   className?: string;
   /** Diagonal-stripe tone: "light" on cream sections, "dark" on green ones. */
   tone?: "light" | "dark";
+  /**
+   * Marks the page's Largest Contentful Paint image (the hero). Rendered as
+   * fetchPriority="high" + loading="eager", which the Next 16 docs recommend
+   * over the old `priority` prop: that one now only adds a preload link and
+   * left the hero competing with GTM for bandwidth (LCP 7.4 s on mobile).
+   */
   priority?: boolean;
   sizes?: string;
   imgClassName?: string;
@@ -43,7 +49,8 @@ export default function PlaceholderImage({
           alt={alt ?? label.replace(/[[\]]/g, "").trim()}
           fill
           sizes={sizes}
-          priority={priority}
+          fetchPriority={priority ? "high" : undefined}
+          loading={priority ? "eager" : undefined}
           className={`object-cover ${imgClassName}`}
         />
       ) : (
