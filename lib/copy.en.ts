@@ -299,7 +299,12 @@ export const COPY: Copy = {
     },
     detailsAnchor: "details",
     formAnchor: "request-form",
-    answer: { eyebrow: "At a glance", title: "Your event, in the mountains" },
+    answer: {
+      eyebrow: "At a glance",
+      title: "Your event, in the mountains",
+      form: "Fill in the form",
+      whatsapp: "Message us on WhatsApp",
+    },
     organize: {
       eyebrow: "Full service",
       title: "You celebrate, we handle the rest",

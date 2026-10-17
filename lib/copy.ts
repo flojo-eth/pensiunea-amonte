@@ -316,7 +316,12 @@ export const COPY = {
     /** ids of the details and form sections, targets of in-page links. */
     detailsAnchor: "detalii",
     formAnchor: "formular",
-    answer: { eyebrow: "Pe scurt", title: "Evenimentul vostru, la munte" },
+    answer: {
+      eyebrow: "Pe scurt",
+      title: "Evenimentul vostru, la munte",
+      form: "Completează formularul",
+      whatsapp: "Scrie-ne pe WhatsApp",
+    },
     organize: {
       eyebrow: "Servicii complete",
       title: "Voi petreceți, noi ne ocupăm de rest",

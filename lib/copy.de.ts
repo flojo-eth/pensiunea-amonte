@@ -299,7 +299,12 @@ export const COPY: Copy = {
     },
     detailsAnchor: "details",
     formAnchor: "anfrage",
-    answer: { eyebrow: "Auf einen Blick", title: "Ihre Feier in den Bergen" },
+    answer: {
+      eyebrow: "Auf einen Blick",
+      title: "Ihre Feier in den Bergen",
+      form: "Formular ausfüllen",
+      whatsapp: "Per WhatsApp schreiben",
+    },
     organize: {
       eyebrow: "Rundum-Service",
       title: "Sie feiern, wir kümmern uns um den Rest",

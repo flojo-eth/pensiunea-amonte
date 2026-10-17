@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import SectionHeading from "@/components/SectionHeading";
 import Eyebrow from "@/components/Eyebrow";
@@ -9,7 +10,7 @@ import EventRequestForm from "@/components/EventRequestForm";
 import { pageMeta } from "@/lib/seo";
 import { CONTACT, PRIVATE_EVENTS_VIDEO } from "@/lib/content";
 import { getContent, getCopy, href, type Lang } from "@/lib/i18n";
-import { btnTerracotta } from "@/lib/ui";
+import { btnOutlineDark, btnTerracotta } from "@/lib/ui";
 
 export function privateEventsMetadata(lang: Lang): Metadata {
   return pageMeta({
@@ -110,6 +111,17 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
           <p className="mt-6 mb-0 text-[clamp(17px,2vw,19px)] leading-relaxed text-muted">
             {PRIVATE_EVENTS.answer}
           </p>
+          {/* The first CTAs on the page: the form leads (step 1 of booking),
+              WhatsApp is the quicker alternative. Kept out of the hero so the
+              video only carries the place and the title. */}
+          <div className="mt-8 flex flex-wrap gap-3.5">
+            <Link href={`#${t.formAnchor}`} className={btnTerracotta}>
+              {t.answer.form}
+            </Link>
+            <WhatsAppButton href={PRIVATE_EVENTS_WHATSAPP} ctaPosition="hero" className={btnOutlineDark}>
+              {t.answer.whatsapp}
+            </WhatsAppButton>
+          </div>
         </div>
       </section>
 
