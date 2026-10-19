@@ -23,13 +23,13 @@ import type { NextConfig } from "next";
  */
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://va.vercel-scripts.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://va.vercel-scripts.com https://connect.facebook.net https://cdn.jsdelivr.net https://unpkg.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.gstatic.com",
+  "img-src 'self' data: blob: https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.google.ro https://*.gstatic.com https://stats.g.doubleclick.net https://www.facebook.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://va.vercel-scripts.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://va.vercel-scripts.com https://stats.g.doubleclick.net https://www.google.ro https://connect.facebook.net https://www.facebook.com",
   // The consent-gated Google Maps embed
-  "frame-src https://*.google.com https://*.googletagmanager.com",
+  "frame-src https://*.google.com https://*.googletagmanager.com https://www.facebook.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

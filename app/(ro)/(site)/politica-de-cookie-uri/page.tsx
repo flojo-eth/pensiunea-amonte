@@ -27,7 +27,7 @@ export default function PoliticaCookieuriPage() {
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Pensiunea Amonte, operată de Hostillo S.R.L. <br />
-          Ultima actualizare: 21.07.2026
+          Ultima actualizare: 19.10.2026
         </p>
 
         <section className="space-y-4">
@@ -86,6 +86,9 @@ export default function PoliticaCookieuriPage() {
               <p className="text-sm">
                 Sunt utilizate pentru a monitoriza vizitatorii pe site-uri. Intenția este de a afișa reclame relevante și antrenante pentru utilizatorii individuali (de exemplu, prin campanii <strong>Google Ads</strong>). Acestea sunt active doar dacă alegeți să le acceptați prin intermediul bannerului nostru de consimțământ.
               </p>
+              <p className="text-sm mt-3">
+                Folosim și <strong>Meta Pixel</strong>, de la Meta Platforms Ireland Ltd., pentru a măsura și afișa reclame pe Facebook și Instagram. Pixel-ul setează cookie-urile <code>_fbp</code> (90 de zile) și, când ajungeți pe site dintr-o reclamă Meta, <code>_fbc</code> (90 de zile). Aceleași evenimente (de exemplu, vizualizarea unei pagini) pot fi transmise către Meta și prin <strong>Conversions API</strong>. Meta Pixel pornește doar după ce apăsați „Acceptă tot”.
+              </p>
             </div>
           </div>
         </section>
@@ -93,7 +96,7 @@ export default function PoliticaCookieuriPage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">5. Cum puteți opri sau șterge cookie-urile?</h2>
           <p>
-            Puteți să vă modificați consimțământul acordat pe site-ul nostru oricând, prin resetarea opțiunilor din bannerul de cookies sau prin ștergerea cookie-urilor din browser.
+            Puteți să vă modificați consimțământul acordat pe site-ul nostru oricând, din linkul „Setări cookie” din subsolul fiecărei pagini, care redeschide bannerul, sau prin ștergerea cookie-urilor din browser.
           </p>
           <p>
             În plus, browserul utilizat pentru accesarea paginilor web permite limitarea sau dezactivarea cookie-urilor în mod implicit. Aceste setări pot fi găsite de regulă în meniul &quot;Opțiuni&quot; sau &quot;Preferințe&quot; al browserului dumneavoastră:

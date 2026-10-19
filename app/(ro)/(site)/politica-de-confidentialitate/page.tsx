@@ -28,7 +28,7 @@ export default function PoliticaConfidentialitatePage() {
       <div className="text-[15px] leading-relaxed text-muted space-y-8 font-sans">
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Prelucrarea datelor cu caracter personal, Pensiunea Amonte / Hostillo S.R.L. <br />
-          Ultima actualizare: 21.07.2026
+          Ultima actualizare: 19.10.2026
         </p>
 
         <section className="space-y-4">
@@ -65,7 +65,7 @@ export default function PoliticaConfidentialitatePage() {
 
           <h3 className="font-semibold text-pine mt-4">2.2. Date colectate automat</h3>
           <p>
-            Prin cookie-uri și tehnologii similare de pe site-ul pensiunea-amonte.ro: adresă IP, tip dispozitiv/browser, pagini vizitate, comportament de navigare (Google Analytics 4), interacțiune cu reclamele (Google Ads).
+            Prin cookie-uri și tehnologii similare de pe site-ul pensiunea-amonte.ro: adresă IP, tip dispozitiv/browser, pagini vizitate, comportament de navigare (Google Analytics 4), interacțiune cu reclamele (Google Ads, Meta).
           </p>
 
           <h3 className="font-semibold text-pine mt-4">2.3. Date primite de la terți</h3>
@@ -111,6 +111,10 @@ export default function PoliticaConfidentialitatePage() {
                   <td className="px-4 py-3">Consimțământ (art. 6 alin. 1 lit. a)</td>
                 </tr>
                 <tr>
+                  <td className="px-4 py-3 border-r border-line font-medium">Publicitate și remarketing pe Facebook și Instagram (Meta Pixel, Conversions API)</td>
+                  <td className="px-4 py-3">Consimțământ (art. 6 alin. 1 lit. a)</td>
+                </tr>
+                <tr>
                   <td className="px-4 py-3 border-r border-line font-medium">Răspuns la solicitări/mesaje</td>
                   <td className="px-4 py-3">Interes legitim (art. 6 alin. 1 lit. f)</td>
                 </tr>
@@ -133,7 +137,7 @@ export default function PoliticaConfidentialitatePage() {
             <li><strong>SmartBill:</strong> sistemul de facturare și gestiune, pentru emiterea facturilor.</li>
             <li><strong>Banca Transilvania:</strong> pentru procesarea plăților (POS/mPOS).</li>
             <li><strong>Google Ireland Ltd.:</strong> Google Analytics 4 și Google Ads, pentru măsurarea traficului și publicitate (dacă v-ați exprimat consimțământul pentru cookie-uri neesențiale).</li>
-            <li><strong>Meta Platforms:</strong> dacă folosiți canalul WhatsApp pentru comunicare cu pensiunea.</li>
+            <li><strong>Meta Platforms Ireland Ltd.:</strong> Meta Pixel și Conversions API, pentru măsurarea și afișarea reclamelor pe Facebook și Instagram (dacă v-ați exprimat consimțământul pentru cookie-uri neesențiale), precum și WhatsApp, dacă îl folosiți pentru comunicare cu pensiunea.</li>
             <li><strong>Booking.com / Airbnb:</strong> dacă rezervarea a fost făcută prin platforma respectivă.</li>
             <li><strong>Autorități publice:</strong> Poliția/organele abilitate pentru evidența turiștilor, autoritatea fiscală, alte autorități, atunci când legea o impune.</li>
           </ul>
@@ -190,10 +194,10 @@ export default function PoliticaConfidentialitatePage() {
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
             <li><strong>Necesare:</strong> pentru funcționarea de bază a site-ului (nu necesită consimțământ);</li>
             <li><strong>Analitice (Google Analytics 4):</strong> pentru a înțelege modul de utilizare a site-ului;</li>
-            <li><strong>De marketing (Google Ads):</strong> pentru afișarea de reclame relevante și măsurarea eficienței campaniilor.</li>
+            <li><strong>De marketing (Google Ads, Meta Pixel):</strong> pentru afișarea de reclame relevante, inclusiv pe Facebook și Instagram, și măsurarea eficienței campaniilor.</li>
           </ul>
           <p>
-            Cookie-urile analitice și de marketing sunt folosite doar cu consimțământul dumneavoastră, exprimat prin bannerul afișat la prima vizită. Vă puteți schimba preferințele oricând din setările indicate pe site sau din setările browserului.
+            Cookie-urile analitice și de marketing sunt folosite doar cu consimțământul dumneavoastră, exprimat prin bannerul afișat la prima vizită. Vă puteți schimba preferințele oricând din linkul „Setări cookie” din subsolul fiecărei pagini sau din setările browserului.
           </p>
         </section>
 

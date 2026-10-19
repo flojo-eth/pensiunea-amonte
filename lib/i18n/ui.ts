@@ -32,6 +32,7 @@ const ro = {
     terms: "Termeni și Condiții",
     privacy: "Politică de Confidențialitate",
     cookies: "Politică de Cookie-uri",
+    cookieSettings: "Setări cookie",
   },
   breadcrumbs: "Firimituri",
   banner: {
@@ -257,6 +258,7 @@ const en: UiStrings = {
     terms: "Terms and Conditions",
     privacy: "Privacy Policy",
     cookies: "Cookie Policy",
+    cookieSettings: "Cookie settings",
   },
   breadcrumbs: "Breadcrumb",
   banner: {
@@ -474,6 +476,7 @@ const de: UiStrings = {
     terms: "AGB",
     privacy: "Datenschutzerklärung",
     cookies: "Cookie-Richtlinie",
+    cookieSettings: "Cookie-Einstellungen",
   },
   breadcrumbs: "Brotkrümelnavigation",
   banner: {

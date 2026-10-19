@@ -33,7 +33,7 @@ export default function CookieRichtliniePage() {
 
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Pensiunea Amonte, betrieben von der Hostillo S.R.L. <br />
-          Stand: 21. Juli 2026
+          Stand: 19. Oktober 2026
         </p>
 
         <section className="space-y-4">
@@ -92,6 +92,9 @@ export default function CookieRichtliniePage() {
               <p className="text-sm">
                 Sie werden verwendet, um Besucher über Websites hinweg zu verfolgen, mit dem Ziel, Anzeigen zu zeigen, die für den einzelnen Nutzer relevant und ansprechend sind (z. B. über <strong>Google Ads</strong>-Kampagnen). Sie sind nur aktiv, wenn Sie ihnen über unser Einwilligungsbanner zustimmen.
               </p>
+              <p className="text-sm mt-3">
+                Wir verwenden außerdem <strong>Meta Pixel</strong> der Meta Platforms Ireland Ltd., um Anzeigen auf Facebook und Instagram zu messen und auszuspielen. Das Pixel setzt das Cookie <code>_fbp</code> (90 Tage) und, wenn Sie über eine Meta-Anzeige kommen, <code>_fbc</code> (90 Tage). Dieselben Ereignisse (z. B. ein Seitenaufruf) können auch über die <strong>Conversions API</strong> an Meta übermittelt werden. Meta Pixel startet erst, nachdem Sie auf „Alle akzeptieren“ geklickt haben.
+              </p>
             </div>
           </div>
         </section>
@@ -99,7 +102,7 @@ export default function CookieRichtliniePage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">5. Wie können Sie Cookies blockieren oder löschen?</h2>
           <p>
-            Sie können Ihre auf unserer Website erteilte Einwilligung jederzeit ändern, indem Sie Ihre Auswahl im Cookie-Banner zurücksetzen oder die Cookies in Ihrem Browser löschen.
+            Sie können Ihre auf unserer Website erteilte Einwilligung jederzeit ändern, über den Link „Cookie-Einstellungen“ unten auf jeder Seite, der das Banner erneut öffnet, oder indem Sie die Cookies in Ihrem Browser löschen.
           </p>
           <p>
             Außerdem können Sie Cookies in Ihrem Browser grundsätzlich einschränken oder deaktivieren. Diese Einstellungen finden Sie in der Regel im Menü „Optionen“ oder „Einstellungen“ Ihres Browsers:

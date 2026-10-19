@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 import CurrentYear from "./CurrentYear";
 import WhatsAppButton from "./WhatsAppButton";
 import { CONTACT, WEBSITE, SOCIAL_PROFILES, OPERATOR } from "@/lib/content";
@@ -147,6 +148,9 @@ export default function Footer({ lang }: { lang: Lang }) {
           <Link href={href(lang, "cookies")} className="no-underline hover:underline hover:text-paper">
             {t.cookies}
           </Link>
+          <CookieSettingsButton className="cursor-pointer border-0 bg-transparent p-0 text-inherit hover:underline hover:text-paper">
+            {t.cookieSettings}
+          </CookieSettingsButton>
         </div>
       </div>
     </footer>

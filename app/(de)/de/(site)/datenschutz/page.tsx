@@ -34,7 +34,7 @@ export default function DatenschutzPage() {
 
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Verarbeitung personenbezogener Daten, Pensiunea Amonte / Hostillo S.R.L. <br />
-          Stand: 21. Juli 2026
+          Stand: 19. Oktober 2026
         </p>
 
         <section className="space-y-4">
@@ -70,7 +70,7 @@ export default function DatenschutzPage() {
 
           <h3 className="font-semibold text-pine mt-4">2.2. Automatisch erhobene Daten</h3>
           <p>
-            Über Cookies und ähnliche Technologien auf pensiunea-amonte.ro: IP-Adresse, Geräte- und Browsertyp, besuchte Seiten, Nutzungsverhalten (Google Analytics 4) und Interaktion mit Anzeigen (Google Ads).
+            Über Cookies und ähnliche Technologien auf pensiunea-amonte.ro: IP-Adresse, Geräte- und Browsertyp, besuchte Seiten, Nutzungsverhalten (Google Analytics 4) und Interaktion mit Anzeigen (Google Ads, Meta).
           </p>
 
           <h3 className="font-semibold text-pine mt-4">2.3. Daten von Dritten</h3>
@@ -116,6 +116,10 @@ export default function DatenschutzPage() {
                   <td className="px-4 py-3">Einwilligung (Art. 6 Abs. 1 lit. a)</td>
                 </tr>
                 <tr>
+                  <td className="px-4 py-3 border-r border-line font-medium">Werbung und Remarketing auf Facebook und Instagram (Meta Pixel, Conversions API)</td>
+                  <td className="px-4 py-3">Einwilligung (Art. 6 Abs. 1 lit. a)</td>
+                </tr>
+                <tr>
                   <td className="px-4 py-3 border-r border-line font-medium">Beantwortung von Anfragen und Nachrichten</td>
                   <td className="px-4 py-3">Berechtigtes Interesse (Art. 6 Abs. 1 lit. f)</td>
                 </tr>
@@ -138,7 +142,7 @@ export default function DatenschutzPage() {
             <li><strong>SmartBill:</strong> das Rechnungs- und Verwaltungssystem, zur Ausstellung von Rechnungen.</li>
             <li><strong>Banca Transilvania:</strong> zur Zahlungsabwicklung (POS/mPOS).</li>
             <li><strong>Google Ireland Ltd.:</strong> Google Analytics 4 und Google Ads, zur Reichweitenmessung und Werbung (sofern Sie nicht notwendigen Cookies zugestimmt haben).</li>
-            <li><strong>Meta Platforms:</strong> wenn Sie für die Kommunikation mit der Pension WhatsApp nutzen.</li>
+            <li><strong>Meta Platforms Ireland Ltd.:</strong> Meta Pixel und Conversions API, zur Messung und Ausspielung von Anzeigen auf Facebook und Instagram (sofern Sie nicht notwendigen Cookies zugestimmt haben), sowie WhatsApp, wenn Sie es für die Kommunikation mit der Pension nutzen.</li>
             <li><strong>Booking.com / Airbnb:</strong> wenn die Buchung über die jeweilige Plattform erfolgt ist.</li>
             <li><strong>Behörden:</strong> Polizei oder andere zuständige Stellen für die Gästemeldung, die Steuerbehörde und andere Behörden, soweit gesetzlich vorgeschrieben.</li>
           </ul>
@@ -195,10 +199,10 @@ export default function DatenschutzPage() {
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
             <li><strong>Notwendige:</strong> für den grundlegenden Betrieb der Website (keine Einwilligung erforderlich);</li>
             <li><strong>Analyse (Google Analytics 4):</strong> um zu verstehen, wie die Website genutzt wird;</li>
-            <li><strong>Marketing (Google Ads):</strong> um relevante Anzeigen zu zeigen und den Erfolg von Kampagnen zu messen.</li>
+            <li><strong>Marketing (Google Ads, Meta Pixel):</strong> um relevante Anzeigen zu zeigen, auch auf Facebook und Instagram, und den Erfolg von Kampagnen zu messen.</li>
           </ul>
           <p>
-            Analyse- und Marketing-Cookies werden nur mit Ihrer Einwilligung verwendet, die Sie über das Banner beim ersten Besuch erteilen. Sie können Ihre Einstellungen jederzeit auf der Website oder im Browser ändern.
+            Analyse- und Marketing-Cookies werden nur mit Ihrer Einwilligung verwendet, die Sie über das Banner beim ersten Besuch erteilen. Sie können Ihre Einstellungen jederzeit über den Link „Cookie-Einstellungen“ unten auf jeder Seite oder in Ihrem Browser ändern.
           </p>
         </section>
 

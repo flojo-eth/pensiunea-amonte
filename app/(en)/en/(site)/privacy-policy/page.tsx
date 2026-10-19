@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
 
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Processing of personal data, Pensiunea Amonte / Hostillo S.R.L. <br />
-          Last updated: July 21, 2026
+          Last updated: October 19, 2026
         </p>
 
         <section className="space-y-4">
@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
 
           <h3 className="font-semibold text-pine mt-4">2.2. Data collected automatically</h3>
           <p>
-            Through cookies and similar technologies on pensiunea-amonte.ro: IP address, device and browser type, pages visited, browsing behavior (Google Analytics 4) and interaction with ads (Google Ads).
+            Through cookies and similar technologies on pensiunea-amonte.ro: IP address, device and browser type, pages visited, browsing behavior (Google Analytics 4) and interaction with ads (Google Ads, Meta).
           </p>
 
           <h3 className="font-semibold text-pine mt-4">2.3. Data received from third parties</h3>
@@ -117,6 +117,10 @@ export default function PrivacyPolicyPage() {
                   <td className="px-4 py-3">Consent (Art. 6(1)(a))</td>
                 </tr>
                 <tr>
+                  <td className="px-4 py-3 border-r border-line font-medium">Advertising and remarketing on Facebook and Instagram (Meta Pixel, Conversions API)</td>
+                  <td className="px-4 py-3">Consent (Art. 6(1)(a))</td>
+                </tr>
+                <tr>
                   <td className="px-4 py-3 border-r border-line font-medium">Replying to requests and messages</td>
                   <td className="px-4 py-3">Legitimate interest (Art. 6(1)(f))</td>
                 </tr>
@@ -139,7 +143,7 @@ export default function PrivacyPolicyPage() {
             <li><strong>SmartBill:</strong> the invoicing and management system, used to issue invoices.</li>
             <li><strong>Banca Transilvania:</strong> for payment processing (POS/mPOS).</li>
             <li><strong>Google Ireland Ltd.:</strong> Google Analytics 4 and Google Ads, for traffic measurement and advertising (if you have consented to non-essential cookies).</li>
-            <li><strong>Meta Platforms:</strong> if you use WhatsApp to communicate with the guesthouse.</li>
+            <li><strong>Meta Platforms Ireland Ltd.:</strong> Meta Pixel and the Conversions API, to measure and show ads on Facebook and Instagram (if you have consented to non-essential cookies), and WhatsApp, if you use it to communicate with the guesthouse.</li>
             <li><strong>Booking.com / Airbnb:</strong> if you booked through that platform.</li>
             <li><strong>Public authorities:</strong> the police or other competent bodies for guest registration, the tax authority and other authorities, where the law requires it.</li>
           </ul>
@@ -196,10 +200,10 @@ export default function PrivacyPolicyPage() {
           <ul className="list-disc pl-5 space-y-2 text-[#33392f]">
             <li><strong>Necessary:</strong> for the basic operation of the website (no consent required);</li>
             <li><strong>Analytics (Google Analytics 4):</strong> to understand how the website is used;</li>
-            <li><strong>Marketing (Google Ads):</strong> to show relevant ads and measure how well campaigns perform.</li>
+            <li><strong>Marketing (Google Ads, Meta Pixel):</strong> to show relevant ads, including on Facebook and Instagram, and measure how well campaigns perform.</li>
           </ul>
           <p>
-            Analytics and marketing cookies are only used with your consent, given through the banner shown on your first visit. You can change your preferences at any time from the settings on the website or in your browser.
+            Analytics and marketing cookies are only used with your consent, given through the banner shown on your first visit. You can change your preferences at any time through the “Cookie settings” link at the bottom of every page or in your browser settings.
           </p>
         </section>
 

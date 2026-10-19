@@ -68,6 +68,21 @@ export function setConsent(value: ConsentValue) {
   window.dispatchEvent(new Event(CONSENT_EVENT));
 }
 
+/**
+ * Forgets the stored choice so the banner asks again (footer "Setări cookie").
+ * Signals go back to denied until the visitor answers: withdrawing consent
+ * must be as easy as giving it.
+ */
+export function resetConsent() {
+  try {
+    window.localStorage.removeItem(CONSENT_KEY);
+  } catch {
+    /* nothing stored to forget */
+  }
+  window.gtag?.("consent", "update", DENIED);
+  window.dispatchEvent(new Event(CONSENT_EVENT));
+}
+
 export function subscribeConsent(onChange: () => void) {
   window.addEventListener(CONSENT_EVENT, onChange);
   // Keep other open tabs in step when the choice is made in one of them.

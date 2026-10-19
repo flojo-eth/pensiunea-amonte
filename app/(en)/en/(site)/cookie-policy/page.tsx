@@ -33,7 +33,7 @@ export default function CookiePolicyPage() {
 
         <p className="text-sm italic text-muted-2 border-b border-line pb-4">
           Pensiunea Amonte, operated by Hostillo S.R.L. <br />
-          Last updated: July 21, 2026
+          Last updated: October 19, 2026
         </p>
 
         <section className="space-y-4">
@@ -92,6 +92,9 @@ export default function CookiePolicyPage() {
               <p className="text-sm">
                 These are used to track visitors across websites, with the aim of showing ads that are relevant and engaging for individual users (for example, through <strong>Google Ads</strong> campaigns). They are only active if you choose to accept them through our consent banner.
               </p>
+              <p className="text-sm mt-3">
+                We also use <strong>Meta Pixel</strong>, from Meta Platforms Ireland Ltd., to measure and show ads on Facebook and Instagram. The pixel sets the <code>_fbp</code> cookie (90 days) and, when you arrive from a Meta ad, <code>_fbc</code> (90 days). The same events (for example, a page view) may also be sent to Meta through the <strong>Conversions API</strong>. Meta Pixel only starts after you click “Accept all”.
+              </p>
             </div>
           </div>
         </section>
@@ -99,7 +102,7 @@ export default function CookiePolicyPage() {
         <section className="space-y-4">
           <h2 className="font-serif text-[22px] font-semibold text-pine">5. How can you block or delete cookies?</h2>
           <p>
-            You can change the consent you gave on our website at any time, by resetting your choice in the cookie banner or by deleting cookies from your browser.
+            You can change the consent you gave on our website at any time, through the “Cookie settings” link at the bottom of every page, which reopens the banner, or by deleting cookies from your browser.
           </p>
           <p>
             In addition, the browser you use lets you limit or disable cookies by default. These settings are usually found in your browser&apos;s &quot;Options&quot; or &quot;Preferences&quot; menu:
