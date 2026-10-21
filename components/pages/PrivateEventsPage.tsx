@@ -64,10 +64,13 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
             priority
             sizes="100vw"
           />
-          {PRIVATE_EVENTS_VIDEO.src && (
+          {(PRIVATE_EVENTS_VIDEO.mobile || PRIVATE_EVENTS_VIDEO.desktop) && (
             // Muted, looping, no controls: a moving backdrop, not content.
             // Hidden for visitors who ask for reduced motion, so the photo
-            // underneath shows instead.
+            // underneath shows instead. The browser picks the first <source>
+            // whose media matches; with none, it downloads nothing and the
+            // photo stays. Hidden on the screen size that has no file, so the
+            // poster frame does not cover the photo there.
             <video
               autoPlay
               muted
@@ -76,9 +79,16 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
               preload="metadata"
               poster={PRIVATE_EVENTS_VIDEO.poster}
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+              className={`absolute inset-0 h-full w-full object-cover motion-reduce:hidden ${
+                PRIVATE_EVENTS_VIDEO.mobile ? "" : "max-md:hidden"
+              } ${PRIVATE_EVENTS_VIDEO.desktop ? "" : "md:hidden"}`}
             >
-              <source src={PRIVATE_EVENTS_VIDEO.src} type="video/mp4" />
+              {PRIVATE_EVENTS_VIDEO.mobile && (
+                <source src={PRIVATE_EVENTS_VIDEO.mobile} media="(max-width: 767px)" type="video/mp4" />
+              )}
+              {PRIVATE_EVENTS_VIDEO.desktop && (
+                <source src={PRIVATE_EVENTS_VIDEO.desktop} media="(min-width: 768px)" type="video/mp4" />
+              )}
             </video>
           )}
         </div>

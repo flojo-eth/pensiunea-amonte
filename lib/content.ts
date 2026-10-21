@@ -870,12 +870,14 @@ export const EVENT_CARDS: EventCard[] = [
 // minimum 2 nopți la închirierea integrală. Tarifele nu se publică.
 
 /**
- * Hero video for the private-events page. `src` stays null until the file
- * exists (put it in /public/video/ and set the path): until then the poster
- * photo is shown on its own, never an empty box.
+ * Hero video for the private-events page, one file per screen: `mobile` below
+ * 768px, `desktop` above. Either stays null until its file exists (in
+ * /public/events/, compressed, no audio): a screen without one shows the
+ * poster photo on its own, never an empty box.
  */
-export const PRIVATE_EVENTS_VIDEO: { src: string | null; poster: string } = {
-  src: null,
+export const PRIVATE_EVENTS_VIDEO: { mobile: string | null; desktop: string | null; poster: string } = {
+  mobile: "/events/hero-mobile.mp4",
+  desktop: null,
   poster: "/salon.jpeg",
 };
 

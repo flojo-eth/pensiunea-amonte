@@ -46,7 +46,7 @@ app/
       evenimente/ politica-*/ termeni-si-conditii/
       evenimente-private/ botezuri, cununii, nunți mici, aniversări; content in
                           PRIVATE_EVENTS (lib/content*.ts), hero video in
-                          PRIVATE_EVENTS_VIDEO (src null until the file exists)
+                          PRIVATE_EVENTS_VIDEO (mobile + desktop files, null until each exists)
     retreat-corporate/    B2B landing, OUTSIDE (site): SiteShell `landing` swaps the
                           nav for LandingHeader (logo + language only); no links
                           off the page except the footer; content in lib/retreat.ts
