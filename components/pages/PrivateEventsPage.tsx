@@ -7,6 +7,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GalleryGrid from "@/components/GalleryGrid";
 import EventRequestForm from "@/components/EventRequestForm";
+import HeroVideo from "@/components/HeroVideo";
 import { pageMeta } from "@/lib/seo";
 import { CONTACT, PRIVATE_EVENTS_VIDEO } from "@/lib/content";
 import { getContent, getCopy, href, type Lang } from "@/lib/i18n";
@@ -71,14 +72,8 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
             // whose media matches; with none, it downloads nothing and the
             // photo stays. Hidden on the screen size that has no file, so the
             // poster frame does not cover the photo there.
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+            <HeroVideo
               poster={PRIVATE_EVENTS_VIDEO.poster}
-              aria-hidden="true"
               className={`absolute inset-0 h-full w-full object-cover motion-reduce:hidden ${
                 PRIVATE_EVENTS_VIDEO.mobile ? "" : "max-md:hidden"
               } ${PRIVATE_EVENTS_VIDEO.desktop ? "" : "md:hidden"}`}
@@ -89,7 +84,7 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
               {PRIVATE_EVENTS_VIDEO.desktop && (
                 <source src={PRIVATE_EVENTS_VIDEO.desktop} media="(min-width: 768px)" type="video/mp4" />
               )}
-            </video>
+            </HeroVideo>
           )}
         </div>
         <div
