@@ -877,7 +877,7 @@ export const EVENT_CARDS: EventCard[] = [
  */
 export const PRIVATE_EVENTS_VIDEO: { mobile: string | null; desktop: string | null; poster: string } = {
   mobile: "/events/hero-mobile.mp4",
-  desktop: null,
+  desktop: "/events/hero-desktop.mp4",
   poster: "/events/masa-salon-2.jpg",
 };
 
