@@ -28,12 +28,15 @@ const sectionPad = "py-[clamp(56px,7vw,96px)]";
 /**
  * Private events: christenings, civil weddings, small weddings, birthdays.
  *
- * Minimal on purpose: a video hero, one paragraph that answers the question
- * outright, what "servicii complete" covers (the organizing is ours, the party
- * theirs), the facts as a definition list, photos, the four booking steps
- * (form, visit, offer, deposit: people see the place before any offer), the
- * request form and the FAQ (also emitted as FAQPage JSON-LD). Every figure on the page was confirmed by Flo; WhatsApp
- * clicks report page_source "evenimente-private", derived from the path.
+ * The top of the page tells a story, the rest states facts: a video hero
+ * ("O poveste scrisă la poalele munților"), a short factual "Pe scurt" for
+ * search and AI engines, "Povestea" (the weekend from arrival to the morning
+ * after), what happens behind the scenes, the event types, the facts as a
+ * definition list, photos, the four booking steps (form, visit, offer,
+ * deposit: people see the place before any offer), the request form and the
+ * FAQ (also emitted as FAQPage JSON-LD). Every figure on the page was
+ * confirmed by Flo; WhatsApp clicks report page_source "evenimente-private",
+ * derived from the path.
  */
 export default function PrivateEventsPage({ lang }: { lang: Lang }) {
   const t = getCopy(lang).privateEvents;
@@ -94,43 +97,57 @@ export default function PrivateEventsPage({ lang }: { lang: Lang }) {
               "linear-gradient(180deg,rgba(18,26,20,0.55) 0%,rgba(18,26,20,0.45) 50%,rgba(15,22,17,0.7) 100%)",
           }}
         />
-        {/* Only the place and the title over the image: when the video plays,
-            a visitor should know what it shows at a glance. The description
-            and the buttons live further down. */}
+        {/* The story opens here. The h1 keeps the descriptive title (what
+            search engines read) in the small eyebrow style; the large line is
+            a <p>, so the page still has exactly one h1. */}
         <div className="relative mx-auto w-full max-w-[1280px]">
-          <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
-            {t.hero.eyebrow}
-          </span>
-          <h1 className="m-0 max-w-[20ch] font-serif text-[clamp(36px,6vw,76px)] font-semibold leading-[1.04] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+          <h1 className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-[#ECE0C0] [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
             {t.hero.title}
           </h1>
+          <p className="m-0 max-w-[20ch] font-serif text-[clamp(36px,6vw,76px)] font-semibold leading-[1.04] text-card-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+            {t.hero.tagline}
+          </p>
+          <p className="mb-0 mt-[22px] max-w-[58ch] text-[clamp(16px,2vw,19px)] leading-relaxed text-paper [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
+            {t.hero.lead}
+          </p>
         </div>
       </section>
 
-      {/* ── PE SCURT: răspunsul direct, de citat ── */}
+      {/* ── PE SCURT: răspunsul direct, de citat. Discret pentru vizitator,
+          dar sus și în text simplu, pentru motoarele AI. ── */}
+      <section className={`${container} border-b border-line py-[clamp(28px,4vw,44px)]`}>
+        <div className="max-w-[780px]">
+          <Eyebrow className="mb-3">{t.answer.eyebrow}</Eyebrow>
+          <p className="m-0 text-[15px] leading-relaxed text-muted">{PRIVATE_EVENTS.answer}</p>
+        </div>
+      </section>
+
+      {/* ── POVESTEA: weekendul, de la sosire până în dimineața de după ── */}
       <section className={`${container} ${sectionPad}`}>
         <div className="max-w-[780px]">
-          <SectionHeading eyebrow={t.answer.eyebrow} title={t.answer.title}>
-            {t.hero.lead}
-          </SectionHeading>
-          <p className="mt-6 mb-0 text-[clamp(17px,2vw,19px)] leading-relaxed text-muted">
-            {PRIVATE_EVENTS.answer}
-          </p>
+          <SectionHeading eyebrow={t.story.eyebrow} title={t.story.title} />
+          <div className="mt-6 flex flex-col gap-5">
+            {PRIVATE_EVENTS.story.map((paragraph) => (
+              <p key={paragraph} className="m-0 text-[clamp(17px,2vw,19px)] leading-relaxed text-muted">
+                {paragraph}
+              </p>
+            ))}
+          </div>
           {/* The first CTAs on the page: the form leads (step 1 of booking),
-              WhatsApp is the quicker alternative. Kept out of the hero so the
-              video only carries the place and the title. */}
+              WhatsApp is the quicker alternative. ctaPosition stays "hero",
+              as GTM knows it, although the buttons now close the story. */}
           <div className="mt-8 flex flex-wrap gap-3.5">
             <Link href={`#${t.formAnchor}`} className={btnTerracotta}>
-              {t.answer.form}
+              {t.story.form}
             </Link>
             <WhatsAppButton href={PRIVATE_EVENTS_WHATSAPP} ctaPosition="hero" className={btnOutlineDark}>
-              {t.answer.whatsapp}
+              {t.story.whatsapp}
             </WhatsAppButton>
           </div>
         </div>
       </section>
 
-      {/* ── SERVICII COMPLETE: organizarea e a noastră, petrecerea a lor ── */}
+      {/* ── ÎN SPATELE POVEȘTII: organizarea e a noastră, ziua a lor ── */}
       <section className={`${sectionPad} bg-pine`}>
         <div className={`${container} flex flex-wrap gap-[clamp(32px,5vw,72px)]`}>
           <div className="flex-1 basis-[340px]">

@@ -178,7 +178,13 @@ ordinary booking. So:
 
 ## Content rules
 
-Romanian, factual register, no brochure language. Guest reviews are quoted
+Romanian, factual register, no brochure language. **One deliberate exception:**
+the story at the top of `/evenimente-private` (the hero line "O poveste scrisă
+la poalele munților", "Povestea", "În spatele poveștii" and the event cards) is
+narrative on purpose, because a private event is an occasion rather than a stay.
+Do not flatten it back into the factual register. The rules below still apply
+to it: no invented numbers, no amenity it does not already name. Its
+"Pe scurt" block stays plain and factual, as the text AI engines quote. Guest reviews are quoted
 verbatim, with their real names and dates, but they are still published content
 and the rules below apply to them too.
 

@@ -674,20 +674,26 @@ export const EVENT_CARDS: EventCard[] = [
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. An outdoor event can host up to 60 guests and an indoor one up to 35, and 24 of them can stay overnight in the guesthouse's 10 units. We offer a full service together with our partners: we cook the meals on site and take care of the organizing, so you can enjoy the party without a worry. Every event is built around what you want. A booking is for at least 2 nights, and every event gets its own offer.",
+    "Pensiunea Amonte is rented in full for private events: christenings, civil weddings, small weddings and birthdays. We cook the meals ourselves, on site, from local produce, and we take on the organizing together with our partners, in a single offer. The guesthouse sleeps 24 in 10 units, and the minimum booking is 2 nights.",
+  story: [
+    "It all starts the day before. You arrive, drop your bags in your rooms and look out at the mountains from the terrace while we take care of the last details. The evening is quiet, in the living room by the fireplace, with the people who got there first.",
+    "The next day, the yard fills up. The table is set, the smell of food cooked right here from local produce drifts out of the kitchen, and the people you love find each other again. Nobody has to think about the drive home: up to 24 guests sleep a few steps from the party.",
+    "When evening falls, the lights come on in the yard and the music starts, and those who want a little quiet gather around the campfire. The morning after, with coffee on the terrace and last night's stories still fresh, is the part that turns a party into a memory.",
+    "That's why the guesthouse is rented in full, for at least 2 nights: so the story has time to happen. We take care of the organizing, from the first conversation until you leave. All you have to do is be there.",
+  ],
   organize: [
-    "An event built around you: we plan the menu, the decor, the music and the evening's schedule together",
-    "The meals, cooked by us on site from fresh local produce",
-    "The decor, provided by us or by our partners",
-    "Rooms for up to 24 guests, in the same place as the party",
+    "The menu, the decor, the music and the evening's schedule, planned together with you",
+    "The food, cooked by us on site from fresh local produce",
+    "The decor, provided by us, by our partners or brought in by your own supplier",
+    "Rooms for those staying the night, in the same place as the party",
     "Trusted partners for everything else, coordinated by us",
-    "One offer and the same team, from the first conversation to departure",
+    "One offer and the same team, from the first conversation until the last guest leaves",
   ],
   types: [
-    { title: "Christenings", option: "Christening", body: "The meal after the christening, with family and godparents at one table, and rooms for those who travel from afar." },
-    { title: "Civil weddings", option: "Civil wedding", body: "The celebration after the ceremony, in a private setting with a view of the Făgăraș Mountains." },
-    { title: "Small weddings", option: "Small wedding", body: "Up to 60 guests outdoors or 35 indoors, with the whole guesthouse just for you." },
-    { title: "Birthdays", option: "Birthday", body: "Birthdays and anniversaries, with music, a campfire and only one group in the whole guesthouse." },
+    { title: "Christenings", option: "Christening", body: "The youngest member of the family is the center of attention, godparents and grandparents sit at the same table, and those who came from afar don't have to hit the road that same night." },
+    { title: "Civil weddings", option: "Civil wedding", body: "You said “I do.” Now comes the good part: a meal with only your people, in a private setting, with the Făgăraș Mountains in the background." },
+    { title: "Small weddings", option: "Small wedding", body: "No other weddings on the same day and no drive home at the end. The whole guesthouse is yours, from the first toast to the last dance." },
+    { title: "Birthdays", option: "Birthday", body: "Old friends, your music and a long evening around the campfire, with only one group in the whole guesthouse: yours." },
   ],
   facts: [
     { label: "Guests", value: "Up to 60 outdoors, up to 35 indoors" },

@@ -882,9 +882,11 @@ export const PRIVATE_EVENTS_VIDEO: { mobile: string | null; desktop: string | nu
 };
 
 export type PrivateEvents = {
-  /** The direct answer under the hero: what, for whom, how many. */
+  /** The direct answer under the hero ("Pe scurt"): plain, quotable facts. */
   answer: string;
-  /** What "servicii complete" covers: the organizing is ours, the party theirs. */
+  /** "Povestea": the weekend from arrival to the morning after, one paragraph each. */
+  story: string[];
+  /** What happens behind the scenes: the organizing is ours, the day theirs. */
   organize: string[];
   /** `option` is the singular, for the request form's event-type list. */
   types: { title: string; option: string; body: string }[];
@@ -896,20 +898,26 @@ export type PrivateEvents = {
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. La un eveniment în aer liber pot participa până la 60 de invitați, iar în interior până la 35; 24 dintre ei pot fi cazați în cele 10 unități ale pensiunii. Oferim servicii complete, împreună cu colaboratorii noștri: mesele le gătim noi, la pensiune, iar de organizare ne ocupăm noi, ca voi să vă bucurați de petrecere fără griji. Fiecare eveniment îl construim după cum vi-l doriți. Rezervarea minimă este de 2 nopți, iar oferta se face pentru fiecare eveniment în parte.",
+    "Pensiunea Amonte se închiriază integral pentru evenimente private: botezuri, cununii civile, nunți mici și aniversări. Mesele le gătim noi, la pensiune, din produse locale, iar organizarea o preluăm împreună cu colaboratorii noștri, într-o singură ofertă. Cazarea are 24 de locuri în 10 unități, iar rezervarea minimă este de 2 nopți.",
+  story: [
+    "Totul începe cu o zi înainte. Ajungeți la pensiune, vă lăsați bagajele în camere și priviți munții de pe terasă, în timp ce noi punem la punct ultimele detalii. Seara e liniștită, în living, la șemineu, cu cei care au ajuns primii.",
+    "A doua zi, curtea se umple. Masa e pusă, din bucătărie vine miros de mâncare gătită chiar aici, din produse locale, iar oamenii dragi se regăsesc unii pe alții. Nimeni nu trebuie să se gândească la drumul spre casă: până la 24 de invitați dorm la câțiva pași de petrecere.",
+    "Când se lasă seara, se aprind luminile în curte și pornește muzica, iar cei care vor puțină liniște se strâng în jurul focului de tabără. Dimineața de după, cu cafeaua pe terasă și poveștile de aseară încă proaspete, este partea care face dintr-o petrecere o amintire.",
+    "De aceea pensiunea se închiriază integral, pentru minimum 2 nopți: pentru ca povestea să aibă timp să se întâmple. Noi ne ocupăm de organizare, de la prima discuție până la plecare. Voi trebuie doar să fiți acolo.",
+  ],
   organize: [
-    "Un eveniment construit după voi: meniul, decorul, muzica și programul serii le stabilim împreună",
-    "Mesele, gătite de noi la pensiune, din produse locale proaspete",
-    "Decorul, pus la dispoziție de noi sau de colaboratorii noștri",
-    "Cazarea pentru până la 24 de invitați, în același loc cu petrecerea",
+    "Meniul, decorul, muzica și programul serii, stabilite împreună cu voi",
+    "Mâncarea, gătită de noi la pensiune, din produse locale proaspete",
+    "Decorul, pus la dispoziție de noi, de colaboratorii noștri sau adus de furnizorul vostru",
+    "Camerele pentru cei care rămân peste noapte, în același loc cu petrecerea",
     "Colaboratori de încredere pentru tot ce mai e nevoie, coordonați de noi",
-    "O singură ofertă și aceeași echipă, de la prima discuție până la plecare",
+    "O singură ofertă și aceeași echipă, de la prima discuție până la plecarea ultimului invitat",
   ],
   types: [
-    { title: "Botezuri", option: "Botez", body: "Masa de după botez, cu familia și nașii la aceeași masă, și cazare pentru cei veniți de departe." },
-    { title: "Cununii civile", option: "Cununie civilă", body: "Petrecerea de după ceremonie, într-un cadru privat, cu priveliște spre Munții Făgăraș." },
-    { title: "Nunți mici", option: "Nuntă mică", body: "Până la 60 de invitați în aer liber sau 35 în interior, cu pensiunea doar pentru voi." },
-    { title: "Aniversări", option: "Aniversare", body: "Zile de naștere și aniversări, cu muzică, foc de tabără și un singur grup în toată pensiunea." },
+    { title: "Botezuri", option: "Botez", body: "Cel mai mic membru al familiei e în centrul atenției, nașii și bunicii stau la aceeași masă, iar cei veniți de departe nu mai pornesc la drum în aceeași seară." },
+    { title: "Cununii civile", option: "Cununie civilă", body: "Ați spus „da”. Acum urmează partea frumoasă: o masă doar cu oamenii voștri, într-un cadru privat, cu Munții Făgăraș în fundal." },
+    { title: "Nunți mici", option: "Nuntă mică", body: "Fără alte nunți în aceeași zi și fără drum spre casă la final. Toată pensiunea e a voastră, de la primul toast până la ultimul dans." },
+    { title: "Aniversări", option: "Aniversare", body: "Prietenii de demult, muzica voastră și o seară lungă în jurul focului de tabără, cu un singur grup în toată pensiunea: al vostru." },
   ],
   facts: [
     { label: "Invitați", value: "Până la 60 în aer liber, până la 35 în interior" },

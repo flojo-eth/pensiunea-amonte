@@ -673,20 +673,26 @@ export const EVENT_CARDS: EventCard[] = [
 
 export const PRIVATE_EVENTS: PrivateEvents = {
   answer:
-    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Bei einer Feier im Freien sind bis zu 60 Gäste möglich, drinnen bis zu 35; 24 von ihnen können in den 10 Einheiten der Pension übernachten. Wir bieten einen Rundum-Service, gemeinsam mit unseren Partnern: Die Mahlzeiten kochen wir selbst im Haus, und um die Organisation kümmern wir uns, damit Sie die Feier sorgenfrei genießen. Jede Feier gestalten wir so, wie Sie sie sich wünschen. Die Mindestbuchung beträgt 2 Nächte, und jede Feier erhält ein eigenes Angebot.",
+    "Die Pensiunea Amonte wird für private Feiern komplett vermietet: Taufen, standesamtliche Trauungen, kleine Hochzeiten und Geburtstage. Die Mahlzeiten kochen wir selbst im Haus, aus regionalen Produkten, und die Organisation übernehmen wir gemeinsam mit unseren Partnern, in einem einzigen Angebot. Die Unterkunft hat 24 Schlafplätze in 10 Einheiten, die Mindestbuchung beträgt 2 Nächte.",
+  story: [
+    "Alles beginnt am Tag davor. Sie kommen an, bringen das Gepäck in die Zimmer und schauen von der Terrasse auf die Berge, während wir uns um die letzten Details kümmern. Der Abend ist ruhig, im Wohnzimmer am Kamin, mit denen, die als Erste angekommen sind.",
+    "Am nächsten Tag füllt sich der Hof. Der Tisch ist gedeckt, aus der Küche duftet es nach Essen, das hier aus regionalen Produkten gekocht wird, und die Menschen, die Ihnen wichtig sind, finden wieder zueinander. Niemand muss an den Heimweg denken: Bis zu 24 Gäste schlafen nur wenige Schritte von der Feier entfernt.",
+    "Wenn es Abend wird, gehen im Hof die Lichter an und die Musik beginnt, und wer etwas Ruhe sucht, sammelt sich am Lagerfeuer. Der Morgen danach, mit Kaffee auf der Terrasse und den Geschichten vom Vorabend, ist der Teil, der aus einer Feier eine Erinnerung macht.",
+    "Deshalb wird die Pension komplett vermietet, für mindestens 2 Nächte: damit die Geschichte Zeit hat, sich zu entfalten. Um die Organisation kümmern wir uns, vom ersten Gespräch bis zur Abreise. Sie müssen nur da sein.",
+  ],
   organize: [
-    "Eine Feier nach Ihren Wünschen: Menü, Dekoration, Musik und Ablauf des Abends planen wir gemeinsam",
+    "Menü, Dekoration, Musik und Ablauf des Abends, gemeinsam mit Ihnen festgelegt",
     "Das Essen, von uns im Haus aus frischen regionalen Produkten gekocht",
-    "Die Dekoration, von uns oder von unseren Partnern gestellt",
-    "Unterkunft für bis zu 24 Gäste, am selben Ort wie die Feier",
+    "Die Dekoration, von uns oder unseren Partnern gestellt oder von Ihrem eigenen Dienstleister mitgebracht",
+    "Zimmer für alle, die über Nacht bleiben, am selben Ort wie die Feier",
     "Zuverlässige Partner für alles Weitere, von uns koordiniert",
-    "Ein Angebot und dasselbe Team, vom ersten Gespräch bis zur Abreise",
+    "Ein Angebot und dasselbe Team, vom ersten Gespräch bis zur Abreise des letzten Gastes",
   ],
   types: [
-    { title: "Taufen", option: "Taufe", body: "Das Essen nach der Taufe, mit Familie und Paten an einem Tisch, und Zimmer für die Gäste von weiter her." },
-    { title: "Standesamtliche Trauungen", option: "Standesamtliche Trauung", body: "Die Feier nach der Zeremonie, in privatem Rahmen, mit Blick auf das Făgăraș-Gebirge." },
-    { title: "Kleine Hochzeiten", option: "Kleine Hochzeit", body: "Bis zu 60 Gäste im Freien oder 35 drinnen, mit der ganzen Pension nur für Sie." },
-    { title: "Geburtstage", option: "Geburtstag", body: "Geburtstage und Jubiläen, mit Musik, Lagerfeuer und nur einer Gruppe im ganzen Haus." },
+    { title: "Taufen", option: "Taufe", body: "Das jüngste Familienmitglied steht im Mittelpunkt, Paten und Großeltern sitzen am selben Tisch, und wer von weit her kommt, muss sich nicht noch am selben Abend auf den Heimweg machen." },
+    { title: "Standesamtliche Trauungen", option: "Standesamtliche Trauung", body: "Sie haben „Ja“ gesagt. Jetzt kommt der schöne Teil: ein Essen nur mit Ihren Liebsten, in privatem Rahmen, mit dem Făgăraș-Gebirge im Hintergrund." },
+    { title: "Kleine Hochzeiten", option: "Kleine Hochzeit", body: "Keine anderen Hochzeiten am selben Tag und kein Heimweg am Ende. Die ganze Pension gehört Ihnen, vom ersten Toast bis zum letzten Tanz." },
+    { title: "Geburtstage", option: "Geburtstag", body: "Alte Freunde, Ihre Musik und ein langer Abend am Lagerfeuer, mit nur einer Gruppe im ganzen Haus: Ihrer." },
   ],
   facts: [
     { label: "Gäste", value: "Bis zu 60 im Freien, bis zu 35 drinnen" },
