@@ -137,7 +137,7 @@ export default function AboutPage({ lang }: { lang: Lang }) {
         <div className="flex flex-wrap gap-[clamp(36px,5vw,72px)] items-center">
           <div className="flex-1 basis-[380px]">
             <SectionHeading eyebrow={HOSTS.eyebrow} title={HOSTS.title} />
-            <div className="mt-6 space-y-4">
+            <div className="mt-6 flex flex-col gap-4">
               {HOSTS.body.map((paragraph, index) => (
                 <p key={index} className="text-[17px] leading-relaxed text-muted m-0">
                   {paragraph}
