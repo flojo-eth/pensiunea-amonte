@@ -119,10 +119,10 @@ export const LEISURE: Space[] = [
   },
   {
     title: "Brambura Park",
-    body: "Etwa 10 Minuten entfernt, für Gruppenaktivitäten im Freien.",
+    body: "4 Autominuten entfernt, für Gruppenaktivitäten im Freien.",
     photo: "/brambura.jpeg",
     photoLabel: "[ FOTO: Brambura Park ]",
-    alt: "Brambura Park, Gruppenaktivitäten 10 Minuten von der Pension",
+    alt: "Brambura Park, Gruppenaktivitäten 4 Minuten von der Pension",
   },
 ];
 
@@ -252,7 +252,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Welche Aktivitäten sind vor Ort möglich?",
-    a: "Jacuzzi und Sauna exklusiv für Ihre Gruppe, Lagerfeuer, ein Kleinfeld-Fußballplatz, eine Tischtennisplatte und Wanderungen ab dem Tal zur Cabana Bârcaciu, auf den Negoiu und den Suru. Der Brambura Park ist etwa 10 Minuten entfernt.",
+    a: "Jacuzzi und Sauna exklusiv für Ihre Gruppe, Lagerfeuer, ein Kleinfeld-Fußballplatz, eine Tischtennisplatte und Wanderungen ab dem Tal zur Cabana Bârcaciu, auf den Negoiu und den Suru. Der Brambura Park liegt 4 Autominuten entfernt.",
   },
   {
     q: "Wie weit im Voraus sollten wir buchen?",

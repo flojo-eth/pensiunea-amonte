@@ -261,8 +261,8 @@ export const ACTIVITIES: Activity[] = [
   },
   {
     name: "Brambura Park",
-    desc: "Ein Abenteuerpark mit Aktivitäten für die ganze Familie.",
-    dist: "~10 Min.",
+    desc: "Ein Abenteuerpark mit Aktivitäten für die ganze Familie, 4 Autominuten von der Pension.",
+    dist: "~4 Min.",
     photoLabel: "[ Brambura Park ]",
     photo: "/brambura.jpeg",
   },
@@ -551,7 +551,7 @@ export const ABOUT_FAQ_BASE: Faq[] = [
   },
   {
     q: "Welche Sehenswürdigkeiten und Aktivitäten gibt es in der Nähe?",
-    a: "Die Wege starten direkt in Valea Avrigului, zur Cabana Bârcaciu, auf den Negoiu und den Suru, mit Routen für jedes Niveau. Der Brambura Park und die Hirschfarm in Poiana Neamțului liegen etwa 10 Minuten entfernt. Das Brukenthal-Palais (Avrig), die Lehmburg (Porumbacu de Sus), Casa Vikingilor und Povestea Calendarului liegen alle in der Nähe der Pension.",
+    a: "Die Wege starten direkt in Valea Avrigului, zur Cabana Bârcaciu, auf den Negoiu und den Suru, mit Routen für jedes Niveau. Der Brambura Park liegt 4 Autominuten entfernt, die Hirschfarm in Poiana Neamțului etwa 10 Minuten. Das Brukenthal-Palais (Avrig), die Lehmburg (Porumbacu de Sus), Casa Vikingilor und Povestea Calendarului liegen alle in der Nähe der Pension.",
   },
   {
     q: "Wie weit ist es nach Sibiu und zur Transfăgărășan?",
@@ -613,7 +613,7 @@ export const ABOUT_FEATURES: typeof RO_ABOUT_FEATURES = [
   {
     icon: "🌄",
     title: "40 Minuten bis Sibiu",
-    body: "Der Brambura Park und die Hirschfarm in Poiana Neamțului liegen etwa 10 Minuten entfernt, die mittelalterliche Altstadt von Sibiu etwa 40 Minuten mit dem Auto.",
+    body: "Der Brambura Park liegt 4 Autominuten entfernt, die Hirschfarm in Poiana Neamțului etwa 10 Minuten und die mittelalterliche Altstadt von Sibiu etwa 40 Minuten.",
   },
 ];
 

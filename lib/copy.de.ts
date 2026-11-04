@@ -15,7 +15,7 @@ export const COPY: Copy = {
     tagline: TAGLINE,
     description:
       "Die Pensiunea Amonte ist eine Bergpension in Valea Avrigului, am Fuß des Făgăraș-Gebirges, 40 Minuten von Sibiu. 10 Zimmer und Studios, Jacuzzi und Sauna, Panoramaterrasse und ein Seminarraum für Gruppen.",
-    defaultTitle: `${SITE_NAME} - ${TAGLINE} in Valea Avrigului`,
+    defaultTitle: `${TAGLINE} in Valea Avrigului bei Sibiu | ${SITE_NAME}`,
     inLanguage: "de-DE",
     paymentAccepted: "Bargeld, Debit- und Kreditkarten",
   },
@@ -161,7 +161,8 @@ export const COPY: Copy = {
       eyebrow: "Anreise",
       title: "Lage",
       nearby: [
-        { name: "Brambura Park", rest: " und die Hirschfarm (Poiana Neamțului): etwa 10 Minuten" },
+        { name: "Brambura Park", rest: ": 4 Minuten mit dem Auto" },
+        { name: "Die Hirschfarm", rest: ", Poiana Neamțului: etwa 10 Minuten" },
         { name: "Brukenthal-Palais", rest: ", Avrig: in der Nähe" },
         { name: "Die Lehmburg Valea Zânelor", rest: ", Porumbacu de Sus: wenige Minuten von Avrig" },
         { name: "Casa Vikingilor", rest: " und Povestea Calendarului: in der Umgebung" },
@@ -191,12 +192,12 @@ export const COPY: Copy = {
 
   rooms: {
     meta: {
-      title: "Zimmer",
+      title: "Zimmer und Unterkunft in Valea Avrigului",
       description:
         "Zimmer der Pensiunea Amonte bei Sibiu: Deluxe-Doppelzimmer, Doppelzimmer mit Bergblick oder Balkon und Familienstudios, alle mit Frühstück inklusive.",
     },
     eyebrow: "Unterkunft",
-    title: "Unsere Zimmer",
+    title: "Unsere Zimmer in Valea Avrigului",
     lead: "Großzügige Räume, warmes Holz und Blick auf das Făgăraș-Gebirge. Zugang zu Jacuzzi & Sauna und zur Panoramaterrasse.",
     cta: "Verfügbarkeit prüfen",
     rates: "Alle Preise im Detail →",
@@ -217,19 +218,19 @@ export const COPY: Copy = {
 
   activities: {
     meta: {
-      title: "Ausflugsziele in der Umgebung",
+      title: "Ausflugsziele in Valea Avrigului bei Sibiu",
       description:
         "Rund um die Pensiunea Amonte: Wandern im Făgăraș, Brambura Park, Brukenthal-Palais, E-Bikes, Reiten und Quad, eine Hirschfarm, Beach Club Avrig.",
     },
     eyebrow: "Rund um die Pension",
-    title: "Ausflugsziele in der Umgebung",
+    title: "Ausflugsziele in und um Valea Avrigului",
     lead: "Von Gratwanderungen bis zu Abenden am Feuer: Die Berge haben immer einen Plan für Sie.",
     cta: "Ihren Aufenthalt in den Bergen buchen",
   },
 
   gallery: {
     meta: {
-      title: "Galerie",
+      title: "Fotogalerie, Valea Avrigului",
       description:
         "Fotogalerie der Pensiunea Amonte: Außenansicht, Jacuzzi & Sauna, Zimmer, Blick auf das Făgăraș-Gebirge und Abende am Lagerfeuer.",
     },
@@ -240,7 +241,7 @@ export const COPY: Copy = {
 
   services: {
     meta: {
-      title: "Leistungen & Ausstattung",
+      title: "Leistungen und Ausstattung in Valea Avrigului",
       description:
         "Leistungen der Pensiunea Amonte: Frühstück inklusive, Jacuzzi und Sauna, Bar, Wohnzimmer mit Kamin, Panoramaterrasse, Lagerfeuer, WLAN und Parkplatz.",
     },

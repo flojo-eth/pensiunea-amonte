@@ -262,8 +262,8 @@ export const ACTIVITIES: Activity[] = [
   },
   {
     name: "Brambura Park",
-    desc: "An adventure park with activities for the whole family.",
-    dist: "~10 min",
+    desc: "An adventure park with activities for the whole family, 4 minutes from the guesthouse by car.",
+    dist: "~4 min",
     photoLabel: "[ Brambura Park ]",
     photo: "/brambura.jpeg",
   },
@@ -552,7 +552,7 @@ export const ABOUT_FAQ_BASE: Faq[] = [
   },
   {
     q: "What sights and activities are nearby?",
-    a: "Trails start right from Valea Avrigului toward Cabana Bârcaciu, Negoiu and Suru, with routes for every level. Brambura Park and the deer farm at Poiana Neamțului are about 10 minutes away. Brukenthal Palace (Avrig), the Clay Castle (Porumbacu de Sus), Casa Vikingilor and Povestea Calendarului are all close to the guesthouse.",
+    a: "Trails start right from Valea Avrigului toward Cabana Bârcaciu, Negoiu and Suru, with routes for every level. Brambura Park is 4 minutes away by car, and the deer farm at Poiana Neamțului about 10 minutes. Brukenthal Palace (Avrig), the Clay Castle (Porumbacu de Sus), Casa Vikingilor and Povestea Calendarului are all close to the guesthouse.",
   },
   {
     q: "How far are you from Sibiu and the Transfăgărășan?",
@@ -614,7 +614,7 @@ export const ABOUT_FEATURES: typeof RO_ABOUT_FEATURES = [
   {
     icon: "🌄",
     title: "40 minutes from Sibiu",
-    body: "Brambura Park and the deer farm at Poiana Neamțului are about 10 minutes away, and Sibiu's medieval center is about 40 minutes by car.",
+    body: "Brambura Park is 4 minutes away by car, the deer farm at Poiana Neamțului about 10 minutes, and Sibiu's medieval center about 40 minutes.",
   },
 ];
 

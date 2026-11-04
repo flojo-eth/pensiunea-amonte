@@ -367,8 +367,8 @@ export const ACTIVITIES: Activity[] = [
   },
   {
     name: "Brambura Park",
-    desc: "Parc de aventură și activități pentru toată familia.",
-    dist: "~10 min",
+    desc: "Parc de aventură și activități pentru toată familia, la 4 minute cu mașina de pensiune.",
+    dist: "~4 min",
     photoLabel: "[ Brambura Park ]",
     photo: "/brambura.jpeg",
   },
@@ -731,7 +731,7 @@ export const ABOUT_FAQ_BASE: Faq[] = [
   },
   {
     q: "Ce obiective turistice și activități sunt în apropiere?",
-    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute. Palatul Brukenthal (Avrig), Castelul de Lut (Porumbacu de Sus), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
+    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park este la 4 minute cu mașina, iar ferma de cerbi de la Poiana Neamțului, la circa 10 minute. Palatul Brukenthal (Avrig), Castelul de Lut (Porumbacu de Sus), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
   },
   {
     q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",
@@ -793,7 +793,7 @@ export const ABOUT_FEATURES = [
   {
     icon: "🌄",
     title: "40 de minute de Sibiu",
-    body: "Brambura Park și ferma de cerbi de la Poiana Neamțului sunt la circa 10 minute, iar centrul medieval al Sibiului, la circa 40 de minute cu mașina.",
+    body: "Brambura Park este la 4 minute cu mașina, ferma de cerbi de la Poiana Neamțului la circa 10 minute, iar centrul medieval al Sibiului la circa 40 de minute.",
   },
 ];
 

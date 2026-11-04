@@ -200,7 +200,8 @@ The German site uses the formal "Sie" and calls the place a "Pension", not a
 are translated ("Aus dem Rumänischen übersetzt"); English ones stay in English.
 
 - **No em or en dashes** anywhere in our own copy. Use commas, full stops or a plain hyphen.
-- **No invented numbers.** Capacities, distances and durations must be confirmed. The current drive times were measured and confirmed by the owner.
+- **No invented numbers.** Capacities, distances and durations must be confirmed. The current drive times were measured and confirmed by the owner: Sibiu 40 min, Sibiu airport 50 min, Brambura Park 4 min, Avrig town 14 min (`DRIVE_*` in `lib/retreat*.ts` for the first ones).
+- **"Valea Avrigului, lângă Sibiu", never "lângă Avrig".** The valley's name already places it; Flo's call (November 2026).
 - **No published group prices.** Group and corporate rates are negotiated per group; `SHOW_PRICING` keeps the price block on `/retreat-corporate` off on purpose, and the page promises a complete offer within 24 working hours instead. Room rates for individual stays are a different matter: they are public on purpose, on the room pages, `/camere/tarife` and in `priceRange`.
 - **Never the word "piscină", anywhere**, including inside guest reviews and inside descriptions of nearby attractions. There is no pool. Two reviews that mentioned one were removed from the carousel; do not reinstate them.
 - **No star or daisy classification** until the ANT certificate is issued. Do not state a category for the guesthouse anywhere.

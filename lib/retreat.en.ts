@@ -119,10 +119,10 @@ export const LEISURE: Space[] = [
   },
   {
     title: "Brambura Park",
-    body: "About 10 minutes away, for outdoor group activities.",
+    body: "4 minutes away by car, for outdoor group activities.",
     photo: "/brambura.jpeg",
     photoLabel: "[ PHOTO: Brambura Park ]",
-    alt: "Brambura Park, group activities 10 minutes from the guesthouse",
+    alt: "Brambura Park, group activities 4 minutes from the guesthouse",
   },
 ];
 
@@ -252,7 +252,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "What activities can be organized on site?",
-    a: "Hot tub and sauna with exclusive access for your group, a campfire, a small soccer field, a ping-pong table and hikes from the valley toward Bârcaciu, Negoiu and Suru. Brambura Park is about 10 minutes away.",
+    a: "Hot tub and sauna with exclusive access for your group, a campfire, a small soccer field, a ping-pong table and hikes from the valley toward Bârcaciu, Negoiu and Suru. Brambura Park is 4 minutes away by car.",
   },
   {
     q: "How far in advance should we book?",

@@ -26,7 +26,7 @@ export const COPY = {
   site: {
     tagline: SITE_TAGLINE,
     description: SITE_DESCRIPTION,
-    defaultTitle: `${SITE_NAME} - ${SITE_TAGLINE} în Valea Avrigului`,
+    defaultTitle: `Cazare la munte în Valea Avrigului, lângă Sibiu | ${SITE_NAME}`,
     /** schema.org `inLanguage` and `paymentAccepted`, in this language. */
     inLanguage: "ro-RO",
     paymentAccepted: "Numerar, card bancar",
@@ -39,7 +39,7 @@ export const COPY = {
   home: {
     meta: {
       description:
-        "Pensiune la munte în Valea Avrigului, la 40 de minute de Sibiu: 10 unități cu balcon, jacuzzi și saună, terasă spre Făgăraș. Rezervări pe WhatsApp.",
+        "Cazare la munte în Valea Avrigului, la 40 de minute de Sibiu: 10 unități cu balcon, jacuzzi și saună, terasă spre Făgăraș. Rezervări pe WhatsApp.",
     },
     hero: {
       /** The page's h1: what and where, in plain words. Sits above the slogan. */
@@ -177,7 +177,8 @@ export const COPY = {
       title: "Locația",
       /** `rest` carries its own leading space or comma, as the sentence needs. */
       nearby: [
-        { name: "Brambura Park", rest: " și ferma de cerbi (Poiana Neamțului): la circa 10 minute" },
+        { name: "Brambura Park", rest: ": la 4 minute cu mașina" },
+        { name: "Ferma de cerbi", rest: ", Poiana Neamțului: la circa 10 minute" },
         { name: "Palatul Brukenthal", rest: ", Avrig: în apropiere" },
         { name: "Castelul de Lut „Valea Zânelor”", rest: ", Porumbacu de Sus: la câteva minute de Avrig" },
         { name: "Casa Vikingilor", rest: " și Povestea Calendarului: în zonă" },
@@ -206,12 +207,12 @@ export const COPY = {
 
   rooms: {
     meta: {
-      title: "Camere",
+      title: "Camere și cazare în Valea Avrigului",
       description:
         "Camerele Pensiunii Amonte, lângă Sibiu: duble Deluxe, cu vedere la munte, cu balcon și studiouri de familie. Toate au balcon și mic dejun inclus.",
     },
     eyebrow: "Cazare",
-    title: "Camerele noastre",
+    title: "Cazare în Valea Avrigului: camerele noastre",
     lead: "Spații generoase, lemn cald și vedere spre Munții Făgăraș. Acces la jacuzzi & saună și terasă panoramică.",
     cta: "Verifică disponibilitatea",
     rates: "Vezi tarifele detaliate →",
@@ -232,19 +233,19 @@ export const COPY = {
 
   activities: {
     meta: {
-      title: "Activități în zonă",
+      title: "Ce faci în Valea Avrigului, lângă Sibiu",
       description:
         "Ce faci lângă Pensiunea Amonte: drumeții în Făgăraș, Brambura Park, Palatul Brukenthal, e-bike, călărie și ATV, ferma de cerbi, Beach Club Avrig.",
     },
     eyebrow: "În jurul pensiunii",
-    title: "Activități în zonă",
+    title: "Activități în Valea Avrigului și în împrejurimi",
     lead: "De la drumeții pe creste la seri lângă foc - muntele are mereu un plan pentru tine.",
     cta: "Rezervă-ți sejurul la munte",
   },
 
   gallery: {
     meta: {
-      title: "Galerie",
+      title: "Galerie foto, Valea Avrigului",
       description:
         "Galerie foto Pensiunea Amonte: exterior, jacuzzi & saună, camere, priveliște spre Munții Făgăraș și serile lângă focul de tabără.",
     },
@@ -255,7 +256,7 @@ export const COPY = {
 
   services: {
     meta: {
-      title: "Servicii & facilități",
+      title: "Servicii și facilități în Valea Avrigului",
       description:
         "Servicii la Pensiunea Amonte: mic dejun inclus, jacuzzi și saună, bar, living cu șemineu, terasă panoramică, foc de tabără, WiFi și parcare gratuite.",
     },

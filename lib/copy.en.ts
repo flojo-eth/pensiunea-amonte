@@ -15,7 +15,7 @@ export const COPY: Copy = {
     tagline: TAGLINE,
     description:
       "Pensiunea Amonte is a mountain retreat in Valea Avrigului, at the foot of the Făgăraș Mountains, 40 minutes from Sibiu. 10 rooms and studios, a hot tub and sauna, a panoramic terrace and a meeting room for groups.",
-    defaultTitle: `${SITE_NAME} - ${TAGLINE} in Valea Avrigului`,
+    defaultTitle: `${TAGLINE} in Valea Avrigului, near Sibiu | ${SITE_NAME}`,
     inLanguage: "en-US",
     paymentAccepted: "Cash, debit and credit cards",
   },
@@ -161,7 +161,8 @@ export const COPY: Copy = {
       eyebrow: "Getting here",
       title: "Location",
       nearby: [
-        { name: "Brambura Park", rest: " and the deer farm (Poiana Neamțului): about 10 minutes" },
+        { name: "Brambura Park", rest: ": 4 minutes by car" },
+        { name: "The deer farm", rest: ", Poiana Neamțului: about 10 minutes" },
         { name: "Brukenthal Palace", rest: ", Avrig: nearby" },
         { name: "The Clay Castle, Valea Zânelor", rest: ", Porumbacu de Sus: a few minutes from Avrig" },
         { name: "Casa Vikingilor", rest: " and Povestea Calendarului: in the area" },
@@ -191,12 +192,12 @@ export const COPY: Copy = {
 
   rooms: {
     meta: {
-      title: "Rooms",
+      title: "Rooms and accommodation in Valea Avrigului",
       description:
         "Rooms at Pensiunea Amonte near Sibiu: Deluxe and mountain view doubles, doubles with a balcony and family studios, all with breakfast included.",
     },
     eyebrow: "Accommodation",
-    title: "Our rooms",
+    title: "Our rooms in Valea Avrigului",
     lead: "Generous spaces, warm wood and views of the Făgăraș Mountains. Access to the hot tub & sauna and a panoramic terrace.",
     cta: "Check availability",
     rates: "See detailed rates →",
@@ -217,19 +218,19 @@ export const COPY: Copy = {
 
   activities: {
     meta: {
-      title: "Things to do nearby",
+      title: "Things to do in Valea Avrigului, near Sibiu",
       description:
         "Near Pensiunea Amonte: hiking in the Făgăraș Mountains, Brambura Park, Brukenthal Palace, e-bikes, horseback riding and ATVs, a deer farm, Beach Club Avrig.",
     },
     eyebrow: "Around the guesthouse",
-    title: "Things to do nearby",
+    title: "Things to do in and around Valea Avrigului",
     lead: "From ridge hikes to evenings by the fire, the mountains always have a plan for you.",
     cta: "Book your mountain stay",
   },
 
   gallery: {
     meta: {
-      title: "Gallery",
+      title: "Photo gallery, Valea Avrigului",
       description:
         "Photo gallery of Pensiunea Amonte: the exterior, hot tub & sauna, rooms, views of the Făgăraș Mountains and evenings by the campfire.",
     },
@@ -240,7 +241,7 @@ export const COPY: Copy = {
 
   services: {
     meta: {
-      title: "Services & amenities",
+      title: "Services and amenities in Valea Avrigului",
       description:
         "Services at Pensiunea Amonte: breakfast included, hot tub and sauna, bar, living room with fireplace, panoramic terrace, campfire, free Wi-Fi and parking.",
     },

@@ -146,10 +146,10 @@ export const LEISURE: Space[] = [
   },
   {
     title: "Brambura Park",
-    body: "La circa 10 minute, pentru activități de grup în aer liber.",
+    body: "La 4 minute cu mașina, pentru activități de grup în aer liber.",
     photo: "/brambura.jpeg",
     photoLabel: "[ FOTO: Brambura Park ]",
-    alt: "Brambura Park, activități de grup la 10 minute de pensiune",
+    alt: "Brambura Park, activități de grup la 4 minute de pensiune",
   },
 ];
 
@@ -315,7 +315,7 @@ const FAQ_SOURCE: FaqItem[] = [
   },
   {
     q: "Ce activități se pot organiza la fața locului?",
-    a: "Jacuzzi și saună cu acces exclusiv pentru grup, foc de tabără, teren de mini fotbal, masă de ping-pong și drumeții cu plecare din vale spre Bârcaciu, Negoiu și Suru. Brambura Park este la circa 10 minute.",
+    a: "Jacuzzi și saună cu acces exclusiv pentru grup, foc de tabără, teren de mini fotbal, masă de ping-pong și drumeții cu plecare din vale spre Bârcaciu, Negoiu și Suru. Brambura Park este la 4 minute cu mașina.",
   },
   {
     q: "Cât timp înainte trebuie să rezervăm?",
