@@ -259,12 +259,12 @@ export function getPost(slug: string) {
 export const BLOG_COPY = {
   crumb: "Blog",
   meta: {
-    title: "Blog: ghiduri pentru Valea Avrigului",
+    title: "Blog: sugestii pentru Valea Avrigului",
     description:
-      "Ghiduri pentru Valea Avrigului și împrejurimi, scrise de echipa Pensiunii Amonte: ce faci, cât timp îți trebuie și unde te cazezi.",
+      "Sugestii pentru Valea Avrigului și împrejurimi, scrise de echipa Pensiunii Amonte: ce faci, cât timp îți trebuie și unde te cazezi.",
   },
   eyebrow: "Blog",
-  title: "Ghiduri pentru Valea Avrigului",
+  title: "Sugestii pentru Valea Avrigului",
   lead: "Ce faci în Valea Avrigului și în împrejurimi, din ce știm noi și din ce ne întreabă oaspeții.",
   read: "Citește articolul →",
   summary: "Pe scurt",
