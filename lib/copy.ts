@@ -211,7 +211,7 @@ export const COPY = {
       description:
         "Camerele Pensiunii Amonte, lângă Sibiu: duble Deluxe, cu vedere la munte, cu balcon și studiouri de familie. Toate au balcon și mic dejun inclus.",
     },
-    eyebrow: "Cazare",
+    eyebrow: "Camere",
     title: "Cazare în Valea Avrigului: camerele noastre",
     lead: "Spații generoase, lemn cald și vedere spre Munții Făgăraș. Acces la jacuzzi & saună și terasă panoramică.",
     cta: "Verifică disponibilitatea",
