@@ -7,6 +7,7 @@ import WhatsAppButton from "./WhatsAppButton";
 import { CONTACT, WEBSITE, SOCIAL_PROFILES, OPERATOR } from "@/lib/content";
 import { getContent, href, type Lang } from "@/lib/i18n";
 import { UI } from "@/lib/i18n/ui";
+import { BLOG_COPY, BLOG_PATH } from "@/lib/blog";
 
 export default function Footer({ lang }: { lang: Lang }) {
   const t = UI[lang].footer;
@@ -70,6 +71,12 @@ export default function Footer({ lang }: { lang: Lang }) {
                 {l.label}
               </Link>
             ))}
+            {/* The blog is Romanian only, so only the Romanian footer links to it. */}
+            {lang === "ro" && (
+              <Link href={BLOG_PATH} className="text-sm text-paper/80 no-underline hover:text-paper">
+                {BLOG_COPY.crumb}
+              </Link>
+            )}
           </div>
           <div className="flex flex-col gap-2.5">
             <div className="mb-1 text-xs uppercase tracking-[1px] text-paper/60">

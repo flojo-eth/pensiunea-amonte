@@ -16,6 +16,14 @@ type PageMetaInput = {
   path: string;
   /** Page-specific share image; falls back to the site-wide one. */
   image?: string;
+  /**
+   * The page exists in Romanian only (the blog). hreflang then lists only
+   * itself: the generic alternates would point /en and /de at their home
+   * pages and tell Google those are translations of this page.
+   */
+  roOnly?: boolean;
+  /** Open Graph `article` instead of `website`, with its dates and author. */
+  article?: { published: string; modified: string; author: string };
 };
 
 /** Canonical plus hreflang alternates: every page points at both of its versions. */
@@ -51,15 +59,26 @@ export function pageMeta({
   description,
   path,
   image = OG_IMAGE,
+  roOnly = false,
+  article,
 }: PageMetaInput): Metadata {
   return {
     title,
     description,
-    alternates: languageAlternates(path),
+    alternates: roOnly
+      ? { canonical: path, languages: { ro: path, "x-default": path } }
+      : languageAlternates(path),
     openGraph: {
-      type: "website",
+      ...(article
+        ? {
+            type: "article" as const,
+            publishedTime: article.published,
+            modifiedTime: article.modified,
+            authors: [article.author],
+          }
+        : { type: "website" as const }),
       locale: OG_LOCALE[lang],
-      alternateLocale: otherLocales(lang),
+      alternateLocale: roOnly ? [] : otherLocales(lang),
       siteName: SITE_NAME,
       title: `${title} | ${SITE_NAME}`,
       description,

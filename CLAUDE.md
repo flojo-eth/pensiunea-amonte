@@ -50,6 +50,11 @@ app/
     retreat-corporate/    B2B landing, OUTSIDE (site): SiteShell `landing` swaps the
                           nav for LandingHeader (logo + language only); no links
                           off the page except the footer; content in lib/retreat.ts
+    blog/  blog/[slug]/   Romanian only. Articles live in lib/blog.ts (BLOG_POSTS), with
+                          their own strings (BLOG_COPY); pageMeta({ roOnly, article })
+                          keeps hreflang to Romanian alone. Linked from the Romanian
+                          footer only. Every first-hand line is confirmed by Flo;
+                          third-party facts carry the date read and a source.
     rezerva-acum/         deliberately OUTSIDE (site): no nav/footer, distraction-free
   (en)/                   English root layout: <html lang="en">
     en/(site)/            same pages, English slugs (about-us, rooms, things-to-do...)
