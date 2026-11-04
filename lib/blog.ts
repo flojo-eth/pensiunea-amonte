@@ -161,16 +161,16 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        title: "Ce mai vezi în aceeași zi",
+        title: "Ce mai vezi în același weekend",
         blocks: [
           {
             type: "p",
-            text: "Brambura Park se leagă ușor de alte opriri din zonă:",
+            text: "Dacă îi dai parcului o zi întreagă, celelalte opriri din zonă se potrivesc mai bine în a doua zi a weekendului. Singura care încape și în aceeași zi e ferma de cerbi din Poiana Neamțului: vara, vizitele sunt seara, între 17 și 20, deci poți ajunge acolo după ce închei ziua în parc.",
           },
           {
             type: "ul",
             items: [
-              "Ferma de cerbi din Poiana Neamțului, tot în Valea Avrigului: cerbi și ciute, cu vizite în weekend, în grupuri cu ghid.",
+              "Ferma de cerbi din Poiana Neamțului, tot în Valea Avrigului: cerbi și ciute, cu vizite în weekend, în grupuri cu ghid. Vara, programul e între 17 și 20.",
               "Palatul Brukenthal din Avrig: reședința de vară a baronului Samuel von Brukenthal, cu grădina și parcul din jur.",
               "Castelul de Lut din Valea Zânelor, la Porumbacu de Sus: o construcție de poveste, din materiale naturale, la poalele Făgărașilor.",
             ],
