@@ -271,6 +271,13 @@ export const BLOG_POSTS: BlogPost[] = [
             text: "Piesa centrală e Casa Întoarsă, o casă de aproximativ 200 m² în care totul e răsturnat: dormitorul are patul pe tavan, bucătăria pare să sfideze gravitația, iar fiecare cameră e un decor pentru poze. În jurul casei s-a construit treptat un parc întreg, cu atracții pentru copii mici, pentru cei mai mari și pentru părinți.",
           },
           {
+            type: "image",
+            src: "/blog/casa-intoarsa.jpg",
+            alt: "Casa Întoarsă din Brambura Park, cu acoperișul în jos",
+            caption: "Casa Întoarsă, văzută din parc",
+            portrait: true,
+          },
+          {
             type: "p",
             text: "Parcul e un loc de zi: vii dimineața, mergi din atracție în atracție, iei masa acolo și pleci când s-au obosit copiii.",
           },
