@@ -137,6 +137,7 @@ export const COPY = {
     schemaName: "Despre Pensiunea Amonte - cazare boutique în Valea Avrigului",
     eyebrow: "Despre noi",
     title: "Despre Pensiunea Amonte",
+    reviews: { eyebrow: "Recenzii", title: "Ce spun oaspeții" },
     answer:
       "Pensiunea Amonte este o pensiune boutique de munte situată în Valea Avrigului, județul Sibiu, la poalele Munților Făgăraș și la circa 40 de minute de Sibiu. Oferim 10 spații de cazare pentru maximum 24 de oaspeți, într-un cadru intim, cu jacuzzi, saună, șemineu, terasă panoramică, bar și acces direct la natură. Putem fi rezervați integral pentru grupuri, retreaturi și evenimente private.",
     operator: {

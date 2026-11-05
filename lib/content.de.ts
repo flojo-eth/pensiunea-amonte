@@ -345,7 +345,7 @@ export const GALLERY: GalleryItem[] = [
   { photo: "/trasee-fagaras.jpg", label: "Wege im Făgăraș-Gebirge", span: 1 },
 ];
 
-export const RATING_SUMMARY = { value: "4,9", count: 114 };
+export const RATING_SUMMARY = { value: "4,9", count: 121 };
 
 export const REVIEWS: Review[] = [
   {
@@ -442,6 +442,81 @@ export const REVIEWS: Review[] = [
 ];
 
 export const GROUP_REVIEWS = groupReviews(REVIEWS);
+
+// /ueber-uns: wie auf der rumänischen Seite. Rumänische übersetzt und markiert,
+// englische und deutsche im Original.
+export const ABOUT_REVIEWS: Review[] = [
+  {
+    stars: "★★★★★",
+    text: "Wir haben hier Menschen getroffen, wie man sie selten findet: aufmerksam, freundlich und ehrlich darum bemüht, dass sich die Gäste wohlfühlen. Man sieht, dass ihnen jeder Gast wichtig ist und dass sie mit Herz bei der Sache sind, nicht nur mit Blick auf den Gewinn.",
+    name: "Royal B.",
+    meta: "Google · September 2026",
+    initial: "R",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Außergewöhnlich sauber, mit viel Liebe zum Detail. Sehr aufmerksames Personal, aber zugleich diskret. Ich kann es auf jeden Fall empfehlen!",
+    name: "Tomina N.",
+    meta: "Google · Oktober 2026",
+    initial: "T",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "We had an amazing time! Wonderful location, amazing view, quiet, clean, very comfortable. The fireplace puts the cherry on top! Must praise the staff, very nice, helpful and always there for our needs.",
+    name: "Agota B.",
+    meta: "Google · Oktober 2026",
+    initial: "A",
+  },
+  {
+    stars: "★★★★★",
+    text: "Ihre Pension liegt in einer zauberhaften Gegend, am Fuß des Făgăraș-Gebirges, im Tal des Flusses Avrig, mit märchenhaften Ausblicken. Sehr saubere Pension, freundliches, herzliches Personal, aufmerksam gegenüber den Gästen.",
+    name: "Ion V.",
+    meta: "Google · Oktober 2026",
+    initial: "I",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Die Gastgeber sind rund um die Uhr für ihre Gäste da! Ich kannte die ganze Liste der Aktivitäten, die Preise und alle Details, die ich wissen wollte, schon vor der Buchung!",
+    name: "Eduard B.",
+    meta: "Google · Juli 2026",
+    initial: "E",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Das Team ist äußerst freundlich, engagiert und achtet auf jedes Detail. Wir haben ihre Flexibilität und ihre Bereitschaft, uns bei allem zu helfen, sehr geschätzt. Alles war gut organisiert, die Atmosphäre war großartig, und wir haben die Zeit mit Familie und Freunden sehr genossen.",
+    name: "Andrei B.",
+    meta: "Google · September 2026",
+    initial: "A",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Die herzlichsten Menschen, makellose Sauberkeit, für jeden Wunsch gab es eine Lösung. Auch das Essen war sehr lecker. Danke für einen perfekten Aufenthalt!",
+    name: "Ioana T.",
+    meta: "Google · September 2026",
+    initial: "I",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Ich habe einen Ort gefunden, an den ich zurückkehren möchte, einen modernen Ort, an dem man sich wohlfühlt und die Gastgeber einen herzlich erwarten.",
+    name: "Daniela F. M.",
+    meta: "Google · Oktober 2026",
+    initial: "D",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Wir hatten einen richtig schönen Aufenthalt in der Pension Amonte. Es hat einfach alles gepasst. Super nette und herzliche Gastgeber, eine tolle Atmosphäre und eine wunderschöne Lage mitten in den Bergen.",
+    name: "Elias J.",
+    meta: "Google · September 2026",
+    initial: "E",
+  },
+];
 
 export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
   "Hallo, ich hätte gern Informationen zu einer privaten Veranstaltung in der Pensiunea Amonte",

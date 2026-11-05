@@ -346,7 +346,7 @@ export const GALLERY: GalleryItem[] = [
   { photo: "/trasee-fagaras.jpg", label: "Trails in the Făgăraș Mountains", span: 1 },
 ];
 
-export const RATING_SUMMARY = { value: "4.9", count: 114 };
+export const RATING_SUMMARY = { value: "4.9", count: 121 };
 
 export const REVIEWS: Review[] = [
   {
@@ -443,6 +443,74 @@ export const REVIEWS: Review[] = [
 ];
 
 export const GROUP_REVIEWS = groupReviews(REVIEWS);
+
+// /about-us reviews: the same as the Romanian page. Romanian ones translated
+// faithfully and marked `translated`; English ones as written.
+export const ABOUT_REVIEWS: Review[] = [
+  {
+    stars: "★★★★★",
+    text: "We met people here like you rarely find anymore: attentive, kind and sincerely concerned that guests feel good. You can see they care about every guest and put their heart into what they do, not just profit first.",
+    name: "Royal B.",
+    meta: "Google · September 2026",
+    initial: "R",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "Exceptionally clean, with great attention to detail. Very attentive staff, yet discreet at the same time. I definitely recommend it!",
+    name: "Tomina N.",
+    meta: "Google · October 2026",
+    initial: "T",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "We had an amazing time! Wonderful location, amazing view, quiet, clean, very comfortable. The fireplace puts the cherry on top! Must praise the staff, very nice, helpful and always there for our needs.",
+    name: "Agota B.",
+    meta: "Google · October 2026",
+    initial: "A",
+  },
+  {
+    stars: "★★★★★",
+    text: "Your guesthouse is in a wonderful setting, at the foot of the Făgăraș Mountains, in the valley of the Avrig river, with fairy-tale views. A very clean guesthouse, with kind, friendly staff who look after their guests.",
+    name: "Ion V.",
+    meta: "Google · October 2026",
+    initial: "I",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "The managers are there for their guests around the clock! I knew the whole list of activities, the prices and every detail I wanted even before I booked!",
+    name: "Eduard B.",
+    meta: "Google · July 2026",
+    initial: "E",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "The team is extremely kind, dedicated and attentive to every detail. We really appreciated their flexibility and their willingness to help with anything we needed. Everything was well organized, the atmosphere was wonderful, and we had a great time with family and friends.",
+    name: "Andrei B.",
+    meta: "Google · September 2026",
+    initial: "A",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "The loveliest people, spotless cleanliness, every request was taken care of. The food was also very tasty. Thank you for a perfect stay!",
+    name: "Ioana T.",
+    meta: "Google · September 2026",
+    initial: "I",
+    translated: true,
+  },
+  {
+    stars: "★★★★★",
+    text: "I found a place I want to come back to, a modern place where you feel comfortable and the hosts welcome you warmly.",
+    name: "Daniela F. M.",
+    meta: "Google · October 2026",
+    initial: "D",
+    translated: true,
+  },
+];
 
 export const PRIVATE_EVENTS_WHATSAPP = whatsappUrl(
   "Hello, I'd like information about a private event at Pensiunea Amonte",

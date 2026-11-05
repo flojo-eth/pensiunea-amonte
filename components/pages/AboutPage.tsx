@@ -3,6 +3,7 @@ import Link from "next/link";
 import { pageMeta } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import SectionHeading from "@/components/SectionHeading";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import ConsentMap from "@/components/ConsentMap";
 import { CONTACT, WEBSITE } from "@/lib/content";
@@ -23,7 +24,7 @@ const pad = "py-[clamp(56px,7vw,96px)]";
 export default function AboutPage({ lang }: { lang: Lang }) {
   const t = getCopy(lang).about;
   const {
-    STATS, HOSTS,
+    STATS, HOSTS, ABOUT_REVIEWS, RATING_SUMMARY,
     ABOUT_FAQ_BASE, ABOUT_FAQ_FB, ABOUT_FEATURES, ABOUT_FACILITIES, ABOUT_FACILITIES_FB,
   } = getContent(lang);
 
@@ -156,6 +157,19 @@ export default function AboutPage({ lang }: { lang: Lang }) {
               />
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── CE SPUN OASPEȚII: recenzii despre oameni și atmosferă, altele
+          decât cele din caruselul de pe prima pagină ── */}
+      <section className={`${pad} bg-sand`}>
+        <div className={container}>
+          <SectionHeading eyebrow={t.reviews.eyebrow} title={t.reviews.title} center className="mb-3">
+            {getCopy(lang).home.reviews.summary(RATING_SUMMARY.value, RATING_SUMMARY.count)}
+          </SectionHeading>
+          <div className="mt-[clamp(28px,4vw,44px)]">
+            <ReviewsCarousel reviews={ABOUT_REVIEWS} />
+          </div>
         </div>
       </section>
 

@@ -122,6 +122,7 @@ export const COPY: Copy = {
     schemaName: "About Pensiunea Amonte, boutique accommodation in Valea Avrigului",
     eyebrow: "About us",
     title: "About Pensiunea Amonte",
+    reviews: { eyebrow: "Reviews", title: "What our guests say" },
     answer:
       "Pensiunea Amonte is a boutique mountain guesthouse in Valea Avrigului, Sibiu County, at the foot of the Făgăraș Mountains and about 40 minutes from Sibiu. We have 10 rooms and studios for up to 24 guests in an intimate setting, with a hot tub, a sauna, a fireplace, a panoramic terrace, a bar and direct access to nature. The whole property can be booked for groups, retreats and private events.",
     operator: {

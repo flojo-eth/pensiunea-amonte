@@ -27,6 +27,7 @@ type ContentKeys =
   | "RATING_SUMMARY"
   | "REVIEWS"
   | "GROUP_REVIEWS"
+  | "ABOUT_REVIEWS"
   | "PRIVATE_EVENTS_WHATSAPP"
   | "NAV_LINKS"
   | "AUDIENCES"

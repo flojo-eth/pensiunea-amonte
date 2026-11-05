@@ -122,6 +122,7 @@ export const COPY: Copy = {
     schemaName: "Über die Pensiunea Amonte, Boutique-Unterkunft in Valea Avrigului",
     eyebrow: "Über uns",
     title: "Über die Pensiunea Amonte",
+    reviews: { eyebrow: "Bewertungen", title: "Was unsere Gäste sagen" },
     answer:
       "Die Pensiunea Amonte ist eine Boutique-Bergpension in Valea Avrigului, Kreis Sibiu, am Fuß des Făgăraș-Gebirges und etwa 40 Minuten von Sibiu entfernt. Wir bieten 10 Zimmer und Studios für bis zu 24 Gäste in familiärem Rahmen, mit Jacuzzi, Sauna, Kamin, Panoramaterrasse, Bar und direktem Zugang zur Natur. Das ganze Haus kann für Gruppen, Retreats und private Feiern gebucht werden.",
     operator: {

@@ -468,7 +468,7 @@ export type Review = {
   translated?: true;
 };
 
-export const RATING_SUMMARY: { value: string; count: number } = { value: "4,9", count: 114 };
+export const RATING_SUMMARY: { value: string; count: number } = { value: "4,9", count: 121 };
 
 export const REVIEWS: Review[] = [
   {
@@ -565,6 +565,70 @@ export function groupReviews(reviews: Review[]) {
   return reviews.filter((r) => GROUP_REVIEWERS.includes(r.name));
 }
 export const GROUP_REVIEWS = groupReviews(REVIEWS);
+
+// Recenziile de pe /despre-noi, despre oameni și atmosferă. Alese din
+// public/recenzii-google-amonte.md (Google, 05.11.2026) ca să nu repete
+// caruselul de pe prima pagină. Fragmente continue, cuvânt cu cuvânt; fără
+// recenziile care pomenesc o piscină (nu există) sau folosesc „lounge”.
+// Data: luna și anul, aproximate din „acum X luni” de pe Google.
+export const ABOUT_REVIEWS: Review[] = [
+  {
+    stars: "★★★★★",
+    text: "Am întâlnit aici oameni cum rar mai găsești: atenți, amabili și sincer preocupați ca oaspeții să se simtă bine. Se vede că le pasă de fiecare client și că pun suflet în ceea ce fac, nu doar interesul financiar pe primul loc.",
+    name: "Royal B.",
+    meta: "Google · septembrie 2026",
+    initial: "R",
+  },
+  {
+    stars: "★★★★★",
+    text: "Deosebit de curat, cu mare atentie la detalii. Personal foarte atent, dar in acelas timp discret. Cu siguranta recomand!",
+    name: "Tomina N.",
+    meta: "Google · octombrie 2026",
+    initial: "T",
+  },
+  {
+    stars: "★★★★★",
+    text: "We had an amazing time! Wonderful location, amazing view, quiet, clean, very comfortable. The fireplace puts the cherry on top! Must praise the staff, very nice, helpful and always there for our needs.",
+    name: "Agota B.",
+    meta: "Google · octombrie 2026",
+    initial: "A",
+  },
+  {
+    stars: "★★★★★",
+    text: "Pensiunea D-voastră este situata într-o zona mirifica, la poalele Munților Făgăraș, in valea râului Avrig, priveliști de basm. Pensiune foarte curată, personalul amabil, prietenos, atent cu oaspeții.",
+    name: "Ion V.",
+    meta: "Google · octombrie 2026",
+    initial: "I",
+  },
+  {
+    stars: "★★★★★",
+    text: "Administratorii stau la dispoziția clienților 24/24 ! Am știut toată lista de activități , prețuri și orice detalii am dorit chiar înainte să fac rezervarea!",
+    name: "Eduard B.",
+    meta: "Google · iulie 2026",
+    initial: "E",
+  },
+  {
+    stars: "★★★★★",
+    text: "Echipa este extrem de amabilă, dedicată și atentă la fiecare detaliu. Am apreciat foarte mult flexibilitatea lor și disponibilitatea de a ne ajuta cu orice am avut nevoie. Totul a fost bine organizat, iar atmosfera a fost extraordinară și ne-am simțit foarte bine alături de familie și prieteni.",
+    name: "Andrei B.",
+    meta: "Google · septembrie 2026",
+    initial: "A",
+  },
+  {
+    stars: "★★★★★",
+    text: "Cei mai frumoși oameni, curățenie impecabila, orice cerință a avut rezolvare. Mâncarea, de asemenea foarte gustoasa. Mulțumesc pentru un sejur perfect!",
+    name: "Ioana T.",
+    meta: "Google · septembrie 2026",
+    initial: "I",
+  },
+  {
+    stars: "★★★★★",
+    text: "Am gasit o locatie in care imi doresc sa ma reintorc, un loc modern in care te simti confortabil si gazdele te asteapta cu drag.",
+    name: "Daniela F. M.",
+    meta: "Google · octombrie 2026",
+    initial: "D",
+  },
+];
 
 // Deep link to the reviews tab of the Google Business Profile (same place_id
 // verified elsewhere against the site's Maps links), used for "see all
