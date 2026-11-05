@@ -731,7 +731,7 @@ export const ABOUT_FAQ_BASE: Faq[] = [
   },
   {
     q: "Ce obiective turistice și activități sunt în apropiere?",
-    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park este la 4 minute cu mașina, iar ferma de cerbi de la Poiana Neamțului, la circa 10 minute. Palatul Brukenthal (Avrig), Castelul de Lut (Porumbacu de Sus), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
+    a: "Plecare directă din Valea Avrigului spre Cabana Bârcaciu, Negoiu și Suru (trasee pentru toate nivelurile). Brambura Park este la 4 minute cu mașina, iar ferma de cerbi de la Poiana Neamțului, la circa 10 minute. Palatul Brukenthal (Avrig), Casa Vikingilor și Povestea Calendarului sunt în apropierea pensiunii.",
   },
   {
     q: "Cât de departe sunteți de Sibiu și de Transfăgărășan?",

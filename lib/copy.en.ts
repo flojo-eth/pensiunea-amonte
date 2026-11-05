@@ -164,7 +164,6 @@ export const COPY: Copy = {
         { name: "Brambura Park", rest: ": 4 minutes by car" },
         { name: "The deer farm", rest: ", Poiana Neamțului: about 10 minutes" },
         { name: "Brukenthal Palace", rest: ", Avrig: nearby" },
-        { name: "The Clay Castle, Valea Zânelor", rest: ", Porumbacu de Sus: a few minutes from Avrig" },
         { name: "Casa Vikingilor", rest: " and Povestea Calendarului: in the area" },
         { name: "Făgăraș mountain trails", rest: ": Cabana Bârcaciu, Negoiu and Suru, starting from Valea Avrigului" },
         { name: "Outdoor activities", rest: ": horseback riding, ATV rides, forest walks" },

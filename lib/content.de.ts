@@ -551,7 +551,7 @@ export const ABOUT_FAQ_BASE: Faq[] = [
   },
   {
     q: "Welche Sehenswürdigkeiten und Aktivitäten gibt es in der Nähe?",
-    a: "Die Wege starten direkt in Valea Avrigului, zur Cabana Bârcaciu, auf den Negoiu und den Suru, mit Routen für jedes Niveau. Der Brambura Park liegt 4 Autominuten entfernt, die Hirschfarm in Poiana Neamțului etwa 10 Minuten. Das Brukenthal-Palais (Avrig), die Lehmburg (Porumbacu de Sus), Casa Vikingilor und Povestea Calendarului liegen alle in der Nähe der Pension.",
+    a: "Die Wege starten direkt in Valea Avrigului, zur Cabana Bârcaciu, auf den Negoiu und den Suru, mit Routen für jedes Niveau. Der Brambura Park liegt 4 Autominuten entfernt, die Hirschfarm in Poiana Neamțului etwa 10 Minuten. Das Brukenthal-Palais (Avrig), Casa Vikingilor und Povestea Calendarului liegen alle in der Nähe der Pension.",
   },
   {
     q: "Wie weit ist es nach Sibiu und zur Transfăgărășan?",

@@ -164,7 +164,6 @@ export const COPY: Copy = {
         { name: "Brambura Park", rest: ": 4 Minuten mit dem Auto" },
         { name: "Die Hirschfarm", rest: ", Poiana Neamțului: etwa 10 Minuten" },
         { name: "Brukenthal-Palais", rest: ", Avrig: in der Nähe" },
-        { name: "Die Lehmburg Valea Zânelor", rest: ", Porumbacu de Sus: wenige Minuten von Avrig" },
         { name: "Casa Vikingilor", rest: " und Povestea Calendarului: in der Umgebung" },
         { name: "Bergwege im Făgăraș", rest: ": Cabana Bârcaciu, Negoiu und Suru, mit Start in Valea Avrigului" },
         { name: "Aktivitäten im Freien", rest: ": Reiten, Quadtouren, Waldspaziergänge" },

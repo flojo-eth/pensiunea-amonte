@@ -552,7 +552,7 @@ export const ABOUT_FAQ_BASE: Faq[] = [
   },
   {
     q: "What sights and activities are nearby?",
-    a: "Trails start right from Valea Avrigului toward Cabana Bârcaciu, Negoiu and Suru, with routes for every level. Brambura Park is 4 minutes away by car, and the deer farm at Poiana Neamțului about 10 minutes. Brukenthal Palace (Avrig), the Clay Castle (Porumbacu de Sus), Casa Vikingilor and Povestea Calendarului are all close to the guesthouse.",
+    a: "Trails start right from Valea Avrigului toward Cabana Bârcaciu, Negoiu and Suru, with routes for every level. Brambura Park is 4 minutes away by car, and the deer farm at Poiana Neamțului about 10 minutes. Brukenthal Palace (Avrig), Casa Vikingilor and Povestea Calendarului are all close to the guesthouse.",
   },
   {
     q: "How far are you from Sibiu and the Transfăgărășan?",

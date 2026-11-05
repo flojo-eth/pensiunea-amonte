@@ -110,7 +110,7 @@ export const BLOG_POSTS: BlogPost[] = [
             items: [
               "Brambura Park: parc de distracții pentru familii, cu Casa Întoarsă, mini zoo, tubing și locuri de joacă, la 4 minute de pensiune. Am scris despre el [un articol separat](/blog/brambura-park).",
               "Ferma de cerbi din Poiana Neamțului: cerbi și ciute, cu vizite în grupuri cu ghid, la circa 10 minute de pensiune. Vara, vizitele sunt între 17 și 20.",
-              "Casa Vikingilor (Panoramic Park Viking Village): parc tematic pe Valea Avrigului, inspirat din lumea vikingilor, cu o corabie, ateliere de fierărie, tâmplărie și țesut pentru copii, un parc cu dinozauri, loc de joacă, trenuleț, animale și restaurant. Parcul se extinde încă.",
+              "Casa Vikingilor (Panoramic Park Viking Village): parc tematic pe Valea Avrigului, inspirat din lumea vikingilor, cu o corabie, ateliere de fierărie, tâmplărie și țesut pentru copii, un parc cu dinozauri, loc de joacă, trenuleț, animale și restaurant. Casa e construită complet, iar parcul din jur e încă în dezvoltare.",
               "Povestea Calendarului, la Porumbacu de Sus: parc tematic despre cele 12 luni ale anului și tradițiile lor, cu o căsuță pentru fiecare lună, spectacole pentru copii și locuri de joacă.",
             ],
           },
@@ -141,7 +141,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             type: "p",
-            text: "E un traseu de dificultate medie. Prima parte e cea mai grea, o urcare abruptă, iar după ea drumul devine ușor. Marcajul e cruce roșie.",
+            text: "E un traseu de dificultate medie. Prima parte e cea mai grea, o urcare abruptă, iar după ea drumul devine ușor. Marcajul e cruce roșie. Cabana Bârcaciu funcționează, așa că sus ai unde face o pauză.",
           },
           { type: "image", src: "/trasee-fagaras.jpg", alt: "Traseu montan în Munții Făgăraș, deasupra Văii Avrigului" },
           {
@@ -163,7 +163,7 @@ export const BLOG_POSTS: BlogPost[] = [
               "E-bike: le găsești la pensiune, prin partenerul nostru Haihui. Traseul îl alegem împreună, după experiența ta și după vreme.",
               "Călărie și ATV: sunt mai multe variante în zonă. Ne putem ocupa noi de rezervare sau te punem în legătură cu colaboratorii noștri.",
               "Palatul Brukenthal din Avrig: fosta reședință de vară a baronului Samuel von Brukenthal, cu grădină barocă din 1777, restaurant și cafenea istorică. Accesul în parc se plătește.",
-              "Beach Club Avrig (Corabia Piraților): plaja de vară a Palatului Brukenthal, deschisă doar vara, pentru toate vârstele.",
+              "Beach Club Avrig (Corabia Piraților): plaja de vară a Palatului Brukenthal, cu apă încălzită, deschisă doar vara, pentru toate vârstele.",
             ],
           },
         ],
@@ -177,7 +177,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             type: "p",
-            text: "Iarna, cele mai multe rămân deschise, inclusiv Brambura Park. Excepțiile: Beach Club Avrig e doar de vară, iar Povestea Calendarului anunță pe site o închidere de iarnă, până în februarie. Pe munte, mergi doar până la Cabana Bârcaciu. Serile de iarnă sunt pentru șemineu, jacuzzi și saună.",
+            text: "Iarna, aproape totul rămâne deschis, inclusiv Brambura Park, Casa Vikingilor și Povestea Calendarului. Singura excepție e Beach Club Avrig, care e doar de vară. Pe munte, mergi doar până la Cabana Bârcaciu. Serile de iarnă sunt pentru șemineu, jacuzzi și saună.",
           },
         ],
       },
@@ -223,7 +223,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         q: "Ce poți face iarna în Valea Avrigului?",
-        a: "Cele mai multe atracții rămân deschise, inclusiv Brambura Park. Beach Club Avrig e doar de vară, iar Povestea Calendarului are o închidere de iarnă. Pe munte, iarna se merge doar până la Cabana Bârcaciu.",
+        a: "Aproape toate atracțiile rămân deschise, inclusiv Brambura Park și Povestea Calendarului. Doar Beach Club Avrig e de vară. Pe munte, iarna se merge doar până la Cabana Bârcaciu.",
       },
       {
         q: "Unde te cazezi în Valea Avrigului?",
@@ -249,7 +249,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Casa Întoarsă, mini zoo, tubing și locuri de joacă: ce faci la Brambura Park, cât timp îți trebuie și unde te cazezi la 4 minute de parc.",
     author: "florin",
     published: "2026-11-04",
-    updated: "2026-11-04",
+    updated: "2026-11-05",
     image: { src: "/brambura.jpeg", alt: "Brambura Park, în Valea Avrigului" },
     summary:
       "Brambura Park este un parc de distracții pentru familii în Valea Avrigului, județul Sibiu, deschis în 2022 și cunoscut mai ales pentru Casa Întoarsă, o casă cu camerele cu susul în jos. În parc găsești un mini zoo, tubing, tobogane gonflabile, trambuline, mașinuțe electrice, locuri de joacă și un restaurant. Parcul este deschis tot anul, are parcare mare și gratuită și se află la 4 minute cu mașina de Pensiunea Amonte. E potrivit pentru familii cu copii de toate vârstele, dar și pentru adulții care vor o zi relaxată și poze amuzante. Din ce vedem la oaspeții noștri, merită să-i dai o zi întreagă.",
@@ -370,7 +370,7 @@ export const BLOG_POSTS: BlogPost[] = [
             items: [
               "Ferma de cerbi din Poiana Neamțului, tot în Valea Avrigului: cerbi și ciute, cu vizite în weekend, în grupuri cu ghid. Vara, programul e între 17 și 20.",
               "Palatul Brukenthal din Avrig: reședința de vară a baronului Samuel von Brukenthal, cu grădina și parcul din jur.",
-              "Castelul de Lut din Valea Zânelor, la Porumbacu de Sus: o construcție de poveste, din materiale naturale, la poalele Făgărașilor.",
+              "Casa Vikingilor, pe Valea Avrigului, și Povestea Calendarului, la Porumbacu de Sus: două parcuri tematice pentru familii. Detalii în articolul nostru despre [un weekend în Valea Avrigului](/blog/weekend-valea-avrigului).",
             ],
           },
           {

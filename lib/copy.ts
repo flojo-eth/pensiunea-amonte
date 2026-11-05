@@ -180,7 +180,6 @@ export const COPY = {
         { name: "Brambura Park", rest: ": la 4 minute cu mașina" },
         { name: "Ferma de cerbi", rest: ", Poiana Neamțului: la circa 10 minute" },
         { name: "Palatul Brukenthal", rest: ", Avrig: în apropiere" },
-        { name: "Castelul de Lut „Valea Zânelor”", rest: ", Porumbacu de Sus: la câteva minute de Avrig" },
         { name: "Casa Vikingilor", rest: " și Povestea Calendarului: în zonă" },
         { name: "Trasee montane Făgăraș", rest: " - Cabana Bârcaciu, Negoiu, Suru: plecare din Valea Avrigului" },
         { name: "Activități în aer liber", rest: ": călărie, plimbări cu ATV-ul, plimbări prin pădure" },
