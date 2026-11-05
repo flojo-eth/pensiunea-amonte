@@ -24,7 +24,7 @@ export type Block =
   | { type: "quote"; text: string; cite: string }
   /** No `src` yet: the block is a reminder in the content and renders nothing,
    *  so an indexed page never shows an empty "[poză]" box. */
-  | { type: "image"; src?: string; alt: string; caption?: string };
+  | { type: "image"; src?: string; alt: string; caption?: string; portrait?: boolean };
 
 export type BlogPost = {
   slug: string;
@@ -73,6 +73,11 @@ export const BLOG_POSTS: BlogPost[] = [
               "De la Aeroportul Sibiu: aproximativ 50 de minute.",
               "Din Brașov: aproximativ 2 ore, pe DN1 spre Sibiu.",
             ],
+          },
+          {
+            type: "image",
+            src: "/blog/valea-avrigului.jpg",
+            alt: "Munții Făgăraș cu zăpadă, în drum spre Valea Avrigului",
           },
         ],
       },
@@ -296,6 +301,13 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "Pe [harta parcului](https://brambura-park.ro/harta-parcului/) mai găsești: o tiroliană între două turnuri de lemn, Pânza de păianjen (o piramidă de frânghii pentru cățărat), Leagănul Căpitanului Brambura (o corabie-leagăn), trenulețul Brambura Express, Ținutul Alpaca, ateliere creative, Sweet Corner cu înghețată, Summer Bar și un magazin de suveniruri. De pe terasa porții, cu telescopul, vezi tot parcul până la munți.",
+          },
+          {
+            type: "image",
+            src: "/blog/brambura-alpaca.jpg",
+            alt: "Alpaca și capre la Mini Zoo-ul din Brambura Park",
+            caption: "Mini Zoo-ul din Brambura Park",
+            portrait: true,
           },
           {
             type: "p",

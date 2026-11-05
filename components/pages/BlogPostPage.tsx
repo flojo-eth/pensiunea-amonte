@@ -55,8 +55,8 @@ function BlockView({ block }: { block: Block }) {
     case "image":
       if (!block.src) return null;
       return (
-        <figure className="m-0">
-          <div className="relative aspect-[3/2] overflow-hidden rounded-xl">
+        <figure className={`m-0 ${block.portrait ? "mx-auto w-full max-w-[440px]" : ""}`}>
+          <div className={`relative overflow-hidden rounded-xl ${block.portrait ? "aspect-[3/4]" : "aspect-[3/2]"}`}>
             <Image src={block.src} alt={block.alt} fill sizes="(min-width:820px) 720px, 100vw" className="object-cover" />
           </div>
           {block.caption && <figcaption className="mt-2 text-[13.5px] text-muted-2">{block.caption}</figcaption>}
