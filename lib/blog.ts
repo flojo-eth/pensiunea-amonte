@@ -21,7 +21,10 @@ export type Block =
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "table"; head: string[]; rows: string[][]; caption?: string }
-  | { type: "quote"; text: string; cite: string };
+  | { type: "quote"; text: string; cite: string }
+  /** No `src` yet: the block is a reminder in the content and renders nothing,
+   *  so an indexed page never shows an empty "[poză]" box. */
+  | { type: "image"; src?: string; alt: string; caption?: string };
 
 export type BlogPost = {
   slug: string;
@@ -43,6 +46,201 @@ export type BlogPost = {
 };
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "weekend-valea-avrigului",
+    title: "Ce faci un weekend în Valea Avrigului",
+    metaTitle: "Ce faci un weekend în Valea Avrigului, lângă Sibiu",
+    description:
+      "Un weekend în Valea Avrigului, la 40 de minute de Sibiu: Brambura Park, ferma de cerbi, Casa Vikingilor, traseul spre Cabana Bârcaciu și unde te cazezi.",
+    author: "florin",
+    published: "2026-11-05",
+    updated: "2026-11-05",
+    image: { src: "/priveliste-fagaras.jpg", alt: "Priveliște spre Munții Făgăraș de pe terasa Pensiunii Amonte" },
+    summary:
+      "Valea Avrigului este valea râului Avrig, la poalele Munților Făgăraș, în județul Sibiu, la aproximativ 40 de minute cu mașina de Sibiu. Drumul urcă din orașul Avrig spre Poiana Neamțului, de unde pleacă traseele spre Cabana Bârcaciu. Într-un weekend aici poți combina atracțiile pentru familii (Brambura Park, ferma de cerbi din Poiana Neamțului, Casa Vikingilor, Povestea Calendarului) cu o drumeție de dificultate medie spre Cabana Bârcaciu și cu seri liniștite, la spa și la cină. Pensiunea Amonte este în vale, la 4 minute de Brambura Park.",
+    sections: [
+      {
+        title: "Unde e Valea Avrigului și cum ajungi",
+        blocks: [
+          {
+            type: "p",
+            text: "Râul Avrig izvorăște din Lacul Avrig, sus în Munții Făgăraș, și se varsă în Olt, în orașul Avrig. Valea lui e drumul cel mai scurt dinspre Valea Oltului spre creasta Făgărașului: urci din Avrig, treci prin vale și ajungi în Poiana Neamțului, unde drumul se oprește și încep traseele montane.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Din Sibiu: aproximativ 40 de minute cu mașina, pe DN1 spre Brașov până la Avrig, apoi pe Valea Avrigului, spre munte.",
+              "De la Aeroportul Sibiu: aproximativ 50 de minute.",
+              "Din Brașov: aproximativ 2 ore, pe DN1 spre Sibiu.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Un weekend, pe zile",
+        blocks: [
+          {
+            type: "p",
+            text: "Programul de mai jos e cel pe care îl recomandăm cel mai des oaspeților noștri. Îl poți scurta sau lungi după vreme și după cine vine cu tine.",
+          },
+          {
+            type: "p",
+            text: "Vineri seara: nu-ți face planuri mari. Te cazezi, intri la spa, în jacuzzi și saună, și iei cina la restaurantul pensiunii. E seara în care lași orașul în urmă.",
+          },
+          { type: "image", src: "/jacuzzi-sauna.jpeg", alt: "Zona de spa a pensiunii, cu jacuzzi și saună" },
+          {
+            type: "p",
+            text: "Sâmbătă: ziua mare. Cu copiii, dă-i o zi întreagă lui [Brambura Park](/blog/brambura-park), la 4 minute de pensiune. Dacă vrei munte, urcă spre Cabana Bârcaciu (detalii mai jos). Vara, poți încheia ziua la ferma de cerbi din Poiana Neamțului, unde vizitele sunt seara, între 17 și 20.",
+          },
+          {
+            type: "p",
+            text: "Duminică dimineața: o vizită scurtă înainte de drumul spre casă, la ferma de cerbi sau la Palatul Brukenthal din Avrig, care e oricum în drumul spre Sibiu.",
+          },
+        ],
+      },
+      {
+        title: "Ce recomandăm cel mai des",
+        blocks: [
+          {
+            type: "p",
+            text: "Patru opriri pe care le recomandăm aproape oricui vine la noi, mai ales familiilor:",
+          },
+          {
+            type: "ul",
+            items: [
+              "Brambura Park: parc de distracții pentru familii, cu Casa Întoarsă, mini zoo, tubing și locuri de joacă, la 4 minute de pensiune. Am scris despre el [un articol separat](/blog/brambura-park).",
+              "Ferma de cerbi din Poiana Neamțului: cerbi și ciute, cu vizite în grupuri cu ghid, la circa 10 minute de pensiune. Vara, vizitele sunt între 17 și 20.",
+              "Casa Vikingilor (Panoramic Park Viking Village): parc tematic pe Valea Avrigului, inspirat din lumea vikingilor, cu o corabie, ateliere de fierărie, tâmplărie și țesut pentru copii, un parc cu dinozauri, loc de joacă, trenuleț, animale și restaurant. Parcul se extinde încă.",
+              "Povestea Calendarului, la Porumbacu de Sus: parc tematic despre cele 12 luni ale anului și tradițiile lor, cu o căsuță pentru fiecare lună, spectacole pentru copii și locuri de joacă.",
+            ],
+          },
+          { type: "image", src: "/ferma-de-cerbi.jpeg", alt: "Ferma de cerbi din Poiana Neamțului, în Valea Avrigului" },
+          {
+            type: "table",
+            caption: "Program și prețuri, după sursele citite pe 4 noiembrie 2026",
+            head: ["Atracție", "Program", "Preț"],
+            rows: [
+              ["Casa Vikingilor", "Luni - vineri 10 - 18, sâmbătă - duminică 10 - 19", "Detalii la parc"],
+              ["Povestea Calendarului", "Luni - vineri 10 - 17, sâmbătă - duminică 10 - 18", "Adulți 40 lei, copii 3 - 10 ani 30 lei"],
+              ["Ferma de cerbi", "Vara, între 17 și 20, vizite cu ghid", "Detalii la fermă"],
+              ["Brambura Park", "Variază după sezon", "De la 15 lei (vezi [articolul](/blog/brambura-park))"],
+            ],
+          },
+          {
+            type: "p",
+            text: "Programul se schimbă de la un sezon la altul, așa că verifică înainte pe [site-ul Povestea Calendarului](https://povesteacalendarului.ro/) și pe paginile atracțiilor.",
+          },
+        ],
+      },
+      {
+        title: "Drumeția spre Cabana Bârcaciu",
+        blocks: [
+          {
+            type: "p",
+            text: "Traseul pe care îl recomandăm cel mai des pentru un weekend e cel spre Cabana Bârcaciu, la 1550 m. Poți pleca direct de la pensiune, pe jos, și faci aproximativ 3 ore și jumătate. Dacă urci cu mașina până în Poiana Neamțului, de acolo faci aproximativ 2 ore și jumătate. Sunt duratele noastre, la un ritm obișnuit, cu pauze.",
+          },
+          {
+            type: "p",
+            text: "E un traseu de dificultate medie. Prima parte e cea mai grea, o urcare abruptă, iar după ea drumul devine ușor. Marcajul e cruce roșie.",
+          },
+          { type: "image", src: "/trasee-fagaras.jpg", alt: "Traseu montan în Munții Făgăraș, deasupra Văii Avrigului" },
+          {
+            type: "p",
+            text: "Cine vrea mai mult poate continua din Bârcaciu spre Lacul Avrig (marcaj punct albastru, aproximativ 3 ore în plus, doar pentru drumeți cu experiență) sau spre Cabana Negoiu, prin Valea Șerbota (marcaj punct roșu, aproximativ 2 ore și 45 de minute).",
+          },
+          {
+            type: "p",
+            text: "Iarna, mergi doar până la Cabana Bârcaciu. Traseul spre Lacul Avrig e inaccesibil iarna, iar urcarea în creastă cere echipament de iarnă și experiență. Înainte de orice tură, verifică buletinul de avalanșă și avertizările Salvamont Sibiu.",
+          },
+        ],
+      },
+      {
+        title: "Alte activități în zonă",
+        blocks: [
+          {
+            type: "ul",
+            items: [
+              "E-bike: le găsești la pensiune, prin partenerul nostru Haihui. Traseul îl alegem împreună, după experiența ta și după vreme.",
+              "Călărie și ATV: sunt mai multe variante în zonă. Ne putem ocupa noi de rezervare sau te punem în legătură cu colaboratorii noștri.",
+              "Palatul Brukenthal din Avrig: fosta reședință de vară a baronului Samuel von Brukenthal, cu grădină barocă din 1777, restaurant și cafenea istorică. Accesul în parc se plătește.",
+              "Beach Club Avrig (Corabia Piraților): plaja de vară a Palatului Brukenthal, deschisă doar vara, pentru toate vârstele.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Vara și iarna",
+        blocks: [
+          {
+            type: "p",
+            text: "Vara, Valea Avrigului e la cel mai bun moment pentru drumeții și pentru familii: toate atracțiile de mai sus sunt deschise, ferma de cerbi primește vizitatori seara, între 17 și 20, iar în Avrig e deschis Beach Club.",
+          },
+          {
+            type: "p",
+            text: "Iarna, cele mai multe rămân deschise, inclusiv Brambura Park. Excepțiile: Beach Club Avrig e doar de vară, iar Povestea Calendarului anunță pe site o închidere de iarnă, până în februarie. Pe munte, mergi doar până la Cabana Bârcaciu. Serile de iarnă sunt pentru șemineu, jacuzzi și saună.",
+          },
+        ],
+      },
+      {
+        title: "Unde mănânci",
+        blocks: [
+          {
+            type: "p",
+            text: "Noi recomandăm restaurantul pensiunii: după o zi pe munte sau în parc, e mai comod să iei cina la câțiva pași de cameră. Mesele le gătim la pensiune, din produse locale, iar micul dejun e inclus în cazare.",
+          },
+        ],
+      },
+      {
+        title: "Unde te cazezi",
+        blocks: [
+          {
+            type: "p",
+            text: "Pensiunea Amonte este în Valea Avrigului, la 4 minute de Brambura Park și la circa 10 minute de ferma de cerbi. Avem 8 camere duble și 2 studiouri de familie, cu mic dejun inclus, jacuzzi și saună, restaurant, bar, șemineu, foc de tabără și terasă panoramică spre Făgăraș.",
+          },
+          {
+            type: "p",
+            text: "Vezi [camerele și studiourile](/camere) sau [verifică disponibilitatea](/rezerva-acum). În weekend, sejurul minim este de 2 nopți.",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Unde se află Valea Avrigului?",
+        a: "În județul Sibiu, la poalele Munților Făgăraș. Drumul urcă din orașul Avrig spre Poiana Neamțului, de unde pleacă traseele montane.",
+      },
+      {
+        q: "Cât durează drumul din Sibiu până în Valea Avrigului?",
+        a: "Aproximativ 40 de minute cu mașina, pe DN1 spre Brașov până la Avrig, apoi pe Valea Avrigului.",
+      },
+      {
+        q: "Ce faci în Valea Avrigului cu copiii?",
+        a: "Brambura Park, ferma de cerbi din Poiana Neamțului, Casa Vikingilor și Povestea Calendarului sunt cele mai potrivite opriri pentru familii.",
+      },
+      {
+        q: "Ce traseu montan e potrivit pentru un weekend?",
+        a: "Traseul spre Cabana Bârcaciu, de dificultate medie: aproximativ 3 ore și jumătate de la Pensiunea Amonte sau 2 ore și jumătate din Poiana Neamțului. Prima parte e o urcare abruptă, apoi drumul devine ușor.",
+      },
+      {
+        q: "Ce poți face iarna în Valea Avrigului?",
+        a: "Cele mai multe atracții rămân deschise, inclusiv Brambura Park. Beach Club Avrig e doar de vară, iar Povestea Calendarului are o închidere de iarnă. Pe munte, iarna se merge doar până la Cabana Bârcaciu.",
+      },
+      {
+        q: "Unde te cazezi în Valea Avrigului?",
+        a: "Pensiunea Amonte este în Valea Avrigului, la 4 minute de Brambura Park, cu 8 camere duble și 2 studiouri de familie, mic dejun inclus, jacuzzi și saună.",
+      },
+    ],
+    sources: [
+      { label: "muntii-nostri.ro, traseul Avrig - Cabana Bârcaciu (07MN09)", url: "https://muntii-nostri.ro/trails/download-atlas/avrig-cabana-barcaciu-creasta-principala-2/", note: "atlas din 16.04.2026" },
+      { label: "muntii-nostri.ro, Cabana Bârcaciu - Lacul Avrig (07MN10)", url: "https://muntii-nostri.ro/trails/download-atlas/cabana-barcaciu-valea-avrigului-lacul-avrig/" },
+      { label: "muntii-nostri.ro, Cabana Bârcaciu - Cabana Negoiu (07MN12)", url: "https://muntii-nostri.ro/trails/download-atlas/cabana-barcaciu-valea-serbota-cabana-negoiu/" },
+      { label: "Agerpres, avertizare Salvamont pentru Munții Făgăraș", url: "https://agerpres.ro/social/2025/12/30/sibiu-a-crescut-riscul-de-avalansa-in-muntii-fagaras-turistii---sfatuiti-sa-evite-traseele-expuse--1515640", note: "30.12.2025" },
+      { label: "Povestea Calendarului, site oficial", url: "https://povesteacalendarului.ro/", note: "citit la data de 4 noiembrie 2026" },
+      { label: "Mesagerul de Sibiu, Casa Vikingilor", url: "https://mesageruldesibiu.ro/vikingii-au-ajuns-pe-valea-avrigului-satul-inspirat-din-lumea-nordica-unde-copiii-invata-mestesuguri-de-acum-1-000-de-ani/", note: "11.09.2026" },
+      { label: "Palatul Brukenthal Avrig, site oficial", url: "https://palatulbrukenthalavrig.ro/", note: "citit la data de 4 noiembrie 2026" },
+      { label: "Wikipedia, râul Avrig", url: "https://en.wikipedia.org/wiki/Avrig_(river)" },
+    ],
+  },
   {
     slug: "brambura-park",
     title: "Brambura Park: ce găsești și unde te cazezi aproape",

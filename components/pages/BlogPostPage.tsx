@@ -52,6 +52,16 @@ function BlockView({ block }: { block: Block }) {
           <figcaption className="mt-2 text-[13.5px] text-muted-2">{block.cite}</figcaption>
         </figure>
       );
+    case "image":
+      if (!block.src) return null;
+      return (
+        <figure className="m-0">
+          <div className="relative aspect-[3/2] overflow-hidden rounded-xl">
+            <Image src={block.src} alt={block.alt} fill sizes="(min-width:820px) 720px, 100vw" className="object-cover" />
+          </div>
+          {block.caption && <figcaption className="mt-2 text-[13.5px] text-muted-2">{block.caption}</figcaption>}
+        </figure>
+      );
     case "table":
       return (
         <div className="overflow-x-auto rounded-lg border border-line">
@@ -71,7 +81,7 @@ function BlockView({ block }: { block: Block }) {
                 <tr key={row.join("|")} className="border-t border-line bg-card">
                   {row.map((cell, i) => (
                     <td key={i} className={`px-4 py-3 align-top ${i === 0 ? "font-medium text-[#33392f]" : "text-muted"}`}>
-                      {cell}
+                      <RichText text={cell} />
                     </td>
                   ))}
                 </tr>
