@@ -151,7 +151,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
         type="button"
         aria-label={t.prev}
         onClick={() => scrollByCard(-1)}
-        className="absolute left-0 top-1/2 hidden -translate-x-4 -translate-y-1/2 items-center justify-center rounded-full border border-line-2 bg-card text-[18px] text-forest shadow-[0_2px_8px_rgba(40,44,38,0.12)] hover:border-muted-2 sm:flex sm:h-11 sm:w-11"
+        className="absolute left-2 top-1/2 hidden -translate-y-1/2 items-center justify-center rounded-full border border-line-2 bg-card text-[18px] text-forest shadow-[0_2px_8px_rgba(40,44,38,0.12)] hover:border-muted-2 sm:flex sm:h-11 sm:w-11"
       >
         ‹
       </button>
@@ -159,7 +159,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
         type="button"
         aria-label={t.next}
         onClick={() => scrollByCard(1)}
-        className="absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-4 items-center justify-center rounded-full border border-line-2 bg-card text-[18px] text-forest shadow-[0_2px_8px_rgba(40,44,38,0.12)] hover:border-muted-2 sm:flex sm:h-11 sm:w-11"
+        className="absolute right-2 top-1/2 hidden -translate-y-1/2 items-center justify-center rounded-full border border-line-2 bg-card text-[18px] text-forest shadow-[0_2px_8px_rgba(40,44,38,0.12)] hover:border-muted-2 sm:flex sm:h-11 sm:w-11"
       >
         ›
       </button>
