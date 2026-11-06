@@ -1,22 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 import LanguageMenu from "./LanguageMenu";
-import type { Lang } from "@/lib/i18n/config";
+import { href, type Lang } from "@/lib/i18n/config";
 import { UI } from "@/lib/i18n/ui";
 
 /**
  * Header for the corporate landing page: the nav bar's look, without the nav.
  *
  * The page is meant to keep a visitor on it until they ask for an offer, like
- * /rezerva-acum. So the logo is not a link and there are no menu items; only
- * the language picker stays, since someone who landed in the wrong language
- * still needs a way out of that.
+ * /rezerva-acum. So there are no menu items; the logo links home, as on every
+ * other page (Flo's call, November 2026), and the language picker stays, since
+ * someone who landed in the wrong language still needs a way out of that.
  */
 export default function LandingHeader({ lang }: { lang: Lang }) {
   const t = UI[lang].nav;
   return (
     <header className="sticky top-0 z-40 bg-pine/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-[clamp(20px,5vw,64px)] py-4">
-        <div className="flex items-center gap-3 text-card-2">
+        <Link
+          href={href(lang, "home")}
+          className="flex items-center gap-3 text-card-2 no-underline"
+          aria-label={t.logoAria}
+        >
           <Image
             src="/logo_amonte.jpg"
             alt="Pensiunea Amonte"
@@ -33,7 +38,7 @@ export default function LandingHeader({ lang }: { lang: Lang }) {
               {t.tagline}
             </span>
           </span>
-        </div>
+        </Link>
         <LanguageMenu />
       </div>
     </header>

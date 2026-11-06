@@ -48,7 +48,7 @@ app/
                           PRIVATE_EVENTS (lib/content*.ts), hero video in
                           PRIVATE_EVENTS_VIDEO (mobile + desktop files, null until each exists)
     retreat-corporate/    B2B landing, OUTSIDE (site): SiteShell `landing` swaps the
-                          nav for LandingHeader (logo + language only); no links
+                          nav for LandingHeader (logo to home + language only); no other links
                           off the page except the footer; content in lib/retreat.ts
     blog/  blog/[slug]/   Romanian only. Articles live in lib/blog.ts (BLOG_POSTS), with
                           their own strings (BLOG_COPY); pageMeta({ roOnly, article })
