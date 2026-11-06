@@ -37,12 +37,16 @@ const ro = {
   breadcrumbs: "Firimituri",
   banner: {
     default: {
-      text: "Ultimele date libere pentru retreaturi de echipă",
-      cta: "cere oferta →",
+      text: "Rezervările pentru 2027 sunt deschise",
+      cta: "vezi disponibilitatea →",
     },
     corporate: {
-      text: "Perioadele de toamnă pentru grupuri se rezervă cu 3-6 săptămâni înainte",
+      text: "Retreaturi de echipă în 2027: cere oferta din timp",
       cta: "cere oferta →",
+    },
+    events: {
+      text: "Botez, cununie sau aniversare în 2027?",
+      cta: "vezi cum le organizăm →",
     },
   },
   cookie: {
@@ -263,12 +267,16 @@ const en: UiStrings = {
   breadcrumbs: "Breadcrumb",
   banner: {
     default: {
-      text: "Last open dates for team retreats",
-      cta: "request an offer →",
+      text: "Bookings for 2027 are open",
+      cta: "check availability →",
     },
     corporate: {
-      text: "Autumn dates for groups are booked 3-6 weeks in advance",
+      text: "Team retreats in 2027: request your offer early",
       cta: "request an offer →",
+    },
+    events: {
+      text: "A christening, wedding or birthday in 2027?",
+      cta: "see how we host them →",
     },
   },
   cookie: {
@@ -481,12 +489,16 @@ const de: UiStrings = {
   breadcrumbs: "Brotkrümelnavigation",
   banner: {
     default: {
-      text: "Letzte freie Termine für Team-Retreats",
-      cta: "Angebot anfordern →",
+      text: "Buchungen für 2027 sind geöffnet",
+      cta: "Verfügbarkeit prüfen →",
     },
     corporate: {
-      text: "Herbsttermine für Gruppen werden 3-6 Wochen im Voraus gebucht",
+      text: "Team-Retreats 2027: Fordern Sie Ihr Angebot rechtzeitig an",
       cta: "Angebot anfordern →",
+    },
+    events: {
+      text: "Taufe, Hochzeit oder Geburtstag im Jahr 2027?",
+      cta: "So richten wir sie aus →",
     },
   },
   cookie: {
