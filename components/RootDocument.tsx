@@ -1,5 +1,4 @@
 import { Cormorant_Garamond, Hanken_Grotesk } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import CookieBanner from "@/components/CookieBanner";
@@ -49,32 +48,14 @@ export default function RootDocument({
           under app/, which this shared component is not. */}
       {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
-        {/* Google Consent Mode v2 defaults.
-            A plain inline script, not next/script: it must run during HTML parse,
-            before the GTM loader below, so every tag starts in a denied state.
-            A returning visitor's stored choice is replayed here too — doing it
-            later (from React) would leave GTM denied for the first 500 ms. */}
-        <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript() }} />
-        {/* Google Tag Manager - GA4 (G-KX3GQHYHF6) is delivered through GTM.
-            Active on staging so whatsapp_click can be verified in GTM Preview. */}
-        <Script id="gtm" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`}
-        </Script>
+        {/* Basic consent mode: Consent Mode defaults, plus the GTM loader,
+            which runs only once the visitor has accepted (lib/consent.ts).
+            A plain inline script, not next/script: it must run during HTML
+            parse, so a returning visitor who accepted keeps their pageview.
+            GA4 (G-KX3GQHYHF6) and Meta Pixel are delivered through GTM. */}
+        <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript(GTM_ID) }} />
       </head>
       <body className="antialiased">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
         {children}
         <Analytics />
         <SpeedInsights />

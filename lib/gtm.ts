@@ -5,6 +5,8 @@ declare global {
     dataLayer?: Record<string, unknown>[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag?: (...args: any[]) => void;
+    /** Injects GTM once; defined by the consent bootstrap (lib/consent.ts). */
+    __loadGtm?: () => void;
   }
 }
 

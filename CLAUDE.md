@@ -131,7 +131,7 @@ their own.
 
 **`/api/calendar` fails open.** On error it returns an empty blocked list plus `stale: true`. The client must surface that, or booked dates get presented as available. For the same reason the API reads every page of events (not one capped page) and only as far ahead as `AVAILABILITY_MONTHS` in `lib/availability.ts`, which also stops `BookingCalendar` from browsing past it: an unread month shows every day as free.
 
-**Consent gates third-party embeds.** GTM starts denied via the inline script in `components/RootDocument.tsx`; anything that sets third-party cookies (e.g. the Maps embed) must be gated on `useConsent()` — see `ConsentMap`.
+**Consent gates third-party embeds.** Basic consent mode (Flo's call, November 2026): GTM, and with it GA4, Google Ads and Meta Pixel, is not loaded at all until the visitor accepts, so nothing reaches Google or Meta before that. The loader lives in the inline bootstrap in `lib/consent.ts` (`window.__loadGtm`), called on accept and at parse time for a returning visitor who accepted; there is no GTM `<noscript>` iframe. Do not move back to advanced mode (GTM always loaded, signals denied): its cookieless pings still send the IP. Anything that sets third-party cookies (e.g. the Maps embed) must be gated on `useConsent()` — see `ConsentMap`.
 
 **Tailwind v4 outline trap.** `outline-none` sets `--tw-outline-style: none`, and `outline-2` resolves `outline-style` from that variable — so a focus ring needs `focus-visible:outline-solid` too, or it silently never renders.
 

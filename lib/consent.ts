@@ -26,24 +26,33 @@ const DENIED = {
 } as const;
 
 /**
- * Inline script for <head>, before the GTM loader.
+ * Inline script for <head>.
  *
- * It must run during HTML parse so every tag starts denied. It also replays a
- * returning visitor's stored choice here rather than from React — waiting for
- * hydration would leave GTM denied for the first several hundred milliseconds
- * and lose the pageview of a visitor who already accepted.
+ * Basic consent mode: Google Tag Manager is not loaded at all until the
+ * visitor accepts, so no request reaches Google or Meta before that (not even
+ * the cookieless pings of advanced mode, which still send the IP address).
+ * Flo's call, November 2026.
+ *
+ * The script defines window.__loadGtm, which injects GTM once, and calls it
+ * right away for a returning visitor who already accepted. It runs during
+ * HTML parse so that visitor's pageview is not lost waiting for hydration.
+ * The Consent Mode signals stay as a second layer: default denied, granted
+ * on accept.
  */
-export function consentBootstrapScript() {
+export function consentBootstrapScript(gtmId: string) {
   return `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 gtag('consent','default',${JSON.stringify({
     ...DENIED,
     functionality_storage: "granted",
     security_storage: "granted",
-    wait_for_update: 500,
   })});
+window.__loadGtm=function(){if(window.__gtmLoaded)return;window.__gtmLoaded=true;
+dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var j=document.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id=${gtmId}';
+document.head.appendChild(j);};
 try{if(localStorage.getItem('${CONSENT_KEY}')==='accepted'){gtag('consent','update',${JSON.stringify(
     GRANTED,
-  )});}}catch(e){}`;
+  )});window.__loadGtm();}}catch(e){}`;
 }
 
 export function readConsent(): ConsentValue | null {
@@ -65,6 +74,8 @@ export function setConsent(value: ConsentValue) {
     /* choice still applies for this page view */
   }
   window.gtag?.("consent", "update", value === "accepted" ? GRANTED : DENIED);
+  // Basic consent mode: GTM loads only now, and only on accept.
+  if (value === "accepted") window.__loadGtm?.();
   window.dispatchEvent(new Event(CONSENT_EVENT));
 }
 
